@@ -1,6 +1,7 @@
 # Equipo 04 - Proyecto Integrador
 ### Carrera de Ingeniería Ambiental / Informática / Industrial  
 **Universidad Peruana Cayetano Heredia**
+
 ---
 
 ## 🌍 Descripción del Equipo 
@@ -28,11 +29,11 @@ Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (OD
 
 | Foto | Nombre | Rol | Intereses |
 |------|--------|-----|-----------|
-| <img src="/Recursos/Imágenes/integrante1.png" width="90"/> | **Marcelo Alarcón Camones** | Líder del equipo | Innovación social, sostenibilidad |
-| <img src="/Recursos/Imágenes/integrante2.png" width="90"/> | **Brad Cárdenas Parián** | Responsable de investigación | Gestión ambiental, desarrollo comunitario |
-| <img src="/Recursos/Imágenes/integrante1.png" width="90"/> | **Leonel Urbano Castillo** | Diseñador/a | Diseño de prototipos, creatividad aplicada |
+| <img src="/Recursos/Imágenes/integrante1.png" width="90"/> | **Marcelo Alarcón Camones** | Líder del equipo | Innovación social, sostenibilidad, modelado 3D |
+| <img src="/Recursos/Imágenes/integrante2.png" width="90"/> | **Brad Cárdenas Parián** | Responsable de investigación | Diseño de aplicaciones, análisis de datos |
+| <img src="/Recursos/Imágenes/integrante1.png" width="90"/> | **Leonel Urbano Castillo** | Diseñador/a | Diseño de prototipos, modelado 3D |
 | <img src="/Recursos/Imágenes/integrante2.png" width="90"/> | **Idania Parhuay Meza** | Encargado/a de documentación | Comunicación científica, redacción técnica |
-| <img src="/Recursos/Imágenes/integrante1.png" width="90"/> | **Gael Milla Fasabi** | Programador/a - Modelador/a | Programación, análisis de datos, simulación |
+| <img src="/Recursos/Imágenes/integrante1.png" width="90"/> | **Gael Milla Fasabi** | Programador/a - Modelador/a | Programación, documentación de hallazgos |
 
 ---
 
