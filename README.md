@@ -11,9 +11,11 @@ En este proyecto buscamos aplicar nuestros conocimientos para identificar una pr
 Nuestro proyecto nace a partir de una problemática relacionada con el uso del agua en procesos de lavado, especialmente en lavanderías industriales y en el sector textil.
 
 Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (ODS):**  
-💧 ODS 6: Agua Limpia y Saneamiento — Promover el tratamiento, recuperación y uso eficiente del agua.
-⚙️ ODS 9: Industria, Innovación e Infraestructura — Desarrollar una solución tecnológica aplicable a procesos industriales.
-♻️ ODS 12: Producción y Consumo Responsables — Reducir el consumo de recursos y fomentar su recuperación y reutilización.
+| ODS | Objetivo |
+|-----|----------|
+| 💧 **ODS 6** | Agua Limpia y Saneamiento |
+| ⚙️ **ODS 9** | Industria, Innovación e Infraestructura |
+| ♻️ **ODS 12** | Producción y Consumo Responsables |
 
 ---
 
@@ -37,9 +39,9 @@ Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (OD
 
 ---
 
-## 📌 Resumen Final  
+## 📌 Resumen Final
+
 ### 💧 Contexto
----
 Los procesos de lavado de prendas y textiles, especialmente en **lavanderías industriales y en el sector textil**, requieren grandes cantidades de agua y generan aguas residuales que pueden contener **colorantes, detergentes, fibras, pelusas y otros contaminantes**.
 Una vez utilizada, gran parte de esta agua deja de aprovecharse directamente y debe recibir algún tipo de tratamiento antes de poder ser descargada o reutilizada. Al mismo tiempo, las fibras y residuos textiles presentes en el agua representan otro desafío, ya que pueden terminar convirtiéndose en residuos en lugar de ser recuperados. Frente a esta problemática, surge una oportunidad para replantear la forma en que se **utilizan, recuperan y aprovechan los recursos provenientes de los procesos de lavado**.
 
