@@ -38,7 +38,7 @@ Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (OD
 ---
 
 ## 📌 Resumen Final  
-###💧 Contexto
+### 💧 Contexto
 
 Los procesos de lavado de prendas y textiles, especialmente en **lavanderías industriales y en el sector textil**, requieren grandes cantidades de agua y generan aguas residuales que pueden contener **colorantes, detergentes, fibras, pelusas y otros contaminantes**.
 
