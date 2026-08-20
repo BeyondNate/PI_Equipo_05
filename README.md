@@ -97,22 +97,6 @@ Este enfoque permitiría analizar el proceso desde una perspectiva de **economí
 
 Desarrollar y validar un prototipo funcional orientado a la recuperación y aprovechamiento del agua y residuos provenientes de procesos de lavado, explorando alternativas tecnológicas que permitan mejorar el uso de los recursos y contribuir a procesos más sostenibles.
 
-### 🔎 ¿Qué investigaremos?
-
-Para definir la solución final, el equipo investigará:
-
-- Las características de las aguas provenientes de procesos de lavado.
-- Los principales contaminantes y residuos presentes.
-- Las tecnologías actualmente utilizadas.
-- Las limitaciones de las soluciones existentes.
-- Las necesidades de lavanderías industriales y del sector textil.
-- Las posibilidades de recuperación y reutilización del agua.
-- Las posibilidades de recuperación y valorización de fibras textiles.
-- El potencial de automatización y análisis de datos.
-- La viabilidad de incorporar inteligencia artificial al proceso.
-- Los costos, consumo energético y requerimientos de implementación.
-
-A partir de estos resultados se definirá progresivamente la propuesta de valor, tecnología, diseño y características del prototipo.
 
 ### 🌱 Impacto Esperado
 
