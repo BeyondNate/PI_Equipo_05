@@ -48,7 +48,6 @@ Al mismo tiempo, las fibras y residuos textiles presentes en el agua representan
 
 Frente a esta problemática, surge una oportunidad para replantear la forma en que se **utilizan, recuperan y aprovechan los recursos provenientes de los procesos de lavado**.
 
----
 
 ### ♻️ ¿En qué consiste el proyecto?
 
@@ -65,5 +64,75 @@ Investigar alternativas que permitan **recuperar el agua utilizada durante el la
 Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos.
 
 De esta manera, el proyecto busca ir más allá del concepto de **"tratar agua"**, explorando un enfoque de **recuperación y aprovechamiento de recursos**.
+
+### 🚀 Enfoque de Innovación
+
+La innovación del proyecto será definida a partir de la investigación de las necesidades reales del sector y de las limitaciones presentes en las soluciones actuales.
+
+Como parte de esta exploración, se evaluará la posibilidad de incorporar herramientas de **automatización, monitoreo, análisis de datos e inteligencia artificial** que permitan optimizar el proceso.
+
+Por ejemplo, se estudiará si el uso de datos y sensores podría ayudar a:
+
+- 📊 Conocer las características del agua durante el proceso.
+- ⚡ Optimizar las condiciones de tratamiento.
+- ⏱️ Reducir tiempos innecesarios de operación.
+- 💧 Determinar cuándo el agua alcanza condiciones adecuadas para un determinado uso.
+- 🔄 Adaptar el proceso según las características de cada tanda de lavado.
+
+La incorporación de estas tecnologías dependerá de los resultados obtenidos durante la investigación y de su **viabilidad técnica, económica y experimental**.
+
+> **La tecnología definitiva y el elemento diferenciador del proyecto aún se encuentran en investigación.**
+
+
+### 🌎 Enfoque de Economía Circular
+
+Uno de los principales enfoques que se busca explorar es la posibilidad de **aprovechar más de un recurso proveniente del mismo proceso de lavado**.
+
+En lugar de considerar únicamente:
+
+**Agua utilizada → Agua residual → Desecho**
+
+se busca investigar un modelo donde sea posible:
+
+**Agua utilizada → Recuperación → Reutilización**
+
+y, paralelamente:
+
+**Fibras y residuos → Recuperación → Posible valorización**
+
+Este enfoque permitiría analizar el proceso desde una perspectiva de **economía circular**, buscando reducir la generación de residuos y aprovechar nuevamente los recursos disponibles.
+
+
+### 🎯 Objetivo del Proyecto
+
+Desarrollar y validar un **prototipo funcional orientado a la recuperación y aprovechamiento del agua y residuos provenientes de procesos de lavado**, explorando alternativas tecnológicas que permitan mejorar el uso de los recursos y contribuir a procesos más sostenibles.
+
+### 🔎 ¿Qué investigaremos?
+
+Para definir la solución final, el equipo investigará:
+
+- Las características de las aguas provenientes de procesos de lavado.
+- Los principales contaminantes y residuos presentes.
+- Las tecnologías actualmente utilizadas.
+- Las limitaciones de las soluciones existentes.
+- Las necesidades de lavanderías industriales y del sector textil.
+- Las posibilidades de recuperación y reutilización del agua.
+- Las posibilidades de recuperación y valorización de fibras textiles.
+- El potencial de automatización y análisis de datos.
+- La viabilidad de incorporar inteligencia artificial al proceso.
+- Los costos, consumo energético y requerimientos de implementación.
+
+A partir de estos resultados se definirá progresivamente la **propuesta de valor, tecnología, diseño y características del prototipo**.
+
+### 🌱 Impacto Esperado
+
+A través del proyecto buscamos contribuir a:
+
+- 💧 **Reducir el consumo de agua nueva** mediante su recuperación y posible reutilización.
+- ♻️ **Disminuir la generación de residuos** mediante la recuperación de fibras y otros materiales.
+- 🧵 **Explorar la valorización de residuos textiles** provenientes del proceso de lavado.
+- ⚡ **Promover un uso eficiente de los recursos** involucrados en el tratamiento.
+- 🏭 **Impulsar procesos industriales más sostenibles**.
+- 💡 **Desarrollar una solución tecnológica** con potencial de aplicación en escenarios reales.
 
 ---
