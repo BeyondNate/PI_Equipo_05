@@ -1,4 +1,4 @@
-![Banner Equipo 05](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Recursos/Imágenes/BannerEquipo05.jpg)
+![Banner Equipo 05](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Recursos/Im%C3%A1genes/BannerEquipo05.png)
 
 # Equipo 05 - Proyecto Integrador
 ### Carrera de Ingeniería Ambiental / Informática / Industrial  
