@@ -1,12 +1,12 @@
-![Banner Equipo 04](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Recursos/Im%C3%A1genes/BannerEquipo.jpg)
+![Banner Equipo 05](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Recursos/Imágenes/BannerEquipo05.jpg)
 
-# Equipo 04 - Proyecto Integrador
+# Equipo 05 - Proyecto Integrador
 ### Carrera de Ingeniería Ambiental / Informática / Industrial  
 **Universidad Peruana Cayetano Heredia**
 ---
 
 ## 🌍 Descripción del Equipo 
-Somos el **Equipo 04** del curso **Proyecto Integrador 2026-2**, conformado por estudiantes de la carrera de Ingeniería Informática e Industrial.  
+Somos el **Equipo 05** del curso **Proyecto Integrador 2026-2**, conformado por estudiantes de la carrera de Ingeniería Informática e Industrial.  
 En este proyecto buscamos aplicar nuestros conocimientos para identificar una problemática real y desarrollar una solución tecnológica innovadora, pasando progresivamente desde la investigación y la ideación hasta el desarrollo y validación de un prototipo funcional.
 
 Nuestro proyecto nace a partir de una problemática relacionada con el uso del agua en procesos de lavado, especialmente en lavanderías industriales y en el sector textil.
@@ -23,7 +23,7 @@ Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (OD
 ## 📸 Fotografía del Equipo  
 <p align="center">
 <img width="1448" height="1086" alt="GRUPAL" src="https://github.com/user-attachments/assets/c529c861-af08-401e-a76a-0ea7e80f78d5" />
-  <em>Figura 1. Fotografía del equipo 04</em>
+  <em>Figura 1. Fotografía del equipo 05</em>
 </p>
 
 ---
