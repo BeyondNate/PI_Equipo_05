@@ -1,7 +1,6 @@
 # Equipo 04 - Proyecto Integrador
 ### Carrera de Ingeniería Ambiental / Informática / Industrial  
 **Universidad Peruana Cayetano Heredia**
-
 ---
 
 ## 🌍 Descripción del Equipo 
