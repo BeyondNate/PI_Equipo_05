@@ -57,26 +57,21 @@ La propuesta contempla inicialmente dos recursos de interés:
 
 <table>
   <tr>
-    <td align="center" width="50%">
-
-### 💧 Agua
-
-<img src="https://github.com/user-attachments/assets/f57b715e-398c-4e41-a73c-b1e637e19b78" alt="Agua" width="400">
-
-Investigar alternativas que permitan **recuperar el agua utilizada durante el lavado** y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva.
-
+    <th>💧 Agua</th>
+    <th>🧵 Fibras y residuos textiles</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/f57b715e-398c-4e41-a73c-b1e637e19b78" alt="Agua" width="400">
+      <br><br>
+      Investigar alternativas que permitan <strong>recuperar el agua utilizada durante el lavado</strong> y evaluar su potencial para ser reincorporada a     determinados procesos, reduciendo la necesidad de utilizar agua nueva.
     </td>
-
-    <td align="center" width="50%">
-
-### 🧵 Fibras y residuos textiles
-
-<img src="https://github.com/user-attachments/assets/87a74179-02bf-4b53-b9ad-b2b8519e1693" alt="Residuos textiles" width="350">
-
-Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos.
-
-De esta manera, buscamos ir más allá del concepto de **“tratar agua”**, explorando un enfoque de recuperación y aprovechamiento de recursos.
-
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/87a74179-02bf-4b53-b9ad-b2b8519e1693" alt="Residuos textiles" width="350">
+      <br><br>
+      Explorar mecanismos para <strong>separar y recuperar fibras, pelusas y otros residuos textiles</strong>, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos.
+      <br><br>
+      De esta manera, el proyecto busca ir más allá del concepto de <strong>“tratar agua”</strong>, explorando un enfoque de recuperación y aprovechamiento de recursos.
     </td>
   </tr>
 </table>
