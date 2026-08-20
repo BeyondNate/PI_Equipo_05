@@ -11,11 +11,11 @@ En este proyecto buscamos aplicar nuestros conocimientos para identificar una pr
 Nuestro proyecto nace a partir de una problemática relacionada con el uso del agua en procesos de lavado, especialmente en lavanderías industriales y en el sector textil.
 
 Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (ODS):**  
-| ODS | Objetivo |
-|-----|----------|
-| 💧 **ODS 6** | Agua Limpia y Saneamiento |
-| ⚙️ **ODS 9** | Industria, Innovación e Infraestructura |
-| ♻️ **ODS 12** | Producción y Consumo Responsables |
+| ODS | Objetivo                    |
+|-----|-----------------------------|
+| 💧 **ODS 6** | Agua Limpia y Saneamiento                        |
+| ⚙️ **ODS 9** | Industria, Innovación e Infraestructura          |
+| ♻️ **ODS 12** | Producción y Consumo Responsables               |
 
 ---
 
@@ -55,10 +55,31 @@ Nuestro proyecto busca explorar y desarrollar una solución tecnológica orienta
 
 La propuesta contempla inicialmente dos recursos de interés:
 
--💧 **Agua**: Investigar alternativas que permitan recuperar el agua utilizada durante el lavado y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva.
+<table>
+  <tr>
+    <td align="center" width="50%">
 
--🧵 **Fibras y residuos textiles**: Explorar mecanismos para separar y recuperar fibras, pelusas y otros residuos textiles, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos. De esta manera, el proyecto busca ir más allá del concepto de "tratar agua", explorando un enfoque de recuperación y aprovechamiento de recursos.
+### 💧 Agua
 
+<img src="https://github.com/user-attachments/assets/f57b715e-398c-4e41-a73c-b1e637e19b78" alt="Agua" width="400">
+
+Investigar alternativas que permitan **recuperar el agua utilizada durante el lavado** y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva.
+
+    </td>
+
+    <td align="center" width="50%">
+
+### 🧵 Fibras y residuos textiles
+
+<img src="https://github.com/user-attachments/assets/87a74179-02bf-4b53-b9ad-b2b8519e1693" alt="Residuos textiles" width="350">
+
+Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos.
+
+De esta manera, buscamos ir más allá del concepto de **“tratar agua”**, explorando un enfoque de recuperación y aprovechamiento de recursos.
+
+    </td>
+  </tr>
+</table>
 
 ### 🚀 Enfoque de Innovación
 
