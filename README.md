@@ -1,3 +1,5 @@
+![Banner Equipo 04](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Recursos/Im%C3%A1genes/BannerEquipo.jpg)
+
 # Equipo 04 - Proyecto Integrador
 ### Carrera de Ingeniería Ambiental / Informática / Industrial  
 **Universidad Peruana Cayetano Heredia**
