@@ -53,38 +53,11 @@ Una vez utilizada, gran parte de esta agua deja de aprovecharse directamente y d
 
 Nuestro proyecto busca explorar y desarrollar una solución tecnológica orientada a la recuperación y aprovechamiento de los recursos presentes en las aguas de procesos de lavado. La propuesta contempla inicialmente dos recursos de interés:
 
-<table>
-  <tr>
-    <th align="center">💧 Agua</th>
-    <th align="center">🧵 Fibras y residuos textiles</th>
-  </tr>
-
-  <tr>
-    <td align="center">
-
-<img src="https://github.com/user-attachments/assets/f57b715e-398c-4e41-a73c-b1e637e19b78" alt="Agua" width="250" height="150">
-
-<br>
-
-Investigar alternativas que permitan **recuperar el agua utilizada durante el lavado** y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva.
-
-    </td>
-
-    <td align="center">
-
-<img src="https://github.com/user-attachments/assets/87a74179-02bf-4b53-b9ad-b2b8519e1693" alt="Residuos textiles" width="250" height="150">
-
-<br>
-
-Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos.
-
-<br>
-
-De esta manera, buscamos ir más allá del concepto de **“tratar agua”**, explorando un enfoque de recuperación y aprovechamiento de recursos.
-
-    </td>
-  </tr>
-</table>
+| 💧 **Agua** | 🧵 **Fibras y residuos textiles** |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/f57b715e-398c-4e41-a73c-b1e637e19b78" alt="Agua" width="250"> | <img src="https://github.com/user-attachments/assets/87a74179-02bf-4b53-b9ad-b2b8519e1693" alt="Residuos textiles" width="250"> |
+| Investigar alternativas que permitan **recuperar el agua utilizada durante el lavado** y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva. | Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos. |
+| **Recuperación y posible reutilización del agua** | **Recuperación y posible valorización de fibras y residuos** |
 
 ### 🚀 Enfoque de Innovación
 
