@@ -5,15 +5,15 @@
 ---
 
 ## 🌍 Descripción del Equipo 
-Somos el **Equipo 04** del curso **Proyecto Integrador 2026-2**, conformado por estudiantes de la carrera de Ingeniería Informática / Industrial.  
-Nuestro objetivo es aplicar la metodología de diseño para generar soluciones innovadoras con impacto social, tecnológico y ambiental.  
+Somos el **Equipo 04** del curso **Proyecto Integrador 2026-2**, conformado por estudiantes de la carrera de Ingeniería Informática e Industrial.  
+En este proyecto buscamos aplicar nuestros conocimientos para identificar una problemática real y desarrollar una solución tecnológica innovadora, pasando progresivamente desde la investigación y la ideación hasta el desarrollo y validación de un prototipo funcional.
+
+Nuestro proyecto nace a partir de una problemática relacionada con el uso del agua en procesos de lavado, especialmente en lavanderías industriales y en el sector textil.
 
 Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (ODS):**  
-- ODS 3: Salud y Bienestar  
-- ODS 6: Agua Limpia y Saneamiento  
-- ODS 9: Industria, Innovación e Infraestructura  
-- ODS 11: Ciudades y Comunidades Sostenibles  
-- ODS 13: Acción por el Clima  
+💧 ODS 6: Agua Limpia y Saneamiento — Promover el tratamiento, recuperación y uso eficiente del agua.
+⚙️ ODS 9: Industria, Innovación e Infraestructura — Desarrollar una solución tecnológica aplicable a procesos industriales.
+♻️ ODS 12: Producción y Consumo Responsables — Reducir el consumo de recursos y fomentar su recuperación y reutilización.
 
 ---
 
@@ -38,4 +38,32 @@ Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (OD
 ---
 
 ## 📌 Resumen Final  
-Este README resume quiénes somos, qué nos motiva y en qué ODS queremos enfocar nuestro trabajo durante el curso.  
+## 💧 Contexto
+
+Los procesos de lavado de prendas y textiles, especialmente en **lavanderías industriales y en el sector textil**, requieren grandes cantidades de agua y generan aguas residuales que pueden contener **colorantes, detergentes, fibras, pelusas y otros contaminantes**.
+
+Una vez utilizada, gran parte de esta agua deja de aprovecharse directamente y debe recibir algún tipo de tratamiento antes de poder ser descargada o reutilizada.
+
+Al mismo tiempo, las fibras y residuos textiles presentes en el agua representan otro desafío, ya que pueden terminar convirtiéndose en residuos en lugar de ser recuperados.
+
+Frente a esta problemática, surge una oportunidad para replantear la forma en que se **utilizan, recuperan y aprovechan los recursos provenientes de los procesos de lavado**.
+
+---
+
+# ♻️ ¿En qué consiste el proyecto?
+
+Nuestro proyecto busca explorar y desarrollar una **solución tecnológica orientada a la recuperación y aprovechamiento de los recursos presentes en las aguas de procesos de lavado**.
+
+La propuesta contempla inicialmente dos recursos de interés:
+
+### 💧 Agua
+
+Investigar alternativas que permitan **recuperar el agua utilizada durante el lavado** y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva.
+
+### 🧵 Fibras y residuos textiles
+
+Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos.
+
+De esta manera, el proyecto busca ir más allá del concepto de **"tratar agua"**, explorando un enfoque de **recuperación y aprovechamiento de recursos**.
+
+---
