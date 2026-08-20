@@ -41,35 +41,28 @@ Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (OD
 ### 💧 Contexto
 
 Los procesos de lavado de prendas y textiles, especialmente en **lavanderías industriales y en el sector textil**, requieren grandes cantidades de agua y generan aguas residuales que pueden contener **colorantes, detergentes, fibras, pelusas y otros contaminantes**.
-
-Una vez utilizada, gran parte de esta agua deja de aprovecharse directamente y debe recibir algún tipo de tratamiento antes de poder ser descargada o reutilizada.
-
-Al mismo tiempo, las fibras y residuos textiles presentes en el agua representan otro desafío, ya que pueden terminar convirtiéndose en residuos en lugar de ser recuperados.
-
-Frente a esta problemática, surge una oportunidad para replantear la forma en que se **utilizan, recuperan y aprovechan los recursos provenientes de los procesos de lavado**.
+Una vez utilizada, gran parte de esta agua deja de aprovecharse directamente y debe recibir algún tipo de tratamiento antes de poder ser descargada o reutilizada. Al mismo tiempo, las fibras y residuos textiles presentes en el agua representan otro desafío, ya que pueden terminar convirtiéndose en residuos en lugar de ser recuperados. Frente a esta problemática, surge una oportunidad para replantear la forma en que se **utilizan, recuperan y aprovechan los recursos provenientes de los procesos de lavado**.
 
 
 ### ♻️ ¿En qué consiste el proyecto?
 
-Nuestro proyecto busca explorar y desarrollar una **solución tecnológica orientada a la recuperación y aprovechamiento de los recursos presentes en las aguas de procesos de lavado**.
+Nuestro proyecto busca explorar y desarrollar una solución tecnológica orientada a la recuperación y aprovechamiento de los recursos presentes en las aguas de procesos de lavado.
 
 La propuesta contempla inicialmente dos recursos de interés:
 
-#### 💧 Agua
+-💧 **Agua**
 
-Investigar alternativas que permitan **recuperar el agua utilizada durante el lavado** y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva.
+Investigar alternativas que permitan recuperar el agua utilizada durante el lavado y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva.
 
-#### 🧵 Fibras y residuos textiles
+-🧵 **Fibras y residuos textiles**
 
-Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos.
-
-De esta manera, el proyecto busca ir más allá del concepto de **"tratar agua"**, explorando un enfoque de **recuperación y aprovechamiento de recursos**.
+Explorar mecanismos para separar y recuperar fibras, pelusas y otros residuos textiles, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos. De esta manera, el proyecto busca ir más allá del concepto de "tratar agua", explorando un enfoque de recuperación y aprovechamiento de recursos.
 
 ### 🚀 Enfoque de Innovación
 
 La innovación del proyecto será definida a partir de la investigación de las necesidades reales del sector y de las limitaciones presentes en las soluciones actuales.
 
-Como parte de esta exploración, se evaluará la posibilidad de incorporar herramientas de **automatización, monitoreo, análisis de datos e inteligencia artificial** que permitan optimizar el proceso.
+Como parte de esta exploración, se evaluará la posibilidad de incorporar herramientas de automatización, monitoreo, análisis de datos e inteligencia artificial que permitan optimizar el proceso.
 
 Por ejemplo, se estudiará si el uso de datos y sensores podría ayudar a:
 
@@ -79,14 +72,14 @@ Por ejemplo, se estudiará si el uso de datos y sensores podría ayudar a:
 - 💧 Determinar cuándo el agua alcanza condiciones adecuadas para un determinado uso.
 - 🔄 Adaptar el proceso según las características de cada tanda de lavado.
 
-La incorporación de estas tecnologías dependerá de los resultados obtenidos durante la investigación y de su **viabilidad técnica, económica y experimental**.
+La incorporación de estas tecnologías dependerá de los resultados obtenidos durante la investigación y de su viabilidad técnica, económica y experimental.
 
 > **La tecnología definitiva y el elemento diferenciador del proyecto aún se encuentran en investigación.**
 
 
 ### 🌎 Enfoque de Economía Circular
 
-Uno de los principales enfoques que se busca explorar es la posibilidad de **aprovechar más de un recurso proveniente del mismo proceso de lavado**.
+Uno de los principales enfoques que se busca explorar es la posibilidad de aprovechar más de un recurso proveniente del mismo proceso de lavado.
 
 En lugar de considerar únicamente:
 
@@ -105,7 +98,7 @@ Este enfoque permitiría analizar el proceso desde una perspectiva de **economí
 
 ### 🎯 Objetivo del Proyecto
 
-Desarrollar y validar un **prototipo funcional orientado a la recuperación y aprovechamiento del agua y residuos provenientes de procesos de lavado**, explorando alternativas tecnológicas que permitan mejorar el uso de los recursos y contribuir a procesos más sostenibles.
+Desarrollar y validar un prototipo funcional orientado a la recuperación y aprovechamiento del agua y residuos provenientes de procesos de lavado, explorando alternativas tecnológicas que permitan mejorar el uso de los recursos y contribuir a procesos más sostenibles.
 
 ### 🔎 ¿Qué investigaremos?
 
@@ -122,7 +115,7 @@ Para definir la solución final, el equipo investigará:
 - La viabilidad de incorporar inteligencia artificial al proceso.
 - Los costos, consumo energético y requerimientos de implementación.
 
-A partir de estos resultados se definirá progresivamente la **propuesta de valor, tecnología, diseño y características del prototipo**.
+A partir de estos resultados se definirá progresivamente la propuesta de valor, tecnología, diseño y características del prototipo.
 
 ### 🌱 Impacto Esperado
 
