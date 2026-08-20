@@ -38,7 +38,7 @@ Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (OD
 ---
 
 ## 📌 Resumen Final  
-## 💧 Contexto
+###💧 Contexto
 
 Los procesos de lavado de prendas y textiles, especialmente en **lavanderías industriales y en el sector textil**, requieren grandes cantidades de agua y generan aguas residuales que pueden contener **colorantes, detergentes, fibras, pelusas y otros contaminantes**.
 
@@ -50,17 +50,17 @@ Frente a esta problemática, surge una oportunidad para replantear la forma en q
 
 ---
 
-# ♻️ ¿En qué consiste el proyecto?
+### ♻️ ¿En qué consiste el proyecto?
 
 Nuestro proyecto busca explorar y desarrollar una **solución tecnológica orientada a la recuperación y aprovechamiento de los recursos presentes en las aguas de procesos de lavado**.
 
 La propuesta contempla inicialmente dos recursos de interés:
 
-### 💧 Agua
+#### 💧 Agua
 
 Investigar alternativas que permitan **recuperar el agua utilizada durante el lavado** y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva.
 
-### 🧵 Fibras y residuos textiles
+#### 🧵 Fibras y residuos textiles
 
 Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos.
 
