@@ -30,7 +30,7 @@ Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (OD
 
 | Foto | Nombre | Rol | Intereses |
 |------|--------|-----|-----------|
-| <img src="/Recursos/Imágenes/integrante1.png" width="90"/> | **Marcelo Alarcón Camones** | Líder del equipo | Innovación social, sostenibilidad, modelado 3D |
+| <img src="/Recursos/Imágenes/MarceloAlarcon.jpg" width="90"/> | **Marcelo Alarcón Camones** | Líder del equipo | Innovación social, sostenibilidad, modelado 3D |
 | <img src="/Recursos/Imágenes/integrante2.png" width="90"/> | **Brad Cárdenas Parián** | Responsable de investigación | Diseño de aplicaciones, análisis de datos |
 | <img src="/Recursos/Imágenes/integrante1.png" width="90"/> | **Leonel Urbano Castillo** | Diseñador/a | Diseño de prototipos, modelado 3D |
 | <img src="https://github.com/user-attachments/assets/90510dc9-49d0-41fb-b6e2-53ddaf844217" width="90"/> | **Idania Parhuay Meza** | Encargado/a de documentación | Comunicación científica, redacción técnica |
