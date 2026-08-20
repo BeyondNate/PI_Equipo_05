@@ -59,9 +59,7 @@ La propuesta contempla inicialmente dos recursos de interés:
 
 ### 🚀 Enfoque de Innovación
 
-La innovación del proyecto será definida a partir de la investigación de las necesidades reales del sector y de las limitaciones presentes en las soluciones actuales.
-
-Como parte de esta exploración, se evaluará la posibilidad de incorporar herramientas de automatización, monitoreo, análisis de datos e inteligencia artificial que permitan optimizar el proceso.
+La innovación del proyecto será definida a partir de la investigación de las necesidades reales del sector y de las limitaciones presentes en las soluciones actuales.Como parte de esta exploración, se evaluará la posibilidad de incorporar herramientas de automatización, monitoreo, análisis de datos e inteligencia artificial que permitan optimizar el proceso.
 
 Por ejemplo, se estudiará si el uso de datos y sensores podría ayudar a:
 
