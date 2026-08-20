@@ -110,5 +110,3 @@ A través del proyecto buscamos contribuir a:
 - ⚡ **Promover un uso eficiente de los recursos** involucrados en el tratamiento.
 - 🏭 **Impulsar procesos industriales más sostenibles**.
 - 💡 **Desarrollar una solución tecnológica** con potencial de aplicación en escenarios reales.
-
----
