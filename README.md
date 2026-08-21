@@ -12,9 +12,9 @@ Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizan
 
 |  **ODS** | **Objetivo** | **Metas relacionadas** |
 |------|----|----|
-| 💧 **ODS 6**   | **Agua Limpia y Saneamiento** | **6.3:** Mejorar la calidad del agua mediante la reducción de la contaminación y el tratamiento de aguas. <br> **6.4:** Promover el uso eficiente y sostenible de los recursos hídricos. |
-| ♻️ **ODS 12**  | **Producción y Consumo Responsables** | **12.2:** Promover el uso sostenible y eficiente de los recursos naturales. <br> **12.5:** Reducir la generación de residuos mediante la reutilización y valorización de materiales. |
-| 🌡️ **ODS 13**  | **Acción por el Clima** | **13.3:** Promover la educación y sensibilización sobre prácticas sostenibles y ambientales. |
+| **ODS 6**   | **Agua Limpia y Saneamiento** | **6.3:** Mejorar la calidad del agua mediante la reducción de la contaminación y el tratamiento de aguas. <br> **6.4:** Promover el uso eficiente y sostenible de los recursos hídricos. |
+| **ODS 12**  | **Producción y Consumo Responsables** | **12.2:** Promover el uso sostenible y eficiente de los recursos naturales. <br> **12.5:** Reducir la generación de residuos mediante la reutilización y valorización de materiales. |
+| **ODS 13**  | **Acción por el Clima** | **13.3:** Promover la educación y sensibilización sobre prácticas sostenibles y ambientales. |
 
 ### 🎯 Priorización
 
