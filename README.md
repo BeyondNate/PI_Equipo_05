@@ -1,4 +1,5 @@
-<img width="1536" height="1024" alt="9b343793-e038-40c8-93d0-32e5ad1397e2" src="https://github.com/user-attachments/assets/a1961874-d7c1-46b1-8f42-f313ccc05601" /><img width="1024" height="341" alt="WhatsApp Image 2026-08-20 at 10 40 15 PM" src="https://github.com/user-attachments/assets/cf727be8-03ee-4d7b-9d94-d04578640c29" />
+<img width="1024" height="341" alt="WhatsApp Image 2026-08-20 at 10 40 15 PM" src="https://github.com/user-attachments/assets/cf727be8-03ee-4d7b-9d94-d04578640c29" />
+
 
 # Equipo 05 - Proyecto Integrador
 ### Carrera de Ingeniería Ambiental / Informática / Industrial  
@@ -34,10 +35,15 @@ Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizan
 
 ## 📸 Fotografía del Equipo  
 <p align="center">
-<img width="1448" height="1086" alt="GRUPAL" src="https://github.com/user-attachments/assets/9b343793-e038-40c8-93d0-32e5ad1397e2"/>
+  <img 
+    width="1448" 
+    height="1086" 
+    alt="Fotografía del equipo 05" 
+    src="https://github.com/user-attachments/assets/a1961874-d7c1-46b1-8f42-f313ccc05601"
+  />
+  <br>
   <em>Figura 1. Fotografía del equipo 05</em>
 </p>
-
 ---
 
 ## 👥 Integrantes del Equipo  
