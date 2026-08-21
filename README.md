@@ -77,17 +77,13 @@ Buscamos llevar esta idea más allá de un experimento de laboratorio: **convert
 
 La propuesta todavía se encuentra en una etapa inicial, por lo que la formulación, el proceso y la configuración del prototipo serán definidos a partir de la investigación y experimentación.
 
-<p align="center">
-  <img src= "https://github.com/user-attachments/assets/638b6711-c732-4d07-8527-c91ebf8e7c61" width="250">
-</p>
-
 
 ## ✨ ¿Dónde está la innovación?
 
 La innovación está en **integrar el uso de materiales naturales con tecnología**, explorando una solución que pueda ser automatizada y monitoreada. Además, el proyecto incorpora un enfoque de **economía circular**, buscando aprovechar posibles subproductos del maracuyá y transformarlos en materia prima para generar un producto con nuevo valor.
 
 <p align="center">
-  <img src="IMAGEN_INNOVACION" width="500">
+  <img src= "https://github.com/user-attachments/assets/638b6711-c732-4d07-8527-c91ebf8e7c61" width="400">
 </p>
 
 
