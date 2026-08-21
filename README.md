@@ -99,10 +99,6 @@ La innovación está en **integrar el uso de materiales naturales con tecnologí
 | ↓ | 💧 Clarificante natural |
 | ↓ | 🤖 Prototipo tecnológico |
 
-<p align="center">
-  <img src="IMAGEN_ECONOMIA_CIRCULAR" width="500">
-</p>
-
 
 ## 🛠️ Boceto inicial del proyecto
 
@@ -118,10 +114,6 @@ Como primera aproximación, imaginamos un sistema que podría integrar diferente
 | 💧 **6. Agua clarificada** | Obtención del agua tratada |
 
 > **Este esquema representa únicamente nuestro boceto inicial.** La configuración final, los componentes, el método de dosificación y el nivel de automatización todavía están por definirse y dependerán de los resultados de la investigación y experimentación.
-
-<p align="center">
-  <img src="BOCETO_DEL_PROYECTO" width="600">
-</p>
 
 
 ## 🚀 Hacia dónde queremos llegar
@@ -150,10 +142,6 @@ Con ello, buscamos:
 - 🤖 Explorar la automatización y el monitoreo del proceso.
 - 💡 Transformar conocimiento científico en una propuesta tangible.
 - 🌎 Generar una solución con potencial de impacto ambiental y social.
-
-<p align="center">
-  <img src="IMAGEN_IMPACTO" width="500">
-</p>
 
 
 ## 🎯 Nuestra visión
