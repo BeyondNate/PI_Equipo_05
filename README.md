@@ -52,7 +52,7 @@ Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizan
 
 ---
 
-## 📌 Resumen Final
+# 📌 Resumen Final
 
 ## 💧 Clarificador de agua natural a base de maracuyá y quitosano
 
