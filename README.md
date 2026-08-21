@@ -148,10 +148,10 @@ Con ello, buscamos:
 
 > **Transformar el potencial del maracuyá y el quitosano en una solución tecnológica sostenible para la clarificación del agua, pasando de una idea basada en investigación hacia el desarrollo de un producto y un prototipo funcional.**
 
-### 🌱 Recurso natural
-### ↓
-### 🧪 Clarificante
-### ↓
-### ⚙️ Prototipo
-### ↓
-### 💧 Solución tecnológica
+#### 🌱 Recurso natural
+#### ↓
+#### 🧪 Clarificante
+#### ↓
+#### ⚙️ Prototipo
+#### ↓
+#### 💧 Solución tecnológica
