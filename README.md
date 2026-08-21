@@ -1,4 +1,4 @@
-![Banner Equipo 05](<img width="1024" height="341" alt="image" src="https://github.com/user-attachments/assets/7a5cf9b9-f893-41b6-8977-d9c1efffb604" />)
+<img width="1024" height="341" alt="WhatsApp Image 2026-08-20 at 10 40 15 PM" src="https://github.com/user-attachments/assets/cf727be8-03ee-4d7b-9d94-d04578640c29" />
 
 # Equipo 05 - Proyecto Integrador
 ### Carrera de Ingeniería Ambiental / Informática / Industrial  
