@@ -10,11 +10,6 @@ Somos el **Equipo 05** del curso **Proyecto Integrador 2026-2**, conformado por 
 
 Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizando semilla de maracuyá y quitosano, incorporando un prototipo automatizado que permita optimizar y monitorear el proceso.
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sustainable_Development_Goal-es-12.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" width="180">
-  <img src="https://agenda2030lac.org/sites/default/files/2019-08/S_SDG%20goals_icons-individual-rgb-12_0.png" width="180">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Sustainable_Development_Goal-es-05.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" width="180">
-</p>
 
 |  **ODS** | **Objetivo** | **Metas relacionadas** |
 |------|----|----|
@@ -27,6 +22,14 @@ Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizan
 - **ODS 6:** Eje principal del proyecto, relacionado directamente con la mejora de la calidad del agua.
 - **ODS 12:** Relacionado con el aprovechamiento de la semilla de maracuyá como recurso y la reducción de residuos.
 - **ODS 13:** Complementa el proyecto mediante el enfoque de sostenibilidad y aprovechamiento responsable de recursos.
+
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sustainable_Development_Goal-es-12.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" width="180">
+  <img src="https://agenda2030lac.org/sites/default/files/2019-08/S_SDG%20goals_icons-individual-rgb-12_0.png" width="180">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Sustainable_Development_Goal-es-05.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" width="180">
+</p>
+
+
 ---
 
 ## 📸 Fotografía del Equipo  
