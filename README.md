@@ -54,72 +54,137 @@ Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizan
 
 ## 📌 Resumen Final
 
-### 💧 Contexto
-Los desperdicios en los sectores pesqueros y alimenticios tienen mucho que aprovechar como son la cáscara de la maracuyá y la cáscara de los mariscos (quitosano), especialmente en lavanderías industriales y en el sector textil, requieren grandes cantidades de agua y generan aguas residuales que pueden contener colorantes, detergentes, fibras, pelusas y otros contaminantes.
-Una vez utilizada, gran parte de esta agua deja de aprovecharse directamente y debe recibir algún tipo de tratamiento antes de poder ser descargada o reutilizada. Al mismo tiempo, las fibras y residuos textiles presentes en el agua representan otro desafío, ya que pueden terminar convirtiéndose en residuos en lugar de ser recuperados. Frente a esta problemática, surge una oportunidad para replantear la forma en que se utilizan, recuperan y aprovechan los recursos provenientes de los procesos de lavado.
+## 💧 Clarificador de agua natural a base de maracuyá y quitosano
+
+> **Una propuesta que busca transformar recursos naturales en una alternativa sostenible para la clarificación del agua.**
+
+---
+
+## 🌎 Contexto
+
+El proyecto nace a partir de dos problemáticas: la necesidad de buscar alternativas sostenibles para la clarificación del agua y el poco aprovechamiento de algunos subproductos agroindustriales.
+
+Nuestra idea es explorar el potencial del **maracuyá y el quitosano** para desarrollar un **clarificante natural**, tomando como punto de partida investigaciones que han estudiado sus propiedades en el tratamiento del agua.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d069bb66-5da0-4eaf-9702-341548e50449" alt="Lavandería" width="500">
+  <img src="IMAGEN_CONTEXTUALIZACION" width="500">
 </p>
 
-### ♻️ ¿En qué consiste el proyecto?
+---
 
-Nuestro proyecto busca explorar y desarrollar una solución tecnológica orientada a la recuperación y aprovechamiento de los recursos presentes en las aguas de procesos de lavado. La propuesta contempla inicialmente dos recursos de interés:
+## 💡 ¿Cuál es nuestra propuesta?
 
-| 💧 **Agua** | 🧵 **Fibras y residuos textiles** |
-|:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/f57b715e-398c-4e41-a73c-b1e637e19b78" alt="Agua" width="250"> | <img src="https://github.com/user-attachments/assets/87a74179-02bf-4b53-b9ad-b2b8519e1693" alt="Residuos textiles" width="250"> |
-| Investigar alternativas que permitan **recuperar el agua utilizada durante el lavado** y evaluar su potencial para ser reincorporada a determinados procesos, reduciendo la necesidad de utilizar agua nueva. | Explorar mecanismos para **separar y recuperar fibras, pelusas y otros residuos textiles**, analizando posteriormente su posible aprovechamiento o valorización en lugar de considerarlos únicamente como desechos. |
-| **Recuperación y posible reutilización del agua** | **Recuperación y posible valorización de fibras y residuos** |
+Buscamos llevar esta idea más allá de un experimento de laboratorio: **convertir el clarificante en el punto de partida de un producto y, posteriormente, de un prototipo tecnológico** que permita realizar y monitorear el proceso de clarificación.
 
-### 🚀 Enfoque de Innovación
+La propuesta todavía se encuentra en una etapa inicial, por lo que la formulación, el proceso y la configuración del prototipo serán definidos a partir de la investigación y experimentación.
 
-La innovación del proyecto será definida a partir de la investigación de las necesidades reales del sector y de las limitaciones presentes en las soluciones actuales.Como parte de esta exploración, se evaluará la posibilidad de incorporar herramientas de automatización, monitoreo, análisis de datos e inteligencia artificial que permitan optimizar el proceso.
+<p align="center">
+  <img src="IMAGEN_IDEA" width="500">
+</p>
 
-Por ejemplo, se estudiará si el uso de datos y sensores podría ayudar a:
+---
 
-- 📊 Conocer las características del agua durante el proceso.
-- ⚡ Optimizar las condiciones de tratamiento.
-- ⏱️ Reducir tiempos innecesarios de operación.
-- 💧 Determinar cuándo el agua alcanza condiciones adecuadas para un determinado uso.
-- 🔄 Adaptar el proceso según las características de cada tanda de lavado.
+## ✨ ¿Dónde está la innovación?
 
-La incorporación de estas tecnologías dependerá de los resultados obtenidos durante la investigación y de su viabilidad técnica, económica y experimental.
+La innovación está en **integrar el uso de materiales naturales con tecnología**, explorando una solución que pueda ser automatizada y monitoreada.
 
-> **La tecnología definitiva y el elemento diferenciador del proyecto aún se encuentran en investigación.**
+Además, el proyecto incorpora un enfoque de **economía circular**, buscando aprovechar posibles subproductos del maracuyá y transformarlos en materia prima para generar un producto con nuevo valor.
 
+<p align="center">
+  <img src="IMAGEN_INNOVACION" width="500">
+</p>
 
-### 🌎 Enfoque de Economía Circular
+---
 
-Uno de los principales enfoques que se busca explorar es la posibilidad de aprovechar más de un recurso proveniente del mismo proceso de lavado.
+## ♻️ Economía circular
 
-En lugar de considerar únicamente:
+### 🍊 De residuo a recurso
 
-**Agua utilizada → Agua residual → Desecho**
+| Etapa | Transformación |
+|:---:|---|
+| 🍊 | Subproducto del maracuyá |
+| ↓ | ♻️ Aprovechamiento |
+| ↓ | 🧪 Transformación |
+| ↓ | 💧 Clarificante natural |
+| ↓ | 🤖 Prototipo tecnológico |
 
-se busca investigar un modelo donde sea posible:
+<p align="center">
+  <img src="IMAGEN_ECONOMIA_CIRCULAR" width="500">
+</p>
 
-**Agua utilizada → Recuperación → Reutilización**
+---
 
-y, paralelamente:
+## 🛠️ Boceto inicial del proyecto
 
-**Fibras y residuos → Recuperación → Posible valorización**
+Como primera aproximación, imaginamos un sistema que podría integrar diferentes etapas para llevar a cabo el proceso de clarificación:
 
-Este enfoque permitiría analizar el proceso desde una perspectiva de **economía circular**, buscando reducir la generación de residuos y aprovechar nuevamente los recursos disponibles.
+| Etapa | Función |
+|:---:|---|
+| 💧 **1. Agua turbia** | Ingreso del agua al sistema |
+| ➡️ **2. Dosificación** | Incorporación del clarificante |
+| ⚙️ **3. Mezcla** | Favorecer la interacción del clarificante con las partículas |
+| 🔄 **4. Floculación** | Favorecer la formación de flóculos |
+| ⏳ **5. Sedimentación** | Separación de los sólidos |
+| 💧 **6. Agua clarificada** | Obtención del agua tratada |
 
+> **Este esquema representa únicamente nuestro boceto inicial.** La configuración final, los componentes, el método de dosificación y el nivel de automatización todavía están por definirse y dependerán de los resultados de la investigación y experimentación.
 
-### 🎯 Objetivo del Proyecto
+<p align="center">
+  <img src="BOCETO_DEL_PROYECTO" width="600">
+</p>
 
-Desarrollar y validar un prototipo funcional orientado a la recuperación y aprovechamiento del agua y residuos provenientes de procesos de lavado, explorando alternativas tecnológicas que permitan mejorar el uso de los recursos y contribuir a procesos más sostenibles.
+---
 
+## 🚀 Hacia dónde queremos llegar
 
-### 🌱 Impacto Esperado
+La propuesta busca evolucionar progresivamente desde la investigación hasta un **prototipo funcional y validable**.
 
-A través del proyecto buscamos contribuir a:
+| Etapa | Objetivo |
+|:---:|---|
+| 🔎 **Investigación** | Estudiar el potencial del maracuyá y el quitosano |
+| 🧪 **Experimentación** | Evaluar formulaciones y condiciones |
+| ⚙️ **Diseño** | Definir la alternativa tecnológica más viable |
+| 🛠️ **Prototipado** | Construir e integrar la solución |
+| 📊 **Validación** | Evaluar su funcionamiento y resultados |
 
-- 💧 **Reducir el consumo de agua nueva** mediante su recuperación y posible reutilización.
-- ♻️ **Disminuir la generación de residuos** mediante la recuperación de fibras y otros materiales.
-- 🧵 **Explorar la valorización de residuos textiles** provenientes del proceso de lavado.
-- ⚡ **Promover un uso eficiente de los recursos** involucrados en el tratamiento.
-- 🏭 **Impulsar procesos industriales más sostenibles**.
-- 💡 **Desarrollar una solución tecnológica** con potencial de aplicación en escenarios reales.
+### 🎯 Meta tecnológica
+
+Avanzar progresivamente hacia un **TRL 6**, mediante el desarrollo de un prototipo integrado que pueda ser validado en un entorno relevante.
+
+<p align="center">
+  <img src="IMAGEN_TRL" width="550">
+</p>
+
+---
+
+## 🌱 ¿Qué buscamos aportar?
+
+El proyecto busca conectar:
+
+**🔬 Ciencia + 💡 Innovación + ♻️ Economía circular + 🤖 Tecnología**
+
+Con ello, buscamos:
+
+- 💧 Explorar una alternativa natural para la clarificación del agua.
+- ♻️ Dar valor a posibles subproductos del maracuyá.
+- 🤖 Explorar la automatización y el monitoreo del proceso.
+- 💡 Transformar conocimiento científico en una propuesta tangible.
+- 🌎 Generar una solución con potencial de impacto ambiental y social.
+
+<p align="center">
+  <img src="IMAGEN_IMPACTO" width="500">
+</p>
+
+---
+
+## 🎯 Nuestra visión
+
+> **Transformar el potencial del maracuyá y el quitosano en una solución tecnológica sostenible para la clarificación del agua, pasando de una idea basada en investigación hacia el desarrollo de un producto y un prototipo funcional.**
+
+### 🌱 Recurso natural
+### ↓
+### 🧪 Clarificante
+### ↓
+### ⚙️ Prototipo
+### ↓
+### 💧 Solución tecnológica
