@@ -5,7 +5,7 @@
 **Universidad Peruana Cayetano Heredia**
 ---
 
-# 🌍 Descripción del Equipo 
+## 🌍 Descripción del Equipo 
 Somos el **Equipo 05** del curso **Proyecto Integrador 2026-2**, conformado por estudiantes de la carrera de Ingeniería Informática e Industrial.  
 
 Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizando semilla de maracuyá y quitosano, incorporando un prototipo automatizado que permita optimizar y monitorear el proceso.
