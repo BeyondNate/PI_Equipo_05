@@ -83,9 +83,7 @@ La propuesta todavía se encuentra en una etapa inicial, por lo que la formulaci
 
 ## ✨ ¿Dónde está la innovación?
 
-La innovación está en **integrar el uso de materiales naturales con tecnología**, explorando una solución que pueda ser automatizada y monitoreada.
-
-Además, el proyecto incorpora un enfoque de **economía circular**, buscando aprovechar posibles subproductos del maracuyá y transformarlos en materia prima para generar un producto con nuevo valor.
+La innovación está en **integrar el uso de materiales naturales con tecnología**, explorando una solución que pueda ser automatizada y monitoreada. Además, el proyecto incorpora un enfoque de **economía circular**, buscando aprovechar posibles subproductos del maracuyá y transformarlos en materia prima para generar un producto con nuevo valor.
 
 <p align="center">
   <img src="IMAGEN_INNOVACION" width="500">
