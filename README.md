@@ -66,7 +66,7 @@ El proyecto nace a partir de dos problemáticas: la necesidad de buscar alternat
 Nuestra idea es explorar el potencial del **maracuyá y el quitosano** para desarrollar un **clarificante natural**, tomando como punto de partida investigaciones que han estudiado sus propiedades en el tratamiento del agua.
 
 <p align="center">
-  <img src="https://5aldia.cl/wp-content/uploads/2021/11/maracuya.webp" width="250">
+  <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Recursos/Im%C3%A1genes/Decorativos/Maracuy%C3%A1.jpg" width="250">
   <img src="https://github.com/user-attachments/assets/8105c94b-bd35-49d7-bf3c-5a189a6debd5" width="250">
 </p>
 
