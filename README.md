@@ -7,17 +7,23 @@
 
 ## 🌍 Descripción del Equipo 
 Somos el **Equipo 05** del curso **Proyecto Integrador 2026-2**, conformado por estudiantes de la carrera de Ingeniería Informática e Industrial.  
-En este proyecto buscamos aplicar nuestros conocimientos para identificar una problemática real y desarrollar una solución tecnológica innovadora, pasando progresivamente desde la investigación y la ideación hasta el desarrollo y validación de un prototipo funcional.
+## 🌍 Objetivos de Desarrollo Sostenible
 
-Nuestro proyecto nace a partir de una problemática relacionada con el uso del agua en procesos de lavado, especialmente en lavanderías industriales y en el sector textil.
+Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizando
+semilla de maracuyá y quitosano, incorporando un prototipo automatizado que permita
+optimizar y monitorear el proceso.
 
-Nos interesa trabajar en los siguientes **Objetivos de Desarrollo Sostenible (ODS):**  
-| ODS | Objetivo                    |
-|-----|-----------------------------|
-| 💧 **ODS 6** | Agua Limpia y Saneamiento                        |
-| ⚙️ **ODS 9** | Industria, Innovación e Infraestructura          |
-| ♻️ **ODS 12** | Producción y Consumo Responsables               |
+| **ODS** | **Objetivo** | **Metas relacionadas** |
+|---|---|---|
+| 💧 **ODS 6** | **Agua Limpia y Saneamiento** | **6.3:** Mejorar la calidad del agua mediante la reducción de la contaminación y el tratamiento de aguas. <br> **6.4:** Promover el uso eficiente y sostenible de los recursos hídricos. |
+| ♻️ **ODS 12** | **Producción y Consumo Responsables** | **12.2:** Promover el uso sostenible y eficiente de los recursos naturales. <br> **12.5:** Reducir la generación de residuos mediante la reutilización y valorización de materiales. |
+| 🌡️ **ODS 13** | **Acción por el Clima** | **13.3:** Promover la educación y sensibilización sobre prácticas sostenibles y ambientales. |
 
+### 🎯 Priorización
+
+- **ODS 6:** Eje principal del proyecto, relacionado directamente con la mejora de la calidad del agua.
+- **ODS 12:** Relacionado con el aprovechamiento de la semilla de maracuyá como recurso y la reducción de residuos.
+- **ODS 13:** Complementa el proyecto mediante el enfoque de sostenibilidad y aprovechamiento responsable de recursos.
 ---
 
 ## 📸 Fotografía del Equipo  
