@@ -12,8 +12,8 @@ Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizan
 
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sustainable_Development_Goal-es-12.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" width="180">
-  <img src="URL_ODS_12" width="180">
-  <img src="URL_ODS_13" width="180">
+  <img src="https://agenda2030lac.org/sites/default/files/2019-08/S_SDG%20goals_icons-individual-rgb-12_0.png" width="180">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Sustainable_Development_Goal-es-05.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" width="180">
 </p>
 
 |  **ODS** | **Objetivo** | **Metas relacionadas** |
