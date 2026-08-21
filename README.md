@@ -58,7 +58,6 @@ Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizan
 
 > **Una propuesta que busca transformar recursos naturales en una alternativa sostenible para la clarificación del agua.**
 
----
 
 ## 🌎 Contexto
 
@@ -70,7 +69,6 @@ Nuestra idea es explorar el potencial del **maracuyá y el quitosano** para desa
   <img src="IMAGEN_CONTEXTUALIZACION" width="500">
 </p>
 
----
 
 ## 💡 ¿Cuál es nuestra propuesta?
 
@@ -82,7 +80,6 @@ La propuesta todavía se encuentra en una etapa inicial, por lo que la formulaci
   <img src="IMAGEN_IDEA" width="500">
 </p>
 
----
 
 ## ✨ ¿Dónde está la innovación?
 
@@ -94,7 +91,6 @@ Además, el proyecto incorpora un enfoque de **economía circular**, buscando ap
   <img src="IMAGEN_INNOVACION" width="500">
 </p>
 
----
 
 ## ♻️ Economía circular
 
@@ -112,7 +108,6 @@ Además, el proyecto incorpora un enfoque de **economía circular**, buscando ap
   <img src="IMAGEN_ECONOMIA_CIRCULAR" width="500">
 </p>
 
----
 
 ## 🛠️ Boceto inicial del proyecto
 
@@ -133,7 +128,6 @@ Como primera aproximación, imaginamos un sistema que podría integrar diferente
   <img src="BOCETO_DEL_PROYECTO" width="600">
 </p>
 
----
 
 ## 🚀 Hacia dónde queremos llegar
 
@@ -147,15 +141,6 @@ La propuesta busca evolucionar progresivamente desde la investigación hasta un 
 | 🛠️ **Prototipado** | Construir e integrar la solución |
 | 📊 **Validación** | Evaluar su funcionamiento y resultados |
 
-### 🎯 Meta tecnológica
-
-Avanzar progresivamente hacia un **TRL 6**, mediante el desarrollo de un prototipo integrado que pueda ser validado en un entorno relevante.
-
-<p align="center">
-  <img src="IMAGEN_TRL" width="550">
-</p>
-
----
 
 ## 🌱 ¿Qué buscamos aportar?
 
@@ -175,7 +160,6 @@ Con ello, buscamos:
   <img src="IMAGEN_IMPACTO" width="500">
 </p>
 
----
 
 ## 🎯 Nuestra visión
 
