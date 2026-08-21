@@ -10,6 +10,12 @@ Somos el **Equipo 05** del curso **Proyecto Integrador 2026-2**, conformado por 
 
 Nuestro proyecto busca desarrollar un sistema de clarificación de agua utilizando semilla de maracuyá y quitosano, incorporando un prototipo automatizado que permita optimizar y monitorear el proceso.
 
+<p align="center">
+  <img src="URL_ODS_6" width="180">
+  <img src="URL_ODS_12" width="180">
+  <img src="URL_ODS_13" width="180">
+</p>
+
 |  **ODS** | **Objetivo** | **Metas relacionadas** |
 |------|----|----|
 | 💧**ODS 6**   | **Agua Limpia y Saneamiento** | **6.3:** Mejorar la calidad del agua mediante la reducción de la contaminación y el tratamiento de aguas. <br> **6.4:** Promover el uso eficiente y sostenible de los recursos hídricos. |
