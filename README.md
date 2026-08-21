@@ -78,7 +78,7 @@ Buscamos llevar esta idea más allá de un experimento de laboratorio: **convert
 La propuesta todavía se encuentra en una etapa inicial, por lo que la formulación, el proceso y la configuración del prototipo serán definidos a partir de la investigación y experimentación.
 
 <p align="center">
-  <img src="https://lh3.googleusercontent.com/gg-dl/AAQ_wbHAbI9S935raHcZFbmOqxpr3NkZ9P8TSU60mtKrrZr3a1ETX-5g65LnaZI1Um-UAcsuiHreG9rRGUF619mOq243Xh7Y-ppGJ8hddh_Coy2O7k3Tr-0K3KPF62LgfyZKAvuHsnFFQwSyKV_thfeWNkPQZw3_H7DNvORYQDZuFRAJ9_81=s1024-rj" width="500">
+  <img src="https://lh3.googleusercontent.com/gg-dl/AAQ_wbHAbI9S935raHcZFbmOqxpr3NkZ9P8TSU60mtKrrZr3a1ETX-5g65LnaZI1Um-UAcsuiHreG9rRGUF619mOq243Xh7Y-ppGJ8hddh_Coy2O7k3Tr-0K3KPF62LgfyZKAvuHsnFFQwSyKV_thfeWNkPQZw3_H7DNvORYQDZuFRAJ9_81=s1024-rj" width="250">
 </p>
 
 
