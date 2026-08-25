@@ -47,11 +47,11 @@ Somos el **Equipo 05** del curso **Proyecto Integrador 2026-II** de la **Univers
 
 Nuestro equipo reúne estudiantes de diferentes áreas de ingeniería, integrando conocimientos para desarrollar una propuesta sostenible y tecnológica aplicada a un problema relacionado con la clarificación del agua.
 
-### 🌱 Ambiente  •  🧪 Investigación  •  💻 Tecnología  •  ⚙️ Automatización
+### 🌱 Ambiente  •  🧪 Investigación  •  💻 Tecnología  •  ⚙️ Automatización
 
 Nuestro proyecto parte de una idea:
 
-## ¿Cómo podemos diseñar un producto que facilite la mezcla y el filtrado de un clarificante natural elaborado a partir de cáscaras de maracuyá, mango y plátano?
+## ¿Cómo podemos aprovechar recursos naturales y tecnología para explorar nuevas alternativas en la clarificación del agua?
 
 ---
 
@@ -87,27 +87,32 @@ Nuestro proyecto parte de una idea:
 
 ---
 
-## 💧 El Proyecto
-### Producto para el filtrado y mezcla de un clarificante a base de cáscara de maracuyá, mango y plátano
-De los residuos de fruta a un producto tecnológico
- 
-Nuestra propuesta consiste en diseñar y desarrollar un **producto** ,no solo una fórmula capaz de facilitar dos etapas críticas del proceso de clarificación del agua:
- 
-1. 🧪 **Mezcla**: dosificar y disolver de forma homogénea el polvo clarificante obtenido de cáscaras de maracuyá, mango y plátano en el agua a tratar.
-2. 🧹 **Filtrado**: separar de manera práctica los flóculos y residuos sólidos generados tras la coagulación, entregando agua clarificada lista para su siguiente uso.
-El proyecto no busca quedarse en la experimentación del clarificante en sí, sino resolver el problema práctico de **cómo un usuario final mezcla y filtra** esa solución de forma sencilla, segura y repetible.
- 
-🧪 Formular → ⚙️ Mezclar → 🧹 Filtrar → 📊 Evaluar
+# 💧 El Proyecto
 
-### 🧪 Formular  →  ⚙️ Procesar  →  📊 Monitorear  →  🔬 Evaluar
+## Clarificador de agua natural a base de maracuyá y quitosano
+
+### De los recursos naturales a una solución tecnológica
+
+Nuestra propuesta busca explorar el desarrollo de un **sistema de clarificación de agua** utilizando materiales naturales relacionados con el **maracuyá y el quitosano**.
+
+El proyecto no busca quedarse únicamente en la experimentación de un clarificante.
+
+La idea es avanzar progresivamente hacia un sistema capaz de:
+
+### 🧪 Formular  →  ⚙️ Procesar  →  📊 Monitorear  →  🔬 Evaluar
 
 ---
-## 🌎 El Contexto
-El proyecto nace de dos aspectos principales:
- 
-- 💧 La necesidad de un producto accesible que facilite la aplicación de clarificantes naturales, ya que hoy la mayoría de estas fórmulas se prueban solo en laboratorio (jar test) y no llegan a un producto usable.
-- ♻️ El potencial de aprovechamiento de subproductos como las cáscaras de maracuyá, mango y plátano, que normalmente se desechan como residuo orgánico.
-Diversos estudios respaldan el uso de cáscaras de fruta como coagulantes naturales para el tratamiento de agua. Por ejemplo, un estudio encontró que las cáscaras de mango lograron un 92.7% de remoción de turbidez, superando al alumbre, que alcanzó un 79.2%, usando NaOH 2.0M como solvente óptimo y una dosis de 110 mg/L a pH 2; el mismo estudio reportó que las cáscaras de plátano fueron las que produjeron mayor rendimiento de coagulante, con un 37.4%. Para el caso del maracuyá, una investigación sobre pectina extraída de residuos de fruta reportó que la pectina derivada de maracuyá alcanzó una eficiencia de remoción de turbidez del 67.6%, resultado que respalda su uso como parte de una formulación coagulante.
+
+# 🌎 El Contexto
+
+El proyecto nace a partir de dos aspectos principales:
+
+### 💧 La necesidad de explorar alternativas sostenibles para la clarificación del agua.
+
+### ♻️ El potencial de aprovechamiento de subproductos y recursos de origen natural.
+
+Nuestra propuesta busca estudiar el potencial del **maracuyá y el quitosano** como parte de una formulación clarificante, tomando como punto de partida investigaciones relacionadas con sus propiedades y aplicaciones en el tratamiento del agua.
+
 <p align="center">
   <img 
     src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/Decorativos/Maracuy%C3%A1.jpg"
@@ -122,164 +127,295 @@ Diversos estudios respaldan el uso de cáscaras de fruta como coagulantes natura
 </p>
 
 ---
-## 💡 Nuestra Propuesta
-Buscamos llevar esta idea más allá de un experimento de laboratorio.
- 
-La propuesta consiste en desarrollar un **producto físico** que permita a una persona sin conocimientos técnicos:
-- Dosificar el clarificante en polvo (a base de maracuyá, mango y plátano) en una cantidad de agua determinada.
-- Mezclar la solución de forma uniforme, favoreciendo la coagulación-floculación.
-- Filtrar el agua resultante, separando los flóculos formados del agua clarificada.
-El proyecto se encuentra en una etapa inicial, por lo que:
-- 🧪 La formulación (proporción de cáscaras y método de extracción) será definida mediante investigación y experimentación.
-- ⚙️ El mecanismo de mezcla y filtrado será evaluado y optimizado progresivamente.
-- 🤖 El nivel de automatización será definido según la viabilidad técnica.
-- 📊 Los resultados serán analizados mediante variables como turbidez (NTU), tiempo de sedimentación y facilidad de uso.
-La investigación define la formulación. La experimentación define el proceso. **El producto conecta la mezcla y el filtrado con el usuario final.**
- 
----
-## 📚 Respaldo Científico
-Estas fuentes respaldan la efectividad del uso de cáscaras de fruta como clarificante natural y sirven de comparación frente a otros coagulantes:
- 
-- **Potential of Fruit Peels in Becoming Natural Coagulant for Water Treatment** (Int. J. Integrated Engineering, Vol. 11 No. 1, 2019): comparó cáscaras de plátano, naranja y mango frente al alumbre, encontrando que el mango con NaOH 2.0M logró 92.7% de remoción de turbidez frente a 79.2% del alumbre. Enlace: https://journal.uthm.edu.my/index.php/ijie/issue/view/208
-- **Fruit Waste-Sourced Pectin as Natural Co-Coagulant** (Cellulose Chemistry and Technology, 2025): reporta remociones de turbidez de 58.1% con naranja, 67.6% con maracuyá y 83.8% con manzana, usando pectina extraída de las cáscaras.
-- **Citrus fruit peel waste as a source of natural coagulant for water turbidity removal** (IOPscience / ResearchGate, 2019): estudio comparativo entre dos variedades de cítricos, con remociones de turbidez de 75.6% y 74%, que confirma que distintas cáscaras de fruta pueden sustituir coagulantes químicos.
----
-## ✨ ¿Dónde está la innovación?
-La innovación no se encuentra únicamente en utilizar un material natural, sino en el **producto** que permite aplicarlo:
-- 🌱 Aprovechamiento de cáscaras de maracuyá, mango y plátano como residuo.
-- 🧪 Formulación basada en evidencia científica.
-- ⚙️ Un mecanismo simple de mezcla y dosificación.
-- 🧹 Un sistema de filtrado integrado y reutilizable.
-- ♻️ Enfoque de economía circular.
-- 📊 Monitoreo de variables del proceso.
 
+# 💡 Nuestra Propuesta
+
+Buscamos llevar esta idea más allá de un experimento de laboratorio.
+
+La propuesta consiste en explorar el desarrollo de un **clarificante natural** y, posteriormente, integrarlo dentro de un **prototipo tecnológico** que permita realizar y monitorear el proceso de clarificación.
+
+El proyecto se encuentra en una etapa inicial, por lo que:
+
+* 🧪 La formulación será definida mediante investigación y experimentación.
+* ⚙️ El proceso será evaluado y optimizado progresivamente.
+* 🤖 El nivel de automatización será definido según la viabilidad técnica.
+* 📊 Los resultados serán analizados mediante las variables seleccionadas para el proyecto.
+
+> **La investigación define la formulación. La experimentación define el proceso. El prototipado conecta ambos con la tecnología.**
+
+---
+
+# ✨ ¿Dónde está la innovación?
+
+La innovación no se encuentra únicamente en utilizar un material natural.
+
+Se encuentra en **integrar diferentes elementos dentro de una misma propuesta**:
+
+* 🌱 Aprovechamiento de recursos naturales.
+* 🧪 Experimentación científica.
+* ♻️ Enfoque de economía circular.
+* ⚙️ Automatización del proceso.
+* 📊 Monitoreo de variables.
+* 💻 Integración de tecnología.
 
 ### De un proceso experimental...
 
 ```mermaid
 flowchart LR
-    A["🌱 Cáscaras de maracuyá, mango y plátano"] --> B["🧪 Clarificante en polvo"]
-    B --> C["⚙️ Mezcla en el producto"]
-    C --> D["🧹 Filtrado"]
-    D --> E["💧 Agua clarificada"]
- 
+    A["🌱 Recurso natural"] --> B["🧪 Clarificante"]
+    B --> C["💧 Clarificación"]
+    
     classDef natural fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
-    classDef technology fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
- 
+    classDef process fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
+    
     class A natural;
-    class B,C,D,E technology;
+    class B,C process;
 ```
- 
-Buscamos transformar un residuo agrícola en un producto tangible, medible y de uso práctico.
- 
-## ♻️ Economía Circular
-🍊🥭🍌 De residuo a recurso
- 
+
+### ...hacia una solución tecnológica
+
 ```mermaid
 flowchart LR
-    A["🍊🥭🍌<br/>Cáscaras de<br/>maracuyá, mango<br/>y plátano"]
+    A["🌱 Material natural"] --> B["🧪 Formulación"]
+    B --> C["⚙️ Proceso automatizado"]
+    C --> D["📊 Monitoreo"]
+    D --> E["🔬 Evaluación"]
+    
+    E -. Retroalimentación .-> B
+    
+    classDef natural fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
+    classDef technology fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
+    classDef evaluation fill:#F9A825,color:#000000,stroke:#F57F17,stroke-width:2px;
+    
+    class A natural;
+    class B,C,D technology;
+    class E evaluation;
+```
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/638b6711-c732-4d07-8527-c91ebf8e7c61"
+    width="430"
+  />
+</p>
+
+> **Buscamos transformar conocimiento científico en una propuesta tangible, medible y progresivamente automatizable.**
+
+---
+
+# ♻️ Economía Circular
+
+## 🍊 De residuo a recurso
+
+El proyecto incorpora un enfoque de aprovechamiento y valorización de materiales.
+
+```mermaid
+flowchart LR
+    A["🍊<br/>Subproducto del<br/>maracuyá"]
     B["♻️<br/>Aprovechamiento"]
-    C["🧪<br/>Transformación<br/>en clarificante"]
-    D["⚙️<br/>Producto de<br/>mezcla y filtrado"]
-    E["💧<br/>Agua<br/>clarificada"]
- 
+    C["🧪<br/>Transformación"]
+    D["💧<br/>Clarificante<br/>natural"]
+    E["🤖<br/>Prototipo<br/>tecnológico"]
+
     A --> B --> C --> D --> E
- 
+
     classDef resource fill:#F57C00,color:#FFFFFF,stroke:#E65100,stroke-width:2px;
     classDef circular fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
     classDef product fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
- 
+
     class A resource;
     class B,C circular;
     class D,E product;
 ```
- 
-## ⚙️ Concepto del Sistema
-Como primera aproximación, imaginamos un **producto** que integre las etapas de dosificación, mezcla y filtrado.
- 
+
+### 🌱 Un material con potencial de aprovechamiento
+
+⬇️
+
+### 🧪 Una transformación basada en investigación
+
+⬇️
+
+### 💧 Un clarificante natural
+
+⬇️
+
+### 🤖 Una propuesta tecnológica
+
+---
+
+# ⚙️ Concepto del Sistema
+
+Como primera aproximación, imaginamos un sistema capaz de integrar diferentes etapas del proceso de clarificación.
+
 ```mermaid
 flowchart LR
-    A["💧<br/><b>Agua turbia</b><br/>Ingreso al producto"]
-    B["🧪<br/><b>Dosificación</b><br/>Clarificante de<br/>maracuyá/mango/plátano"]
-    C["⚙️<br/><b>Mezcla</b><br/>Homogeneización"]
-    D["🔄<br/><b>Floculación</b><br/>Formación de flóculos"]
-    E["🧹<br/><b>Filtrado</b><br/>Separación de sólidos"]
-    F["💧<br/><b>Agua clarificada</b><br/>Salida del producto"]
- 
+
+    A["💧<br/><b>Agua turbia</b><br/><br/>Ingreso de la muestra"]
+    B["🧪<br/><b>Dosificación</b><br/><br/>Incorporación del clarificante"]
+    C["⚙️<br/><b>Mezcla</b><br/><br/>Interacción con partículas"]
+    D["🔄<br/><b>Floculación</b><br/><br/>Formación de flóculos"]
+    E["⏳<br/><b>Sedimentación</b><br/><br/>Separación de sólidos"]
+    F["💧<br/><b>Agua clarificada</b><br/><br/>Resultado del proceso"]
+
     A --> B --> C --> D --> E --> F
- 
+
     classDef water fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
     classDef process fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
     classDef result fill:#00ACC1,color:#FFFFFF,stroke:#006064,stroke-width:2px;
- 
+
     class A,F water;
     class B,C,D,E process;
 ```
- 
-## 🧾 Lista de Exigencias del Producto
-Estas exigencias se refieren **únicamente al diseño del producto** (presentación, tamaño, componentes y mecanismo), no a la efectividad del clarificante en sí.
- 
-| Exigencia | Descripción | Fuente / justificación |
-|---|---|---|
-| 📦 Presentación en polvo dosificable | El clarificante debe presentarse en polvo, similar a un sachet o cartucho, para facilitar su dosificación y almacenamiento | Diseños de coagulantes naturales en polvo dosificados por peso (g/L o mg/L) para su aplicación práctica en el hogar mezclando la pasta o polvo con una cantidad definida de agua limpia y agitando para activar el coagulante |
-| ⚖️ Tamaño de dosis por unidad de agua | El producto debe incluir una medida o cartucho calibrado para tratar un volumen fijo de agua (p. ej. 1 L o 20 L) | Estudios de dosificación de coagulantes naturales trabajan en rangos de 0.1 a 0.6 g por 500 ml, lo que exige que el producto incluya un sistema de medición precisa |
-| 🌀 Componente de agitación/mezcla | El producto debe incorporar un mecanismo de agitación (manual o motorizado) que garantice la dispersión uniforme del clarificante | Patentes de purificadores portátiles incluyen una pala mezcladora accionada por manivela o motor para asegurar la dispersión del coagulante |
-| 🧹 Componente de filtrado integrado | El producto debe incluir una etapa de filtrado (malla, cono o cartucho filtrante) para separar los flóculos del agua tratada | Diseños de purificadores portátiles usan un filtro cónico moldeado en el interior del contenedor, con salida por succión |
-| 🧴 Tamaño portátil y de uso doméstico | El producto debe ser compacto y manejable por una sola persona, orientado a uso doméstico o comunitario, no industrial | Contraste con sistemas industriales de gran escala, que usan tanques desde varios pies de diámetro y bombas de alto volumen, inadecuados para uso doméstico |
-| ⏱️ Tiempo de mezcla y sedimentación definidos | El producto debe especificar tiempos de agitación y reposo, alineados a lo validado experimentalmente | Protocolos de coagulación natural usan agitación a 120 rpm durante 1 minuto y sedimentación de hasta 24 horas como referencia de proceso |
-| 🧩 Materiales seguros para contacto con agua potable | Los componentes del producto (contenedor, filtro, mezclador) deben ser de materiales aptos para agua de consumo | Requisito derivado de diseños de purificadores portátiles domésticos, que priorizan materiales plásticos duros aptos para uso alimentario |
-| 💰 Bajo costo y accesibilidad | El producto debe mantener un costo bajo frente a alternativas químicas o industriales | Diseños de tratamiento portátil con coagulante natural han demostrado ser menos costosos que otros tratamientos de agua residual existentes |
- 
-## 🎯 Objetivos de Desarrollo Sostenible
-| ODS | Objetivo | Relación con el proyecto |
-|---|---|---|
-| 💧 ODS 6 | Agua limpia y saneamiento | Relacionado directamente con el desarrollo de un producto que facilite el acceso a procesos de clarificación del agua |
-| ♻️ ODS 12 | Producción y consumo responsables | Vinculado con el aprovechamiento de cáscaras de maracuyá, mango y plátano como subproducto de valor |
-| 🌡️ ODS 13 | Acción por el clima | Complementa el proyecto mediante un enfoque de sostenibilidad y sensibilización ambiental |
- 
-### 🎯 Priorización
-- 💧 **ODS 6 — Eje principal**: el producto se centra en facilitar procesos de clarificación y mejora de la calidad del agua.
-- ♻️ **ODS 12 — Economía circular**: aprovechamiento de residuos de maracuyá, mango y plátano.
-- 🌡️ **ODS 13 — Sostenibilidad**: visión orientada al desarrollo de soluciones tecnológicas con enfoque ambiental.
-## 🧪 Hacia el Prototipo
-Del concepto a una demostración funcional. La propuesta busca evolucionar progresivamente desde la investigación del clarificante hasta un **producto** prototipo funcional y validable.
- 
+
+| Etapa                      | Función                                     |
+| -------------------------- | ------------------------------------------- |
+| 💧 **1. Agua turbia**      | Ingreso de la muestra al sistema            |
+| 🧪 **2. Dosificación**     | Incorporación controlada del clarificante   |
+| ⚙️ **3. Mezcla**           | Favorecer la interacción con las partículas |
+| 🔄 **4. Floculación**      | Favorecer la formación de flóculos          |
+| ⏳ **5. Sedimentación**     | Permitir la separación de sólidos           |
+| 💧 **6. Agua clarificada** | Obtención de la muestra después del proceso |
+
+> **Este esquema representa nuestro concepto inicial. La configuración final del sistema dependerá de los resultados obtenidos durante la investigación, experimentación y diseño del prototipo.**
+
+---
+
+# 🎯 Objetivos de Desarrollo Sostenible
+
+El proyecto se relaciona principalmente con los siguientes Objetivos de Desarrollo Sostenible:
+
+| ODS            | Objetivo                              | Relación con el proyecto                                                                                                        |
+| -------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| 💧 **ODS 6**   | **Agua limpia y saneamiento**         | Relacionado directamente con la exploración de alternativas para la mejora de procesos de clarificación y tratamiento del agua. |
+| ♻️ **ODS 12**  | **Producción y consumo responsables** | Vinculado con el aprovechamiento de recursos y posibles subproductos para generar una propuesta de mayor valor.                 |
+| 🌡️ **ODS 13** | **Acción por el clima**               | Complementa el proyecto mediante un enfoque de sostenibilidad y sensibilización ambiental.                                      |
+
+## 🎯 Priorización
+
+### 💧 ODS 6 — Eje principal
+
+El proyecto se centra en explorar alternativas relacionadas con la clarificación y mejora de procesos vinculados con la calidad del agua.
+
+### ♻️ ODS 12 — Economía circular
+
+Se relaciona con la posibilidad de aprovechar materiales naturales y dar valor a posibles subproductos.
+
+### 🌡️ ODS 13 — Sostenibilidad
+
+Complementa la propuesta mediante una visión orientada al desarrollo de soluciones tecnológicas con enfoque ambiental.
+
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sustainable_Development_Goal-es-12.jpg" width="160"/>
+  <img src="https://agenda2030lac.org/sites/default/files/2019-08/S_SDG%20goals_icons-individual-rgb-12_0.png" width="160"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Sustainable_Development_Goal-es-05.jpg" width="160"/>
+</p>
+
+---
+
+# 🧪 Hacia el Prototipo
+
+## Del concepto a una demostración funcional
+
+La propuesta busca evolucionar progresivamente desde la investigación hasta un **prototipo funcional y validable**.
+
 ```mermaid
 flowchart TB
-    I["🔎<br/><b>INVESTIGACIÓN</b><br/>Estudio del clarificante y materiales"]
+
+    I["🔎<br/><b>INVESTIGACIÓN</b><br/>Estudio del problema y materiales"]
+
     E["🧪<br/><b>EXPERIMENTACIÓN</b><br/>Evaluación de formulaciones"]
-    D["⚙️<br/><b>DISEÑO</b><br/>Definición del producto (mezcla + filtrado)"]
+
+    D["⚙️<br/><b>DISEÑO</b><br/>Definición de la alternativa"]
+
     P["🛠️<br/><b>PROTOTIPADO</b><br/>Construcción e integración"]
+
     V["📊<br/><b>VALIDACIÓN</b><br/>Evaluación de resultados"]
- 
+
     I --> E --> D --> P --> V
- 
+
     classDef research fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
     classDef design fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
     classDef prototype fill:#F9A825,color:#000000,stroke:#F57F17,stroke-width:2px;
- 
+
     class I,E research;
     class D design;
     class P,V prototype;
 ```
- 
-## 🚀 Hacia dónde queremos llegar
-- 🔬 **Ciencia**: comprender y evaluar el comportamiento del clarificante de maracuyá, mango y plátano.
-- 💡 **Innovación**: diseñar un producto que facilite su mezcla y filtrado.
-- ♻️ **Economía circular**: investigar el aprovechamiento de cáscaras como subproducto.
-- 🤖 **Tecnología**: automatizar y monitorear el proceso de mezcla y filtrado.
-- 📊 **Validación**: analizar los resultados obtenidos mediante experimentación.
-### 🌱 ¿Qué buscamos aportar?
-- 💧 Un producto accesible para la clarificación de agua con base natural.
-- ♻️ Aprovechamiento del potencial de cáscaras de maracuyá, mango y plátano.
-- 🧪 Evaluación experimental de distintas formulaciones y condiciones.
-- 🤖 Exploración de automatización y monitoreo del proceso.
-- 💡 Transformación de conocimiento científico en un producto tangible.
-- 🌎 Generación de una solución con impacto ambiental y tecnológico.
-## 🎯 Nuestra Visión
-Transformar el potencial de las cáscaras de maracuyá, mango y plátano en un **producto** tecnológico sostenible que facilite la mezcla y el filtrado en la clarificación del agua, avanzando desde la investigación científica hacia un prototipo funcional.
- 
-🌱 CÁSCARAS DE FRUTA → 🧪 CLARIFICANTE → ⚙️ PRODUCTO (MEZCLA + FILTRADO) → 💧 AGUA CLARIFICADA
+
+---
+
+# 🚀 Hacia dónde queremos llegar
+
+Buscamos desarrollar progresivamente una propuesta que conecte diferentes áreas:
+
+### 🔬 Ciencia
+
+Comprender y evaluar el comportamiento de los materiales utilizados.
+
+### 💡 Innovación
+
+Explorar nuevas formas de integrar recursos naturales dentro de una solución.
+
+### ♻️ Economía circular
+
+Investigar el aprovechamiento y valorización de materiales.
+
+### 🤖 Tecnología
+
+Automatizar y monitorear etapas del proceso.
+
+### 📊 Validación
+
+Analizar los resultados obtenidos mediante experimentación.
+
+---
+
+# 🌱 ¿Qué buscamos aportar?
+
+El proyecto busca conectar:
+
+## 🔬 Ciencia + 💡 Innovación + ♻️ Economía Circular + 🤖 Tecnología
+
+Con ello buscamos:
+
+* 💧 Explorar una alternativa natural para la clarificación del agua.
+* ♻️ Investigar el potencial de aprovechamiento de materiales derivados del maracuyá.
+* 🧪 Evaluar experimentalmente diferentes formulaciones y condiciones.
+* 🤖 Explorar la automatización y el monitoreo del proceso.
+* 💡 Transformar conocimiento científico en una propuesta tangible.
+* 🌎 Generar una solución con potencial de impacto ambiental y tecnológico.
+
+---
+
+# 🎯 Nuestra Visión
+
+> **Transformar el potencial del maracuyá y el quitosano en una solución tecnológica sostenible para la clarificación del agua, avanzando desde la investigación científica hacia el desarrollo de un producto y un prototipo funcional.**
+
+<br>
+
+<p align="center">
+
+## 🌱 RECURSO NATURAL
+
+### ↓
+
+## 🧪 CLARIFICANTE
+
+### ↓
+
+## ⚙️ PROTOTIPO
+
+### ↓
+
+## 💧 SOLUCIÓN TECNOLÓGICA
+
+</p>
+
+---
+
+<p align="center">
+
 ### 🌱 Equipo 05 · Proyecto Integrador 2026-II
 
 **Universidad Peruana Cayetano Heredia**
