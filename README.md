@@ -118,12 +118,10 @@ Nuestra propuesta busca estudiar el potencial del **maracuyá y el quitosano** c
     src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/Decorativos/Maracuy%C3%A1.jpg"
     width="260"
   />
-
-<img 
- src="https://github.com/user-attachments/assets/8105c94b-bd35-49d7-bf3c-5a189a6debd5"
- width="260"
-/>
-
+  <img 
+   src="https://github.com/user-attachments/assets/8105c94b-bd35-49d7-bf3c-5a189a6debd5"
+   width="260"
+  />
 </p>
 
 ---
