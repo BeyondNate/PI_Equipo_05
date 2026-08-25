@@ -91,7 +91,7 @@ Nuestro proyecto parte de una idea:
 ### Producto para el filtrado y mezcla de un clarificante a base de cáscara de maracuyá, mango y plátano
 De los residuos de fruta a un producto tecnológico
  
-Nuestra propuesta consiste en diseñar y desarrollar un **producto** —no solo una fórmula— capaz de facilitar dos etapas críticas del proceso de clarificación del agua:
+Nuestra propuesta consiste en diseñar y desarrollar un **producto** ,no solo una fórmula capaz de facilitar dos etapas críticas del proceso de clarificación del agua:
  
 1. 🧪 **Mezcla**: dosificar y disolver de forma homogénea el polvo clarificante obtenido de cáscaras de maracuyá, mango y plátano en el agua a tratar.
 2. 🧹 **Filtrado**: separar de manera práctica los flóculos y residuos sólidos generados tras la coagulación, entregando agua clarificada lista para su siguiente uso.
