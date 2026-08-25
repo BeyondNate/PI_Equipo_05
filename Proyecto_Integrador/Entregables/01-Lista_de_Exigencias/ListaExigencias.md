@@ -1,37 +1,20 @@
-# Universidad Peruana Cayetano Heredia
+# Entregable: Lista de Exigencias
 
----
+> **Proyecto:** Diseño de un sistema automatizado de clarificación de agua mediante biocoagulantes de maracuyá y quitosano.
 
-## Facultad de Ciencias e Ingeniería
+Esta **Lista de Exigencias** presenta los requerimientos definidos para el desarrollo del proyecto por los integrantes del equipo:
 
-### Departamento Académico de Ingeniería
+### Integrantes del equipo
 
-**Ingeniería Informática e Ingeniería Industrial**
+| Iniciales | Integrante      |
+| :-------: | --------------- |
+|  **M.A.** | Marcelo Alarcón |
+|  **B.C.** | Brad Cárdenas   |
+|  **G.M.** | Gael Milla      |
+|  **I.P.** | Idania Parhuay  |
+|  **L.U.** | Leonel Urbano   |
 
----
-
-### Información académica
-
-|                           |                                      |
-| ------------------------- | ------------------------------------ |
-| 📚 **Semestre Académico** | 2026 – II – VI Ciclo                 |
-| 📅 **Semana**             | N.° 1                                |
-| 📌 **Actividad**          | “Lista de exigencias”                |
-| 📆 **Año**                | 2026                                 |
-| 📍 **Lugar**              | Lima – Perú                          |
-
----
-# Lista de Exigencias
-
-## Datos del proyecto
-
-**Elaborado por**
-- Marcelo Alarcón: M.A
-- Brad Cárdenas: B.C
-- Gael Milla: G.M
-- Idania Parhuay: I.P
-- Leonel Urbano: L.U
-
+> **Leyenda:** Las iniciales se utilizarán para identificar a los responsables de cada exigencia dentro del documento.
 
 ## 1. Lista de exigencias
 
