@@ -7,7 +7,7 @@
 ### Simulación en SimScale:
 - Colocar link a imagen
 
-## Actividad desarrollada el Jueves 2708/2026:
+## Actividad desarrollada el Jueves 27/08/2026:
 
 ### Actividad de Marcelo Alarcón:
 - SimScale:
