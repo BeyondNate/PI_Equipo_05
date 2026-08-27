@@ -1,6 +1,6 @@
 <p align="center">
   <img width="1024" height="341" alt="Banner Equipo 05"
-  src="https://github.com/user-attachments/assets/cf727be8-03ee-4d7b-9d94-d04578640c29" />
+  src="Recursos/Imágenes/BannerEquipo05.png" />
 </p>
 
 <p align="center">
