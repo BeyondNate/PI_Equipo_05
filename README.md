@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=700&size=32&duration=3000&pause=1000&color=20B2AA&center=true&vCenter=true&width=800&lines=Equipo+05+-+Proyecto+Integrador;Innovaci%C3%B3n+%2B+Sostenibilidad+%2B+Tecnolog%C3%ADa;Transformando+recursos+naturales+en+soluciones" />
+  <img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=700&size=32&duration=3000&pause=1000&color=20B2AA&center=true&vCenter=true&width=800&lines=Equipo+05+-+Proyecto+Integrador;Innovaci%C3%B3n+%2B+Sostenibilidad+%2B+Tecnolog%C3%ADa;Automatizando+la+clarificaci%C3%B3n+del+agua" />
 </p>
 
 <p align="center">
@@ -22,6 +22,8 @@
   <img src="https://img.shields.io/badge/Equipo-05-2E8B57?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Enfoque-Sostenible-4CAF50?style=for-the-badge"/>
 </p>
+
+---
 
 # 📑 Contenido
 
@@ -51,7 +53,7 @@ Nuestro equipo reúne estudiantes de diferentes áreas de ingeniería, integrand
 
 Nuestro proyecto parte de una idea:
 
-## ¿Cómo podemos aprovechar recursos naturales y tecnología para explorar nuevas alternativas en la clarificación del agua?
+## ¿Cómo podemos utilizar tecnología y experimentación para adaptar el proceso de clarificación a las características del agua?
 
 ---
 
@@ -77,29 +79,29 @@ Nuestro proyecto parte de una idea:
   <i>Diferentes conocimientos. Un mismo objetivo.</i>
 </p>
 
-| Foto                                                                                                                             | Integrante                  | Rol                        | Intereses                                      |
+| Foto | Integrante | Rol | Intereses |
 | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | -------------------------- | ---------------------------------------------- |
-| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/MarceloAlarcon.jpg" width="85"/> | **Marcelo Alarcón Camones** | 👑 Líder del equipo        | Innovación social, sostenibilidad, modelado 3D |
-| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/BradCardenas.png" width="85"/>   | **Brad Cárdenas Parián**    | 🔎 Investigación           | Diseño de aplicaciones, análisis de datos      |
-| <img src="https://github.com/user-attachments/assets/561695b6-8b0f-465a-8a11-ca90d39cd40b" width="85"/>                          | **Leonel Urbano Castillo**  | 🎨 Diseño                  | Diseño de prototipos, modelado 3D              |
-| <img src="https://github.com/user-attachments/assets/90510dc9-49d0-41fb-b6e2-53ddaf844217" width="85"/>                          | **Idania Parhuay Meza**     | 📝 Documentación           | Comunicación científica, redacción técnica     |
-| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/GaelMilla.png" width="85"/>      | **Gael Milla Fasabi**       | 💻 Programación / Modelado | Programación, documentación de hallazgos       |
+| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/MarceloAlarcon.jpg" width="85"/> | **Marcelo Alarcón Camones** | 👑 Líder del equipo | Innovación social, sostenibilidad, modelado 3D |
+| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/BradCardenas.png" width="85"/> | **Brad Cárdenas Parián** | 🔎 Investigación | Diseño de aplicaciones, análisis de datos |
+| <img src="https://github.com/user-attachments/assets/561695b6-8b0f-465a-8a11-ca90d39cd40b" width="85"/> | **Leonel Urbano Castillo** | 🎨 Diseño | Diseño de prototipos, modelado 3D |
+| <img src="https://github.com/user-attachments/assets/90510dc9-49d0-41fb-b6e2-53ddaf844217" width="85"/> | **Idania Parhuay Meza** | 📝 Documentación | Comunicación científica, redacción técnica |
+| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/GaelMilla.png" width="85"/> | **Gael Milla Fasabi** | 💻 Programación / Modelado | Programación, documentación de hallazgos |
 
 ---
 
 # 💧 El Proyecto
 
-## Clarificador de agua natural a base de maracuyá y quitosano
+## Desarrollo de un sistema automatizado para la clarificación de agua mediante dosificación de quitosano
 
-### De los recursos naturales a una solución tecnológica
+### De la caracterización del agua a una solución tecnológica
 
-Nuestra propuesta busca explorar el desarrollo de un **sistema de clarificación de agua** utilizando materiales naturales relacionados con el **maracuyá y el quitosano**.
+Nuestra propuesta busca desarrollar un **sistema automatizado de clarificación de agua** utilizando **quitosano** como agente clarificante.
 
-El proyecto no busca quedarse únicamente en la experimentación de un clarificante.
+El proyecto no busca quedarse únicamente en la experimentación del clarificante.
 
 La idea es avanzar progresivamente hacia un sistema capaz de:
 
-### 🧪 Formular  →  ⚙️ Procesar  →  📊 Monitorear  →  🔬 Evaluar
+### 💧 Caracterizar → 🧪 Dosificar → ⚙️ Procesar → 📊 Monitorear → 🔬 Evaluar
 
 ---
 
@@ -107,22 +109,15 @@ La idea es avanzar progresivamente hacia un sistema capaz de:
 
 El proyecto nace a partir de dos aspectos principales:
 
-### 💧 La necesidad de explorar alternativas sostenibles para la clarificación del agua.
+### 💧 La variabilidad de las características del agua proveniente de fuentes naturales.
 
-### ♻️ El potencial de aprovechamiento de subproductos y recursos de origen natural.
+### ♻️ La necesidad de explorar alternativas sostenibles para la clarificación del agua.
 
-Nuestra propuesta busca estudiar el potencial del **maracuyá y el quitosano** como parte de una formulación clarificante, tomando como punto de partida investigaciones relacionadas con sus propiedades y aplicaciones en el tratamiento del agua.
+El agua proveniente de ríos y otras fuentes de agua superficial puede presentar diferentes niveles de **turbidez** y características fisicoquímicas.
 
-<p align="center">
-  <img 
-    src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/Decorativos/Maracuy%C3%A1.jpg"
-    width="260"
-  />
-  <img 
-   src="https://github.com/user-attachments/assets/8105c94b-bd35-49d7-bf3c-5a189a6debd5"
-   width="260"
-  />
-</p>
+Debido a esta variabilidad, utilizar una cantidad fija de agente clarificante no necesariamente permite obtener un tratamiento adecuado para todas las muestras.
+
+Nuestra propuesta busca estudiar el uso del **quitosano** como agente clarificante y desarrollar un sistema que utilice las características iniciales del agua, principalmente **pH y turbidez**, como variables de entrada para determinar una dosis adecuada a partir de datos obtenidos mediante experimentación.
 
 ---
 
@@ -130,44 +125,52 @@ Nuestra propuesta busca estudiar el potencial del **maracuyá y el quitosano** c
 
 Buscamos llevar esta idea más allá de un experimento de laboratorio.
 
-La propuesta consiste en explorar el desarrollo de un **clarificante natural** y, posteriormente, integrarlo dentro de un **prototipo tecnológico** que permita realizar y monitorear el proceso de clarificación.
+La propuesta consiste en desarrollar un **sistema automatizado de clarificación de agua mediante dosificación de quitosano**, capaz de caracterizar inicialmente una muestra y controlar las principales etapas del proceso.
+
+El sistema utilizará sensores de **pH y turbidez** para obtener información sobre el agua. Estas mediciones serán utilizadas junto con los resultados obtenidos previamente mediante experimentación para determinar una dosis adecuada de quitosano y realizar su dosificación de manera controlada.
+
+Después de la dosificación, el sistema realizará las etapas necesarias del proceso, como **mezcla o agitación y sedimentación**, para posteriormente evaluar el resultado mediante una nueva medición de turbidez.
 
 El proyecto se encuentra en una etapa inicial, por lo que:
 
-* 🧪 La formulación será definida mediante investigación y experimentación.
+* 🧪 La relación entre las características del agua, la dosis de quitosano y el resultado de la clarificación será determinada mediante experimentación.
 * ⚙️ El proceso será evaluado y optimizado progresivamente.
-* 🤖 El nivel de automatización será definido según la viabilidad técnica.
-* 📊 Los resultados serán analizados mediante las variables seleccionadas para el proyecto.
+* 🤖 La automatización permitirá controlar y monitorear las etapas principales del proceso.
+* 📊 Los resultados serán registrados y analizados mediante las variables seleccionadas para el proyecto.
 
-> **La investigación define la formulación. La experimentación define el proceso. El prototipado conecta ambos con la tecnología.**
+> **La experimentación define la dosificación. Los sensores proporcionan la información. El prototipado integra ambos con la tecnología.**
 
 ---
 
 # ✨ ¿Dónde está la innovación?
 
-La innovación no se encuentra únicamente en utilizar un material natural.
+La innovación no se encuentra únicamente en utilizar quitosano como agente clarificante.
 
 Se encuentra en **integrar diferentes elementos dentro de una misma propuesta**:
 
-* 🌱 Aprovechamiento de recursos naturales.
-* 🧪 Experimentación científica.
-* ♻️ Enfoque de economía circular.
-* ⚙️ Automatización del proceso.
-* 📊 Monitoreo de variables.
-* 💻 Integración de tecnología.
+* 🌱 Uso de un agente clarificante de origen natural.
+* 🧪 Experimentación científica para establecer condiciones de dosificación.
+* ⚙️ Automatización del proceso de clarificación.
+* 📡 Medición de pH y turbidez.
+* 📊 Monitoreo y registro de variables.
+* 💻 Integración de hardware y software.
+* 📐 Diseño y modelado 3D del prototipo.
 
 ### De un proceso experimental...
 
 ```mermaid
 flowchart LR
-    A["🌱 Recurso natural"] --> B["🧪 Clarificante"]
-    B --> C["💧 Clarificación"]
-    
-    classDef natural fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
-    classDef process fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
-    
-    class A natural;
-    class B,C process;
+    A["💧 Agua de fuente natural"] --> B["📡 Medición de pH y turbidez"]
+    B --> C["🧪 Experimentación"]
+    C --> D["🧪 Dosis adecuada de quitosano"]
+
+    classDef water fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
+    classDef measurement fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
+    classDef process fill:#F9A825,color:#000000,stroke:#F57F17,stroke-width:2px;
+
+    class A water;
+    class B measurement;
+    class C,D process;
 ```
 
 ### ...hacia una solución tecnológica
@@ -203,27 +206,28 @@ flowchart LR
 
 # ♻️ Economía Circular
 
-## 🍊 De residuo a recurso
+## 🦞 De residuo a recurso
 
 El proyecto incorpora un enfoque de aprovechamiento y valorización de materiales.
 
 ```mermaid
 flowchart LR
-    A["🍊<br/>Subproducto del<br/>maracuyá"]
-    B["♻️<br/>Aprovechamiento"]
-    C["🧪<br/>Transformación"]
-    D["💧<br/>Clarificante<br/>natural"]
-    E["🤖<br/>Prototipo<br/>tecnológico"]
+    A["💧<br/>Agua de fuente<br/>natural"]
+    B["📡<br/>Caracterización"]
+    C["🧪<br/>Quitosano"]
+    D["⚙️<br/>Dosificación<br/>controlada"]
+    E["💧<br/>Clarificación"]
+    F["🤖<br/>Prototipo<br/>tecnológico"]
 
-    A --> B --> C --> D --> E
+    A --> B --> C --> D --> E --> F
 
-    classDef resource fill:#F57C00,color:#FFFFFF,stroke:#E65100,stroke-width:2px;
-    classDef circular fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
-    classDef product fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
+    classDef resource fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
+    classDef process fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
+    classDef product fill:#F9A825,color:#000000,stroke:#F57F17,stroke-width:2px;
 
     class A resource;
-    class B,C circular;
-    class D,E product;
+    class B,C,D,E process;
+    class F product;
 ```
 
 ### 🌱 Un material con potencial de aprovechamiento
@@ -249,21 +253,23 @@ Como primera aproximación, imaginamos un sistema capaz de integrar diferentes e
 ```mermaid
 flowchart LR
 
-    A["💧<br/><b>Agua turbia</b><br/><br/>Ingreso de la muestra"]
-    B["🧪<br/><b>Dosificación</b><br/><br/>Incorporación del clarificante"]
-    C["⚙️<br/><b>Mezcla</b><br/><br/>Interacción con partículas"]
-    D["🔄<br/><b>Floculación</b><br/><br/>Formación de flóculos"]
-    E["⏳<br/><b>Sedimentación</b><br/><br/>Separación de sólidos"]
-    F["💧<br/><b>Agua clarificada</b><br/><br/>Resultado del proceso"]
+    A["💧<br/><b>Agua de fuente natural</b><br/><br/>Ingreso de la muestra"]
+    B["📡<br/><b>Caracterización</b><br/><br/>Medición de pH y turbidez"]
+    C["🧠<br/><b>Procesamiento</b><br/><br/>Uso de datos experimentales"]
+    D["🧪<br/><b>Dosificación</b><br/><br/>Incorporación controlada de quitosano"]
+    E["⚙️<br/><b>Mezcla</b><br/><br/>Agitación de la muestra"]
+    F["⏳<br/><b>Sedimentación</b><br/><br/>Formación y separación de flóculos"]
+    G["📊<br/><b>Evaluación</b><br/><br/>Medición de turbidez final"]
 
-    A --> B --> C --> D --> E --> F
+    A --> B --> C --> D --> E --> F --> G
 
     classDef water fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
     classDef process fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
-    classDef result fill:#00ACC1,color:#FFFFFF,stroke:#006064,stroke-width:2px;
+    classDef result fill:#F9A825,color:#000000,stroke:#F57F17,stroke-width:2px;
 
-    class A,F water;
-    class B,C,D,E process;
+    class A water;
+    class B,C,D,E,F process;
+    class G result;
 ```
 
 | Etapa                      | Función                                     |
@@ -320,17 +326,18 @@ La propuesta busca evolucionar progresivamente desde la investigación hasta un 
 ```mermaid
 flowchart TB
 
-    I["🔎<br/><b>INVESTIGACIÓN</b><br/>Estudio del problema y materiales"]
+    I["🔎<br/><b>INVESTIGACIÓN</b><br/>Estudio del problema y del quitosano"]
 
-    E["🧪<br/><b>EXPERIMENTACIÓN</b><br/>Evaluación de formulaciones"]
+    E["🧪<br/><b>EXPERIMENTACIÓN</b><br/>Relación entre pH, turbidez, dosis y resultado"]
 
-    D["⚙️<br/><b>DISEÑO</b><br/>Definición de la alternativa"]
+    D["⚙️<br/><b>DISEÑO</b><br/>Diseño del sistema y modelado 3D"]
 
-    P["🛠️<br/><b>PROTOTIPADO</b><br/>Construcción e integración"]
+    P["🛠️<br/><b>PROTOTIPADO</b><br/>Integración de hardware y software"]
 
-    V["📊<br/><b>VALIDACIÓN</b><br/>Evaluación de resultados"]
+    V["📊<br/><b>VALIDACIÓN</b><br/>Evaluación de la clarificación"]
 
     I --> E --> D --> P --> V
+    V -. Retroalimentación .-> E
 
     classDef research fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
     classDef design fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
@@ -349,23 +356,23 @@ Buscamos desarrollar progresivamente una propuesta que conecte diferentes áreas
 
 ### 🔬 Ciencia
 
-Comprender y evaluar el comportamiento de los materiales utilizados.
+Comprender y evaluar el comportamiento del quitosano durante la clarificación del agua.
 
 ### 💡 Innovación
 
-Explorar nuevas formas de integrar recursos naturales dentro de una solución.
+Integrar sensores y automatización para adaptar la dosificación del clarificante a las características de la muestra.
 
 ### ♻️ Economía circular
 
-Investigar el aprovechamiento y valorización de materiales.
+Explorar una alternativa de clarificación basada en un agente de origen natural.
 
 ### 🤖 Tecnología
 
-Automatizar y monitorear etapas del proceso.
+Integrar hardware, software y modelado 3D para automatizar y monitorear etapas del proceso.
 
 ### 📊 Validación
 
-Analizar los resultados obtenidos mediante experimentación.
+Analizar los resultados obtenidos mediante experimentación y comparar la turbidez antes y después del tratamiento.
 
 ---
 
@@ -377,12 +384,14 @@ El proyecto busca conectar:
 
 Con ello buscamos:
 
-* 💧 Explorar una alternativa natural para la clarificación del agua.
-* ♻️ Investigar el potencial de aprovechamiento de materiales derivados del maracuyá.
-* 🧪 Evaluar experimentalmente diferentes formulaciones y condiciones.
-* 🤖 Explorar la automatización y el monitoreo del proceso.
-* 💡 Transformar conocimiento científico en una propuesta tangible.
-* 🌎 Generar una solución con potencial de impacto ambiental y tecnológico.
+
+* 💧 Explorar una alternativa basada en quitosano para la clarificación de agua de fuentes naturales.
+* 🧪 Evaluar experimentalmente la relación entre pH, turbidez, dosis de quitosano y resultado de la clarificación.
+* 📡 Utilizar sensores para caracterizar las condiciones iniciales de la muestra.
+* 🤖 Automatizar la dosificación y el monitoreo del proceso.
+* 💻 Integrar hardware y software en un sistema funcional.
+* 📐 Diseñar y modelar en 3D los elementos físicos necesarios para el prototipo.
+* 🌎 Generar una propuesta tecnológica con potencial de impacto ambiental.
 
 ---
 
