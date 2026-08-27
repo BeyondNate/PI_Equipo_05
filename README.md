@@ -195,7 +195,7 @@ flowchart LR
 
 <p align="center">
   <img 
-    src="https://github.com/user-attachments/assets/638b6711-c732-4d07-8527-c91ebf8e7c61"
+    src="https://www.sdruntaichem.com/wp-content/uploads/2025/05/d-panthenol-powder-white-crystalline-runtai-chemical.jpg"
     width="430"
   />
 </p>
