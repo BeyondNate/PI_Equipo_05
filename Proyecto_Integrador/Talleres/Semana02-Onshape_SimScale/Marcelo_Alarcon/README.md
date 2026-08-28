@@ -1,7 +1,7 @@
 # Actividad de Marcelo Alarcón
 
 ## Modelado 3D en Onshape
-### p
+
 Se realizó el modelado 3D de un **soporte universal**, diseñado para formar parte del proyecto. El soporte tendrá como función sostener los sensores de **pH y turbidez**, además de las carcasas encargadas de proteger dichos sensores.
 
 ## Simulación en SimScale
