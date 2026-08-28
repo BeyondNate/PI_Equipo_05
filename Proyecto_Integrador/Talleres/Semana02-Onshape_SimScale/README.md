@@ -1,6 +1,7 @@
 # Taller de Onshape y SimScale
 
 ## Actividad desarollada el Martes 25/08/2026:
+Consistió en un 
 
 ### Proyecto de Onshape:
 - Colocar link a imagen
@@ -8,6 +9,9 @@
 - Colocar link a imagen
 
 ## Actividad desarrollada el Jueves 27/08/2026:
+Esta actividad consistió en modelar en Onshape un elemento que forma parte de nuestro diseño del proyecto o, en su defecto, descargar y modificar un modelo en 3D ya existente para aplicarlo en nuestro proyecto. Luego de eso, se pasaron a realizar las simulaciones en SimScale.
+
+Para más detalle, seleccionar la carpeta de cada integrante del equipo y ver con más detalle que realizó cada uno.
 
 ### Actividad de Marcelo Alarcón:
 * [🌍 SimScale Marcelo](https://www.simscale.com/workbench/?pid=8098147962875429279&rru=4e4abd11-5f36-4b7c-ab5c-e3fb0e5750c6&ci=ea6213fd-c830-4a6e-a037-eef21cd0d0c9&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
