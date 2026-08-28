@@ -6,11 +6,15 @@ La actividad consistió en realizar un modelado 3D en **Onshape**, guiados por l
 
 ### Proyecto de Onshape
 
-* [🔗 Modelo en Onshape](#)
+* [🔗 Modelo en Onshape](https://cad.onshape.com/documents/1566f63f4503356fca859dd1/w/95c06d976e436f4b601499ad/e/a560b5dd21b65b5088351a38)
+
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Fotos/Taller1_Onshape.png" width="1000">
 
 ### Simulación en SimScale
 
-* [🌍 Simulación en SimScale](#)
+* [🌍 Simulación en SimScale](https://www.simscale.com/workbench/?pid=8098147962875429279&rru=4e4abd11-5f36-4b7c-ab5c-e3fb0e5750c6&ci=ea6213fd-c830-4a6e-a037-eef21cd0d0c9&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
+
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Fotos/Taller1_SimScale.jpg" width="1000">
 
 ---
 
@@ -24,22 +28,12 @@ Debido a que cada integrante desarrolló una versión diferente del modelo, a co
 
 Para obtener más detalle sobre el trabajo realizado por cada integrante, se puede ingresar a la carpeta correspondiente a cada uno.
 
-### Actividad de Marcelo Alarcón
+### [🌍 Marcelo Alarcón](https://github.com/BeyondNate/PI_Equipo_05/tree/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Marcelo_Alarcon)
 
-* [🌍 SimScale Marcelo](https://www.simscale.com/workbench/?pid=8098147962875429279&rru=4e4abd11-5f36-4b7c-ab5c-e3fb0e5750c6&ci=ea6213fd-c830-4a6e-a037-eef21cd0d0c9&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
+### [🌍 Brad Cárdenas](https://github.com/BeyondNate/PI_Equipo_05/tree/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Brad_Cardenas)
 
-### Actividad de Brad Cárdenas
+### [🌍 Gael Milla](https://github.com/BeyondNate/PI_Equipo_05/tree/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Gael_Milla)
 
-* [🌍 SimScale Brad](https://www.simscale.com/workbench/?pid=5045070654597885458&rru=d1db9098-401d-452d-b447-91a27147070c&ci=9d7662a5-85af-4731-833f-1f5b0aa1d95a&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
+### [🌍 Idania Parhuay](https://github.com/BeyondNate/PI_Equipo_05/tree/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Idania_Parhuay)
 
-### Actividad de Gael Milla
-
-* [🌍 SimScale Gael](https://www.simscale.com/workbench/?pid=7395617598599356015&rru=4569c5a3-b2dd-4d76-8be7-84ad880149c1&ci=41b13397-48c0-45e3-bb2c-9c92ffa576ca&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
-
-### Actividad de Idania Parhuay
-
-* [🌍 SimScale Idania](https://www.simscale.com/workbench/?pid=1274840942204487187&rru=8a77f451-b0c1-47e3-b4be-11a7a954f41e&ci=097ce018-0ea9-45cf-985b-4bfdc5f85125&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
-
-### Actividad de Leonel Urbano
-
-* [🌍 SimScale Leonel](https://www.simscale.com/workbench/?pid=4413055684569216460&rru=f15d27a8-0aaf-4dd8-965b-cbd54ad9e199&ci=f6e4a39b-1e7b-4eb6-9dbb-434bd4c65116&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
+### [🌍 Leonel Urbano](https://github.com/BeyondNate/PI_Equipo_05/tree/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Leonel_Urbano)
