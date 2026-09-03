@@ -4,6 +4,7 @@ Se realizó el esquemático del **ESP32 junto con el sensor de pH PH-4502C y el 
 
 ### Esquema:
 
+![Esquema](../Capturas/EsquematicoBrad.png)
 ![Esquema](../Capturas/EsquematicoBrad1.png)
 
 ### PCB:
