@@ -1,6 +1,6 @@
 # Actividad de Idania Parhuay
 
-Se realizó un esquemático organizado en tres módulos: **sensor de pH, procesamiento y comunicación (LCD)**. El ESP32 se comunica con el sensor de de pH y controla la **pantalla LCD como forma de comunicación con el usuario final.
+Se realizó un esquemático organizado en tres módulos: **sensor de pH, procesamiento y comunicación (LCD)**. El ESP32 se comunica con el sensor de de pH y controla la **pantalla LCD** como forma de comunicación con el usuario final.
 
 ### Esquema:
 
