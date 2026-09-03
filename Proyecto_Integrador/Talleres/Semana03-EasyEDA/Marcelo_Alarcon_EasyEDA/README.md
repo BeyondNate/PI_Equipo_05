@@ -3,15 +3,15 @@
 Se realizó un esquemático compuesto por los módulos de **procesamiento (ESP32)** y **sensor de turbidez**. El ESP32 se comunica con el sensor para recibir las mediciones, utilizando además un **capacitor de 100 mF** y resistencias de **1.8 kΩ y 3 kΩ** para complementar las conexiones del circuito.
 ### ESQUEMA ELECTRÓNICO:
 
-![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoMarcelo.jpg)
+![Esquema_Marcelo](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoMarcelo.jpg)
 
 ---
 ### PCB:
-![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBMarcelo.jpg)
+![PCB_Marcelo](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBMarcelo.jpg)
 
 ---
 ### VIZUALIZADO EN 3D:
-![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DMarcelo.jpg)
+![3D_Marcelo](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DMarcelo.jpg)
 
 ---
 ### ARCHIVO ZIP:
