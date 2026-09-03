@@ -1,8 +1,13 @@
-Mi parte del proyecto
+# Actividad de Brad Cárdenas
 
-Esquema:
+Se realizó el esquemático del **ESP32 junto con el sensor de pH PH-4502C y el sensor de turbidez**, mostrando sus conexiones de alimentación, tierra y señales.
+
+### Esquema:
+
 ![Esquema](../Capturas/EsquematicoBrad.png)
-PCB:
+
+### PCB:
 ![Esquema](../Capturas/PCBBrad.png)
-3D:
+
+### 3D:
 ![Esquema](../Capturas/3DBrad.png)
