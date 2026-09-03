@@ -8,11 +8,16 @@ Se realizó un esquemático compuesto por los módulos de **procesamiento (ESP32
 
 ---
 ### PCB:
-![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBLeonel.jpg)
+![PCB_Leonel](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBLeonel.jpg)
 
 ---
 ### VIZUALIZADO EN 3D:
-![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DLeonel.jpg)
+
+#### Frontal:
+![3D_Leonel1](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DLeonel1.jpg)
+
+#### Por detrás:
+![3D_Leonel2](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DLeonel2.jpg)
 
 ---
 ### ARCHIVO ZIP:
