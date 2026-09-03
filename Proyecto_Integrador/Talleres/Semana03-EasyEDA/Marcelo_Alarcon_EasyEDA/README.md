@@ -15,4 +15,4 @@ Se realizó un esquemático compuesto por los módulos de **procesamiento (ESP32
 
 ---
 ### ARCHIVO ZIP:
-En este link se podrá visualizar la carpeta Zip: [Gerber_PCB_2026-09-03_MarceloAlarcon.zip](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Marcelo_Alarcon_EasyEDA/Gerber_PCB_2026-09-03_MarceloAlarcon.zip)
+En este link se podrá visualizar la carpeta Zip: [Gerber_PCB1_2026-09-03_MarceloAlarcon.zip](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Marcelo_Alarcon_EasyEDA/Gerber_PCB1_2026-09-03_MarceloAlarcon.zip)
