@@ -1,7 +1,7 @@
 Mi parte del proyecto
 
 Esquema:
-![Esquema](../Capturas/esquema.png)
+![Esquema](../Capturas/EsquematicoBrad.png)
 PCB:
 ![Esquema](../Capturas/PCBBrad.png)
 3D:
