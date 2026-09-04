@@ -4,7 +4,7 @@ Se realizó un esquemático organizado en tres módulos principales: **sensor de
 
 ---
 
-## ⭐ ESQUEMA ELECTRÓNICO:
+## ✨ ESQUEMA ELECTRÓNICO:
 
 <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoIdania.png" width="1000">
 
@@ -15,15 +15,15 @@ En el siguiente enlace se puede visualizar el archivo PDF correspondiente al esq
 [Visualizar PDF del esquemático](https://github.com/user-attachments/files/31818661/SCH_Schematic1_2026-09-03.pdf)
 
 ---
-## ⭐ PCB:
+## ✨ PCB:
 <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBIdania.png" alt="PCB 2D" width="1000">
 
-## ⭐ VISTA 2D
+## ✨ VISTA 2D
 
 <img src="https://github.com/user-attachments/assets/17b91a5c-66e4-4684-af29-bc5b25853aa8" width="1000"/>
 
 ---
-## ⭐ VISTA 3D:
+## ✨ VISTA 3D:
 <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DIdania.png" alt="Visualización 3D" width="1000">
 <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DIdania2.png" alt="Visualización 3D" width="1000">
 
