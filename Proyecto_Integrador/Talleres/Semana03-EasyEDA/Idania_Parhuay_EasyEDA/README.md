@@ -24,6 +24,8 @@ En el siguiente enlace se puede visualizar el archivo PDF correspondiente al esq
   <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBIdania.png" alt="PCB 2D" width="950">
 </p>
 
+---
+
 ## 🔴 VISTA 2D
 <p align="center">
   <img src="https://github.com/user-attachments/assets/17b91a5c-66e4-4684-af29-bc5b25853aa8" width="950"/>
