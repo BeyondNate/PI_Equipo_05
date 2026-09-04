@@ -4,7 +4,7 @@ Se realizó un esquemático organizado en tres módulos principales: **sensor de
 
 ---
 
-## 🔴 ESQUEMA ELECTRÓNICO:
+## ✿ ESQUEMA ELECTRÓNICO:
 Representación de las conexiones eléctricas entre el **sensor de pH, el ESP32 y la pantalla LCD**, organizadas para mostrar el funcionamiento del sistema.
 
 
