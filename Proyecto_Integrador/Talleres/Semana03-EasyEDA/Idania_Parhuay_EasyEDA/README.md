@@ -4,11 +4,11 @@ Se realizó un esquemático organizado en tres módulos: **sensor de pH, procesa
 
 ### ESQUEMA ELECTRÓNICO:
 
-![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoIdania.jpg)
+![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoIdania.png)
 
 ---
 ### PCB:
-![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBIdania.jpg)
+![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBIdania.png)
 
 ---
 ### VIZUALIZADO EN 3D:
@@ -16,4 +16,5 @@ Se realizó un esquemático organizado en tres módulos: **sensor de pH, procesa
 
 ---
 ### ARCHIVO ZIP:
-En este link se podrá visualizar la carpeta Zip: [Gerber_PCB1_2026-09-02.zip](https://github.com/user-attachments/files/31806261/Gerber_PCB1_2026-09-02.zip)
+En este link se podrá visualizar la carpeta Zip: [Gerber_PCB1_2026-09-03.zip](https://github.com/user-attachments/files/31818505/Gerber_PCB1_2026-09-03.zip)
+
