@@ -12,7 +12,7 @@ Se realizó un esquemático organizado en tres módulos: **sensor de pH, procesa
 
 ---
 ### VIZUALIZADO EN 3D:
-![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DIdania.jpg)
+![Esquema](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DIdania.png)
 
 ---
 ### ARCHIVO ZIP:
