@@ -19,7 +19,7 @@ En el siguiente enlace se puede visualizar el archivo PDF correspondiente al esq
 
 ---
 
-## 🔴 PCB 2D:
+## ✿ PCB 2D:
 Representación de la **placa de circuito impreso (PCB)**, donde se muestra la distribución física de los componentes y sus respectivas conexiones.
 
 <p align="center">
@@ -29,7 +29,7 @@ Representación de la **placa de circuito impreso (PCB)**, donde se muestra la d
 
 ---
 
-## 🔴 VISTA 3D:
+## ✿ VISTA 3D:
 Visualización tridimensional de la PCB que permite apreciar la **disposición física de los componentes y la estructura final de la placa**.
 
 <p align="center">
