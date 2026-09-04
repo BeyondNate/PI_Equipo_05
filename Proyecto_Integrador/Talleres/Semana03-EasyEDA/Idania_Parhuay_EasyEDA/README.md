@@ -6,7 +6,7 @@ Se realizó un esquemático organizado en tres módulos principales: **sensor de
 
 ## 🔴 ESQUEMA ELECTRÓNICO:
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoIdania.png" width="1000">
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoIdania.png" width="950">
 
 ## 📄 PDF DEL ESQUEMÁTICO
 
