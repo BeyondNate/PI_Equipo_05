@@ -5,35 +5,33 @@ Se realizó un esquemático organizado en tres módulos principales: **sensor de
 ---
 
 ## 🔴 ESQUEMA ELECTRÓNICO:
+Representación de las conexiones eléctricas entre el **sensor de pH, el ESP32 y la pantalla LCD**, organizadas para mostrar el funcionamiento del sistema.
+
 
 <p align="center">
   <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoIdania.png" width="950">
 </p>
 
 ## 📄 PDF DEL ESQUEMÁTICO
-
-En el siguiente enlace se puede visualizar el archivo PDF correspondiente al esquemático electrónico:
+En el siguiente enlace se puede visualizar el archivo PDF correspondiente al esquema electrónico:
 
 [Visualizar PDF del esquemático](https://github.com/user-attachments/files/31818661/SCH_Schematic1_2026-09-03.pdf)
 
 ---
 
-## 🔴 PCB:
+## 🔴 PCB 2D:
+Representación de la **placa de circuito impreso (PCB)**, donde se muestra la distribución física de los componentes y sus respectivas conexiones.
 
 <p align="center">
   <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/PCBIdania.png" alt="PCB 2D" width="950">
-</p>
-
----
-
-## 🔴 VISTA 2D
-<p align="center">
   <img src="https://github.com/user-attachments/assets/17b91a5c-66e4-4684-af29-bc5b25853aa8" width="950"/>
 </p>
 
 ---
 
 ## 🔴 VISTA 3D:
+Visualización tridimensional de la PCB que permite apreciar la **disposición física de los componentes y la estructura final de la placa**.
+
 <p align="center">
   <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DIdania.png" alt="Visualización 3D" width="950">
   <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DIdania2.png" alt="Visualización 3D" width="950">
