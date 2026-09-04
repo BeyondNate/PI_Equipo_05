@@ -1,1 +1,1 @@
-En este espacio se guardaran las capturas del proyecto
+En este espacio se guardan imágenes de la actividad del taller
