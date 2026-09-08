@@ -13,8 +13,8 @@
 | **T1. Fuente de energía**              | **T1.2 – Batería de litio 3.7/5 V 5000 mAh**    |
 | **T2. Encendido**                      | **T2.1 – Interruptor deslizante**               |
 | **T3. Acondicionar energía eléctrica** | **T3.3 – Convertidor DC-DC tipo buck**          |
-| **T4. Energía para sensores**          | **T4.1 – Regulador LDO 3.3 V**                  |
-| **T5. Energía para comunicación**      | **T5.1 – Regulador 3.3 V dedicado**             |
+| **T4. Energía para sensores**          | **T4.1 – Regulador LDO 5 V**                  |
+| **T5. Energía para comunicación**      | **T5.1 – Regulador 5 V dedicado**             |
 | **T6. Controlar sistema**              | **T6.1 – ESP32**                                |
 | **T7. Detectar turbidez**              | **T7.1 – Sensor de turbidez 0–1000 NTU**        |
 | **T8. Detectar pH**                    | **T8.1 – Sensor de pH con electrodo de vidrio** |
@@ -44,7 +44,7 @@ Un sistema con **ESP32**, alimentado por una batería de litio, que mide el **pH
 | **T2. Encendido**                      | **T2.2 – Interruptor basculante (rocker)**           |
 | **T3. Acondicionar energía eléctrica** | **T3.3 – Convertidor DC-DC tipo buck**               |
 | **T4. Energía para sensores**          | **T4.2 – Módulo step-down regulado**                 |
-| **T5. Energía para comunicación**      | **T5.1 – Regulador 3.3 V dedicado**                  |
+| **T5. Energía para comunicación**      | **T5.1 – Regulador 5 V dedicado**                  |
 | **T6. Controlar sistema**              | **T6.1 – ESP32**                                     |
 | **T7. Detectar turbidez**              | **T7.1 – Sensor de turbidez 0–1000 NTU**             |
 | **T8. Detectar pH**                    | **T8.3 – Sensor de pH con sonda**                    |
