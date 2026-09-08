@@ -1,6 +1,6 @@
 ## Matriz Morfológica
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/02-Caja_negra_Esquema_funciones_Matriz_morfologica/Fotos/PI%20MATRIZ%20MORFOL%C3%93GICA%20v1.png"/>
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/02-Caja_negra_Esquema_funciones/Fotos/PI%20MATRIZ%20MORFOL%C3%93GICA%20v1.png"/>
 
 ### Solución preliminar 1 — Económica y sencilla
 
