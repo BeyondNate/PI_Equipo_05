@@ -18,15 +18,16 @@
 | **T6. Controlar sistema**              | **T6.1 – ESP32**                                |
 | **T7. Detectar turbidez**              | **T7.1 – Sensor de turbidez 0–1000 NTU**        |
 | **T8. Detectar pH**                    | **T8.1 – Sensor de pH con electrodo de vidrio** |
-| **T9. Bombear quitosano**              | **T9.1 – Bomba peristáltica**                   |
-| **T10. Controlar agitador**            | **T10.1 – Control por PWM**                     |
-| **T11. Sujetar cajita de sensores**    | **T11.1 – Brazo fijo**                          |
-| **T12. Señal visual**                  | **T12.1 – LED simple indicador**                |
-| **T13. Señal sonora**                  | **T13.1 – Buzzer**                              |
-| **T14. Mostrar información**           | **T14.1 – Pantalla LCD 16×2**                   |
-| **T15. Transmitir datos**              | **T15.1 – WiFi**                                |
-| **T16. Carcasa**                       | **T16.1 – PLA**                                 |
-| **T17. Envase de quitosano**           | **T17.2 – Plástico HDPE o PP**                  |
+| **T9. Medir nivel del agua**           | **T9.3 – .**                    |
+| **T10. Bombear quitosano**             | **T10.1 – Bomba peristáltica**                   |
+| **T11. Controlar agitador**            | **T11.1 – Control por PWM**                     |
+| **T12. Sujetar cajita de sensores**    | **T12.1 – Brazo fijo**                          |
+| **T13. Señal visual**                  | **T13.1 – LED simple indicador**                |
+| **T14. Señal sonora**                  | **T14.1 – Buzzer**                              |
+| **T15. Mostrar información**           | **T15.1 – Pantalla LCD 16×2**                   |
+| **T16. Transmitir datos**              | **T16.4 – WiFi**                                |
+| **T17. Carcasa**                       | **T17.1 – PLA**                                 |
+| **T18. Envase de quitosano**           | **T18.2 – Plástico HDPE o PP**                  |
 
 #### ¿Cómo sería?
 
@@ -47,15 +48,16 @@ Un sistema con **ESP32**, alimentado por una batería de litio, que mide el **pH
 | **T6. Controlar sistema**              | **T6.1 – ESP32**                           |
 | **T7. Detectar turbidez**              | **T7.1 – Sensor de turbidez 0–1000 NTU**   |
 | **T8. Detectar pH**                    | **T8.3 – Sensor de pH con sonda**          |
-| **T9. Bombear quitosano**              | **T9.1 – Bomba peristáltica**              |
-| **T10. Controlar agitador**            | **T10.1 – Control por PWM**                |
-| **T11. Sujetar cajita de sensores**    | **T11.2 – Brazo articulado**               |
-| **T12. Señal visual**                  | **T12.2 – LED RGB multicolor**             |
-| **T13. Señal sonora**                  | **T13.1 – Buzzer**                         |
-| **T14. Mostrar información**           | **T14.1 – Pantalla LCD 16×2**              |
-| **T15. Transmitir datos**              | **T15.1 – WiFi**                           |
-| **T16. Carcasa**                       | **T16.1 – PLA**                            |
-| **T17. Envase de quitosano**           | **T17.2 – Plástico HDPE o PP**             |
+| **T9. Control del nivel del agua**     | **T9.1 – .**                   |
+| **T10. Bombear quitosano**              | **T10.1 – Bomba peristáltica**            |
+| **T11. Controlar agitador**            | **T11.1 – Control por PWM**                |
+| **T12. Sujetar cajita de sensores**    | **T12.2 – Brazo articulado**               |
+| **T13. Señal visual**                  | **T13.2 – LED RGB multicolor**             |
+| **T14. Señal sonora**                  | **T14.1 – Buzzer**                         |
+| **T15. Mostrar información**           | **T15.1 – Pantalla LCD 16×2**              |
+| **T16. Transmitir datos**              | **T16.4 – WiFi**                           |
+| **T17. Carcasa**                       | **T17.1 – PLA**                            |
+| **T18. Envase de quitosano**           | **T18.2 – Plástico HDPE o PP**             |
 
 #### ¿Cómo sería?
 
@@ -76,15 +78,16 @@ Un sistema con **ESP32** que mide pH y turbidez, calcula la dosis de quitosano y
 | **T6. Controlar sistema**              | **T6.1 – ESP32**                                 |
 | **T7. Detectar turbidez**              | **T7.2 – Sensor nefelométrico de turbidez**      |
 | **T8. Detectar pH**                    | **T8.2 – Sensor de pH de estado sólido (ISFET)** |
-| **T9. Bombear quitosano**              | **T9.2 – Bomba dosificadora electromagnética**   |
-| **T10. Controlar agitador**            | **T10.3 – Driver de motor con encoder**          |
-| **T11. Sujetar cajita de sensores**    | **T11.3 – Brazo telescópico**                    |
-| **T12. Señal visual**                  | **T12.3 – Indicador luminoso tipo baliza**       |
-| **T13. Señal sonora**                  | **T13.3 – Altavoz pequeño**                      |
-| **T14. Mostrar información**           | **T14.3 – Pantalla TFT a color**                 |
-| **T15. Transmitir datos**              | **T15.3 – Módulo GSM**                           |
-| **T16. Carcasa**                       | **T16.2 – ABS**                                  |
-| **T17. Envase de quitosano**           | **T17.3 – Envase con sello hermético**           |
+| **T9. Control del nivel del agua**     | **T9.2 – Sensor de nivel**                       |
+| **T10. Bombear quitosano**              | **T10.2 – Bomba dosificadora electromagnética** |
+| **T11. Controlar agitador**            | **T11.3 – Driver de motor con encoder**          |
+| **T12. Sujetar cajita de sensores**    | **T12.3 – Brazo telescópico**                    |
+| **T13. Señal visual**                  | **T13.3 – Indicador luminoso tipo baliza**       |
+| **T14. Señal sonora**                  | **T14.3 – Altavoz pequeño**                      |
+| **T15. Mostrar información**           | **T15.3 – Pantalla TFT a color**                 |
+| **T16. Transmitir datos**              | **T16.3 – Módulo GSM**                           |
+| **T17. Carcasa**                       | **T17.2 – ABS**                                  |
+| **T18. Envase de quitosano**           | **T18.3 – Envase con sello hermético**           |
 
 #### ¿Cómo sería?
 
