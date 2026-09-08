@@ -34,11 +34,12 @@
 
 Los conceptos se construyen combinando una alternativa de cada función de la matriz morfológica.
 
-| **Concepto**          | **Almacenamiento**         | **Procesamiento y control de señales** | **Medición / detección**                               | **Nivel de agua**                 | **Mecánica**                        | **Actuación**       | **Comunicación**            | **Materiales** |
-| --------------------- | -------------------------- | -------------------------------------- | ------------------------------------------------------ | --------------------------------- | ----------------------------------- | ------------------- | --------------------------- | -------------- |
-| **Concepto A (Base)** | Plástico HDPE o PP         | ESP32                                  | Turbidez salida analógica + pH con electrodo           | Sensor de nivel vertical          | Bomba peristáltica                  | Control por PWM     | Wi-Fi                       | PLA            |
-| **Concepto B**        | Plástico HDPE o PP         | ESP32                                  | Turbidez salida analógica + pH con sonda               | Sensor de nivel                   | Bomba peristáltica                  | Control por PWM     | Wi-Fi                       | PLA            |
-| **Concepto C**        | Envase con sello hermético | ESP32                                  | Sensor nefelométrico de turbidez + pH de estado sólido | Control eléctrico de nivel / boya | Bomba dosificadora electromagnética | Relé + temporizador | Wi-Fi + Bluetooth integrado | PETG           |
+| **Concepto**          | **Almacenar líquido**      | **Procesamiento y control de señales** | **Medir/Detectar**                             | **Nivel de agua**                 | **Mecánica**                        | **Actuar**          | **Control**            | **Energía / Comunicación** |
+| --------------------- | -------------------------- | -------------------------------------- | ---------------------------------------------- | --------------------------------- | ----------------------------------- | ------------------- | ---------------------- | -------------------------- |
+| **Concepto A (Base)** | Botella plástica HDPE o PP | ESP32                                  | Turbidez salida analógica + pH con electrodo    | Sensor de nivel vertical          | Sensor de Nivel de Agua Vertical (Plástico)+ Bomba peristáltica                  | Control por PWM     | Interruptor deslizante | Fuente 5VDC / Wi-Fi        |
+| **Concepto B**        | Botella plástica HDPE o PP | ESP32                                  | Turbidez salida analógica + pH con sonda        | Sensor de nivel                   | Control eléctrico de nivel de agua/Boya + Bomba peristáltica                  | Control por PWM     | Interruptor basculante | Fuente 5VDC / Wi-Fi        |
+| **Concepto C**        | Envase con sello hermético | ESP32                                  | Nefelométrico de turbidez + pH de estado sólido | Control eléctrico de nivel / boya | Bomba dosificadora electromagnética | Relé + temporizador | Interruptor basculante | Fuente 5VDC / GSM          |
+
 
 ### Configuración de los conceptos
 
@@ -47,8 +48,8 @@ Los conceptos se construyen combinando una alternativa de cada función de la ma
 * T1.2 – Batería de litio 3.7/5 V 5000 mAh
 * T2.1 – Interruptor deslizante
 * T3.3 – Convertidor DC-DC tipo buck
-* T4.1 – Regulador LDO 3.3 V
-* T5.1 – Regulador 3.3 V dedicado
+* T4.1 – Regulador LDO 5 V
+* T5.1 – Regulador 5 V dedicado
 * T6.1 – ESP32
 * T7.1 – Sensor de turbidez 0–1000 NTU
 * T8.1 – Sensor de pH con electrodo de vidrio
@@ -69,7 +70,7 @@ Los conceptos se construyen combinando una alternativa de cada función de la ma
 * T2.2 – Interruptor basculante
 * T3.3 – Convertidor DC-DC tipo buck
 * T4.2 – Módulo step-down regulado
-* T5.1 – Regulador 3.3 V dedicado
+* T5.1 – Regulador 5 V dedicado
 * T6.1 – ESP32
 * T7.1 – Sensor de turbidez 0–1000 NTU
 * T8.3 – Sensor de pH con sonda
