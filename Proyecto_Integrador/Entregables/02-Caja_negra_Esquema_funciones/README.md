@@ -6,6 +6,6 @@ La **Caja Negra** representa el sistema automatizado para la clarificación de a
 
 ## Esquema de Funciones
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/02-Caja_negra_Esquema_funciones/Fotos/ESQUEMA%20DE%20FUNCIONES%20v1.jpg"/>
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/02-Caja_negra_Esquema_funciones/Fotos/ESQUEMA%20DE%20FUNCIONES%20v2.png"/>
 
 El **Esquema de Funciones** descompone el sistema en las principales funciones que permiten realizar el proceso de forma automatizada. Incluye la **adquisición de las señales de pH y turbidez, el procesamiento de los datos, el cálculo del volumen de quitosano, el control de la bomba peristáltica y del agitador magnético**, además de la visualización y transmisión de los resultados. De esta manera, se muestra cómo interactúan las diferentes partes del sistema para lograr la clarificación del agua.
