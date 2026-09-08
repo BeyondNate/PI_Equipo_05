@@ -2,6 +2,10 @@
 
 <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/PI_MATRIZ_MORFOL%C3%93GICA_v3.png"/>
 
+## 📁 Link al CANVA:
+
+[Canva_Matriz](https://canva.link/7j7wfllv1xer6x5)
+
 ### Solución preliminar 1 — Económica y sencilla
 
 | Función                                | Elección                                        |
