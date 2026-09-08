@@ -1,10 +1,10 @@
 ## Matriz Morfológica
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/MF_01.png"/>
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/mf01_v2.png"/>
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/MF_02.png"/>
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/mf02_v2.png"/>
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/MF_03.png"/>
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/mf03_v2.png"/>
 
 ### Solución preliminar 1 — Económica y sencilla
 
