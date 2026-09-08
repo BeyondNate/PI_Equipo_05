@@ -1,6 +1,6 @@
 ## Caja Negra
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/02-Caja_negra_Esquema_funciones/Fotos/CAJA%20NEGRA%20v1.jpg"/>
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/02-Caja_negra_Esquema_funciones/Fotos/CAJA%20NEGRA%20v2.png"/>
 
 La **Caja Negra** representa el sistema automatizado para la clarificación de agua mediante dosificación de quitosano. En ella se identifican las principales **entradas**, como el agua turbia, la mezcla de quitosano, la energía eléctrica, los litros a tratar y las señales de pH y turbidez. Como resultado, el sistema genera **agua clarificada, lodos sedimentados y datos sobre el proceso**, como las mediciones finales y las notificaciones mediante WiFi.
 
