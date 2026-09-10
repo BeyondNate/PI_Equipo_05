@@ -18,8 +18,8 @@ Se realizó un esquemático organizado en tres módulos: **turbidez, procesamien
 ![3D_Back](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/3DGaelBack_v2.png)
 
 ### ARCHIVO ZIP:
-En este link se podrá visualizar la carpeta Zip: [Gerber_PCB1_2026-09-02.zip](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Gael_Milla_EasyEDA/Gerber_PCB2_2026-09-02.zip)
+En este link se podrá visualizar la carpeta Zip: [Gerber_PCB1_PCB1_2026-09-10.zip](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Gael_Milla_EasyEDA/Gerber_PCB1_2026-09-10.zip)
 
 ### PDF EasyEDA:
-[SCH_Schematic1_2026-09-03.pdf](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Gael_Milla_EasyEDA/SCH_Schematic1_2026-09-03.pdf)
+[SCH_Schematic1_2026-09-10.pdf](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Gael_Milla_EasyEDA/SCH_Schematic1_2026-09-10.pdf)
 
