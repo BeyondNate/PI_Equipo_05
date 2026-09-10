@@ -397,31 +397,12 @@ Con ello buscamos:
 
 # 🎯 Nuestra Visión
 
-> **Transformar el potencial del maracuyá y el quitosano en una solución tecnológica sostenible para la clarificación del agua, avanzando desde la investigación científica hacia el desarrollo de un producto y un prototipo funcional.**
+> **Transformar el potencial del quitosano en una solución tecnológica sostenible para la clarificación del agua, avanzando desde la investigación científica hacia el desarrollo de un producto y un prototipo funcional.**
 
 <br>
 
-<p align="center">
-
-## 🌱 RECURSO NATURAL
-
-### ↓
-
-## 🧪 CLARIFICANTE
-
-### ↓
-
-## ⚙️ PROTOTIPO
-
-### ↓
-
-## 💧 SOLUCIÓN TECNOLÓGICA
-
-</p>
-
----
-
-<p align="center">
+### FUENTES BIBLIOGRÁFICAS
+*
 
 ### 🌱 Equipo 05 · Proyecto Integrador 2026-II
 
