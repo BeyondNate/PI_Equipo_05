@@ -10,7 +10,15 @@ Se realizó el modelado 3D de un **soporte**, diseñado para formar parte del pr
 
 ## Simulación en SimScale
 
-Se realizó una **prueba de fuerza horizontal** sobre la punta de la varilla del soporte. Se aplicó una fuerza de **10 N**, manteniendo la base completamente fija, con el objetivo de analizar cómo responde el soporte ante un posible movimiento lateral del equipo.
+Para validar mi soporte, lo dibujé en 3D y simulé en SimScale lo que pasaría al mover el equipo de lado a lado. Para ponerme en el peor escenario, le apliqué una fuerza horizontal de 10 N (como un empuje de 1 kg) justo en la punta de la varilla, manteniendo la base totalmente fija a la mesa.
+
+Al correr la simulación, el esfuerzo máximo que apareció en la pieza fue de *0.021 MPa*. Como el plástico que voy a usar para imprimirlo (PETG) soporta fácilmente entre 35 y 50 MPa, el soporte está sobradísimo de resistencia y no se va a doblar ni a romper con el uso diario.
+
+*Para que quede aún mejor al imprimirlo:*
+
+* Le pondré un redondeo en la unión de la barra con la base para que el esfuerzo se reparta mejor.
+* Lo imprimiré con un 30% o 40% de relleno y unas 4 paredes gruesas para darle bastante rigidez.
+* Le añadiré huecos a la base para atornillarla bien a la mesa y evitar que se levante.
 
 * [🌍 Ver simulación en SimScale](https://www.simscale.com/workbench/?pid=1274840942204487187&rru=8a77f451-b0c1-47e3-b4be-11a7a954f41e&ci=097ce018-0ea9-45cf-985b-4bfdc5f85125&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
 
