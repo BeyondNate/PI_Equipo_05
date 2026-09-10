@@ -4,7 +4,7 @@ Se realizó el esquemático del **ESP32 junto con el sensor de pH PH-4502C y el 
 
 ### Esquema:
 
-![EsquemaBrad](../Capturas/EsquematicoBrad1.png)
+![EsquemaBrad](../Capturas/EsquematicoBrad2.png)
 
 ### PCB:
 ![PCBBrad](../Capturas/PCBBrad.png)
@@ -19,4 +19,4 @@ Se realizó el esquemático del **ESP32 junto con el sensor de pH PH-4502C y el 
 En este link se podrá visualizar la carpeta Zip: [Gerber_PCB1_2026-09-02_Brad.zip](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Brad_Cardenas_EasyEDA/Gerber_PCB6_2026-09-02.zip)
 
 ### PDF EasyEDA:
-[EsquematicoBrad2.pdf](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Brad_Cardenas_EasyEDA/EsquematicoBrad2.pdf)
+[EsquematicoBrad3.pdf](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Brad_Cardenas_EasyEDA/EsquematicoBrad2.pdf)
