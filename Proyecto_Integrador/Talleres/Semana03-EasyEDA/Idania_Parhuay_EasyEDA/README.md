@@ -15,7 +15,7 @@ Representación de las conexiones eléctricas entre el **sensor de pH, el ESP32 
 ## 📄 PDF DEL ESQUEMÁTICO
 En el siguiente enlace se puede visualizar el archivo PDF correspondiente al esquema electrónico:
 
-[Visualizar PDF del esquemático](https://github.com/user-attachments/files/31818661/SCH_Schematic1_2026-09-03.pdf)
+[Visualizar PDF del esquemático](https://github.com/user-attachments/files/31818661/SCH_Schematic1_2026-09-10.pdf)
 
 ---
 
