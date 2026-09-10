@@ -1,10 +1,15 @@
 <p align="center">
-  <img width="1024" height="540" alt="Banner Equipo 05"
-  src="Recursos/Imágenes/BannerEquipo05.png" />
+  <img
+    src="Recursos/Imágenes/BannerEquipo05.png"
+    alt="Banner_Equipo_05"
+    style="border-radius: 50%"
+    width="1000"
+    >
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=700&size=32&duration=3000&pause=1000&color=20B2AA&center=true&vCenter=true&width=800&lines=Equipo+05+-+Proyecto+Integrador;Innovaci%C3%B3n+%2B+Sostenibilidad+%2B+Tecnolog%C3%ADa;Automatizando+la+clarificaci%C3%B3n+del+agua" />
+  <img
+    src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=700&size=32&duration=3000&pause=1000&color=20B2AA&center=true&vCenter=true&width=800&lines=Equipo+05+-+Proyecto+Integrador;Innovaci%C3%B3n+%2B+Sostenibilidad+%2B+Tecnolog%C3%ADa;Automatizando+la+clarificaci%C3%B3n+del+agua" />
 </p>
 
 <p align="center">
