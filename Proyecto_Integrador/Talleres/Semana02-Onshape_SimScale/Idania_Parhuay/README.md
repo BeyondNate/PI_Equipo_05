@@ -20,6 +20,6 @@ Al correr la simulación, el esfuerzo máximo que apareció en la pieza fue de *
 * Lo imprimiré con un 30% o 40% de relleno y unas 4 paredes gruesas para darle bastante rigidez.
 * Le añadiré huecos a la base para atornillarla bien a la mesa y evitar que se levante.
 
-* [🌍 Ver simulación en SimScale](https://www.simscale.com/workbench/?pid=1274840942204487187&rru=8a77f451-b0c1-47e3-b4be-11a7a954f41e&ci=097ce018-0ea9-45cf-985b-4bfdc5f85125&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
+[🌍 Ver simulación en SimScale](https://www.simscale.com/workbench/?pid=1274840942204487187&rru=8a77f451-b0c1-47e3-b4be-11a7a954f41e&ci=097ce018-0ea9-45cf-985b-4bfdc5f85125&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
 
 <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Fotos/Idania_SimScale.jpeg" width="1000">
