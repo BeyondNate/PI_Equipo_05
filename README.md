@@ -141,6 +141,60 @@ El proyecto se encuentra en una etapa inicial, por lo que:
 > **La experimentación define la dosificación. Los sensores proporcionan la información. El prototipado integra ambos con la tecnología.**
 
 ---
+# 💧 Tipo de agua estudiada
+
+El proyecto se enfocará en el tratamiento experimental de:
+
+> **Agua del río Rimac utilizada como agua cruda para estudiar un proceso de clarificación.**
+
+Las aguas superficiales pueden contener partículas suspendidas y coloidales que contribuyen a la turbidez y que pueden ser removidas parcialmente mediante procesos de coagulación, floculación y sedimentación.
+
+La normativa peruana establece los **Estándares de Calidad Ambiental para Agua (ECA-Agua)** mediante el Decreto Supremo N.° 004-2017-MINAM [1].
+
+---
+### ⚠️ Alcance del proyecto
+
+El objetivo del prototipo es estudiar y desarrollar un **proceso de clarificación**, no producir directamente agua potable.
+
+La clarificación constituye una etapa dentro de un tratamiento de agua más amplio. Para obtener agua apta para consumo humano se requieren etapas adicionales, como filtración y desinfección, además del cumplimiento de los parámetros establecidos por la normativa correspondiente.
+
+---
+# 🔬 ¿Qué es la turbidez?
+
+La **turbidez** es una propiedad óptica del agua relacionada con la presencia de partículas suspendidas que dispersan la luz y reducen la transparencia del agua.
+
+Entre las partículas que pueden contribuir a la turbidez se encuentran:
+
+* Arcillas.
+* Limos.
+* Materia orgánica.
+* Microorganismos.
+* Partículas minerales.
+* Otros sólidos suspendidos.
+
+La turbidez se expresa normalmente en **NTU (Nephelometric Turbidity Units)** y constituye una variable importante para evaluar procesos de clarificación.
+
+En nuestro proyecto, la turbidez será utilizada tanto como:
+
+* **variable de entrada**, para caracterizar el agua antes del tratamiento;
+* **variable de salida**, para evaluar la eficiencia del proceso.
+
+La eficiencia de clarificación podrá expresarse mediante el porcentaje de remoción de turbidez:
+
+$$
+\text{Remoción de turbidez (\%)} =
+\frac{T_i-T_f}{T_i}\times100
+$$
+
+donde:
+
+* \(T_i\) = turbidez inicial.
+* \(T_f\) = turbidez final.
+
+De esta manera, el desempeño del sistema podrá evaluarse cuantitativamente mediante la comparación entre las condiciones iniciales y finales.
+
+---
+  
 
 # ✨ ¿Dónde está la innovación?
 
@@ -201,6 +255,125 @@ flowchart LR
 </p>
 
 > **Buscamos transformar conocimiento científico en una propuesta tangible, medible y progresivamente automatizable.**
+
+---
+---
+
+# 🧪 Fundamento químico
+
+## Coagulación y floculación
+
+La clarificación mediante coagulación-floculación comprende diferentes fenómenos fisicoquímicos.
+
+### Coagulación
+
+La **coagulación** corresponde a la desestabilización de las partículas suspendidas o coloidales presentes en el agua.
+
+Muchas partículas coloidales presentan cargas superficiales que favorecen su permanencia en suspensión.
+
+El coagulante puede reducir esta estabilidad y favorecer la posterior agregación de las partículas.
+
+### Floculación
+
+La **floculación** ocurre posteriormente mediante una mezcla controlada.
+
+Durante esta etapa, las partículas previamente desestabilizadas pueden colisionar y formar agregados de mayor tamaño denominados **flóculos**.
+
+Estos flóculos pueden posteriormente separarse mediante sedimentación.
+
+De forma simplificada:
+
+```text
+Partículas suspendidas
+          ↓
+Desestabilización
+          ↓
+Colisión entre partículas
+          ↓
+Formación de flóculos
+          ↓
+Sedimentación
+          ↓
+Agua clarificada
+```
+
+En el caso del quitosano, la literatura ha relacionado su comportamiento con mecanismos como la **neutralización de carga y la formación de puentes entre partículas** [2], [3].
+
+---
+
+# 🧪 Agentes químicos considerados
+
+Para comprender la selección del quitosano se consideran diferentes alternativas utilizadas en procesos de tratamiento de agua.
+
+| Agente                      | Función principal          | Mecanismo / efecto                                                                            | Consideración                                           |
+| --------------------------- | -------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| **Óxido de calcio (CaO)**   | Ajuste de alcalinidad y pH | Reacción con el agua y generación de condiciones alcalinas                                    | No es equivalente al quitosano como polímero floculante |
+| **Cloruro férrico (FeCl₃)** | Coagulación                | Formación de especies de hierro que favorecen la desestabilización y separación de partículas | Coagulante convencional                                 |
+| **Quitosano**               | Coagulación / floculación  | Neutralización de carga y formación de puentes                                                | Biopolímero de interés para el proyecto                 |
+
+### ⚠️ Precisión química
+
+El **óxido de hierro** y el **cloruro férrico** no deben tratarse como si fueran el mismo compuesto.
+
+Para la comparación con coagulantes convencionales se utilizarán preferentemente **sales de hierro, como FeCl₃**, debido a su utilización como coagulantes en tratamiento de agua.
+
+Por otro lado, el **CaO** se considera principalmente como un agente relacionado con el ajuste de alcalinidad y pH, no como equivalente directo del quitosano.
+
+La literatura ha comparado experimentalmente el quitosano con coagulantes convencionales como el sulfato de aluminio y el cloruro férrico para evaluar la eliminación de turbidez y materia orgánica natural [4].
+
+---
+# 🦐 Quitosano
+
+El **quitosano** es un biopolímero obtenido mediante la desacetilación de la quitina.
+
+Sus grupos amino pueden adquirir carga positiva dependiendo de las condiciones del medio, permitiendo interacciones con partículas suspendidas y favoreciendo los procesos de coagulación y floculación.
+
+Entre las características relevantes del quitosano se encuentran:
+
+* Peso molecular.
+* Grado de desacetilación.
+* Dosis.
+* Solubilidad.
+* Condiciones de pH.
+* Tiempo de mezcla.
+* Características del agua.
+
+La eficiencia del quitosano no es constante para todas las muestras. Depende tanto de las características del polímero como de las condiciones del agua.
+
+Por ello, la selección de la dosis debe ser determinada experimentalmente.
+
+---
+
+# 🧬 Quitosano hidrolizado y no hidrolizado
+
+Una de las variables consideradas en el proyecto será el **tipo de quitosano**.
+
+Se estudiará la diferencia entre:
+
+* **Quitosano no hidrolizado.**
+* **Quitosano hidrolizado.**
+
+La hidrólisis o degradación de las cadenas poliméricas puede producir materiales con menor peso molecular.
+
+La modificación del peso molecular puede afectar propiedades como:
+
+* Viscosidad.
+* Movilidad de las cadenas.
+* Interacción con las partículas.
+* Formación de puentes.
+* Formación y estabilidad de los flóculos.
+
+Estudios experimentales han demostrado que el **peso molecular y el grado de desacetilación** pueden influir en la eficiencia de coagulación y floculación del quitosano [2].
+
+En particular, Roussy et al. observaron que diferentes preparaciones de quitosano presentaban diferencias en la remoción de turbidez y que las condiciones de pH también influían en el comportamiento del proceso [2].
+
+### Variable experimental
+
+Por este motivo, el proyecto no asumirá inicialmente que el quitosano hidrolizado sea mejor que el no hidrolizado.
+
+Se propone determinar experimentalmente:
+
+> **¿Cómo influye el tipo de quitosano en la formación de flóculos y en la remoción de turbidez?**
 
 ---
 
@@ -284,36 +457,276 @@ flowchart LR
 > **Este esquema representa nuestro concepto inicial. La configuración final del sistema dependerá de los resultados obtenidos durante la investigación, experimentación y diseño del prototipo.**
 
 ---
+# 📊 Variables del proceso
+
+El sistema será analizado mediante variables de entrada, variables de proceso y variables de salida.
+
+| Tipo      | Variable                 | Función                                |
+| --------- | ------------------------ | -------------------------------------- |
+| Entrada   | Turbidez inicial         | Caracterizar el agua                   |
+| Entrada   | pH inicial               | Caracterizar las condiciones químicas  |
+| Entrada   | Tipo de agua             | Definir la muestra de trabajo          |
+| Proceso   | Tipo de quitosano        | Comparar formulaciones                 |
+| Proceso   | Dosis de quitosano       | Determinar la cantidad necesaria       |
+| Proceso   | Tiempo de mezcla         | Controlar la dispersión del coagulante |
+| Proceso   | Intensidad de mezcla     | Favorecer las interacciones            |
+| Proceso   | Tiempo de floculación    | Favorecer el crecimiento de flóculos   |
+| Proceso   | Tiempo de sedimentación  | Permitir la separación                 |
+| Salida    | Turbidez final           | Evaluar la clarificación               |
+| Salida    | pH final                 | Evaluar cambios químicos               |
+| Indicador | Remoción de turbidez (%) | Medir eficiencia                       |
+
+---
+# ⚙️ Proceso de ingeniería propuesto
+
+El sistema se plantea como un **proceso de clarificación por lotes (batch)** compuesto por diferentes unidades funcionales.
+
+```mermaid
+flowchart LR
+
+    A["💧<br/><b>AGUA CRUDA</b><br/><br/>Ingreso de muestra"]
+
+    B["📡<br/><b>CARACTERIZACIÓN</b><br/><br/>pH + Turbidez"]
+
+    C["🧪<br/><b>DOSIFICACIÓN</b><br/><br/>Adición controlada de quitosano"]
+
+    D["⚙️<br/><b>REACTOR DE MEZCLA RÁPIDA</b><br/><br/>Dispersión del reactivo"]
+
+    E["🔄<br/><b>REACTOR DE FLOCULACIÓN</b><br/><br/>Crecimiento de flóculos"]
+
+    F["⏳<br/><b>UNIDAD DE SEDIMENTACIÓN</b><br/><br/>Separación sólido-líquido"]
+
+    G["📊<br/><b>EVALUACIÓN</b><br/><br/>Turbidez + pH"]
+
+    A --> B --> C --> D --> E --> F --> G
+
+    classDef water fill:#0288D1,color:#FFFFFF,stroke:#01579B,stroke-width:2px;
+    classDef process fill:#2E7D32,color:#FFFFFF,stroke:#1B5E20,stroke-width:2px;
+    classDef result fill:#F9A825,color:#000000,stroke:#F57F17,stroke-width:2px;
+
+    class A water;
+    class B,C,D,E,F process;
+    class G result;
+```
+
+---
+
+## 1. Caracterización de la alimentación
+
+El agua ingresa al sistema como **agua cruda**.
+
+Antes de iniciar el tratamiento se determinan las condiciones iniciales mediante:
+
+* pH.
+* Turbidez.
+
+Estas variables constituyen información de entrada para el proceso.
+
+---
+
+## 2. Dosificación del quitosano
+
+Se incorpora una cantidad determinada de solución de quitosano.
+
+La dosificación deberá estar relacionada con los resultados experimentales obtenidos previamente.
+
+La finalidad del sistema automatizado será controlar la cantidad incorporada de acuerdo con la estrategia de dosificación definida.
+
+---
+
+## 3. Reactor de mezcla rápida
+
+Después de la dosificación se requiere una etapa de mezcla rápida.
+
+Su objetivo es:
+
+> **favorecer la dispersión homogénea del quitosano en el volumen de agua.**
+
+En esta etapa es importante controlar las condiciones de agitación para evitar una mezcla insuficiente o excesivamente agresiva.
+
+---
+
+## 4. Reactor de floculación
+
+Posteriormente, el agua pasa a una etapa de floculación.
+
+El objetivo es favorecer las colisiones entre las partículas desestabilizadas y permitir el crecimiento progresivo de los flóculos.
+
+En esta etapa se plantea utilizar una agitación más controlada que durante la mezcla rápida.
+
+---
+
+## 5. Unidad de sedimentación
+
+Después de la floculación, la suspensión pasa a una etapa de sedimentación.
+
+Los flóculos formados pueden separarse mediante la acción de la gravedad.
+
+El objetivo es obtener una fase líquida con menor concentración de partículas suspendidas.
+
+---
+
+## 6. Evaluación
+
+Finalmente se realiza una nueva medición de:
+
+* Turbidez.
+* pH.
+
+Los resultados se comparan con las condiciones iniciales.
+
+El principal indicador será:
+
+$$
+\text{Remoción de turbidez (\%)} =
+\frac{T_i-T_f}{T_i}\times100
+$$
+
+---
+
+# 🔄 Concepto de funcionamiento del sistema
+
+```mermaid
+flowchart TB
+
+    A["💧 AGUA SUPERFICIAL"]
+    
+    B["📡 SENSOR DE TURBIDEZ<br/>+<br/>SENSOR DE pH"]
+    
+    C["🧠 CONTROLADOR<br/>Procesamiento de datos"]
+    
+    D["🧪 DOSIFICACIÓN<br/>DE QUITOSANO"]
+    
+    E["⚙️ REACTOR<br/>MEZCLA RÁPIDA"]
+    
+    F["🔄 REACTOR<br/>FLOCULACIÓN"]
+    
+    G["⏳ SEDIMENTACIÓN"]
+    
+    H["📊 SENSOR DE TURBIDEZ<br/>MEDICIÓN FINAL"]
+    
+    I["💧 AGUA CLARIFICADA"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+
+    H -. Retroalimentación .-> C
+```
+
+---
 
 # 🎯 Objetivos de Desarrollo Sostenible
 
 El proyecto se relaciona principalmente con los siguientes Objetivos de Desarrollo Sostenible:
 
-| ODS            | Objetivo                              | Relación con el proyecto                                                                                                        |
-| -------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| 💧 **ODS 6**   | **Agua limpia y saneamiento**         | Relacionado directamente con la exploración de alternativas para la mejora de procesos de clarificación y tratamiento del agua. |
-| ♻️ **ODS 12**  | **Producción y consumo responsables** | Vinculado con el aprovechamiento de recursos y posibles subproductos para generar una propuesta de mayor valor.                 |
-| 🌡️ **ODS 13** | **Acción por el clima**               | Complementa el proyecto mediante un enfoque de sostenibilidad y sensibilización ambiental.                                      |
+| ODS            | Meta                   | Relación con el proyecto                                                                  |
+| -------------- | ---------------------- | ----------------------------------------------------------------------------------------- |
+| 💧 **ODS 6**   | **6.3**                | Investigación de procesos destinados a mejorar la calidad del agua mediante clarificación |
+| 🏭 **ODS 9**   | **9.4**                | Desarrollo de un proceso tecnológico con enfoque de eficiencia y sostenibilidad           |
+| 🔬 **ODS 9**   | **9.5**                | Investigación, experimentación y desarrollo tecnológico                                   |
+| 💡 **ODS 9**   | **9.b**                | Desarrollo de tecnología e innovación                                                     |
+| ♻️ **ODS 12**  | **12.2** | Optimización experimental de la dosis de quitosano y uso eficiente de los recursos del proceso.         |
+| 🌡️ **ODS 13** | **13.2**   | Relación indirecta mediante el diseño de un proceso tecnológico que considera eficiencia y sostenibilidad.    |
+
+---                                  |
 
 ## 🎯 Priorización
 
-### 💧 ODS 6 — Eje principal
+# 💧 ODS 6 — Agua limpia y saneamiento
 
-El proyecto se centra en explorar alternativas relacionadas con la clarificación y mejora de procesos vinculados con la calidad del agua.
+## Meta 6.3
 
-### ♻️ ODS 12 — Economía circular
+La Meta 6.3 busca mejorar la calidad del agua mediante la reducción de la contaminación, la disminución de aguas residuales sin tratamiento y el incremento del reciclaje y reutilización segura.
 
-Se relaciona con la posibilidad de aprovechar materiales naturales y dar valor a posibles subproductos.
+El proyecto se relaciona con esta meta mediante el estudio de un proceso de clarificación orientado a reducir la turbidez del agua.
 
-### 🌡️ ODS 13 — Sostenibilidad
+La relación se establece principalmente desde la perspectiva de **investigación y desarrollo de procesos de tratamiento**, no como afirmación de que el prototipo produzca directamente agua potable.
 
-Complementa la propuesta mediante una visión orientada al desarrollo de soluciones tecnológicas con enfoque ambiental.
+---
 
+# 🏭 ODS 9 — Industria, innovación e infraestructura
+
+## Meta 9.4
+
+La Meta 9.4 promueve la modernización de infraestructura y la adopción de procesos más sostenibles y eficientes.
+
+El proyecto se relaciona con esta meta mediante el desarrollo de un sistema que integra:
+
+* Sensores.
+* Automatización.
+* Dosificación controlada.
+* Monitoreo.
+* Procesamiento de datos.
+* Diseño de un sistema de tratamiento a escala de prototipo.
+
+## Meta 9.5
+
+La Meta 9.5 promueve el fortalecimiento de la investigación científica y de las capacidades tecnológicas.
+
+Esta relación es directa porque el proyecto contempla:
+
+* Investigación del comportamiento del quitosano.
+* Experimentación.
+* Análisis de variables.
+* Desarrollo del prototipo.
+* Integración de hardware y software.
+* Validación experimental.
+
+## Meta 9.b
+
+La Meta 9.b busca apoyar el desarrollo tecnológico, la investigación y la innovación.
+
+El proyecto contribuye mediante el desarrollo de una solución tecnológica experimental orientada a automatizar un proceso de clarificación.
+
+---
+
+# ♻️ ODS 12 — Producción y consumo responsables
+## Meta 12.2 — Uso sostenible y eficiente de los recursos
+Meta 12.2 — Uso sostenible y eficiente de los recursos.
+El proyecto investiga el uso de quitosano como biopolímero para la clarificación de agua, buscando una alternativa de tratamiento que pueda aprovechar un material de origen biológico. Además, el diseño del proceso permite estudiar y optimizar variables como la dosis de quitosano, evitando establecer una cantidad fija sin considerar las características del agua.
+
+---
+
+# 🌡️ ODS 13 — Acción por el clima
+
+## Meta 13.2 — Integración de medidas relativas al cambio climático
+Esta meta busca incorporar medidas relacionadas con el cambio climático en políticas, estrategias y planificación.
+El proyecto puede vincularse indirectamente mediante el desarrollo de una alternativa tecnológica que considera la eficiencia del proceso, el uso de recursos y la sostenibilidad desde la etapa de diseño.
+
+---
+
+# 🎯 Priorización de los ODS
+
+### 🥇 ODS 6 — Eje principal
+
+Relacionado directamente con la investigación de la clarificación y mejora de la calidad del agua.
+
+### 🥈 ODS 9 — Innovación tecnológica
+
+Relacionado con la investigación, automatización, desarrollo del prototipo y aplicación tecnológica.
+
+### 🥉 ODS 12 — Sostenibilidad
+
+Relacionado con el estudio de un biopolímero y la búsqueda de alternativas de proceso.
+
+### 🌡️ ODS 13 — Complementario
+
+Relacionado con el enfoque ambiental general del proyecto.
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sustainable_Development_Goal-es-12.jpg" width="160"/>
   <img src="https://agenda2030lac.org/sites/default/files/2019-08/S_SDG%20goals_icons-individual-rgb-12_0.png" width="160"/>
   <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Sustainable_Development_Goal-es-05.jpg" width="160"/>
 </p>
+---
+
+
+
 
 ---
 
@@ -402,7 +815,17 @@ Con ello buscamos:
 <br>
 
 ### FUENTES BIBLIOGRÁFICAS
-*
+Referencias científicas
+
+[1] Ministerio del Ambiente, “Decreto Supremo N.° 004-2017-MINAM: Aprueban Estándares de Calidad Ambiental (ECA) para Agua y establecen Disposiciones Complementarias,” Lima, Perú, 2017.
+
+[2] J. Roussy, M. Van Vooren, B. A. Dempsey, and E. Guibal, “Influence of chitosan characteristics on the coagulation and the flocculation of bentonite suspensions,” Water Research, vol. 39, no. 14, pp. 3247–3258, 2005, doi: 10.1016/j.watres.2005.05.039.
+
+[3] A. Soros, J. E. Amburgey, C. E. Stauber, M. D. Sobsey, and L. M. Casanova, “Turbidity reduction in drinking water by coagulation-flocculation with chitosan polymers,” Journal of Water and Health, vol. 17, no. 2, pp. 204–218, 2019, doi: 10.2166/wh.2019.114.
+
+[4] L. Rizzo, A. Di Gennaro, M. Gallo, and V. Belgiorno, “Coagulation/chlorination of surface water: A comparison between chitosan and metal salts,” Separation and Purification Technology, vol. 62, no. 1, pp. 79–85, 2008, doi: 10.1016/j.seppur.2007.12.020.
+
+[5] L. S. Abebe, X. Chen, and M. D. Sobsey, “Chitosan coagulation to improve microbial and turbidity removal by ceramic water filtration for household drinking water treatment,” International Journal of Environmental Research and Public Health, vol. 13, no. 3, p. 269, 2016, doi: 10.3390/ijerph13030269.
 
 ### 🌱 Equipo 05 · Proyecto Integrador 2026-II
 
