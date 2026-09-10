@@ -31,6 +31,6 @@ La simulación constituye una primera aproximación al comportamiento mecánico 
 
 * [🌍 Ver simulación en SimScale](https://www.simscale.com/workbench/?pid=7395617598599356015&rru=4569c5a3-b2dd-4d76-8be7-84ad880149c1&ci=41b13397-48c0-45e3-bb2c-9c92ffa576ca&mt=SIMULATION_RESULT&ct=SOLUTION_FIELD)
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Fotos/Gael_SimScalev2.jpeg" width="1000"/>
+<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Fotos/Gael_SimScalev2.jpg" width="1000"/>
 
 ---
