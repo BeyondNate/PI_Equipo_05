@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="1024" height="341" alt="Banner Equipo 05"
+  <img width="1024" height="540" alt="Banner Equipo 05"
   src="Recursos/Imágenes/BannerEquipo05.png" />
 </p>
 
@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <b>Universidad Peruana Cayetano Heredia</b>
+  <img width="300" height="102" alt="Logo_UPCH" src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Recursos/Im%C3%A1genes/logo-upch-1.webp" />
 </p>
 
 <p align="center">
