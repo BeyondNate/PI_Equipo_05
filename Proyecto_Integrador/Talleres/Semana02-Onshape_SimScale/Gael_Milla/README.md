@@ -4,8 +4,6 @@
 
 Se realizó el modelado 3D de un **soporte triangular**, basado inicialmente en un soporte para vinos y posteriormente adaptado a las necesidades previstas del proyecto. El diseño fue modificado considerando su posible utilización como parte de la estructura del equipo.
 
-Para la fabricación del prototipo se consideró el uso de **PLA (ácido poliláctico)** como material de construcción, debido a su disponibilidad y facilidad de fabricación mediante impresión 3D.
-
 * [⚙️ Ver modelado en Onshape](https://cad.onshape.com/documents/00e50ba611e377f51dc1281b/w/1d9c39c76b98d2c9560b802b/e/58ab4260c3cf800704ecc767?renderMode=0&uiState=6a90aea2ef930a37c4b2c2f1)
 
 <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana02-Onshape_SimScale/Fotos/Gael_Onshape.jpeg" width="1000"/>
