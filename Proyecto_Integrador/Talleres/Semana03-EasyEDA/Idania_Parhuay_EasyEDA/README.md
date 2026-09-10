@@ -9,7 +9,7 @@ Representación de las conexiones eléctricas entre el **sensor de pH, el ESP32 
 
 
 <p align="center">
-  <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoIdania.png" width="950">
+  <img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana03-EasyEDA/Capturas/EsquematicoIdania2.png" width="950">
 </p>
 
 ## 📄 PDF DEL ESQUEMÁTICO
