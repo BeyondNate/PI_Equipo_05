@@ -2,140 +2,96 @@
 
 ## Instrucciones
 
-| **Paso** | **Detalle**                                                                                                                       |
-| -------: | --------------------------------------------------------------------------------------------------------------------------------- |
-|        1 | **Matriz:** revisar las subfunciones y alternativas disponibles; considerar las notas de interfaz y compatibilidad.               |
-|        2 | **Conceptos:** combinar una alternativa por cada subfunción para formar los conceptos A, B y C.                                   |
-|        3 | **Criterios:** definir los pesos de evaluación, cuya suma debe ser 1,0, y justificarlos según los requerimientos del proyecto.    |
-|        4 | **Puntajes (1-5):** valorar cada concepto según cada criterio, donde 5 representa el mejor desempeño.                             |
-|        5 | **Pugh:** comparar los conceptos B y C respecto al concepto A como referencia, utilizando +, 0 y -.                               |
-|        6 | **Ponderado:** calcular el resultado mediante `Total ponderado = Σ (peso × puntaje)`.                                             |
-|        7 | **Selección:** identificar el concepto líder y registrar los principales riesgos y ensayos que deberán realizarse posteriormente. |
+| **Paso** | **Detalle** |
+|------|---------|
+| 1 | Matriz : revisa subfunciones y alternativas; lee 'Notas' para incompatibilidades. |
+| 2 | Conceptos : representa las tres soluciones preliminares obtenidas de la matriz morfológica. |
+| 3 | Criterios : define pesos (suman 1,0) y justifícalos en tu proyecto. |
+| 4 | Puntajes (1-5) : valora cada concepto por criterio (5 = mejor). |
+| 5 | Pugh : compara soluciones preliminares B y C contra A con +/0/-; revisa sumas. |
+| 6 | Ponderado : calcula Total ponderado = SUMA(peso * puntaje). |
+| 7 | Selecciona el(los) concepto(s) líder(es) y registra riesgos/ensayos a planificar. |
 
 ---
 
 ## Notas de interfaz / compatibilidad
 
-| **Notas**                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| El ESP32 incluye Wi-Fi y Bluetooth integrados, por lo que no es necesario adquirir módulos de comunicación adicionales cuando se seleccione esta alternativa. |
-| La alimentación debe ser compatible con el ESP32, sensores, bomba y sistema de agitación.                                                                     |
-| La bomba debe permitir una dosificación controlada de la mezcla de quitosano.                                                                                 |
-| El sensor de nivel debe ser compatible con el recipiente y permitir detectar adecuadamente el nivel de agua.                                                  |
-| El sistema de agitación debe poder ser controlado desde el ESP32.                                                                                             |
-| Los sensores de pH y turbidez requieren un acondicionamiento adecuado de señal.                                                                               |
-| La solución debe mantener la portabilidad del dispositivo.                                                                                                    |
-| El material de la carcasa debe ser adecuado para el entorno de uso y proteger los componentes electrónicos.                                                   |
-| El envase de quitosano debe permitir conservar y dosificar adecuadamente la mezcla preparada.                                                                 |
-
+| **Notas de interfaz** |
+|------------------------------------|
+| El ESP32 integra WiFi y Bluetooth, por lo que no requiere un módulo externo para estas funciones. |
+| La alimentación debe ser compatible con el ESP32, sensores, bombas y actuadores. |
+| Los sensores de turbidez, pH y nivel de agua requieren una conexión y acondicionamiento adecuados. |
+| La bomba debe permitir una dosificación controlada de la solución de quitosano. |
+| El sistema debe permitir controlar el posicionamiento y giro del agitador. |
+| La estructura debe permitir sujetar correctamente la cajita de sensores. |
+| La carcasa debe proteger los componentes electrónicos del contacto con el agua. |
+| El sistema debe mantener una implementación viable para el prototipo. |
 ---
+
+# Matriz
+| N.º | Función | Solución 1 | Solución 2 | Solución 3 |
+|-----:|---------|------------|------------|------------|
+| 1 | Fuente de energía del dispositivo | Batería de litio 3.7/5 V 5000 mAh | Conexión directa | ... |
+| 2 | Encendido del equipo | Interruptor deslizante | Interruptor basculante | ... |
+| 3 | Acondicionar energía eléctrica de entrada | Fuente conmutada | — | Convertidor DC-DC tipo buck |
+| 4 | Acondicionar energía para sensores | Regulador LDO 5 V | Módulo step-down regulado | ... |
+| 5 | Acondicionar energía para módulo de comunicación | Regulador 5 V dedicado | — | Convertidor DC-DC aislado |
+| 6 | Controlar el sistema | ESP32 | — | — |
+| 7 | Sensar turbidez del agua | Sensor de turbidez 0–1000 NTU | Sensor nefelométrico | ... |
+| 8 | Sensar pH del agua | Electrodo de vidrio | ISFET | Sonda de pH |
+| 9 | Sensar nivel de agua | Sensor capacitivo XKC-Y25 | Boya/control eléctrico | Sensor vertical |
+| 10 | Transportar agua turbia al reactor | Bomba de alimentación 12 V | — | — |
+| 11 | Dosificar solución de quitosano | Bomba peristáltica | Bomba electromagnética | Bomba de jeringa |
+| 12 | Posicionar agitador | NEMA 17 + Husillo T8 | Actuador lineal 12 V | Servomotor lineal |
+| 13 | Controlar velocidad y tiempo del agitador | Motor DC + PWM | Relé + temporizador | Driver + encoder |
+| 14 | Sujetar dispositivo/cajita | — | Brazo articulado | Brazo telescópico |
+| 15 | Emitir señal sonora | Buzzer | Zumbador | Altavoz pequeño |
+| 16 | Mostrar turbidez, pH y dosis | LCD 16×2 | OLED | TFT |
+| 17 | Transmitir datos inalámbricamente | — | Bluetooth | WiFi + Bluetooth del ESP32 |
+| 18 | Carcasa | PLA | ABS | PETG |
+| 19 | Envase de mezcla de quitosano | — | HDPE/PP | Envase con sello hermético |
 
 # Conceptos
 
-Los conceptos se construyen combinando una alternativa de cada función de la matriz morfológica.
-
-| **Concepto**          | **Almacenar líquido**      | **Procesamiento y control de señales** | **Medir/Detectar**                             | **Nivel de agua**                 | **Mecánica**                        | **Actuar**          | **Control**            | **Energía / Comunicación** |
-| --------------------- | -------------------------- | -------------------------------------- | ---------------------------------------------- | --------------------------------- | ----------------------------------- | ------------------- | ---------------------- | -------------------------- |
-| **Concepto A (Base)** | Botella plástica HDPE o PP | ESP32                                  | Turbidez salida analógica + pH con electrodo    | Sensor de nivel vertical          | Sensor de Nivel de Agua Vertical (Plástico)+ Bomba peristáltica                  | Control por PWM     | Interruptor deslizante | Fuente 5VDC / Wi-Fi        |
-| **Concepto B**        | Botella plástica HDPE o PP | ESP32                                  | Turbidez salida analógica + pH con sonda        | Sensor de nivel                   | Control eléctrico de nivel de agua/Boya + Bomba peristáltica                  | Control por PWM     | Interruptor basculante | Fuente 5VDC / Wi-Fi        |
-| **Concepto C**        | Envase con sello hermético | ESP32                                  | Nefelométrico de turbidez + pH de estado sólido | Control eléctrico de nivel / boya | Bomba dosificadora electromagnética | Relé + temporizador | Interruptor basculante | Fuente 5VDC / GSM          |
+| Concepto | Almacenar líquido | Procesamiento y control de señales | Medir/Detectar | Mecánica | Actuar | Control | Energía |
+|----------|-------------------|------------------------------------|----------------|----------|--------|---------|---------|
+| Concepto A (Base) | Botella plástica HDPE o PP | ESP32 | Sensores: Turbidez salida analógica, pH con electrodo | Bomba alimentación agua sucia + Bomba de jeringa automatizada | Driver de motor con retroalimentación de velocidad (encoder) | Interruptor deslizante | Fuente 5VDC |
+| Concepto B | Botella plástica HDPE o PP | ESP32 | Sensores: Turbidez salida analógica, pH con sonda | Bomba alimentación agua sucia + Bomba peristáltica | Motor DC (CC) + PWM | ON/OFF | Fuente 5VDC |
+| Concepto C | Envase con sello hermético | ESP32 | Sensores: Nefelométrico de turbidez, pH de estado sólido | Bomba dosificadora electromagnética | Relé + temporizador | ON/OFF | Fuente 5VDC |
 
 
-### Configuración de los conceptos
 
-**Concepto A (Base):**
-
-* T1.2 – Batería de litio 3.7/5 V 5000 mAh
-* T2.1 – Interruptor deslizante
-* T3.3 – Convertidor DC-DC tipo buck
-* T4.1 – Regulador LDO 5 V
-* T5.1 – Regulador 5 V dedicado
-* T6.1 – ESP32
-* T7.1 – Sensor de turbidez 0–1000 NTU
-* T8.1 – Sensor de pH con electrodo de vidrio
-* T9.3 – Sensor de nivel de agua vertical
-* T10.1 – Bomba peristáltica
-* T11.1 – Control por PWM
-* T12.1 – Brazo fijo
-* T13.1 – LED simple
-* T14.1 – Buzzer
-* T15.1 – Pantalla LCD 16 × 2
-* T16.4 – Wi-Fi y Bluetooth integrado del ESP32
-* T17.1 – PLA
-* T18.2 – Plástico HDPE o PP
-
-**Concepto B:**
-
-* T1.3 – Conexión directa
-* T2.2 – Interruptor basculante
-* T3.3 – Convertidor DC-DC tipo buck
-* T4.2 – Módulo step-down regulado
-* T5.1 – Regulador 5 V dedicado
-* T6.1 – ESP32
-* T7.1 – Sensor de turbidez 0–1000 NTU
-* T8.3 – Sensor de pH con sonda
-* T9.1 – Control eléctrico de nivel de agua / boya
-* T10.1 – Bomba peristáltica
-* T11.1 – Control por PWM
-* T12.2 – Brazo articulado
-* T13.2 – LED RGB
-* T14.1 – Buzzer
-* T15 – Pantalla LCD 16 × 2
-* T16.4 – Wi-Fi y Bluetooth integrado del ESP32
-* T17.1 – PLA
-* T18.2 – Plástico HDPE o PP
-
-**Concepto C:**
-
-* T1.3 – Conexión directa
-* T2.2 – Interruptor basculante
-* T3.1 – Fuente conmutada
-* T4.2 – Módulo step-down regulado
-* T5.3 – Convertidor DC-DC aislado
-* T6.1 – ESP32
-* T7.2 – Sensor nefelométrico de turbidez
-* T8.2 – Sensor de pH de estado sólido (ISFET)
-* T9.2 – Sensor de nivel
-* T10.2 – Bomba dosificadora electromagnética
-* T11.3 – Driver con retroalimentación mediante encoder
-* T12.3 – Brazo telescópico
-* T13.3 – Baliza
-* T14.3 – Altavoz pequeño
-* T15.3 – Pantalla TFT a color
-* T16.3 – Módulo GSM
-* T17.2 – ABS
-* T18.3 – Envase con sello hermético
 
 ---
 
 # Criterios de evaluación
 
-| **Criterio**              | **Peso** |
-| ------------------------- | -------: |
-| Precisión de dosificación |     0.25 |
-| Costo                     |     0.15 |
-| Complejidad técnica       |     0.15 |
-| Consumo energético        |     0.15 |
-| Mantenimiento e higiene   |     0.10 |
-| Confiabilidad             |     0.10 |
-| Portabilidad              |     0.10 |
-| **Total**                 | **1.00** |
+| **Criterio** | **Peso** |
+|----------|------|
+| Precisión de dosificación | 0.20 |
+| Costo | 0.15 |
+| Complejidad técnica | 0.15 |
+| Control del proceso | 0.15 |
+| Consumo energético | 0.10 |
+| Mantenimiento e higiene | 0.10 |
+| Confiabilidad | 0.10 |
+| Portabilidad | 0.05 |
+| Total | 1.00 |
 
 ---
 
 # Puntajes (1-5)
 
-| **Criterio**              | **Concepto A** | **Concepto B** | **Concepto C** |
-| ------------------------- | -------------: | -------------: | -------------: |
-| Precisión de dosificación |              4 |              5 |              4 |
-| Costo                     |              4 |              4 |              3 |
-| Complejidad técnica       |              4 |              4 |              3 |
-| Consumo energético        |              4 |              4 |              3 |
-| Mantenimiento e higiene   |              4 |              4 |              3 |
-| Confiabilidad             |              4 |              5 |              3 |
-| Portabilidad              |              4 |              5 |              3 |
-
-> **Nota:** los puntajes deben validarse nuevamente después de incorporar el sensor de nivel, ya que esta nueva función forma parte de la configuración completa de cada concepto.
+| **Criterio** | **Solución 1 (A)** | **Solución 2 (B)** | **Solución 3 (C)** |
+|----------|------------|-----------------|------------|
+| Precisión de dosificación | 4 | 5 | 4 |
+| Costo | 4 | 4 | 3 |
+| Complejidad técnica | 4 | 4 | 3 |
+| Control del proceso | 4 | 4 | 4 |
+| Consumo energético | 4 | 4 | 3 |
+| Mantenimiento e higiene | 4 | 4 | 3 |
+| Confiabilidad | 4 | 5 | 3 |
+| Portabilidad | 4 | 5 | 3 |
 
 ---
 
@@ -143,43 +99,40 @@ Los conceptos se construyen combinando una alternativa de cada función de la ma
 
 Se toma el **Concepto A** como alternativa base de referencia.
 
-| **Criterio**              | **Base (A)** | **B vs A** | **C vs A** |
-| ------------------------- | -----------: | ---------: | ---------: |
-| Precisión de dosificación |            0 |          1 |          0 |
-| Costo                     |            0 |          0 |         -1 |
-| Complejidad técnica       |            0 |          0 |         -1 |
-| Consumo energético        |            0 |          0 |         -1 |
-| Mantenimiento e higiene   |            0 |          0 |         -1 |
-| Confiabilidad             |            0 |          1 |         -1 |
-| Portabilidad              |            0 |          1 |         -1 |
-| **Suma**                  |              |     **+3** |     **-6** |
-
-### Interpretación
-
-El **Concepto B** presenta una ventaja respecto al concepto base principalmente en precisión de dosificación, confiabilidad y portabilidad. En los demás criterios presenta un desempeño equivalente.
-
-El **Concepto C** presenta un desempeño inferior al Concepto A en costo, complejidad técnica, consumo energético, mantenimiento e higiene, confiabilidad y portabilidad. Por ello, presenta una valoración global desfavorable frente a la alternativa base.
+| *Criterio** | **Base (A)** | **B vs A** | **C vs A** |
+|----------|----------|--------|--------|
+| Precisión de dosificación | 0 | +1 | 0 |
+| Costo | 0 | 0 | -1 |
+| Complejidad técnica | 0 | 0 | -1 |
+| Control del proceso | 0 | 0 | 0 |
+| Consumo energético | 0 | 0 | -1 |
+| Mantenimiento e higiene | 0 | 0 | -1 |
+| Confiabilidad | 0 | +1 | -1 |
+| Portabilidad | 0 | +1 | -1 |
+| Suma | — | +3 | -6 |
 
 ---
 
 # Evaluación ponderada
 
-| **Criterio**              | **Peso** | **Concepto A** | **Peso × A** | **Concepto B** | **Peso × B** | **Concepto C** | **Peso × C** |
-| ------------------------- | -------: | -------------: | -----------: | -------------: | -----------: | -------------: | -----------: |
-| Precisión de dosificación |     0.25 |              4 |         1.00 |              5 |         1.25 |              4 |         1.00 |
-| Costo                     |     0.15 |              4 |         0.60 |              4 |         0.60 |              3 |         0.45 |
-| Complejidad técnica       |     0.15 |              4 |         0.60 |              4 |         0.60 |              3 |         0.45 |
-| Consumo energético        |     0.15 |              4 |         0.60 |              4 |         0.60 |              3 |         0.45 |
-| Mantenimiento e higiene   |     0.10 |              4 |         0.40 |              4 |         0.40 |              3 |         0.30 |
-| Confiabilidad             |     0.10 |              4 |         0.40 |              5 |         0.50 |              3 |         0.30 |
-| Portabilidad              |     0.10 |              4 |         0.40 |              5 |         0.50 |              3 |         0.30 |
-| **Total ponderado**       | **1.00** |                |     **4.00** |                |     **4.45** |                |     **3.25** |
+| **Criterio** | **Peso** | **Concepto A (Base)** | **Concepto B** | **Concepto C** | **Peso x Concepto A (Base)** | **Peso x Concepto B** | **Peso x Concepto C** |
+|----------|------|-------------------|------------|------------|-------------------------|-----------------|-----------------|
+| Precisión de dosificación | 0.2 | 4 | 5 | 4 | 0.8 | 1 | 0.8 |
+| Costo | 0.15 | 4 | 4 | 3 | 0.6 | 0.6 | 0.45 |
+| Complejidad técnica | 0.15 | 4 | 4 | 3 | 0.6 | 0.6 | 0.45 |
+| Control del proceso | 0.15 | 4 | 4 | 4 | 0.6 | 0.6 | 0.6 |
+| Consumo energético | 0.1 | 4 | 4 | 3 | 0.4 | 0.4 | 0.3 |
+| Mantenimiento e higiene | 0.1 | 4 | 4 | 3 | 0.4 | 0.4 | 0.3 |
+| Confiabilidad | 0.1 | 4 | 5 | 3 | 0.4 | 0.5 | 0.3 |
+| Portabilidad | 0.05 | 4 | 5 | 3 | 0.2 | 0.25 | 0.15 |
+| Total | 1 | | | | 4 | 4.35 | 3.35 |
+| TOTAL | | | | | 4 | 4.35 | 3.35 |
 
 ---
 
 # Selección del concepto
 
-De acuerdo con la evaluación ponderada, el **Concepto B** obtiene el mayor resultado con un puntaje de **4.45**, seguido del Concepto A con **4.00** y del Concepto C con **3.25**.
+De acuerdo con la evaluación ponderada, el **Concepto B** obtiene el mayor resultado con un puntaje de **4.35**, seguido del Concepto A con **4.00** y del Concepto C con **3.35**.
 
 Por lo tanto, el **Concepto B se selecciona como concepto líder** para continuar con el desarrollo del prototipo de clarificación de agua mediante quitosano.
 
@@ -188,7 +141,7 @@ La selección deberá ser posteriormente validada mediante pruebas experimentale
 1. La precisión de dosificación de la mezcla de quitosano.
 2. La respuesta del sensor de turbidez antes y después del proceso de clarificación.
 3. La medición de pH del agua.
-4. El correcto funcionamiento del sensor de nivel.
+4. El correcto funcionamiento de la bomba de alimentación de agua sucia.
 5. La capacidad del sistema de agitación para mantener condiciones reproducibles.
 6. El consumo energético del dispositivo durante una operación completa.
 7. La confiabilidad del sistema de control y comunicación.
