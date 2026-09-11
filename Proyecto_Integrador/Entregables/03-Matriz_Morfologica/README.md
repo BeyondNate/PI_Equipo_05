@@ -1,6 +1,6 @@
 ## Matriz Morfológica
 
-![Matriz Morfológica](Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/mf03_v4.png)
+![Matriz Morfológica](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/mf03_v4.png?raw=true)
 
 ## 📁 Link al CANVA:
 
