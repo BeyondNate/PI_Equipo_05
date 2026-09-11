@@ -1,6 +1,6 @@
 ## Matriz Morfológica
 
-![Mi imagen](../FOTOS/mf03_v4.png)
+![Matriz Morfológica](Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/mf03_v4.png)
 
 ## 📁 Link al CANVA:
 
