@@ -1,8 +1,6 @@
 ## Matriz Morfológica
 
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/PI_MATRIZ_MORFOLOGICA_01_V4.png"/>
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/PI_MATRIZ_MORFOLOGICA_02_V4.png"/>
-<img src="https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Entregables/03-Matriz_Morfologica/FOTOS/PI_MATRIZ_MORFOLOGICA_03_V4.png"/>
+![Mi imagen](../FOTOS/mf03_v4.png)
 
 ## 📁 Link al CANVA:
 
