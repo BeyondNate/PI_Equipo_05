@@ -268,23 +268,13 @@ flowchart LR
 
 ## Coagulación y floculación
 
-La clarificación mediante coagulación-floculación comprende diferentes fenómenos fisicoquímicos.
+La clarificación busca remover partículas suspendidas y coloidales presentes en el agua. El proceso comprende principalmente:
 
-### Coagulación
+* **Coagulación:** desestabilización de las partículas presentes en el agua.
+* **Floculación:** agrupación de estas partículas para formar flóculos de mayor tamaño.
+* **Sedimentación:** separación de los flóculos mediante la acción de la gravedad.
 
-La **coagulación** corresponde a la desestabilización de las partículas suspendidas o coloidales presentes en el agua.
-
-Muchas partículas coloidales presentan cargas superficiales que favorecen su permanencia en suspensión.
-
-El coagulante puede reducir esta estabilidad y favorecer la posterior agregación de las partículas.
-
-### Floculación
-
-La **floculación** ocurre posteriormente mediante una mezcla controlada.
-
-Durante esta etapa, las partículas previamente desestabilizadas pueden colisionar y formar agregados de mayor tamaño denominados **flóculos**.
-
-Estos flóculos pueden posteriormente separarse mediante sedimentación.
+El **quitosano** puede actuar como agente coagulante y floculante, favoreciendo la unión de las partículas y la formación de flóculos [2], [3].
 
 De forma simplificada:
 
@@ -292,8 +282,6 @@ De forma simplificada:
 Partículas suspendidas
           ↓
 Desestabilización
-          ↓
-Colisión entre partículas
           ↓
 Formación de flóculos
           ↓
@@ -347,6 +335,26 @@ La eficiencia del quitosano no es constante para todas las muestras. Depende tan
 
 Por ello, la selección de la dosis debe ser determinada experimentalmente.
 
+---
+# 🧪 Preparación de la solución de quitosano
+
+El quitosano presenta una baja solubilidad en agua, por lo que puede
+disolverse utilizando una solución diluida de **ácido acético**. En
+diversos estudios de coagulación y floculación se ha utilizado
+**ácido acético al 1% v/v** como medio para preparar la solución de
+quitosano [5], [6].
+
+En nuestro proyecto, esta solución será preparada previamente y
+posteriormente utilizada para dosificar el quitosano en el agua
+turbia.
+
+La cantidad de solución de quitosano que se agregará a cada muestra
+de agua será determinada mediante pruebas experimentales, considerando
+variables como la turbidez y el pH.
+
+> ⚠️ El 1% corresponde a la concentración del ácido acético utilizado
+> para preparar la solución de quitosano, no a una proporción de ácido
+> acético que deba agregarse directamente a cada litro de agua turbia.
 ---
 
 # 🧬 Quitosano hidrolizado y no hidrolizado
@@ -824,13 +832,15 @@ Referencias científicas
 
 [1] Ministerio del Ambiente, “Decreto Supremo N.° 004-2017-MINAM: Aprueban Estándares de Calidad Ambiental (ECA) para Agua y establecen Disposiciones Complementarias,” Lima, Perú, 2017.
 
-[2] J. Roussy, M. Van Vooren, B. A. Dempsey, and E. Guibal, “Influence of chitosan characteristics on the coagulation and the flocculation of bentonite suspensions,” Water Research, vol. 39, no. 14, pp. 3247–3258, 2005, doi: 10.1016/j.watres.2005.05.039.
+[2] J. Roussy, M. Van Vooren, B. A. Dempsey, and E. Guibal, “Influence of chitosan characteristics on the coagulation and the flocculation of bentonite suspensions,” *Water Research*, vol. 39, no. 14, pp. 3247–3258, 2005, doi: 10.1016/j.watres.2005.05.039.
 
-[3] A. Soros, J. E. Amburgey, C. E. Stauber, M. D. Sobsey, and L. M. Casanova, “Turbidity reduction in drinking water by coagulation-flocculation with chitosan polymers,” Journal of Water and Health, vol. 17, no. 2, pp. 204–218, 2019, doi: 10.2166/wh.2019.114.
+[3] A. Soros, J. E. Amburgey, C. E. Stauber, M. D. Sobsey, and L. M. Casanova, “Turbidity reduction in drinking water by coagulation-flocculation with chitosan polymers,” *Journal of Water and Health*, vol. 17, no. 2, pp. 204–218, 2019, doi: 10.2166/wh.2019.114.
 
-[4] L. Rizzo, A. Di Gennaro, M. Gallo, and V. Belgiorno, “Coagulation/chlorination of surface water: A comparison between chitosan and metal salts,” Separation and Purification Technology, vol. 62, no. 1, pp. 79–85, 2008, doi: 10.1016/j.seppur.2007.12.020.
+[4] L. Rizzo, A. Di Gennaro, M. Gallo, and V. Belgiorno, “Coagulation/chlorination of surface water: A comparison between chitosan and metal salts,” *Separation and Purification Technology*, vol. 62, no. 1, pp. 79–85, 2008, doi: 10.1016/j.seppur.2007.12.020.
 
-[5] L. S. Abebe, X. Chen, and M. D. Sobsey, “Chitosan coagulation to improve microbial and turbidity removal by ceramic water filtration for household drinking water treatment,” International Journal of Environmental Research and Public Health, vol. 13, no. 3, p. 269, 2016, doi: 10.3390/ijerph13030269.
+[5] W. L. Ang, A. W. Mohammad, A. Benamor, and N. Hilal, “Chitosan as natural coagulant in hybrid coagulation-nanofiltration membrane process for water treatment,” *Journal of Environmental Chemical Engineering*, vol. 4, no. 4, pp. 4857–4862, 2016, doi: 10.1016/j.jece.2016.03.029.
+
+[6] G. De-Paz-Arroyo, A. M. Torres-Iribe, L. A. Picos-Corrales, A. Licea-Claverie, G. Crini, E. García-Armenta, and D. V. Félix-Alcalá, “Synergy Between Low-Cost Chitosan and Polyaluminum Chloride (PAC) Improves the Flocculation Process for River Water Treatment,” *Polymers*, vol. 17, no. 13, p. 1822, 2025, doi: 10.3390/polym17131822.
 
 ### 🌱 Equipo 05 · Proyecto Integrador 2026-II
 
