@@ -218,3 +218,7 @@ Finalmente, se utiliza el método de **mínimos cuadrados** mediante `statsmodel
 El desarrollo completo del análisis, incluyendo el código, gráficos y resultados, se encuentra en:
 
 **[`Regresion_lineal_Gael_Milla.ipynb`](Regresion_lineal_Gael_Milla.ipynb)**
+
+**[`Archivo_Collab`](https://colab.research.google.com/drive/1VcyBfTJJZqV9J3jwgej07EC25tePN866#scrollTo=DIT9NijPDA67)**
+
+
