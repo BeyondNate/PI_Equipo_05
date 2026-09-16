@@ -139,7 +139,7 @@ La representación gráfica ayuda a interpretar el comportamiento del modelo de 
 
 ---
 
-## Conclusiones
+## ✿ Conclusiones
 
 El desarrollo del taller permitió comprender de manera práctica cómo se construye un modelo de regresión lineal a partir de un conjunto de datos. Primero fue necesario conocer la estructura de la información y revisar sus principales características. Después, se definieron las variables de entrada y la variable objetivo para poder entrenar correctamente el modelo.
 
