@@ -59,7 +59,7 @@ Se utilizó un `pairplot` para observar la distribución de las variables y sus 
 sns.pairplot(df1)
 ```
 
-[Ver imagen del Pair Plot](https://github.com/usuario/proyecto/blob/main/imagenes/pairplot.png)
+![Ver imagen del Pair Plot](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/Brad_Cardenas/capturas/Relacion_Variables.png)
 
 ## 3. Matriz de correlación
 
