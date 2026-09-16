@@ -70,7 +70,7 @@ plt.figure(figsize=(10,7))
 sns.heatmap(numeric__df1.corr(), annot=True, linewidths=2)
 ```
 
-[Ver matriz de correlación](https://github.com/usuario/proyecto/blob/main/imagenes/correlacion.png)
+![Ver matriz de correlación](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/Brad_Cardenas/capturas/MatrizCorrelacion.png)
 
 ## 4. Regresión lineal
 
@@ -127,7 +127,7 @@ ax3.scatter(df1[l[3]], df1['Consumo_Energia'])
 ax3.set_title(l[3] + " vs. Consumo_Energia")
 ```
 
-[Ver gráficos de las variables predictoras](https://github.com/usuario/proyecto/blob/main/imagenes/variables_vs_consumo.png)
+![Ver gráficos de las variables predictoras](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/Brad_Cardenas/capturas/VariablesPredictorias.png)
 
 ## 6. Valores reales frente a valores predichos
 
@@ -141,7 +141,7 @@ plt.ylabel("Consumo de energía predicho")
 plt.scatter(x=y_test, y=predictions)
 ```
 
-[Ver gráfico real vs. predicho](https://github.com/usuario/proyecto/blob/main/imagenes/real_vs_predicho.png)
+![Ver gráfico real vs. predicho](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/Brad_Cardenas/capturas/Real_Ficticio.png)
 
 ## 7. Análisis de residuos
 
@@ -156,17 +156,20 @@ plt.ylabel("Densidad del kernel")
 sns.distplot([y_test-predictions])
 ```
 
-[Ver histograma de residuos](https://github.com/usuario/proyecto/blob/main/imagenes/residuos.png)
+![Ver histograma de residuos](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/Brad_Cardenas/capturas/Analisis_Residuos.png)
 
 También se analizaron los residuos frente a los valores predichos para observar posibles patrones.
 
-[Ver gráfico de residuos](https://github.com/usuario/proyecto/blob/main/imagenes/residuos_predichos.png)
+![Ver gráfico de residuos](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/Brad_Cardenas/capturas/GraficoResiduos.png)
 
 ## 8. Árbol de decisión
 
 Como segundo enfoque se utilizó un árbol de decisión para regresión. Se generaron datos de prueba y se entrenó un `DecisionTreeRegressor` con una profundidad máxima de 5.
 
 El modelo fue evaluado mediante el error cuadrático medio (MSE) y se analizaron las importancias de las características.
+
+![Ver gráfico de Árbol de decisión](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/Brad_Cardenas/capturas/ArbolDecision.png)
+
 
 ## 9. Modelo OLS
 
@@ -203,6 +206,6 @@ Durante el desarrollo se aprendió a:
 
 ## Archivo principal
 
-`Diseño_AI.ipynb`
+[`Diseño_AI.ipynb`](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/Brad_Cardenas/Dise%C3%B1o_AI.ipynb)
 
 El notebook contiene el código utilizado para realizar todo el proceso de análisis, modelado y evaluación.
