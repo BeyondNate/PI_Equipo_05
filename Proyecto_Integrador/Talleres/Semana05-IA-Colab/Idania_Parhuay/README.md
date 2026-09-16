@@ -12,17 +12,20 @@ El desarrollo del taller permitió poner en práctica diferentes etapas del aná
 
 Uno de los primeros pasos fue conocer cómo estaba conformado el conjunto de datos. Para ello se utilizaron funciones como `head()`, `info()` y `describe()`.
 
-<img width="765" height="393" alt="image" src="https://github.com/user-attachments/assets/7fb397ca-7295-449f-b3f0-3928905cf01c" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7fb397ca-7295-449f-b3f0-3928905cf01c" width="800">
+</p>
 
 También se utilizó:
-
-<img width="1241" height="417" alt="image" src="https://github.com/user-attachments/assets/fd2b8e64-cca8-4d0b-b529-088541ef958c" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/fd2b8e64-cca8-4d0b-b529-088541ef958c" width="800">
+</p>
 
 
 y:
-
-<img width="1282" height="505" alt="image" src="https://github.com/user-attachments/assets/88aee67e-b090-4568-badd-0d6d6b956184" />
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/88aee67e-b090-4568-badd-0d6d6b956184" width="800">
+</p>
 
 Estas instrucciones permitieron revisar las primeras observaciones, los tipos de datos, la cantidad de registros y algunas estadísticas descriptivas.
 
@@ -87,13 +90,6 @@ El modelo obtuvo una intersección de aproximadamente **2.7411** y los siguiente
 <img width="690" height="101" alt="image" src="https://github.com/user-attachments/assets/202638fa-fa16-4c39-9821-e8a47ff420c5" />
 <img width="812" height="277" alt="image" src="https://github.com/user-attachments/assets/9e4e5646-f91f-4f97-90f1-9fcbb06ad9f5" />
 
-
-| Variable           | Coeficiente |
-| ------------------ | ----------: |
-| Temperatura        |      0.1371 |
-| Horas de Operación |      1.6688 |
-| Carga              |      0.0963 |
-| Humedad            |      0.0268 |
 
 Estos valores permiten interpretar cómo cambia el consumo de energía cuando aumenta una variable, manteniendo las demás constantes dentro del modelo.
 
