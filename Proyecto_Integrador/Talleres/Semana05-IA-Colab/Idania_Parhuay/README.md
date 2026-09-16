@@ -18,13 +18,13 @@ Uno de los primeros pasos fue conocer cómo estaba conformado el conjunto de dat
 
 También se utilizó:
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fd2b8e64-cca8-4d0b-b529-088541ef958c" width="800">
+  <img src="https://github.com/user-attachments/assets/fd2b8e64-cca8-4d0b-b529-088541ef958c" width="600">
 </p>
 
 
 y:
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/88aee67e-b090-4568-badd-0d6d6b956184" width="800">
+  <img src="https://github.com/user-attachments/assets/88aee67e-b090-4568-badd-0d6d6b956184" width="600">
 </p>
 
 Estas instrucciones permitieron revisar las primeras observaciones, los tipos de datos, la cantidad de registros y algunas estadísticas descriptivas.
@@ -42,7 +42,7 @@ Esta parte fue importante porque antes de aplicar cualquier modelo es necesario 
 Después de revisar los datos, se separaron las variables que serían utilizadas como características de entrada y la variable que se desea predecir.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/46d85795-a4a2-459e-83f5-be21538dd784" width="800">
+  <img src="https://github.com/user-attachments/assets/46d85795-a4a2-459e-83f5-be21538dd784" width="600">
 </p>
 
 En este caso, `X` contiene las variables:
@@ -69,7 +69,7 @@ Aquí comprendimos mejor la diferencia entre las **variables de entrada** y la *
 Para entrenar el modelo se dividió el conjunto de datos en dos partes:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ff585bff-b6a2-4a95-a4e6-02550251bc00" width="800">
+  <img src="https://github.com/user-attachments/assets/ff585bff-b6a2-4a95-a4e6-02550251bc00" width="600">
 </p>
 
 Se utilizó el **70 % de los datos para entrenamiento** y el **30 % para prueba**. El parámetro `random_state=123` permite mantener la misma división cada vez que se ejecuta el código.
@@ -85,7 +85,7 @@ Esta división permite que el modelo aprenda a partir de una parte de los datos 
 Una de las partes principales del taller fue la creación y entrenamiento del modelo:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/294c81c9-d09c-4917-b43a-7059b6603396" width="800">
+  <img src="https://github.com/user-attachments/assets/294c81c9-d09c-4917-b43a-7059b6603396" width="600">
 </p>
 
 Con `LinearRegression()` se creó el modelo y mediante `fit()` se realizó el entrenamiento utilizando los datos de entrenamiento.
@@ -93,11 +93,11 @@ Con `LinearRegression()` se creó el modelo y mediante `fit()` se realizó el en
 El modelo obtuvo una intersección de aproximadamente **2.7411** y los siguientes coeficientes:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/202638fa-fa16-4c39-9821-e8a47ff420c5" width="800">
+  <img src="https://github.com/user-attachments/assets/202638fa-fa16-4c39-9821-e8a47ff420c5" width="600">
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9e4e5646-f91f-4f97-90f1-9fcbb06ad9f5"  width="800">
+  <img src="https://github.com/user-attachments/assets/9e4e5646-f91f-4f97-90f1-9fcbb06ad9f5"  width="600">
 </p>
 
 Estos valores permiten interpretar cómo cambia el consumo de energía cuando aumenta una variable, manteniendo las demás constantes dentro del modelo.
@@ -124,7 +124,7 @@ Consumo de Energía =
 Otro código que consideramos importante fue el utilizado para calcular el **error estándar** y la **estadística t** de los coeficientes.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a9b59f0a-8878-4c27-9aa8-d092577ee5fc" width="800">
+  <img src="https://github.com/user-attachments/assets/a9b59f0a-8878-4c27-9aa8-d092577ee5fc" width="600">
 </p>
 
 La estadística t permite relacionar el tamaño de cada coeficiente con su error estándar. En los resultados del taller, **Horas de Operación presentó la estadística t más alta**, seguida de Carga, Temperatura y Humedad.
@@ -140,7 +140,7 @@ Esta parte permitió ir un poco más allá de observar únicamente los coeficien
 Finalmente, se realizaron predicciones con el modelo y se utilizaron gráficos para observar la relación entre los valores reales y los valores predichos.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3e42b321-0503-4877-b47c-2e45bedffab1" width="800">
+  <img src="https://github.com/user-attachments/assets/3e42b321-0503-4877-b47c-2e45bedffab1" width="600">
 </p>
 
 La comparación gráfica permite observar qué tan cerca se encuentran las predicciones realizadas por el modelo de los valores reales.
