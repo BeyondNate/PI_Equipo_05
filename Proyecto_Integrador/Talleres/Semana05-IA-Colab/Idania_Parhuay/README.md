@@ -13,7 +13,7 @@ El desarrollo del taller permitió poner en práctica diferentes etapas del aná
 Uno de los primeros pasos fue conocer cómo estaba conformado el conjunto de datos. Para ello se utilizaron funciones como `head()`, `info()` y `describe()`.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7fb397ca-7295-449f-b3f0-3928905cf01c" width="800">
+  <img src="https://github.com/user-attachments/assets/7fb397ca-7295-449f-b3f0-3928905cf01c" width="600">
 </p>
 
 También se utilizó:
