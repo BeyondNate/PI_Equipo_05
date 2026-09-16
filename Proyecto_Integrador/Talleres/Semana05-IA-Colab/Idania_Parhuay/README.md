@@ -12,11 +12,15 @@ El desarrollo del taller permitió poner en práctica diferentes etapas del aná
 
 En esta sección se encuentran los archivos utilizados como apoyo y fuente de datos para el desarrollo del taller.
 
-| Archivo | Descripción | Visualizacion | Descarga
-|---|---|---|
-| 📄 **Documento PDF** | Material de apoyo utilizado durante el taller. | [Ver documento](Taller_Regresión_Lineal_Idania.ipynb) | [⬇️ Descargar](./Proyecto_Integrador/Talleres/Semana05-IA-Colab/Idania_Parhuay/Taller_Regresión_Lineal_Idania.ipynb) |
+## 📚 Documentación
 
-| 📊 **Tabla CSV** | Conjunto de datos utilizado para el análisis y construcción del modelo. | [Ver tabla de datos en formato CSV](Data_PI_regresion.csv) | [⬇️ Descargar](./datos/Data_PI_regresion.csv) |
+En esta sección se encuentran los archivos utilizados como material de apoyo y fuente de datos para el desarrollo del taller.
+
+| Archivo                             | Descripción                                                                            | Visualización                                          | Descarga                                                                                                             |
+| ----------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| 📓 **Notebook de Regresión Lineal** | Notebook utilizado para desarrollar el taller y aplicar el modelo de regresión lineal. | [Ver notebook](./Taller_Regresión_Lineal_Idania.ipynb) | [⬇️ Descargar](./Proyecto_Integrador/Talleres/Semana05-IA-Colab/Idania_Parhuay/Taller_Regresión_Lineal_Idania.ipynb) |
+| 📊 **Tabla CSV**                    | Conjunto de datos utilizado para el análisis y construcción del modelo.                | [Ver tabla de datos](./Data_PI_regresion.csv)          | [⬇️ Descargar](./Proyecto_Integrador/Talleres/Semana05-IA-Colab/Idania_Parhuay/Data_PI_regresion.csv)                |
+
 
 ---
 ## 📄 Documento
