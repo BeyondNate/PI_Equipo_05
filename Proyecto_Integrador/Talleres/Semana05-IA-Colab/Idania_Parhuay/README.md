@@ -4,7 +4,7 @@
 
 En este taller se trabajó con un conjunto de datos relacionado con el consumo de energía, utilizando Python para explorar la información y construir un modelo de regresión lineal. Las variables consideradas fueron **Temperatura, Horas de Operación, Carga y Humedad**, mientras que **Consumo de Energía** fue tomada como la variable que se busca explicar y predecir.
 
-El desarrollo del taller permitió poner en práctica diferentes etapas del análisis de datos, desde conocer y revisar el conjunto de datos hasta entrenar un modelo y analizar los resultados obtenidos. A continuación, se presentan los códigos que consideramos más importantes y lo que se pudo comprender a partir de cada uno.
+El desarrollo del taller permitió poner en práctica diferentes etapas del análisis de datos, desde conocer y revisar el conjunto de datos hasta entrenar un modelo y analizar los resultados obtenidos. En este README presento las partes del código que consideré más importantes, junto con lo que pude comprender y observar durante el desarrollo del taller.
 
 ---
 
@@ -42,7 +42,7 @@ y:
 
 Estas instrucciones permitieron revisar las primeras observaciones, los tipos de datos, la cantidad de registros y algunas estadísticas descriptivas.
 
-En este caso, se trabajó con **5000 registros y 5 variables numéricas**, sin valores nulos. Además, `describe()` permitió observar valores como la media, desviación estándar, mínimo, máximo y cuartiles de cada variable.
+En este caso, se trabajó con 5000 registros y 5 variables numéricas, sin valores nulos. Además, `describe()` permitió observar valores como la media, desviación estándar, mínimo, máximo y cuartiles de cada variable.
 
 ### .✦ ݁˖ Importancia:
 
@@ -166,8 +166,8 @@ La representación gráfica ayuda a interpretar el comportamiento del modelo de 
 
 ## ✿ Conclusiones
 
-El desarrollo del taller permitió comprender de manera práctica cómo se construye un modelo de regresión lineal a partir de un conjunto de datos. Primero fue necesario conocer la estructura de la información y revisar sus principales características. Después, se definieron las variables de entrada y la variable objetivo para poder entrenar correctamente el modelo.
+A partir del desarrollo del taller, pude comprender de manera más clara cómo se aplica la regresión lineal a un conjunto de datos. El proceso permitió revisar la información, definir las variables de entrada y la variable objetivo, dividir los datos en entrenamiento y prueba y entrenar el modelo de regresión lineal para posteriormente realizar predicciones.
 
-Uno de los resultados que más destacó fue el coeficiente correspondiente a Horas de Operación, cuyo valor fue aproximadamente **1.6688**, siendo el mayor de las variables consideradas. Además, el cálculo del error estándar y la estadística t permitió complementar la interpretación de los coeficientes y no quedarse únicamente con sus valores.
+Uno de los resultados que pude identificar fue el coeficiente de Horas de Operación, con un valor aproximado de 1.6688, siendo el mayor entre las variables consideradas. Asimismo, el análisis del error estándar y la estadística t permitió complementar la interpretación de los coeficientes y comprender mejor los resultados obtenidos a partir del modelo entrenado.
 
-En general, el taller ayudó a entender que la regresión lineal no consiste solamente en ejecutar un modelo, sino en revisar los datos, seleccionar correctamente las variables, entrenar el modelo y analizar qué significan los resultados obtenidos. Esto permitió relacionar la parte teórica vista en clase con un caso aplicado de predicción del consumo de energía.
+Finalmente, el taller me permitió relacionar los conceptos de regresión lineal vistos en clase con un caso aplicado al consumo de energía. Pude comprender que entrenar un modelo no consiste únicamente en ejecutar el código, sino también en preparar los datos, analizar los resultados y utilizar el modelo para obtener predicciones.
