@@ -12,36 +12,25 @@ El desarrollo del taller permitió poner en práctica diferentes etapas del aná
 
 Uno de los primeros pasos fue conocer cómo estaba conformado el conjunto de datos. Para ello se utilizaron funciones como `head()`, `info()` y `describe()`.
 
-```python
-df = pd.read_csv("Data_PI_regresion.csv")
-df.head()
-```
+<img width="765" height="393" alt="image" src="https://github.com/user-attachments/assets/7fb397ca-7295-449f-b3f0-3928905cf01c" />
 
 También se utilizó:
 
-```python
-df.info(verbose=True)
-```
+<img width="1241" height="417" alt="image" src="https://github.com/user-attachments/assets/fd2b8e64-cca8-4d0b-b529-088541ef958c" />
+
 
 y:
 
-```python
-df.describe().round(1)
-```
+<img width="1282" height="505" alt="image" src="https://github.com/user-attachments/assets/88aee67e-b090-4568-badd-0d6d6b956184" />
+
 
 Estas instrucciones permitieron revisar las primeras observaciones, los tipos de datos, la cantidad de registros y algunas estadísticas descriptivas.
 
 En este caso, se trabajó con **5000 registros y 5 variables numéricas**, sin valores nulos. Además, `describe()` permitió observar valores como la media, desviación estándar, mínimo, máximo y cuartiles de cada variable.
 
-### ¿Qué aprendimos?
+### Importancia:
 
 Esta parte fue importante porque antes de aplicar cualquier modelo es necesario conocer los datos con los que se está trabajando. Revisar su estructura ayuda a detectar posibles problemas y a entender qué representa cada variable.
-
-### Evidencia
-
-<!-- Coloca aquí una captura del código y resultado de df.info() / df.describe() -->
-
-![Exploración inicial de los datos](ruta/de/tu/imagen.png)
 
 ---
 
@@ -49,10 +38,7 @@ Esta parte fue importante porque antes de aplicar cualquier modelo es necesario 
 
 Después de revisar los datos, se separaron las variables que serían utilizadas como características de entrada y la variable que se desea predecir.
 
-```python
-X = df[l_column[0:len_feature-1]]
-y = df[l_column[len_feature-1]]
-```
+<img width="617" height="373" alt="image" src="https://github.com/user-attachments/assets/46d85795-a4a2-459e-83f5-be21538dd784" />
 
 En este caso, `X` contiene las variables:
 
@@ -71,23 +57,14 @@ Esta separación es necesaria para indicarle al modelo qué información utiliza
 
 Aquí comprendimos mejor la diferencia entre las **variables de entrada** y la **variable objetivo**. No se trata simplemente de ingresar todos los datos al modelo, sino de definir qué variables serán utilizadas para explicar o predecir el comportamiento de la variable objetivo.
 
-### Evidencia
-
-<!-- Coloca aquí una captura donde se observe X y/o y -->
-
-![Variables utilizadas en el modelo](ruta/de/tu/imagen.png)
-
 ---
 
 ## 3. División de los datos en entrenamiento y prueba
 
 Para entrenar el modelo se dividió el conjunto de datos en dos partes:
 
-```python
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, random_state=123
-)
-```
+<img width="956" height="220" alt="image" src="https://github.com/user-attachments/assets/ff585bff-b6a2-4a95-a4e6-02550251bc00" />
+
 
 Se utilizó el **70 % de los datos para entrenamiento** y el **30 % para prueba**. El parámetro `random_state=123` permite mantener la misma división cada vez que se ejecuta el código.
 
@@ -95,29 +72,21 @@ Se utilizó el **70 % de los datos para entrenamiento** y el **30 % para prueba*
 
 Esta división permite que el modelo aprenda a partir de una parte de los datos y posteriormente pueda ser evaluado con datos que no utilizó durante el entrenamiento. De esta manera, podemos tener una idea de cómo se comporta el modelo frente a información que no ha visto anteriormente.
 
-### Evidencia
-
-<!-- Coloca aquí una captura del código de train_test_split -->
-
-![División de los datos](ruta/de/tu/imagen.png)
-
 ---
 
 ## 4. Entrenamiento del modelo de regresión lineal
 
 Una de las partes principales del taller fue la creación y entrenamiento del modelo:
 
-```python
-from sklearn.linear_model import LinearRegression
-
-lm = LinearRegression()
-
-lm.fit(X_train, y_train)
-```
+<img width="777" height="358" alt="image" src="https://github.com/user-attachments/assets/294c81c9-d09c-4917-b43a-7059b6603396" />
 
 Con `LinearRegression()` se creó el modelo y mediante `fit()` se realizó el entrenamiento utilizando los datos de entrenamiento.
 
 El modelo obtuvo una intersección de aproximadamente **2.7411** y los siguientes coeficientes:
+
+<img width="690" height="101" alt="image" src="https://github.com/user-attachments/assets/202638fa-fa16-4c39-9821-e8a47ff420c5" />
+<img width="812" height="277" alt="image" src="https://github.com/user-attachments/assets/9e4e5646-f91f-4f97-90f1-9fcbb06ad9f5" />
+
 
 | Variable           | Coeficiente |
 | ------------------ | ----------: |
@@ -143,32 +112,14 @@ Consumo de Energía =
 + 0.0268(Humedad)
 ```
 
-### Evidencia
-
-<!-- Coloca aquí una captura de lm.intercept_, lm.coef_ o la tabla de coeficientes -->
-
-![Coeficientes del modelo](ruta/de/tu/imagen.png)
-
 ---
 
 ## 5. Análisis del error estándar y estadística t
 
 Otro código que consideramos importante fue el utilizado para calcular el **error estándar** y la **estadística t** de los coeficientes.
 
-```python
-cdf['Standard Error'] = se
-cdf['t-statistic'] = cdf['Coefficients'] / cdf['Standard Error']
-cdf
-```
+<img width="918" height="760" alt="image" src="https://github.com/user-attachments/assets/a9b59f0a-8878-4c27-9aa8-d092577ee5fc" />
 
-Los resultados obtenidos fueron:
-
-| Variable           | Error estándar | Estadística t |
-| ------------------ | -------------: | ------------: |
-| Temperatura        |       0.007557 |       18.1472 |
-| Horas de Operación |       0.013138 |      127.0207 |
-| Carga              |       0.001859 |       51.8270 |
-| Humedad            |       0.002611 |       10.2601 |
 
 La estadística t permite relacionar el tamaño de cada coeficiente con su error estándar. En los resultados del taller, **Horas de Operación presentó la estadística t más alta**, seguida de Carga, Temperatura y Humedad.
 
@@ -176,33 +127,19 @@ La estadística t permite relacionar el tamaño de cada coeficiente con su error
 
 Esta parte permitió ir un poco más allá de observar únicamente los coeficientes. Entendimos que también es necesario considerar el error asociado a cada estimación para analizar qué tan alejado se encuentra un coeficiente de cero en relación con su incertidumbre.
 
-### Evidencia
-
-<!-- Coloca aquí una captura de la tabla de coeficientes, error estándar y t-statistic -->
-
-![Análisis de coeficientes](ruta/de/tu/imagen.png)
-
 ---
 
 ## 6. Predicciones y representación gráfica
 
 Finalmente, se realizaron predicciones con el modelo y se utilizaron gráficos para observar la relación entre los valores reales y los valores predichos.
 
-```python
-predictions = lm.predict(X_test)
-```
+<img width="520" height="131" alt="image" src="https://github.com/user-attachments/assets/3e42b321-0503-4877-b47c-2e45bedffab1" />
 
 La comparación gráfica permite observar qué tan cerca se encuentran las predicciones realizadas por el modelo de los valores reales.
 
 ### ¿Qué aprendimos?
 
 La representación gráfica ayuda a interpretar el comportamiento del modelo de una manera más sencilla. No basta con obtener un resultado numérico; visualizar las predicciones permite identificar de forma más clara si existe una relación cercana entre lo que el modelo estima y los valores que realmente se tienen.
-
-### Evidencia
-
-<!-- Coloca aquí la captura del gráfico de valores reales vs. predichos -->
-
-![Valores reales vs. predichos](ruta/de/tu/imagen.png)
 
 ---
 
