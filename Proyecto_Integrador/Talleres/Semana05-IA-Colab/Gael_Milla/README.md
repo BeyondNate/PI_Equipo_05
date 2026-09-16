@@ -65,7 +65,7 @@ Se calcula la correlación entre las variables numéricas para identificar cuál
 ### 🔥 Matriz de correlación
 
 <p align="center">
-  <img src="Captures/Gael_matriz_correlacion.png" width="700">
+  <img src="Capturas/Gael_matriz_correlacion.png" width="700">
 </p>
 
 > **Figura 3.** Matriz de correlación de las variables.
