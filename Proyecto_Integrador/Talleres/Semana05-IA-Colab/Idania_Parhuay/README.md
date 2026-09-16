@@ -41,7 +41,9 @@ Esta parte fue importante porque antes de aplicar cualquier modelo es necesario 
 
 Después de revisar los datos, se separaron las variables que serían utilizadas como características de entrada y la variable que se desea predecir.
 
-<img width="617" height="373" alt="image" src="https://github.com/user-attachments/assets/46d85795-a4a2-459e-83f5-be21538dd784" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/46d85795-a4a2-459e-83f5-be21538dd784" width="800">
+</p>
 
 En este caso, `X` contiene las variables:
 
@@ -66,8 +68,9 @@ Aquí comprendimos mejor la diferencia entre las **variables de entrada** y la *
 
 Para entrenar el modelo se dividió el conjunto de datos en dos partes:
 
-<img width="956" height="220" alt="image" src="https://github.com/user-attachments/assets/ff585bff-b6a2-4a95-a4e6-02550251bc00" />
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ff585bff-b6a2-4a95-a4e6-02550251bc00" width="800">
+</p>
 
 Se utilizó el **70 % de los datos para entrenamiento** y el **30 % para prueba**. El parámetro `random_state=123` permite mantener la misma división cada vez que se ejecuta el código.
 
@@ -81,15 +84,24 @@ Esta división permite que el modelo aprenda a partir de una parte de los datos 
 
 Una de las partes principales del taller fue la creación y entrenamiento del modelo:
 
-<img width="777" height="358" alt="image" src="https://github.com/user-attachments/assets/294c81c9-d09c-4917-b43a-7059b6603396" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/294c81c9-d09c-4917-b43a-7059b6603396" width="800">
+</p>
 
 Con `LinearRegression()` se creó el modelo y mediante `fit()` se realizó el entrenamiento utilizando los datos de entrenamiento.
 
 El modelo obtuvo una intersección de aproximadamente **2.7411** y los siguientes coeficientes:
 
-<img width="690" height="101" alt="image" src="https://github.com/user-attachments/assets/202638fa-fa16-4c39-9821-e8a47ff420c5" />
-<img width="812" height="277" alt="image" src="https://github.com/user-attachments/assets/9e4e5646-f91f-4f97-90f1-9fcbb06ad9f5" />
-
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/202638fa-fa16-4c39-9821-e8a47ff420c5" width="400">
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/9e4e5646-f91f-4f97-90f1-9fcbb06ad9f5" width="400">
+    </td>
+  </tr>
+</table>
 
 Estos valores permiten interpretar cómo cambia el consumo de energía cuando aumenta una variable, manteniendo las demás constantes dentro del modelo.
 
@@ -114,8 +126,9 @@ Consumo de Energía =
 
 Otro código que consideramos importante fue el utilizado para calcular el **error estándar** y la **estadística t** de los coeficientes.
 
-<img width="918" height="760" alt="image" src="https://github.com/user-attachments/assets/a9b59f0a-8878-4c27-9aa8-d092577ee5fc" />
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a9b59f0a-8878-4c27-9aa8-d092577ee5fc" width="800">
+</p>
 
 La estadística t permite relacionar el tamaño de cada coeficiente con su error estándar. En los resultados del taller, **Horas de Operación presentó la estadística t más alta**, seguida de Carga, Temperatura y Humedad.
 
@@ -129,7 +142,9 @@ Esta parte permitió ir un poco más allá de observar únicamente los coeficien
 
 Finalmente, se realizaron predicciones con el modelo y se utilizaron gráficos para observar la relación entre los valores reales y los valores predichos.
 
-<img width="520" height="131" alt="image" src="https://github.com/user-attachments/assets/3e42b321-0503-4877-b47c-2e45bedffab1" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3e42b321-0503-4877-b47c-2e45bedffab1" width="800">
+</p>
 
 La comparación gráfica permite observar qué tan cerca se encuentran las predicciones realizadas por el modelo de los valores reales.
 
@@ -143,6 +158,6 @@ La representación gráfica ayuda a interpretar el comportamiento del modelo de 
 
 El desarrollo del taller permitió comprender de manera práctica cómo se construye un modelo de regresión lineal a partir de un conjunto de datos. Primero fue necesario conocer la estructura de la información y revisar sus principales características. Después, se definieron las variables de entrada y la variable objetivo para poder entrenar correctamente el modelo.
 
-Uno de los resultados que más destacó fue el coeficiente correspondiente a **Horas de Operación**, cuyo valor fue aproximadamente **1.6688**, siendo el mayor de las variables consideradas. Además, el cálculo del error estándar y la estadística t permitió complementar la interpretación de los coeficientes y no quedarse únicamente con sus valores.
+Uno de los resultados que más destacó fue el coeficiente correspondiente a Horas de Operación, cuyo valor fue aproximadamente **1.6688**, siendo el mayor de las variables consideradas. Además, el cálculo del error estándar y la estadística t permitió complementar la interpretación de los coeficientes y no quedarse únicamente con sus valores.
 
 En general, el taller ayudó a entender que la regresión lineal no consiste solamente en ejecutar un modelo, sino en **revisar los datos, seleccionar correctamente las variables, entrenar el modelo y analizar qué significan los resultados obtenidos**. Esto permitió relacionar la parte teórica vista en clase con un caso aplicado de predicción del consumo de energía.
