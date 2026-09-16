@@ -8,6 +8,20 @@ El desarrollo del taller permitió poner en práctica diferentes etapas del aná
 
 ---
 
+## 📄 Documento
+
+Se incluye el documento en formato .ipynb utilizado en el taller para una mejor visualización y para poder comprender los conceptos y procedimientos desarrollados.
+
+- [Ver documento](./documentacion/Documento_Regresion_Lineal.pdf)
+
+### 📊 Tabla de datos
+
+Se adjunta la tabla en formato CSV utilizada para realizar la exploración de los datos y construir el modelo de regresión lineal.
+
+- [Ver tabla de datos en formato CSV](./datos/Data_PI_regresion.csv)
+
+---
+
 ## 1. Exploración inicial de los datos
 
 Uno de los primeros pasos fue conocer cómo estaba conformado el conjunto de datos. Para ello se utilizaron funciones como `head()`, `info()` y `describe()`.
