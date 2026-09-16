@@ -43,7 +43,7 @@ Esto permite conocer la estructura de los datos antes de aplicar el modelo.
 Aquí se pueden observar las relaciones y distribuciones de las variables:
 
 <p align="center">
-  <img src="images/pairplot.png" width="750">
+  <img src="Capturas/Gael_pairplot.png" width="750">
 </p>
 
 > **Figura 1.** Relaciones entre las variables del conjunto de datos.
@@ -51,7 +51,7 @@ Aquí se pueden observar las relaciones y distribuciones de las variables:
 ### 📈 Distribución del consumo de energía
 
 <p align="center">
-  <img src="images/distribucion_consumo.png" width="650">
+  <img src="Capturas/Gael_distribucion_consumo.png" width="650">
 </p>
 
 > **Figura 2.** Distribución de la variable `Consumo_Energia`.
@@ -65,7 +65,7 @@ Se calcula la correlación entre las variables numéricas para identificar cuál
 ### 🔥 Matriz de correlación
 
 <p align="center">
-  <img src="images/matriz_correlacion.png" width="700">
+  <img src="Captures/Gael_matriz_correlacion.png" width="700">
 </p>
 
 > **Figura 3.** Matriz de correlación de las variables.
@@ -128,7 +128,7 @@ Se comparan los valores reales con los valores predichos para observar el compor
 ### 🎯 Valores reales vs. predichos
 
 <p align="center">
-  <img src="images/real_vs_predicho.png" width="700">
+  <img src="Capturas/Gael_real_vs_predicho.png" width="700">
 </p>
 
 > **Figura 4.** Comparación entre los valores reales y las predicciones del modelo.
@@ -144,7 +144,7 @@ $$
 Su análisis permite observar si existen patrones en los errores del modelo.
 
 <p align="center">
-  <img src="images/residuos.png" width="700">
+  <img src="Capturas/Gael_residuos.png" width="700">
 </p>
 
 > **Figura 5.** Análisis gráfico de los residuos del modelo.
@@ -162,7 +162,7 @@ Como parte adicional del notebook, se generan datos artificiales mediante `make_
 Se utiliza un **árbol de decisión para regresión** y se analiza la importancia de las características utilizadas por el modelo.
 
 <p align="center">
-  <img src="images/importancia_caracteristicas.png" width="700">
+  <img src="Captures/Gael_importancia.png" width="700">
 </p>
 
 > **Figura 6.** Importancia de las características obtenida mediante el árbol de decisión.
