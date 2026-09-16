@@ -12,13 +12,13 @@ El desarrollo del taller permitió poner en práctica diferentes etapas del aná
 
 Se incluye el documento en formato .ipynb utilizado en el taller para una mejor visualización y para poder comprender los conceptos y procedimientos desarrollados.
 
-- [Ver documento](./documentacion/Documento_Regresion_Lineal.pdf)
+- [Ver documento](Taller_Regresión_Lineal_Idania.ipynb)
 
 ### 📊 Tabla de datos
 
 Se adjunta la tabla en formato CSV utilizada para realizar la exploración de los datos y construir el modelo de regresión lineal.
 
-- [Ver tabla de datos en formato CSV](./datos/Data_PI_regresion.csv)
+- [Ver tabla de datos en formato CSV](Data_PI_regresion.csv)
 
 ---
 
