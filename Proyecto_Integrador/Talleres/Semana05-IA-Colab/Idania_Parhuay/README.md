@@ -92,16 +92,13 @@ Con `LinearRegression()` se creó el modelo y mediante `fit()` se realizó el en
 
 El modelo obtuvo una intersección de aproximadamente **2.7411** y los siguientes coeficientes:
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="https://github.com/user-attachments/assets/202638fa-fa16-4c39-9821-e8a47ff420c5" width="400">
-    </td>
-    <td align="center">
-      <img src="https://github.com/user-attachments/assets/9e4e5646-f91f-4f97-90f1-9fcbb06ad9f5" width="400">
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/202638fa-fa16-4c39-9821-e8a47ff420c5" width="800">
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9e4e5646-f91f-4f97-90f1-9fcbb06ad9f5"  width="800">
+</p>
 
 Estos valores permiten interpretar cómo cambia el consumo de energía cuando aumenta una variable, manteniendo las demás constantes dentro del modelo.
 
