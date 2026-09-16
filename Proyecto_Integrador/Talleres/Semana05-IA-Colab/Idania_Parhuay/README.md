@@ -12,9 +12,10 @@ El desarrollo del taller permitió poner en práctica diferentes etapas del aná
 
 En esta sección se encuentran los archivos utilizados como apoyo y fuente de datos para el desarrollo del taller.
 
-| Archivo | Descripción | Acceso |
+| Archivo | Descripción | Visualizacion | Descarga
 |---|---|---|
-| 📄 **Documento PDF** | Material de apoyo utilizado durante el taller. | [⬇️ Descargar](.Semana05-IA-Colab/Idania_Parhuay/Taller_Regresión_Lineal_Idania.ipynb) |
+| 📄 **Documento PDF** | Material de apoyo utilizado durante el taller. | [Ver documento](Taller_Regresión_Lineal_Idania.ipynb) | [⬇️ Descargar](./Semana05-IA-Colab/Idania_Parhuay/Taller_Regresión_Lineal_Idania.ipynb) |
+
 | 📊 **Tabla CSV** | Conjunto de datos utilizado para el análisis y construcción del modelo. | [⬇️ Descargar](./datos/Data_PI_regresion.csv) |
 
 ---
