@@ -73,7 +73,7 @@ Esta separación es necesaria para indicarle al modelo qué información utiliza
 
 ### .✦ ݁˖ Importancia:
 
-Aquí comprendimos mejor la diferencia entre las **variables de entrada** y la **variable objetivo**. No se trata simplemente de ingresar todos los datos al modelo, sino de definir qué variables serán utilizadas para explicar o predecir el comportamiento de la variable objetivo.
+Aquí comprendimos mejor la diferencia entre las variables de entrada y la variable objetivo. No se trata simplemente de ingresar todos los datos al modelo, sino de definir qué variables serán utilizadas para explicar o predecir el comportamiento de la variable objetivo.
 
 ---
 
@@ -117,7 +117,7 @@ Estos valores permiten interpretar cómo cambia el consumo de energía cuando au
 
 ### .✦ ݁˖ Puntos destacados:
 
-El coeficiente de **Horas de Operación** fue el más alto, con aproximadamente **1.6688**. Esto significa que, dentro del modelo obtenido, esta variable presenta el mayor cambio estimado en el consumo de energía por cada unidad adicional, manteniendo constantes las demás variables.
+El coeficiente de Horas de Operación fue el más alto, con aproximadamente 1.6688. Esto significa que, dentro del modelo obtenido, esta variable presenta el mayor cambio estimado en el consumo de energía por cada unidad adicional, manteniendo constantes las demás variables.
 
 A partir de los coeficientes también se puede expresar el modelo de la siguiente manera:
 
@@ -170,4 +170,4 @@ El desarrollo del taller permitió comprender de manera práctica cómo se const
 
 Uno de los resultados que más destacó fue el coeficiente correspondiente a Horas de Operación, cuyo valor fue aproximadamente **1.6688**, siendo el mayor de las variables consideradas. Además, el cálculo del error estándar y la estadística t permitió complementar la interpretación de los coeficientes y no quedarse únicamente con sus valores.
 
-En general, el taller ayudó a entender que la regresión lineal no consiste solamente en ejecutar un modelo, sino en **revisar los datos, seleccionar correctamente las variables, entrenar el modelo y analizar qué significan los resultados obtenidos**. Esto permitió relacionar la parte teórica vista en clase con un caso aplicado de predicción del consumo de energía.
+En general, el taller ayudó a entender que la regresión lineal no consiste solamente en ejecutar un modelo, sino en revisar los datos, seleccionar correctamente las variables, entrenar el modelo y analizar qué significan los resultados obtenidos. Esto permitió relacionar la parte teórica vista en clase con un caso aplicado de predicción del consumo de energía.
