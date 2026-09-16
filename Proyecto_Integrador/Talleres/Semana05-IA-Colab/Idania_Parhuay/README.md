@@ -12,35 +12,12 @@ El desarrollo del taller permitió poner en práctica diferentes etapas del aná
 
 En esta sección se encuentran los archivos utilizados como apoyo y fuente de datos para el desarrollo del taller.
 
-## 📚 Documentación
-
-En esta sección se encuentran los archivos utilizados como material de apoyo y fuente de datos para el desarrollo del taller.
-
-## 📚 Documentación
-
-En esta sección se encuentran los archivos utilizados como material de apoyo y fuente de datos para el desarrollo del taller.
 
 | Archivo                             | Descripción                                                                            | Visualización                                          |
 | ----------------------------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | 📓 **Notebook de Regresión Lineal** | Notebook utilizado para desarrollar el taller y aplicar el modelo de regresión lineal. | [🔎 Ver notebook](./Taller_Regresión_Lineal_Idania.ipynb) |
 | 📊 **Tabla CSV**                    | Conjunto de datos utilizado para el análisis y construcción del modelo.                | [🔎 Ver tabla de datos](./Data_PI_regresion.csv)          |
 
----
-
-
-
----
-## 📄 Documento
-
-Se incluye el documento en formato .ipynb utilizado en el taller para una mejor visualización y para poder comprender los conceptos y procedimientos desarrollados.
-
-- [Ver documento](Taller_Regresión_Lineal_Idania.ipynb)
-
-### 📊 Tabla de datos
-
-Se adjunta la tabla en formato CSV utilizada para realizar la exploración de los datos y construir el modelo de regresión lineal.
-
-- [Ver tabla de datos en formato CSV](Data_PI_regresion.csv)
 
 ---
 
