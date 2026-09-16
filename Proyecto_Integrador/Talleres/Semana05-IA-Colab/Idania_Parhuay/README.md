@@ -1,6 +1,6 @@
-# Taller de Regresión Lineal
+# <h1 align="center">────୨ৎ──── TALLER DE REGRESIÓN LINEAL ────୨ৎ────</h1>
 
-## Introducción
+## ✿ Introducción
 
 En este taller se trabajó con un conjunto de datos relacionado con el **consumo de energía**, utilizando Python para explorar la información y construir un modelo de regresión lineal. Las variables consideradas fueron **Temperatura, Horas de Operación, Carga y Humedad**, mientras que **Consumo de Energía** fue tomada como la variable que se busca explicar y predecir.
 
