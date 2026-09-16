@@ -44,7 +44,7 @@ Estas instrucciones permitieron revisar las primeras observaciones, los tipos de
 
 En este caso, se trabajó con **5000 registros y 5 variables numéricas**, sin valores nulos. Además, `describe()` permitió observar valores como la media, desviación estándar, mínimo, máximo y cuartiles de cada variable.
 
-### Importancia:
+### .✦ ݁˖ Importancia:
 
 Esta parte fue importante porque antes de aplicar cualquier modelo es necesario conocer los datos con los que se está trabajando. Revisar su estructura ayuda a detectar posibles problemas y a entender qué representa cada variable.
 
@@ -71,7 +71,7 @@ Mientras que `y` corresponde a:
 
 Esta separación es necesaria para indicarle al modelo qué información utilizará para realizar las predicciones y cuál será el resultado que debe aprender a estimar.
 
-### ¿Qué aprendimos?
+### .✦ ݁˖ Importancia:
 
 Aquí comprendimos mejor la diferencia entre las **variables de entrada** y la **variable objetivo**. No se trata simplemente de ingresar todos los datos al modelo, sino de definir qué variables serán utilizadas para explicar o predecir el comportamiento de la variable objetivo.
 
@@ -87,7 +87,7 @@ Para entrenar el modelo se dividió el conjunto de datos en dos partes:
 
 Se utilizó el **70 % de los datos para entrenamiento** y el **30 % para prueba**. El parámetro `random_state=123` permite mantener la misma división cada vez que se ejecuta el código.
 
-### ¿Qué aprendimos?
+### .✦ ݁˖ Importancia:
 
 Esta división permite que el modelo aprenda a partir de una parte de los datos y posteriormente pueda ser evaluado con datos que no utilizó durante el entrenamiento. De esta manera, podemos tener una idea de cómo se comporta el modelo frente a información que no ha visto anteriormente.
 
@@ -115,7 +115,7 @@ El modelo obtuvo una intersección de aproximadamente **2.7411** y los siguiente
 
 Estos valores permiten interpretar cómo cambia el consumo de energía cuando aumenta una variable, manteniendo las demás constantes dentro del modelo.
 
-### ¿Qué nos llamó la atención?
+### .✦ ݁˖ Puntos destacados:
 
 El coeficiente de **Horas de Operación** fue el más alto, con aproximadamente **1.6688**. Esto significa que, dentro del modelo obtenido, esta variable presenta el mayor cambio estimado en el consumo de energía por cada unidad adicional, manteniendo constantes las demás variables.
 
@@ -142,7 +142,7 @@ Otro código que consideramos importante fue el utilizado para calcular el **err
 
 La estadística t permite relacionar el tamaño de cada coeficiente con su error estándar. En los resultados del taller, **Horas de Operación presentó la estadística t más alta**, seguida de Carga, Temperatura y Humedad.
 
-### ¿Qué aprendimos?
+### .✦ ݁˖ Importancia:
 
 Esta parte permitió ir un poco más allá de observar únicamente los coeficientes. Entendimos que también es necesario considerar el error asociado a cada estimación para analizar qué tan alejado se encuentra un coeficiente de cero en relación con su incertidumbre.
 
@@ -158,7 +158,7 @@ Finalmente, se realizaron predicciones con el modelo y se utilizaron gráficos p
 
 La comparación gráfica permite observar qué tan cerca se encuentran las predicciones realizadas por el modelo de los valores reales.
 
-### ¿Qué aprendimos?
+### .✦ ݁˖ Importancia:
 
 La representación gráfica ayuda a interpretar el comportamiento del modelo de una manera más sencilla. No basta con obtener un resultado numérico; visualizar las predicciones permite identificar de forma más clara si existe una relación cercana entre lo que el modelo estima y los valores que realmente se tienen.
 
