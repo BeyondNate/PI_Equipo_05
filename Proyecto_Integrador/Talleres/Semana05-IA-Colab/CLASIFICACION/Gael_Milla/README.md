@@ -35,7 +35,7 @@ Este gráfico permite observar mediante diagramas de dispersión la relación en
 
 **Imagen 2 – Relaciones entre variables**
 
-![Pairplot](imagenes/pairplot.png)
+![Pairplot](Capturas/pairplot.png)
 
 *Figura 2. Relaciones entre las variables del conjunto de datos.*
 
@@ -43,7 +43,7 @@ También se realizó un análisis de correlación con el objetivo de identificar
 
 **Imagen 3 – Matriz de correlación**
 
-![Matriz de correlación](imagenes/matriz_correlacion.png)
+![Matriz de correlación](Capturas/matriz_correlacion.png)
 
 *Figura 3. Matriz de correlación de las variables analizadas.*
 
@@ -90,14 +90,14 @@ Los valores reales y predichos fueron comparados mediante un gráfico de dispers
 
 **Imagen 4 – Valores reales vs. valores predichos**
 
-![Valores reales y predichos](imagenes/real_vs_predicho.png)
+![Valores reales y predichos](Capturas/real_vs_predicho.png)
 
 *Figura 4. Comparación entre los valores reales y los valores predichos por el modelo.*
 
 También se analizaron los residuos, definidos como la diferencia entre el valor real y el valor predicho. El análisis de residuos permite identificar posibles patrones en los errores del modelo.
 **Imagen 5 – Análisis de residuos**
 
-![Análisis de residuos](imagenes/residuos.png)
+![Análisis de residuos](Capturas/residuos.png)
 
 *Figura 5. Distribución de los residuos obtenidos por el modelo.*
 
@@ -137,7 +137,7 @@ tree_model = tree.DecisionTreeRegressor(
 El modelo realizó predicciones sobre los datos de prueba y se calculó el **error cuadrático medio (MSE)**. Además, se obtuvo la importancia relativa de las características utilizadas por el árbol.
 **Imagen 6 – Importancia de las características**
 
-![Importancia de características](imagenes/importancia_caracteristicas.png)
+![Importancia de características](Capturas/importancia_caracteristicas.png)
 
 *Figura 6. Importancia relativa de las características en el árbol de decisión.*
 
@@ -199,4 +199,4 @@ El uso de datos artificiales permitió realizar una segunda prueba controlada y 
 
 ## 5. Referencias
 
-[1] G. Milla, *Regresion_lineal_2_Gael_Milla*, Jupyter Notebook, 2026.
+[1] [G. Milla, *Regresion_lineal_2_Gael_Milla*, Jupyter Notebook, 2026.](https://colab.research.google.com/drive/1j-xlYdlI5jorBlFMqEmYhqllruL5ptNM?usp=sharing)
