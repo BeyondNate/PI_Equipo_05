@@ -17,7 +17,7 @@ La función `head()` permitió observar los primeros registros, mientras que `in
 
 **Imagen 1 – Exploración inicial del conjunto de datos**
 
-![Exploración inicial del dataset](imagenes/exploracion_dataset.png)
+![Exploración inicial del dataset](Capturas/exploracion_dataset.png)
 
 *Figura 1. Primeros registros del conjunto de datos.*
 
@@ -43,7 +43,7 @@ También se realizó un análisis de correlación con el objetivo de identificar
 
 **Imagen 3 – Matriz de correlación**
 
-![Matriz de correlación](imagenes/correlacion.png)
+![Matriz de correlación](imagenes/matriz_correlacion.png)
 
 *Figura 3. Matriz de correlación de las variables analizadas.*
 
