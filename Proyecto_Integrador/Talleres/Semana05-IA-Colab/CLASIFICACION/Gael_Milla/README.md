@@ -2,84 +2,201 @@
 
 ## 1. Metodología
 
-El análisis se realizó utilizando un conjunto de datos relacionado con la calidad del aire. El conjunto contiene **355 registros y 21 variables**, entre las que se encuentran la concentración máxima diaria de ozono en 8 horas, el valor diario del índice de calidad del aire (AQI), cantidad de observaciones, porcentaje de datos completos y diferentes datos de ubicación.
+### 1.1. Exploración del conjunto de datos
 
-Para el procesamiento de los datos se utilizaron principalmente `pandas`, `numpy`, `matplotlib` y `seaborn`. Estas librerías permitieron cargar el archivo, explorar su estructura, obtener estadísticas descriptivas y visualizar las relaciones entre las variables.
+Se utilizó un conjunto de datos relacionado con la calidad del aire, que contiene **355 registros y 21 variables**. Entre las variables disponibles se encuentran la concentración máxima de ozono en 8 horas, el valor diario del AQI, cantidad de observaciones, porcentaje de datos completos y diferentes datos relacionados con la ubicación de la estación de medición.
+Para conocer la estructura de los datos se utilizaron funciones básicas de `pandas`, principalmente `head()`, `info()` y `describe()`.
 
-### 1.1 Exploración de los datos
+```python
+df.head()
+df.info()
+df.describe().round(1)
+```
 
-Primero se cargó el conjunto de datos mediante `pandas` y se utilizaron funciones básicas como:
+La función `head()` permitió observar los primeros registros, mientras que `info()` permitió identificar la cantidad de registros, variables y tipos de datos. Finalmente, `describe()` permitió obtener estadísticas descriptivas como promedio, desviación estándar, valores mínimos y máximos.
 
-* `head()` para observar los primeros registros.
-* `info()` para conocer la cantidad de registros, variables y tipos de datos.
-* `describe()` para obtener estadísticas descriptivas.
-* `pairplot()` para visualizar las relaciones entre las variables.
+**Imagen 1 – Exploración inicial del conjunto de datos**
 
-El conjunto contiene variables numéricas y categóricas. Algunas variables presentan valores constantes debido a que los registros corresponden al mismo sitio de medición.
+![Exploración inicial del dataset](imagenes/exploracion_dataset.png)
 
-### 1.2 Análisis de correlación
+*Figura 1. Primeros registros del conjunto de datos.*
 
-Se analizó la relación entre las variables numéricas mediante correlaciones y gráficos de dispersión. Esta etapa permitió identificar qué variables presentan una mayor relación lineal con la concentración de ozono.
+---
 
-La correlación se utilizó como una etapa exploratoria previa a la construcción del modelo, ya que permite observar posibles relaciones entre las variables antes de realizar la predicción.
+### 1.2. Análisis exploratorio y correlación
 
-### 1.3 Regresión lineal
+Se realizó un análisis exploratorio para observar visualmente las relaciones entre las variables. Para ello se utilizó `pairplot()` de la biblioteca `seaborn`.
 
-Para construir el modelo se separaron las variables de entrada (**X**) y la variable objetivo (**y**). Posteriormente, los datos se dividieron en:
+```python
+sns.pairplot(df)
+```
+
+Este gráfico permite observar mediante diagramas de dispersión la relación entre las diferentes variables numéricas del conjunto de datos.
+
+**Imagen 2 – Relaciones entre variables**
+
+![Pairplot](imagenes/pairplot.png)
+
+*Figura 2. Relaciones entre las variables del conjunto de datos.*
+
+También se realizó un análisis de correlación con el objetivo de identificar relaciones lineales entre las variables y determinar cuáles podrían ser utilizadas para el modelo de regresión.
+
+**Imagen 3 – Matriz de correlación**
+
+![Matriz de correlación](imagenes/correlacion.png)
+
+*Figura 3. Matriz de correlación de las variables analizadas.*
+
+---
+
+### 1.3. Preparación de los datos
+
+Para construir el modelo se separaron las variables independientes, representadas por **X**, y la variable objetivo, representada por **y**.
+
+Posteriormente, los datos fueron divididos en:
 
 * **70 % para entrenamiento**, utilizado para ajustar el modelo.
 * **30 % para prueba**, utilizado para evaluar las predicciones.
 
-La división se realizó utilizando `train_test_split` con `random_state=123`, permitiendo mantener la reproducibilidad del experimento.
+## La división se realizó mediante `train_test_split()` utilizando `random_state=123` para mantener la reproducibilidad de los resultados.
 
-El modelo se construyó mediante `LinearRegression()` de `scikit-learn` y se entrenó utilizando los datos de entrenamiento. Se analizaron los coeficientes obtenidos para observar la dirección de la relación entre las variables de entrada y la variable objetivo.
+### 1.4. Regresión lineal
 
-### 1.4 Evaluación del modelo
+Se utilizó `LinearRegression()` para construir el modelo de regresión lineal.
 
-Una vez entrenado el modelo, se generaron predicciones sobre los datos de prueba. Estas predicciones fueron comparadas con los valores reales mediante gráficos de dispersión.
+```python
+lm = LinearRegression()
+lm.fit(x_train, y_train)
+```
 
-También se analizaron los **residuos**, definidos como la diferencia entre los valores reales y los valores predichos. Este análisis permite observar posibles patrones en los errores del modelo.
+El modelo permite estimar una relación lineal entre las variables de entrada y la variable objetivo. Después del entrenamiento se obtuvieron la intersección y los coeficientes del modelo mediante:
 
-### 1.5 Análisis complementario
+```python
+print(lm.intercept_)
+print(lm.coef_)
+```
 
-Finalmente, se generaron datos artificiales mediante `make_regression` para experimentar con un conjunto controlado de características.
+## Los coeficientes permiten observar la dirección de la relación entre cada variable independiente y la variable objetivo.
 
-Sobre estos datos se aplicó un **árbol de decisión para regresión**, utilizando `DecisionTreeRegressor`, y se calculó el error cuadrático medio (MSE). También se obtuvo la importancia relativa de las características.
+### 1.5. Evaluación del modelo
 
-Además, se utilizó `statsmodels` para aplicar el método de mínimos cuadrados mediante `OLS`, obteniendo un resumen estadístico del modelo.
+Después de entrenar el modelo se realizaron predicciones utilizando los datos de prueba:
+
+```python
+predictions = lm.predict(x_test)
+```
+
+Los valores reales y predichos fueron comparados mediante un gráfico de dispersión. Esto permite observar qué tan cercanas se encuentran las predicciones respecto a los valores reales.
+
+**Imagen 4 – Valores reales vs. valores predichos**
+
+![Valores reales y predichos](imagenes/real_vs_predicho.png)
+
+*Figura 4. Comparación entre los valores reales y los valores predichos por el modelo.*
+
+También se analizaron los residuos, definidos como la diferencia entre el valor real y el valor predicho. El análisis de residuos permite identificar posibles patrones en los errores del modelo.
+**Imagen 5 – Análisis de residuos**
+
+![Análisis de residuos](imagenes/residuos.png)
+
+*Figura 5. Distribución de los residuos obtenidos por el modelo.*
+
+---
+
+### 1.6. Análisis complementario con datos artificiales
+
+Como complemento del análisis, se generó un conjunto de datos artificiales utilizando `make_regression()`.
+
+Se utilizaron **100 muestras, 6 características y 3 características informativas**, además de un nivel de ruido y una semilla aleatoria para mantener la reproducibilidad.
+
+```python
+x, y, coef = make_regression(
+    n_samples=100,
+    n_features=6,
+    n_informative=3,
+    random_state=20,
+    shuffle=False,
+    noise=20,
+    coef=True
+)
+```
+
+---
+
+### 1.7. Árbol de decisión
+
+Sobre los datos artificiales también se utilizó un `DecisionTreeRegressor` con una profundidad máxima de 5.
+
+```python
+tree_model = tree.DecisionTreeRegressor(
+    max_depth=5,
+    random_state=10
+)
+```
+
+El modelo realizó predicciones sobre los datos de prueba y se calculó el **error cuadrático medio (MSE)**. Además, se obtuvo la importancia relativa de las características utilizadas por el árbol.
+**Imagen 6 – Importancia de las características**
+
+![Importancia de características](imagenes/importancia_caracteristicas.png)
+
+*Figura 6. Importancia relativa de las características en el árbol de decisión.*
+
+---
+
+### 1.8. Mínimos cuadrados
+
+Finalmente, se utilizó `statsmodels` para ajustar un modelo mediante el método de mínimos cuadrados ordinarios (OLS).
+
+```python
+Xs = sm.add_constant(X)
+stat_model = sm.OLS(y, Xs)
+stat_result = stat_model.fit()
+print(stat_result.summary())
+```
+
+El resumen generado permite observar los coeficientes y diferentes medidas estadísticas relacionadas con el modelo.
 
 ---
 
 ## 2. Resultados
 
-La exploración inicial permitió identificar que el conjunto de datos contiene **355 observaciones y 21 columnas**. La variable de concentración máxima diaria de ozono en 8 horas presenta valores entre aproximadamente **0.0 y 0.1 ppm**, mientras que el valor diario del AQI presenta valores entre **8 y 67**.
+La exploración inicial permitió identificar un conjunto de **355 registros y 21 columnas**. La información disponible corresponde principalmente a mediciones de ozono y datos asociados a una estación de calidad del aire.
 
-El análisis exploratorio permitió observar las relaciones entre las variables numéricas y seleccionar las características utilizadas para el modelo de regresión lineal.
+Las estadísticas descriptivas mostraron que la concentración máxima diaria de ozono en 8 horas presenta valores entre aproximadamente **0.0 y 0.1 ppm**, mientras que el valor diario del AQI presenta valores entre **8 y 67**.
 
-La regresión lineal permitió obtener coeficientes para las variables utilizadas como entrada. El signo de cada coeficiente indica la dirección de la relación dentro del modelo: un coeficiente positivo representa un aumento estimado de la variable objetivo cuando aumenta la característica, manteniendo las demás constantes.
+A partir del análisis exploratorio se pudieron visualizar las relaciones entre las variables mediante `pairplot()` y el análisis de correlación.
 
-La evaluación mediante los datos de prueba permitió generar predicciones y compararlas visualmente con los valores reales. Asimismo, el análisis de residuos permitió observar la distribución de los errores y buscar posibles patrones.
+El modelo de regresión lineal fue entrenado utilizando el 70 % de los datos y posteriormente evaluado con el 30 % restante. Se obtuvieron los coeficientes del modelo y se realizaron predicciones sobre los datos de prueba.
 
-En el análisis complementario, `make_regression` generó **100 muestras, 6 características y 3 características informativas**, incorporando ruido aleatorio para simular datos más realistas. El árbol de decisión permitió obtener una medida de importancia relativa para cada característica y calcular el error cuadrático medio de sus predicciones.
+La comparación entre valores reales y predichos permitió evaluar visualmente el comportamiento del modelo, mientras que el análisis de residuos permitió observar la distribución de los errores.
+
+Como análisis complementario, los datos artificiales permitieron estudiar el comportamiento de un árbol de decisión. Este modelo generó predicciones y permitió calcular el MSE, además de identificar la importancia relativa de las características.
 
 ---
 
 ## 3. Discusión
 
-El análisis muestra cómo la regresión lineal puede utilizarse para estudiar relaciones entre variables y realizar predicciones sobre una variable objetivo. La exploración inicial es importante porque permite conocer la estructura de los datos y detectar qué variables pueden ser útiles para el modelo.
+El análisis permitió aplicar diferentes etapas de un proceso de regresión: exploración de datos, análisis de relaciones, preparación de variables, entrenamiento, predicción y evaluación.
 
-El análisis de residuos complementa la evaluación de las predicciones, ya que no solo interesa obtener valores predichos, sino también observar el comportamiento de los errores.
+El uso de gráficos facilitó la interpretación de los datos y permitió observar visualmente las relaciones entre las variables. Asimismo, el análisis de residuos permitió complementar la evaluación del modelo, ya que no solamente se consideraron las predicciones, sino también los errores obtenidos.
 
-El uso de datos artificiales permitió complementar el análisis con un escenario controlado. En este caso, se conocían de antemano las características informativas utilizadas para generar la variable objetivo, lo que permite observar cómo un árbol de decisión identifica la importancia relativa de las características.
+El uso de datos artificiales permitió realizar una segunda prueba controlada y observar cómo un árbol de decisión puede identificar características importantes para realizar sus predicciones.
 
 ---
 
-## 4. Referencias
+## 4. Conclusiones
 
-[1] F. Pedregosa *et al.*, “Scikit-learn: Machine Learning in Python,” *Journal of Machine Learning Research*, vol. 12, pp. 2825–2830, 2011.
+* Se realizó una exploración inicial del conjunto de datos utilizando `head()`, `info()` y `describe()`.
+* Se analizaron las relaciones entre las variables mediante gráficos y correlación.
+* Se construyó un modelo de regresión lineal utilizando una división de 70 % para entrenamiento y 30 % para prueba.
+* Se obtuvieron los coeficientes del modelo y se realizaron predicciones sobre los datos de prueba.
+* El análisis de residuos permitió complementar la evaluación del modelo.
+* Se generaron datos artificiales mediante `make_regression()` para realizar un análisis adicional.
+* Se utilizó un árbol de decisión para obtener predicciones, calcular el MSE y analizar la importancia de las características.
+* Finalmente, se utilizó el método de mínimos cuadrados mediante `statsmodels` como complemento del análisis.
 
-[2] W. McKinney, *Python for Data Analysis: Data Wrangling with pandas, NumPy, and Jupyter*, 3rd ed. Sebastopol, CA, USA: O’Reilly Media, 2022.
+---
 
-[3] S. Seabold and J. Perktold, “Statsmodels: Econometric and Statistical Modeling with Python,” in *Proceedings of the 9th Python in Science Conference*, 2010, pp. 92–96.
+## 5. Referencias
 
-[4] U.S. Environmental Protection Agency, “Air Quality System (AQS) Data,” U.S. EPA.
+[1] G. Milla, *Regresion_lineal_2_Gael_Milla*, Jupyter Notebook, 2026.
