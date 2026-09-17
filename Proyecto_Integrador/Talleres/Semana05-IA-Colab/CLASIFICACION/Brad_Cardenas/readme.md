@@ -2,102 +2,121 @@
 
 ## Introducción
 
-La contaminación del aire es un problema ambiental y de salud pública de gran relevancia, especialmente en zonas urbanas con alta densidad vehicular e industrial. Uno de los contaminantes más monitoreados es el monóxido de carbono (CO), un gas incoloro e inodoro que, en concentraciones elevadas, puede afectar significativamente la salud humana al reducir la capacidad de la sangre para transportar oxígeno.
+La calidad del aire es uno de los factores ambientales que más impacto tiene sobre la salud de las personas, sobre todo en ciudades con tráfico vehicular constante e industria cercana. Entre los contaminantes que se monitorean con mayor frecuencia está el **monóxido de carbono (CO)**, un gas que no se puede ver ni oler, pero que en concentraciones altas es peligroso porque impide que la sangre transporte oxígeno de forma adecuada.
 
-El presente informe tiene como objetivo desarrollar un modelo de regresión lineal múltiple capaz de predecir la **concentración máxima diaria de CO en un periodo de 8 horas** a partir de otras variables ambientales y de calidad del aire registradas en la estación de monitoreo de Salt Lake City, Utah, durante el año 2022. Se busca, además, identificar cuáles de estas variables tienen mayor incidencia sobre el comportamiento del CO, con el fin de comprender mejor las relaciones entre los distintos contaminantes y condiciones registradas.
+Este informe presenta un análisis realizado sobre datos reales de calidad del aire de la estación **Copper View**, en Salt Lake City, Utah, correspondientes al año 2022. El objetivo es construir un modelo de **regresión lineal múltiple** que permita predecir la concentración máxima diaria de CO (medida en un promedio móvil de 8 horas) a partir de otras variables numéricas disponibles en el conjunto de datos, y así entender qué tan bien se puede explicar el comportamiento de este contaminante y qué variables están más relacionadas con él.
 
-Los datos utilizados provienen del sistema público de datos de calidad del aire de la Agencia de Protección Ambiental de los Estados Unidos (EPA) [1].
+Los datos utilizados fueron descargados directamente del portal de datos abiertos de la Agencia de Protección Ambiental de los Estados Unidos (EPA) [1].
 
 ## Metodología
 
-El desarrollo del proyecto siguió las siguientes etapas:
+El análisis se desarrolló siguiendo estos pasos:
 
-1. **Recolección de datos:** se utilizó el conjunto de datos históricos de calidad del aire correspondiente a la estación de Salt Lake City, UT, para el año 2022, descargado desde la plataforma AirData de la EPA [1].
+1. **Carga y exploración de datos (EDA):** se importó el archivo `ad_viz_plotval_data.csv`, correspondiente a 365 registros diarios del año 2022 de la estación Copper View. Se revisó la estructura del dataset, tipos de datos, valores nulos (no se encontraron) y estadísticas descriptivas básicas.
 
-2. **Análisis exploratorio de datos (EDA):** se examinó la estructura del dataset (`.info()`, `.describe()`), se generaron gráficos de dispersión por pares (*pairplot*), histogramas y curvas de densidad para observar la distribución de la variable objetivo, así como un mapa de calor de correlaciones entre variables numéricas.
+2. **Análisis gráfico exploratorio:** se generaron gráficos de dispersión por pares (*pairplot*), un histograma y una curva de densidad de la variable objetivo, y una matriz de correlación (heatmap) entre las variables numéricas.
 
-3. **Preparación de los datos:** se excluyeron del conjunto de características (X) las columnas no numéricas o irrelevantes para la regresión (fechas, identificadores de sitio, códigos de método, nombres de condado/estado, etc.), dejando únicamente variables numéricas. La variable objetivo (y) se definió como la concentración máxima diaria de CO en 8 horas.
+3. **Preparación de variables:** se definió como variable objetivo (**y**) la columna `Daily Max 8-hour CO Concentration`. Como variables predictoras (**X**) se conservaron únicamente las columnas numéricas relevantes, descartando identificadores, fechas, códigos y nombres de texto que no aportan valor predictivo (fecha, fuente, ID de sitio, unidades, nombre del sitio, códigos AQS/CBSA/FIPS, condado, estado, etc.).
 
-4. **División de datos:** el conjunto de datos se dividió en entrenamiento (70 %) y prueba (30 %) utilizando `train_test_split` de scikit-learn, con una semilla fija (`random_state = 123`) para garantizar reproducibilidad.
+4. **División de datos:** el conjunto se dividió en 70 % para entrenamiento y 30 % para prueba, usando `train_test_split` de scikit-learn con semilla fija (`random_state=123`) para que los resultados sean reproducibles.
 
-5. **Entrenamiento del modelo:** se implementó un modelo de **Regresión Lineal Múltiple** (`LinearRegression` de scikit-learn) sobre el conjunto de entrenamiento.
+5. **Entrenamiento del modelo:** se entrenó un modelo de **Regresión Lineal Múltiple** (`LinearRegression`) sobre el conjunto de entrenamiento.
 
-6. **Evaluación de significancia:** se calcularon los errores estándar y estadísticos t de cada coeficiente para determinar la importancia relativa de cada variable predictora sobre la variable objetivo.
+6. **Significancia estadística:** se calculó el error estándar y el estadístico t de cada coeficiente, con el fin de identificar qué variables influyen de manera más fuerte y confiable sobre la predicción del CO.
 
-7. **Evaluación del modelo:** se midió el desempeño del modelo mediante el coeficiente de determinación (R²) tanto en entrenamiento como en prueba, y se calcularon las métricas de error: Error Absoluto Medio (MAE), Error Cuadrático Medio (MSE) y Raíz del Error Cuadrático Medio (RMSE). Adicionalmente, se realizó un análisis de residuos para verificar los supuestos del modelo (normalidad y homocedasticidad).
+7. **Evaluación del modelo:** se calculó el coeficiente de determinación (R²) tanto en entrenamiento como en prueba, además de las métricas de error MAE, MSE y RMSE sobre el conjunto de prueba. También se analizaron los residuos (diferencia entre valores reales y predichos) para verificar que el modelo cumple razonablemente los supuestos de normalidad y homocedasticidad.
+
+8. **Pruebas complementarias (exploratorias):** de forma adicional y con fines comparativos, se realizaron pruebas metodológicas sobre un conjunto de datos sintético (generado con `make_regression`), incluyendo un modelo de **árbol de decisión** (`DecisionTreeRegressor`) para evaluar importancia de variables, y un ajuste de **Mínimos Cuadrados Ordinarios (OLS)** con la librería `statsmodels` para obtener un resumen estadístico más completo del modelo lineal. Estas pruebas no se aplicaron al conjunto de datos real de CO, sino que sirvieron como ejercicio metodológico de comparación entre técnicas.
 
 ## Resultados
 
-### Distribución de la variable objetivo
+A continuación se presentan los resultados obtenidos en cada etapa del análisis, con espacio para insertar las imágenes generadas en el notebook y su respectiva interpretación.
 
-<!-- Insertar aquí: histograma y curva de densidad de "Daily Max 8-hour CO Concentration" -->
+### 1. Distribución de la variable objetivo
 
-**Interpretación:** *(Describir aquí la forma de la distribución: si es simétrica o sesgada, si hay valores atípicos, y qué tan dispersos están los valores de concentración de CO respecto a su media)*
+![Histograma y densidad de la concentración de CO](imagenes/01_histograma_densidad_CO.png)
 
----
-
-### Matriz de correlación
-
-<!-- Insertar aquí: mapa de calor (heatmap) de correlaciones entre variables numéricas -->
-
-**Interpretación:** *(Señalar qué variables muestran mayor correlación positiva o negativa con la concentración de CO, y si existe multicolinealidad relevante entre las variables predictoras)*
+**Interpretación:** La concentración máxima diaria de CO durante 2022 tiene un promedio de **0.28 ppm**, con una desviación estándar de **0.23 ppm**. El valor mínimo registrado fue **0.0 ppm** y el máximo **1.0 ppm**. La mitad de los días registró concentraciones iguales o menores a **0.2 ppm** (mediana), lo que indica que la mayoría de los días tuvo niveles bajos de CO, con algunos picos ocasionales más altos que generan una distribución sesgada hacia la derecha (cola larga hacia valores altos). Esto es típico en variables de contaminación, donde la mayoría de los días son "normales" pero existen episodios puntuales de mayor contaminación.
 
 ---
 
-### Coeficientes del modelo y significancia estadística
+### 2. Matriz de correlación
 
-<!-- Insertar aquí: tabla `cdf` con Coefficients, Standard Error y t-statistic -->
+![Mapa de calor de correlaciones](imagenes/02_heatmap_correlacion.png)
 
-**Interpretación:** *(Explicar qué variables resultaron más significativas según el estadístico t, y qué dirección de efecto tienen sus coeficientes sobre el CO)*
-
----
-
-### Variables más influyentes vs. variable objetivo
-
-<!-- Insertar aquí: gráfico de dispersión 2x2 de las 4 variables más importantes vs. CO -->
-
-**Interpretación:** *(Comentar el tipo de relación observada — lineal, no lineal, dispersa — entre cada una de estas variables y la concentración de CO)*
+**Interpretación:** La variable con mayor correlación con el CO es, por mucho, el **Daily AQI Value** (índice de calidad del aire diario), con una correlación de **0.996**, es decir, prácticamente perfecta. Esto tiene una explicación lógica: el AQI de ese día se calcula matemáticamente a partir de la concentración de CO (y de otros contaminantes), por lo que no es una variable "externa" que explique el CO, sino casi una transformación directa de la propia variable objetivo. Por otro lado, variables como `Daily Obs Count` (cantidad de observaciones horarias registradas en el día) y `Percent Complete` (porcentaje de completitud de las mediciones) muestran una correlación baja y negativa (alrededor de **-0.13**), lo cual sugiere una relación débil: días con más observaciones o mayor completitud de datos no necesariamente coinciden con más o menos CO.
 
 ---
 
-### Ajuste del modelo (R² de entrenamiento)
+### 3. Coeficientes del modelo y significancia estadística
 
-<!-- Insertar aquí: valor impreso de R² de entrenamiento -->
+![Tabla de coeficientes, error estándar y t-statistic](imagenes/03_tabla_coeficientes.png)
 
-**Interpretación:** *(Indicar qué porcentaje de la variabilidad del CO es explicado por el modelo en el conjunto de entrenamiento)*
-
----
-
-### Valores reales vs. predichos (conjunto de prueba)
-
-<!-- Insertar aquí: gráfico de dispersión de valores reales vs. predichos con línea de referencia -->
-
-**Interpretación:** *(Evaluar qué tan cerca están los puntos de la línea diagonal ideal, y si el modelo tiende a sobreestimar o subestimar en ciertos rangos)*
+**Interpretación:** Los coeficientes muestran que, por cada unidad que sube el `Daily AQI Value`, la predicción de CO aumenta en promedio **0.085 ppm**, y por cada observación horaria adicional (`Daily Obs Count`), la predicción de CO aumenta **0.257 ppm**, mientras que un mayor `Percent Complete` está asociado a una ligera disminución del CO predicho (**-0.061**). Las variables `Site Latitude` y `Site Longitude` no aportan nada al modelo, ya que todos los registros provienen de la misma estación y por lo tanto son constantes (su coeficiente es prácticamente cero y no tienen ningún poder explicativo real). En cuanto a la significancia estadística, tanto el `Daily AQI Value` (t ≈ 189) como `Daily Obs Count` (t ≈ 114) y `Percent Complete` (t ≈ -114) tienen valores de t muy altos en valor absoluto, lo que indica que su efecto sobre el CO es estadísticamente muy sólido y no se debe al azar.
 
 ---
 
-### Análisis de residuos
+### 4. Relación de las variables más importantes con la variable objetivo
 
-<!-- Insertar aquí: histograma de residuos -->
+![Dispersión de las 4 variables más importantes vs. CO](imagenes/04_dispersión_variables_importantes.png)
 
-**Interpretación:** *(Indicar si los residuos siguen una distribución aproximadamente normal, lo cual respalda los supuestos del modelo de regresión lineal)*
-
-<!-- Insertar aquí: gráfico de residuos vs. valores predichos -->
-
-**Interpretación:** *(Comentar si los residuos se distribuyen aleatoriamente alrededor de cero (homocedasticidad) o si se observa algún patrón que sugiera un problema en el modelo)*
+**Interpretación:** Al graficar el `Daily AQI Value` contra el CO se observa una relación prácticamente lineal y muy estrecha, confirmando la fuerte correlación mencionada anteriormente. En cambio, variables como `Daily Obs Count` y `Percent Complete` muestran nubes de puntos mucho más dispersas, sin un patrón claro, lo que confirma que su relación con el CO es débil y probablemente poco útil desde un punto de vista práctico (más allá de que estadísticamente resulten "significativas" dentro del modelo).
 
 ---
 
-### Métricas finales de desempeño
+### 5. Ajuste del modelo (R² de entrenamiento)
 
-<!-- Insertar aquí: valores impresos de MAE, MSE, RMSE y R² sobre el conjunto de prueba -->
+![Valor de R² en el conjunto de entrenamiento](imagenes/05_r2_entrenamiento.png)
 
-**Interpretación:** *(Comparar estos valores con la escala de la variable objetivo para juzgar si el error del modelo es aceptable, y comparar el R² de prueba con el de entrenamiento para evaluar sobreajuste)*
+**Interpretación:** El modelo obtuvo un **R² de entrenamiento de 0.993**, lo que significa que las variables utilizadas logran explicar el **99.3 %** de la variabilidad del CO en los datos de entrenamiento. Este valor tan alto se debe principalmente a la presencia del `Daily AQI Value`, que como se explicó, está matemáticamente ligado a la propia variable objetivo.
+
+---
+
+### 6. Valores reales vs. predichos (conjunto de prueba)
+
+![Dispersión de valores reales vs. predichos](imagenes/06_reales_vs_predichos.png)
+
+**Interpretación:** Los puntos se agrupan de forma muy cercana a la línea diagonal de referencia (predicción perfecta), lo cual indica que el modelo generaliza muy bien también en datos que no vio durante el entrenamiento. No se observan desviaciones importantes en ningún rango de valores, ni sobreestimación ni subestimación sistemática.
+
+---
+
+### 7. Análisis de residuos
+
+![Histograma de residuos](imagenes/07_histograma_residuos.png)
+
+**Interpretación:** El histograma de los residuos muestra una forma aproximadamente simétrica y centrada en cero, lo cual es una buena señal: sugiere que los errores del modelo se comportan de manera similar a una distribución normal, cumpliendo uno de los supuestos clave de la regresión lineal.
+
+![Residuos vs. valores predichos](imagenes/08_residuos_vs_predichos.png)
+
+**Interpretación:** Los residuos se distribuyen de forma bastante aleatoria alrededor de la línea horizontal en cero, sin formar un patrón en forma de embudo o de curva. Esto indica que no hay evidencia fuerte de heterocedasticidad (es decir, el error del modelo no crece ni se reduce sistemáticamente según el valor predicho), lo cual respalda la validez del modelo lineal utilizado.
+
+---
+
+### 8. Métricas finales de desempeño
+
+![Métricas finales: MAE, MSE, RMSE y R²](imagenes/09_metricas_finales.png)
+
+**Interpretación:** Sobre el conjunto de prueba, el modelo obtuvo:
+
+- **MAE (Error Absoluto Medio):** 0.018 ppm
+- **MSE (Error Cuadrático Medio):** 0.0005
+- **RMSE (Raíz del Error Cuadrático Medio):** 0.023 ppm
+- **R² de prueba:** 0.990
+
+Considerando que los valores de CO en el conjunto de datos van de 0 a 1 ppm con una media de 0.28 ppm, un error promedio de apenas 0.018–0.023 ppm es muy pequeño en términos relativos. Además, el R² de prueba (0.990) es muy similar al de entrenamiento (0.993), lo que indica que el modelo **no está sobreajustado**: aprendió un patrón real y lo aplica igual de bien a datos nuevos.
 
 ## Discusión
 
-*(Sección opcional: aquí puedes reflexionar sobre las limitaciones del modelo — por ejemplo, el uso de un modelo lineal para relaciones que podrían ser no lineales, la posible multicolinealidad entre variables ambientales, el tamaño de la muestra, o la falta de variables externas como tráfico vehicular o condiciones meteorológicas detalladas. También puedes proponer mejoras futuras, como probar modelos no lineales, regularización (Ridge/Lasso) o incluir más estaciones y años de datos.)*
+Aunque el modelo obtuvo un desempeño estadístico excelente (R² cercano a 0.99), es importante interpretar este resultado con cuidado. La variable predictora más influyente, `Daily AQI Value`, no es una variable verdaderamente "externa" al CO: el índice de calidad del aire (AQI) se calcula a partir de la concentración de contaminantes, incluyendo el propio CO. Esto implica que una parte importante del alto poder predictivo del modelo proviene de una especie de "fuga de información" (*data leakage*), más que de un verdadero patrón causal entre variables independientes y el CO.
+
+Por otro lado, dado que todos los registros provienen de una sola estación de monitoreo (Copper View), variables como la latitud y longitud del sitio resultan completamente constantes y sin utilidad predictiva, y el resto de variables disponibles (número de observaciones diarias, porcentaje de completitud) tienen una relación débil con el CO.
+
+Como trabajo futuro, sería recomendable:
+
+- Repetir el análisis excluyendo el `Daily AQI Value` para evaluar qué tan bien predicen el CO variables verdaderamente independientes (por ejemplo, temperatura, humedad, velocidad del viento o tráfico vehicular, si estuvieran disponibles).
+- Incluir datos de varias estaciones de monitoreo y de varios años, para tener variabilidad geográfica y temporal real.
+- Probar modelos no lineales o de regularización (Ridge, Lasso, árboles de decisión) que puedan capturar relaciones más complejas y sean más robustos frente a variables poco informativas.
 
 ## Referencias
 
-[1] U.S. Environmental Protection Agency, "Download Daily Data," *AirData*. [Online]. Available: https://www.epa.gov/outdoor-air-quality-data/download-daily-data. [Accessed: 17-Sep-2026].
+[1] U.S. Environmental Protection Agency, "Air Quality Data — Salt Lake City, UT (Carbon Monoxide, 2022)," *AirData*, 2022. [Online]. Available: https://www.epa.gov/outdoor-air-quality-data/download-daily-data. [Accessed: 17-Sep-2026].
