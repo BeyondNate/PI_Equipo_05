@@ -174,7 +174,7 @@ plt.scatter(x=predictions, y=y_test-predictions)
 print("MAE:", metrics.mean_absolute_error(y_test, predictions))
 print("MSE:", metrics.mean_squared_error(y_test, predictions))
 print("RMSE:", np.sqrt(metrics.mean_squared_error(y_test, predictions)))
-print("R2:", metrics.r2_score(y_test, predictions))
+print("R^2:", metrics.r2_score(y_test, predictions))
 ```
 
 ```python
@@ -209,9 +209,9 @@ print(stat_result.summary())
 
 ---
 
-## Interpretaciones (resumidas)
+## Interpretaciones
 
-**Pairplot:** más "Good Days" se asocia con AQI más bajo; más "Moderate/Unhealthy Days" se asocia con AQI más alto. Max AQI y 90th Percentile AQI están muy relacionados entre sí.
+**Pairplot:** "Good Days" se asocia con AQI más bajo; "Moderate/Unhealthy Days" se asocia con AQI más alto. Max AQI y 90th Percentile AQI están muy relacionados entre sí.
 
 **Histograma de Median AQI:** distribución concentrada entre 30-60, con cola larga a la derecha (pocas ciudades muy contaminadas).
 
@@ -221,7 +221,7 @@ print(stat_result.summary())
 
 **Dispersión de 4 variables vs Y:** Good Days baja el AQI, Moderate Days lo sube de forma bastante lineal; Unhealthy(-Sensitive) Days están muy dispersas y cercanas a cero.
 
-**Real vs. predicho (regresión lineal):** buen ajuste general (R²=0.84), con más error en los valores altos de AQI.
+**Real vs. predicho (regresión lineal):** buen ajuste general (R^2=0.84), con más error en los valores altos de AQI.
 
 **Histograma de residuos:** centrados en cero, forma aproximadamente normal con leve cola derecha.
 
@@ -235,4 +235,4 @@ print(stat_result.summary())
 
 ## Conclusiones finales
 
-El AQI mediano de las ciudades de EE. UU. en 2023 se explica principalmente por cuántos días caen en las categorías "Good" y "Moderate", mientras que contaminantes como CO y NO2 casi no aportan información. Tanto la regresión lineal (R²=0.84) como el OLS (R²=0.88) logran buen ajuste, y el árbol de decisión reduce aún más el error, sugiriendo relaciones no del todo lineales. El OLS mostró además una matriz de diseño con rango deficiente (multicolinealidad), por lo que convendría depurar variables redundantes o aplicar regularización (Ridge/Lasso) en un análisis más riguroso. En general, el flujo de trabajo (EDA → regresión lineal → árbol de decisión → OLS) se aplicó correctamente sobre los datos reales, con resultados predictivos consistentes entre modelos.
+El AQI mediano de las ciudades de EE. UU. en 2023 se explica principalmente por cuántos días caen en las categorías good y moderate, mientras que contaminantes como CO y NO2 casi no aportan nada de informacion. Tanto la regresión lineal (R^2=0.84) como el OLS (R^2=0.88) logran buen ajuste, y el árbol de decisión reduce aún más el error, sugiriendo relaciones no del todo lineales. El OLS mostró además una matriz de diseño con rango deficiente (multicolinealidad), por lo que convendría depurar variables redundantes o aplicar regularización (Ridge/Lasso) en un análisis más riguroso. En general, el flujo de trabajo (EDA → regresión lineal → árbol de decisión → OLS) se aplicó correctamente sobre los datos reales, con resultados predictivos consistentes entre modelos.
