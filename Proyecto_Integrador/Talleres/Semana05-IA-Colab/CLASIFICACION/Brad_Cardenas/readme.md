@@ -1,4 +1,4 @@
-# Predicción de la Concentración Máxima Diaria de CO mediante Regresión Lineal Múltiple: Caso Salt Lake City, UT (2022)
+t# Predicción de la Concentración Máxima Diaria de CO mediante Regresión Lineal Múltiple: Caso Salt Lake City, UT (2022)
 
 ## Introducción
 
@@ -33,11 +33,12 @@ El análisis se desarrolló siguiendo estos pasos:
 A continuación se presentan los resultados obtenidos en cada etapa del análisis, con espacio para insertar las imágenes generadas en el notebook y su respectiva interpretación.
 
 ### Relaciones entre variables
-![variasVariables](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
+![variasVariables](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/variasvariables.png)
 
 ### 1. Distribución de la variable objetivo
 
-![Histograma y densidad de la concentración de CO](imagenes/01_histograma_densidad_CO.png)
+![Histograma concentración de CO](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/histograma.png)
+![Densidad de la concentración de CO](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/densidad.png)
 
 **Interpretación:** La concentración máxima diaria de CO durante 2022 tiene un promedio de **0.28 ppm**, con una desviación estándar de **0.23 ppm**. El valor mínimo registrado fue **0.0 ppm** y el máximo **1.0 ppm**. La mitad de los días registró concentraciones iguales o menores a **0.2 ppm** (mediana), lo que indica que la mayoría de los días tuvo niveles bajos de CO, con algunos picos ocasionales más altos que generan una distribución sesgada hacia la derecha (cola larga hacia valores altos). Esto es típico en variables de contaminación, donde la mayoría de los días son "normales" pero existen episodios puntuales de mayor contaminación.
 
