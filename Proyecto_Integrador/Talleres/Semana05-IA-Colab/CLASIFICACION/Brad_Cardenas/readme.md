@@ -1,4 +1,4 @@
-t# Predicción de la Concentración Máxima Diaria de CO mediante Regresión Lineal Múltiple: Caso Salt Lake City, UT (2022)
+# Predicción de la Concentración Máxima Diaria de CO mediante Regresión Lineal Múltiple: Caso Salt Lake City, UT (2022)
 
 ## Introducción
 
