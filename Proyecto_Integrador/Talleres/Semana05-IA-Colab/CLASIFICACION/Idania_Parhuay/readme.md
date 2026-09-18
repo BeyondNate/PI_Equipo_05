@@ -228,7 +228,7 @@ Como limitaciones del presente análisis cabe señalar: (i) el estudio se restri
 
 ## 5. Referencias
 
-[1] I. C. Parhuay Meza, "Taller de Regresión Lineal y Modelos de Predicción — Base de datos de CO, Monterey County, 2022," cuaderno de Google Colab, Universidad Peruana Cayetano Heredia, 2026, trabajo no publicado.
+[1] I. C. Parhuay Meza, "Taller de Regresión Lineal y Modelos de Predicción — Base de datos de CO, Monterey County, 2022," cuaderno de Google Colab, Universidad Peruana Cayetano Heredia, 2026, trabajo no publicado. [Taller de Regresión Lineal — CO Monterey 2022](Talleres/Semana05-IA-Colab/CLASIFICACION/Idania_Parhuay/Taller_Regresion_Lineal_CO_Monterey_2022.ipynb)
 
 [2] U.S. Environmental Protection Agency, "Download Daily Data," Outdoor Air Quality Data, y "Basic Information about Carbon Monoxide (CO) Outdoor Air Pollution." [En línea]. Disponible: https://www.epa.gov/outdoor-air-quality-data/download-daily-data ; https://www.epa.gov/co-pollution/basic-information-about-carbon-monoxide-co-outdoor-air-pollution. [Accedido: sep. 2026].
 
