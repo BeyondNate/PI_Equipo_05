@@ -1,126 +1,318 @@
-# Predicción de la Concentración Máxima Diaria de CO mediante Regresión Lineal Múltiple: Caso Salt Lake City, UT (2022)
+# Informe: Análisis mediante Regresión Lineal — Concentración de CO (Salt Lake City, 2022)
 
-## Introducción
+## 1. Metodología
 
-La calidad del aire es uno de los factores ambientales que más impacto tiene sobre la salud de las personas, sobre todo en ciudades con tráfico vehicular constante e industria cercana. Entre los contaminantes que se monitorean con mayor frecuencia está el **monóxido de carbono (CO)**, un gas que no se puede ver ni oler, pero que en concentraciones altas es peligroso porque impide que la sangre transporte oxígeno de forma adecuada.
+### 1.1. Exploración del conjunto de datos
 
-Este informe presenta un análisis realizado sobre datos reales de calidad del aire de la estación **Copper View**, en Salt Lake City, Utah, correspondientes al año 2022. El objetivo es construir un modelo de **regresión lineal múltiple** que permita predecir la concentración máxima diaria de CO (medida en un promedio móvil de 8 horas) a partir de otras variables numéricas disponibles en el conjunto de datos, y así entender qué tan bien se puede explicar el comportamiento de este contaminante y qué variables están más relacionadas con él.
+Se utilizó un conjunto de datos de calidad del aire correspondiente a la estación **Copper View** (Salt Lake City, Utah), que contiene **365 registros y 21 variables**, uno por cada día del año 2022. Entre las variables disponibles se encuentran la **concentración máxima diaria de CO en 8 horas** (variable objetivo), el **valor diario del AQI**, la **cantidad de observaciones diarias**, el **porcentaje de datos completos** y distintos campos identificativos de la estación (ubicación, códigos de método y de parámetro, coordenadas), que son constantes para todo el dataset al provenir de un único sitio de monitoreo.
 
-Los datos utilizados fueron descargados directamente del portal de datos abiertos de la Agencia de Protección Ambiental de los Estados Unidos (EPA) [1].
+Para conocer la estructura de los datos se utilizaron funciones básicas de `pandas`, principalmente `head()`, `info()` y `describe()`.
 
-## Metodología
+```python
+df1 = pd.read_csv(file)
+df1.head()
+df1.info(verbose=True)
+df1.describe().round(1)
+```
 
-El análisis se desarrolló siguiendo estos pasos:
+La función `head()` permitió observar los primeros registros (por ejemplo, el 01/01/2022 se registró una concentración de 0.4 ppm de CO con un AQI de 5). La función `info()` confirmó que las 365 filas no tienen valores nulos y que las variables numéricas relevantes son de tipo `float64` e `int64`. Finalmente, `describe()` mostró que la concentración de CO oscila entre **0.0 y 1.0 ppm**, con una media de **0.284 ppm**, mientras que el AQI diario varía entre **0 y 11**, con una media de **3.15**.
 
-1. **Carga y exploración de datos (EDA):** se importó el archivo `ad_viz_plotval_data.csv`, correspondiente a 365 registros diarios del año 2022 de la estación Copper View. Se revisó la estructura del dataset, tipos de datos, valores nulos (no se encontraron) y estadísticas descriptivas básicas.
+**Imagen 1 – Exploración inicial del conjunto de datos**
 
-2. **Análisis gráfico exploratorio:** se generaron gráficos de dispersión por pares (*pairplot*), un histograma y una curva de densidad de la variable objetivo, y una matriz de correlación (heatmap) entre las variables numéricas.
+![Exploración inicial del dataset](Capturas/exploracion_dataset.png)
 
-3. **Preparación de variables:** se definió como variable objetivo (**y**) la columna `Daily Max 8-hour CO Concentration`. Como variables predictoras (**X**) se conservaron únicamente las columnas numéricas relevantes, descartando identificadores, fechas, códigos y nombres de texto que no aportan valor predictivo (fecha, fuente, ID de sitio, unidades, nombre del sitio, códigos AQS/CBSA/FIPS, condado, estado, etc.).
-
-4. **División de datos:** el conjunto se dividió en 70 % para entrenamiento y 30 % para prueba, usando `train_test_split` de scikit-learn con semilla fija (`random_state=123`) para que los resultados sean reproducibles.
-
-5. **Entrenamiento del modelo:** se entrenó un modelo de **Regresión Lineal Múltiple** (`LinearRegression`) sobre el conjunto de entrenamiento.
-
-6. **Significancia estadística:** se calculó el error estándar y el estadístico t de cada coeficiente, con el fin de identificar qué variables influyen de manera más fuerte y confiable sobre la predicción del CO.
-
-7. **Evaluación del modelo:** se calculó el coeficiente de determinación (R²) tanto en entrenamiento como en prueba, además de las métricas de error MAE, MSE y RMSE sobre el conjunto de prueba. También se analizaron los residuos (diferencia entre valores reales y predichos) para verificar que el modelo cumple razonablemente los supuestos de normalidad y homocedasticidad.
-
-8. **Pruebas complementarias (exploratorias):** de forma adicional y con fines comparativos, se realizaron pruebas metodológicas sobre un conjunto de datos sintético (generado con `make_regression`), incluyendo un modelo de **árbol de decisión** (`DecisionTreeRegressor`) para evaluar importancia de variables, y un ajuste de **Mínimos Cuadrados Ordinarios (OLS)** con la librería `statsmodels` para obtener un resumen estadístico más completo del modelo lineal. Estas pruebas no se aplicaron al conjunto de datos real de CO, sino que sirvieron como ejercicio metodológico de comparación entre técnicas.
-
-## Resultados
-
-A continuación se presentan los resultados obtenidos en cada etapa del análisis, con espacio para insertar las imágenes generadas en el notebook y su respectiva interpretación.
-
-### Relaciones entre variables
-![variasVariables](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/variasvariables.png)
-
-### 1. Distribución de la variable objetivo
-
-![Histograma concentración de CO](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/histograma.png)
-![Densidad de la concentración de CO](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/densidad.png)
-
-**Interpretación:** La concentración máxima diaria de CO durante 2022 tiene un promedio de **0.28 ppm**, con una desviación estándar de **0.23 ppm**. El valor mínimo registrado fue **0.0 ppm** y el máximo **1.0 ppm**. La mitad de los días registró concentraciones iguales o menores a **0.2 ppm** (mediana), lo que indica que la mayoría de los días tuvo niveles bajos de CO, con algunos picos ocasionales más altos que generan una distribución sesgada hacia la derecha (cola larga hacia valores altos). Esto es típico en variables de contaminación, donde la mayoría de los días son "normales" pero existen episodios puntuales de mayor contaminación.
+*Figura 1. Primeros registros del conjunto de datos.*
 
 ---
 
-### 2. Matriz de correlación
+### 1.2. Análisis exploratorio y correlación
 
-![Mapa de calor de correlaciones](imagenes/02_heatmap_correlacion.png)
+Se realizó un análisis exploratorio para observar visualmente las relaciones entre las variables. Para ello se utilizó `pairplot()` de la biblioteca `seaborn`, aplicado sobre las cuatro variables numéricas que sí varían en el conjunto de datos (`Daily Max 8-hour CO Concentration`, `Daily AQI Value`, `Daily Obs Count` y `Percent Complete`; el resto de columnas numéricas —coordenadas, códigos de sitio y de parámetro— son constantes porque los datos provienen de una única estación).
 
-**Interpretación:** La variable con mayor correlación con el CO es, por mucho, el **Daily AQI Value** (índice de calidad del aire diario), con una correlación de **0.996**, es decir, prácticamente perfecta. Esto tiene una explicación lógica: el AQI de ese día se calcula matemáticamente a partir de la concentración de CO (y de otros contaminantes), por lo que no es una variable "externa" que explique el CO, sino casi una transformación directa de la propia variable objetivo. Por otro lado, variables como `Daily Obs Count` (cantidad de observaciones horarias registradas en el día) y `Percent Complete` (porcentaje de completitud de las mediciones) muestran una correlación baja y negativa (alrededor de **-0.13**), lo cual sugiere una relación débil: días con más observaciones o mayor completitud de datos no necesariamente coinciden con más o menos CO.
+```python
+sns.pairplot(df1)
+```
 
----
+**Imagen 2 – Relaciones entre variables**
 
-### 3. Coeficientes del modelo y significancia estadística
+![Pairplot](Capturas/pairplot.png)
 
-![Tabla de coeficientes, error estándar y t-statistic](imagenes/03_tabla_coeficientes.png)
+*Figura 2. Relaciones entre las variables del conjunto de datos.*
 
-**Interpretación:** Los coeficientes muestran que, por cada unidad que sube el `Daily AQI Value`, la predicción de CO aumenta en promedio **0.085 ppm**, y por cada observación horaria adicional (`Daily Obs Count`), la predicción de CO aumenta **0.257 ppm**, mientras que un mayor `Percent Complete` está asociado a una ligera disminución del CO predicho (**-0.061**). Las variables `Site Latitude` y `Site Longitude` no aportan nada al modelo, ya que todos los registros provienen de la misma estación y por lo tanto son constantes (su coeficiente es prácticamente cero y no tienen ningún poder explicativo real). En cuanto a la significancia estadística, tanto el `Daily AQI Value` (t ≈ 189) como `Daily Obs Count` (t ≈ 114) y `Percent Complete` (t ≈ -114) tienen valores de t muy altos en valor absoluto, lo que indica que su efecto sobre el CO es estadísticamente muy sólido y no se debe al azar.
+**Interpretación:** el panel más relevante es el que relaciona `Daily Max 8-hour CO Concentration` con `Daily AQI Value`: los puntos se alinean casi perfectamente sobre una recta creciente, lo que anticipa una correlación lineal casi perfecta entre ambas variables (el AQI de CO se calcula directamente a partir de la concentración de CO, por lo que esta relación es, en la práctica, una transformación matemática y no una asociación empírica). En cambio, `Daily Obs Count` y `Percent Complete` se concentran mayoritariamente en un único valor (24 observaciones y 100 % de datos completos), con un grupo reducido de días con menos observaciones (14–20) y menor porcentaje de completitud (58 %–92 %); estos puntos corresponden a días con fallas o interrupciones en el equipo de medición y no muestran una relación clara con la concentración de CO.
 
----
+### Distribución de la variable objetivo
 
-### 4. Relación de las variables más importantes con la variable objetivo
+```python
+df1['Daily Max 8-hour CO Concentration'].plot.hist(bins=25, figsize=(8,4))
+df1['Daily Max 8-hour CO Concentration'].plot.density()
+```
 
-![Dispersión de las 4 variables más importantes vs. CO](imagenes/04_dispersión_variables_importantes.png)
+**Imagen 3 – Histograma de la variable objetivo**
 
-**Interpretación:** Al graficar el `Daily AQI Value` contra el CO se observa una relación prácticamente lineal y muy estrecha, confirmando la fuerte correlación mencionada anteriormente. En cambio, variables como `Daily Obs Count` y `Percent Complete` muestran nubes de puntos mucho más dispersas, sin un patrón claro, lo que confirma que su relación con el CO es débil y probablemente poco útil desde un punto de vista práctico (más allá de que estadísticamente resulten "significativas" dentro del modelo).
+![Histograma](Capturas/histograma_objetivo.png)
 
----
+*Figura 3. Distribución de frecuencias de la concentración máxima diaria de CO.*
 
-### 5. Ajuste del modelo (R² de entrenamiento)
-
-![Valor de R² en el conjunto de entrenamiento](imagenes/05_r2_entrenamiento.png)
-
-**Interpretación:** El modelo obtuvo un **R² de entrenamiento de 0.993**, lo que significa que las variables utilizadas logran explicar el **99.3 %** de la variabilidad del CO en los datos de entrenamiento. Este valor tan alto se debe principalmente a la presencia del `Daily AQI Value`, que como se explicó, está matemáticamente ligado a la propia variable objetivo.
-
----
-
-### 6. Valores reales vs. predichos (conjunto de prueba)
-
-![Dispersión de valores reales vs. predichos](imagenes/06_reales_vs_predichos.png)
-
-**Interpretación:** Los puntos se agrupan de forma muy cercana a la línea diagonal de referencia (predicción perfecta), lo cual indica que el modelo generaliza muy bien también en datos que no vio durante el entrenamiento. No se observan desviaciones importantes en ningún rango de valores, ni sobreestimación ni subestimación sistemática.
+**Interpretación:** la distribución está claramente **sesgada a la derecha (asimetría positiva)**. La mayoría de los días del año presentan concentraciones bajas de CO, concentradas entre 0.1 y 0.3 ppm (más de 180 de los 365 días), mientras que un número reducido de días alcanza valores altos, de hasta 1.0 ppm. Esto es coherente con el comportamiento típico de contaminantes atmosféricos: la concentración se mantiene baja en condiciones normales y solo se eleva en episodios puntuales (por ejemplo, días fríos con inversión térmica, típicos del invierno en el valle de Salt Lake City, donde el CO tiende a acumularse cerca del suelo).
 
 ---
 
-### 7. Análisis de residuos
+### 1.3. Matriz de correlación
 
-![Histograma de residuos](imagenes/07_histograma_residuos.png)
+Se realizó un análisis de correlación con el objetivo de identificar relaciones lineales entre las variables y determinar cuáles podrían ser utilizadas para el modelo de regresión.
 
-**Interpretación:** El histograma de los residuos muestra una forma aproximadamente simétrica y centrada en cero, lo cual es una buena señal: sugiere que los errores del modelo se comportan de manera similar a una distribución normal, cumpliendo uno de los supuestos clave de la regresión lineal.
+```python
+numeric_df = df1.select_dtypes(include=[np.number])
+numeric_df.corr()
+sns.heatmap(numeric_df.corr(), annot=True, linewidths=2)
+```
 
-![Residuos vs. valores predichos](imagenes/08_residuos_vs_predichos.png)
+**Imagen 4 – Matriz de correlación**
 
-**Interpretación:** Los residuos se distribuyen de forma bastante aleatoria alrededor de la línea horizontal en cero, sin formar un patrón en forma de embudo o de curva. Esto indica que no hay evidencia fuerte de heterocedasticidad (es decir, el error del modelo no crece ni se reduce sistemáticamente según el valor predicho), lo cual respalda la validez del modelo lineal utilizado.
+![Matriz de correlación](Capturas/matriz_correlacion.png)
+
+*Figura 4. Matriz de correlación de las variables analizadas.*
+
+**Interpretación:** la matriz confirma lo observado en el pairplot: `Daily Max 8-hour CO Concentration` y `Daily AQI Value` presentan una correlación de **1.00**, es decir, prácticamente perfecta (de nuevo, por construcción, ya que el AQI de CO es una función directa de su concentración). Por su parte, `Daily Obs Count` y `Percent Complete` están correlacionadas entre sí de forma perfecta (**1.00**, ya que ambas miden completitud de datos desde ángulos distintos) y mantienen una correlación **débil y negativa (-0.13)** con la concentración de CO, lo que sugiere que, en los días con menos observaciones registradas, la concentración medida tiende a ser ligeramente más baja (posiblemente por sesgo de muestreo incompleto), aunque el efecto es marginal.
 
 ---
 
-### 8. Métricas finales de desempeño
+### 1.4. Preparación de los datos
 
-![Métricas finales: MAE, MSE, RMSE y R²](imagenes/09_metricas_finales.png)
+Para construir el modelo se separaron las variables independientes, representadas por **X** (`Daily AQI Value`, `Daily Obs Count`, `Percent Complete`), de la variable objetivo, representada por **y** (`Daily Max 8-hour CO Concentration`). Se excluyeron del conjunto de predictores las columnas de texto, identificadores y códigos que no aportan a la regresión (`Date`, `Source`, `Site ID`, `POC`, `Units`, `Local Site Name`, códigos AQS/CBSA/FIPS, `State`, `County`, coordenadas, etc.).
 
-**Interpretación:** Sobre el conjunto de prueba, el modelo obtuvo:
+```python
+variable_objetivo = 'Daily Max 8-hour CO Concentration'
+columnas_a_excluir = ['Date', 'Source', 'Site ID', 'POC', 'Units', ...]
+X = df1.drop(columns=columnas_a_excluir)
+y = df1[variable_objetivo]
+```
 
-- **MAE (Error Absoluto Medio):** 0.018 ppm
-- **MSE (Error Cuadrático Medio):** 0.0005
-- **RMSE (Raíz del Error Cuadrático Medio):** 0.023 ppm
-- **R² de prueba:** 0.990
+Posteriormente, los datos fueron divididos en:
 
-Considerando que los valores de CO en el conjunto de datos van de 0 a 1 ppm con una media de 0.28 ppm, un error promedio de apenas 0.018–0.023 ppm es muy pequeño en términos relativos. Además, el R² de prueba (0.990) es muy similar al de entrenamiento (0.993), lo que indica que el modelo **no está sobreajustado**: aprendió un patrón real y lo aplica igual de bien a datos nuevos.
+* **70 % para entrenamiento** (255 registros), utilizado para ajustar el modelo.
+* **30 % para prueba** (110 registros), utilizado para evaluar las predicciones.
 
-## Discusión
+La división se realizó mediante `train_test_split()` utilizando `random_state=123` para mantener la reproducibilidad de los resultados.
 
-Aunque el modelo obtuvo un desempeño estadístico excelente (R² cercano a 0.99), es importante interpretar este resultado con cuidado. La variable predictora más influyente, `Daily AQI Value`, no es una variable verdaderamente "externa" al CO: el índice de calidad del aire (AQI) se calcula a partir de la concentración de contaminantes, incluyendo el propio CO. Esto implica que una parte importante del alto poder predictivo del modelo proviene de una especie de "fuga de información" (*data leakage*), más que de un verdadero patrón causal entre variables independientes y el CO.
+```python
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
+```
 
-Por otro lado, dado que todos los registros provienen de una sola estación de monitoreo (Copper View), variables como la latitud y longitud del sitio resultan completamente constantes y sin utilidad predictiva, y el resto de variables disponibles (número de observaciones diarias, porcentaje de completitud) tienen una relación débil con el CO.
+---
 
-Como trabajo futuro, sería recomendable:
+### 1.5. Regresión lineal
 
-- Repetir el análisis excluyendo el `Daily AQI Value` para evaluar qué tan bien predicen el CO variables verdaderamente independientes (por ejemplo, temperatura, humedad, velocidad del viento o tráfico vehicular, si estuvieran disponibles).
-- Incluir datos de varias estaciones de monitoreo y de varios años, para tener variabilidad geográfica y temporal real.
-- Probar modelos no lineales o de regularización (Ridge, Lasso, árboles de decisión) que puedan capturar relaciones más complejas y sean más robustos frente a variables poco informativas.
+Se utilizó `LinearRegression()` para construir el modelo de regresión lineal múltiple.
 
-## Referencias
+```python
+lm = LinearRegression()
+lm.fit(X_train, y_train)
+```
 
-[1] U.S. Environmental Protection Agency, "Air Quality Data — Salt Lake City, UT (Carbon Monoxide, 2022)," *AirData*, 2022. [Online]. Available: https://www.epa.gov/outdoor-air-quality-data/download-daily-data. [Accessed: 17-Sep-2026].
+El modelo permite estimar una relación lineal entre las variables de entrada y la variable objetivo. Después del entrenamiento se obtuvieron la intersección y los coeficientes:
+
+```python
+print(lm.intercept_)
+print(lm.coef_)
+```
+
+**Resultados obtenidos:**
+
+| Variable | Coeficiente | t-estadístico |
+|---|---|---|
+| Daily AQI Value | 0.0852 | 189.82 |
+| Daily Obs Count | 0.2573 | 114.71 |
+| Percent Complete | -0.0611 | -114.23 |
+| Intercepto | -0.0510 | — |
+
+**Interpretación de los coeficientes:** `Daily AQI Value` tiene el t-estadístico más alto en valor absoluto, lo que confirma que es, por lejos, la variable más determinante del modelo (relación directamente proporcional: a mayor AQI, mayor concentración de CO, consistente con la correlación de 1.00 observada antes). `Daily Obs Count` presenta un coeficiente positivo (0.257): a más observaciones registradas en el día, el modelo predice una concentración levemente mayor. `Percent Complete` tiene coeficiente negativo (-0.061): días con mayor porcentaje de completitud tienden a asociarse, dentro del modelo, con concentraciones ligeramente menores, en línea con la correlación negativa detectada previamente.
+
+### Significancia estadística de los coeficientes (t-statistic)
+
+```python
+n = X_train.shape[0]; k = X_train.shape[1]; dfN = n - k
+train_error = np.square(train_pred - y_train)
+...
+```
+
+Ordenando las variables por su t-estadístico (en valor absoluto), la jerarquía de importancia resultante es:
+
+```
+Daily AQI Value
+Daily Obs Count
+Percent Complete
+```
+
+### Relación de las variables más importantes con la variable objetivo
+
+```python
+fig = plt.figure(figsize=(18, 10))
+gs = gridspec.GridSpec(2, 2)
+ax0.scatter(df1[l[0]], df1[variable_objetivo]); ...
+```
+
+**Imagen 5 – Variables más importantes vs. variable objetivo**
+
+![Variables vs target](Capturas/variables_vs_target.png)
+
+*Figura 5. Relación de las tres variables predictoras con la concentración de CO.*
+
+**Interpretación:** el panel de `Daily AQI Value` muestra la relación lineal casi perfecta ya descrita. Los paneles de `Daily Obs Count` y `Percent Complete` muestran una nube de puntos concentrada en los valores máximos (24 observaciones / 100 % completitud) que cubre prácticamente todo el rango de concentración de CO, y un pequeño grupo de puntos con valores más bajos de estas dos variables asociados a concentraciones diversas —evidencia visual de que su aporte predictivo real es marginal frente al de `Daily AQI Value`.
+
+### R cuadrado del ajuste del modelo (entrenamiento)
+
+```python
+metrics.r2_score(y_train, train_pred)
+```
+
+**Resultado:** R² de entrenamiento = **0.993**, es decir, el modelo explica el 99.3 % de la variabilidad de la concentración de CO en el conjunto de entrenamiento.
+
+---
+
+### 1.6. Evaluación del modelo con datos de prueba
+
+```python
+predictions = lm.predict(X_test)
+```
+
+### Valores reales vs. predichos
+
+```python
+plt.scatter(x=y_test, y=predictions, alpha=0.7)
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], ...)
+```
+
+**Imagen 6 – Valores reales vs. valores predichos**
+
+![Valores reales y predichos](Capturas/real_vs_predicho.png)
+
+*Figura 6. Comparación entre los valores reales y los valores predichos por el modelo.*
+
+**Interpretación:** los puntos se ajustan de forma muy cercana a la línea diagonal de predicción perfecta (línea roja), en todo el rango de valores (desde 0.0 hasta 0.9 ppm). Existen leves desviaciones puntuales, por ejemplo, cerca de 0.3–0.5 ppm, donde el modelo subestima o sobreestima levemente algunos valores individuales, pero en general el ajuste es excelente y consistente con el R² obtenido.
+
+### Análisis de residuos
+
+```python
+residuos = y_test - predictions
+sns.histplot(residuos, kde=True, color='blue', bins=30)
+```
+
+```python
+plt.scatter(x=predictions, y=residuos, alpha=0.7)
+plt.axhline(y=0, color='red', linestyle='--', linewidth=2)
+```
+
+**Imagen 7 – Análisis de residuos**
+
+![Análisis de residuos](Capturas/residuos.png)
+
+*Figura 7. Distribución de los residuos e histograma de residuos vs. predichos.*
+
+**Interpretación:** el histograma de residuos muestra una forma aproximadamente centrada en cero (media de los residuos ≈ -0.003), con una leve asimetría negativa, y con la mayor parte de los errores concentrados en un rango muy estrecho, entre -0.05 y +0.06 ppm. Esto es coherente con los indicadores de error obtenidos (ver sección 1.8) y respalda el supuesto de normalidad de los residuos, aunque con algunas colas discretas. En el gráfico de residuos vs. predichos no se observa un patrón sistemático (curvatura o embudo) alrededor de la línea de referencia en cero, lo que sugiere una **homoscedasticidad razonable**: la varianza del error se mantiene relativamente estable a lo largo del rango de valores predichos, sin evidencia fuerte de que el modelo funcione peor para concentraciones altas que para concentraciones bajas.
+
+---
+
+### 1.7. Análisis complementario con datos artificiales
+
+Como complemento del análisis, se generó un conjunto de datos artificiales utilizando `make_regression()`, con el fin de probar otros algoritmos de forma controlada (con relaciones conocidas de antemano).
+
+Se utilizaron **100 muestras, 6 características y 3 características informativas**, además de un nivel de ruido de 20 y una semilla aleatoria (`random_state=20`) para mantener la reproducibilidad.
+
+```python
+x, y, coef = make_regression(
+    n_samples=100, n_features=6, n_informative=3,
+    random_state=20, shuffle=False, noise=20, coef=True
+)
+```
+
+---
+
+### 1.8. Árbol de decisión
+
+Sobre los datos artificiales se entrenó un `DecisionTreeRegressor` con una profundidad máxima de 5.
+
+```python
+tree_model = tree.DecisionTreeRegressor(max_depth=5, random_state=10)
+```
+
+El modelo realizó predicciones sobre el conjunto de prueba, obteniéndose un **MSE de 7,931.6** (un valor elevado en términos absolutos, pero esperable dado que los datos artificiales se generaron con `noise=20` y valores de la variable objetivo en una escala mucho más amplia que la del CO real).
+
+**Imagen 8 – Real vs. predicho (árbol de decisión)**
+
+![Árbol real vs predicho](Capturas/arbol_real_vs_pred.png)
+
+*Figura 8. Comparación entre valores reales y predichos del árbol de decisión sobre datos artificiales.*
+
+Además, se obtuvo la importancia relativa de cada característica utilizada por el árbol.
+
+**Imagen 9 – Importancia de las características**
+
+![Importancia de características](Capturas/importancia_caracteristicas.png)
+
+*Figura 9. Importancia relativa de las características en el árbol de decisión.*
+
+**Interpretación:** el árbol identifica correctamente que las variables **x1, x2 y x3** son las más relevantes (con importancias de 0.269, 0.537 y 0.111 respectivamente, sumando ≈ 92 % de la importancia total), mientras que **x4, x5 y x6** —que no fueron marcadas como informativas al generar los datos— reciben una importancia mucho menor (todas por debajo de 0.04). Esto valida que el modelo de árbol es capaz de distinguir automáticamente las variables realmente predictivas de las que solo aportan ruido, tal como se diseñó el experimento (`n_informative=3` de 6 características totales).
+
+---
+
+### 1.9. Mínimos cuadrados
+
+Finalmente, se utilizó `statsmodels` para ajustar un modelo mediante el método de mínimos cuadrados ordinarios (OLS) sobre los mismos datos artificiales.
+
+```python
+xs = sm.add_constant(x)
+stat_model = sm.OLS(y, xs)
+stat_result = stat_model.fit()
+print(stat_result.summary())
+```
+
+**Interpretación:** el resumen del modelo OLS arrojó un **R² de 0.976** (R² ajustado 0.974), con un estadístico F de 628.6 y una probabilidad asociada prácticamente nula (p ≈ 6×10⁻⁷³), lo que indica que el modelo en conjunto es altamente significativo. A nivel individual, los coeficientes de **x1, x2 y x3** son estadísticamente significativos (p < 0.001 en los tres casos), con valores muy cercanos a los coeficientes reales usados para generar los datos, mientras que **x4, x5 y x6** no resultan significativos (p > 0.05 en los tres casos), confirmando nuevamente —desde un enfoque estadístico formal— el mismo hallazgo que entregó la importancia de características del árbol de decisión: solo tres de las seis variables generadas influyen realmente sobre la variable objetivo.
+
+---
+
+## 2. Resultados
+
+La exploración inicial permitió identificar un conjunto de **365 registros y 21 columnas**, correspondientes a mediciones diarias de monóxido de carbono (CO) en la estación Copper View de Salt Lake City durante el año 2022. Las estadísticas descriptivas mostraron que la concentración máxima diaria de CO en 8 horas presenta valores entre **0.0 y 1.0 ppm** (media 0.284 ppm), mientras que el valor diario del AQI varía entre **0 y 11** (media 3.15).
+
+El análisis exploratorio y la matriz de correlación mostraron una relación lineal casi perfecta (r = 1.00) entre la concentración de CO y el AQI diario, y una relación débil y negativa (r = -0.13) entre la concentración de CO y las variables de completitud de datos (`Daily Obs Count`, `Percent Complete`).
+
+El modelo de regresión lineal fue entrenado utilizando el 70 % de los datos (255 registros) y evaluado con el 30 % restante (110 registros), obteniendo un **R² de 0.993 en entrenamiento** y de **0.990 en prueba**, con un **MAE de 0.0178 ppm**, un **MSE de 0.00054** y un **RMSE de 0.0232 ppm**. Estos resultados indican un ajuste excelente del modelo, con un margen de error muy pequeño respecto a la escala de la variable objetivo (0–1 ppm).
+
+La comparación entre valores reales y predichos confirmó visualmente el buen desempeño del modelo, y el análisis de residuos no mostró patrones sistemáticos relevantes, sugiriendo un comportamiento razonablemente homoscedástico y consistente con la normalidad de los errores.
+
+Como análisis complementario, sobre datos artificiales generados con `make_regression()` se entrenó un árbol de decisión (MSE de 7,931.6) y un modelo OLS (R² = 0.976). Ambos coincidieron en identificar correctamente que solo 3 de las 6 características generadas (x1, x2, x3) son realmente informativas, validando de forma cruzada la capacidad de ambos métodos para distinguir señal de ruido.
+
+---
+
+## 3. Discusión
+
+El análisis permitió aplicar de forma completa las etapas de un proceso de regresión: exploración de datos, análisis de relaciones, preparación de variables, entrenamiento, predicción y evaluación, aplicado a un problema real de calidad del aire.
+
+Un hallazgo importante es que la variable predictora `Daily AQI Value` está matemáticamente derivada de la propia variable objetivo (el AQI de CO se calcula a partir de su concentración), lo que explica la correlación casi perfecta y el altísimo R² obtenido. En un contexto de predicción operativa (por ejemplo, anticipar la concentración de CO sin conocer aún el AQI del día), sería recomendable excluir `Daily AQI Value` del conjunto de predictores y evaluar el modelo únicamente con variables verdaderamente independientes (`Daily Obs Count`, `Percent Complete`) u otras fuentes de datos (meteorología, tráfico, estacionalidad), ya que estas por sí solas muestran una capacidad predictiva mucho más limitada (correlación de apenas -0.13 con la variable objetivo).
+
+El uso de gráficos facilitó la interpretación de los datos: el histograma reveló la naturaleza asimétrica de la concentración de CO (más días con niveles bajos, pocos días con picos altos), y el análisis de residuos permitió complementar la evaluación del modelo, verificando que los errores no siguen un patrón sistemático que sugiera un mal ajuste o problemas de especificación.
+
+El uso de datos artificiales, mediante `make_regression()`, permitió realizar una segunda prueba controlada donde se conocía de antemano cuáles variables debían ser relevantes. Tanto el árbol de decisión como el modelo de mínimos cuadrados (OLS) identificaron correctamente estas variables, lo que refuerza la validez metodológica del enfoque utilizado a lo largo de todo el proyecto.
+
+---
+
+## 4. Conclusiones
+
+* Se realizó una exploración inicial del conjunto de datos de CO de Salt Lake City (2022) utilizando `head()`, `info()` y `describe()`, confirmando 365 registros sin valores nulos.
+* Se analizaron las relaciones entre las variables mediante `pairplot()` y matriz de correlación, detectando una relación casi perfecta entre CO y AQI (derivada de su definición) y relaciones débiles con las variables de completitud de datos.
+* Se construyó un modelo de regresión lineal múltiple utilizando una división de 70 % para entrenamiento y 30 % para prueba (`random_state=123`).
+* El modelo obtuvo un **R² de 0.990 en prueba**, con errores muy bajos (MAE ≈ 0.018 ppm, RMSE ≈ 0.023 ppm), evidenciando un ajuste excelente, aunque en gran parte explicado por la relación matemática directa con el AQI.
+* El análisis de residuos no mostró patrones sistemáticos relevantes, respaldando razonablemente los supuestos de homoscedasticidad y normalidad de errores.
+* Se generaron datos artificiales mediante `make_regression()` (100 muestras, 6 características, 3 informativas) para un análisis de validación cruzada metodológica.
+* El árbol de decisión y el modelo OLS coincidieron en identificar correctamente las 3 variables realmente informativas de las 6 generadas, validando la coherencia de ambos enfoques.
+* Como recomendación, se sugiere evaluar el modelo excluyendo `Daily AQI Value` de los predictores para obtener una medida más realista del poder predictivo del resto de variables disponibles.
+
+---
+
+## 5. Referencias
+
+[1] Notebook de trabajo: *Sem5ProyectoIntegradorTarea_Ordenado (1).ipynb*, 2026.
+
+[2] Conjunto de datos: *ad_viz_plotval_data.csv* — Concentración máxima diaria de CO (8 horas), estación Copper View, Salt Lake City, UT, 2022 (AQS/EPA AirData).
