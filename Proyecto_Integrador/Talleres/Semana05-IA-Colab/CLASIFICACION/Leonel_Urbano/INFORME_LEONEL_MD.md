@@ -1,4 +1,4 @@
-# Informe de Regresión Lineal y Random Forest para la predicción del AQI
+# INFORME DE REGRESIÓN LINEL Y RANDOM FOREST PARA LA PREDICCION DEL AQI
 
 ## INTRODUCCIÓN
 
