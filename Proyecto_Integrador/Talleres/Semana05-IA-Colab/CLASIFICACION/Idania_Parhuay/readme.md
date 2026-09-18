@@ -77,16 +77,20 @@ La concentración media de CO en 2022 fue de 0.30 ppm, con una desviación está
 
 <div align="center">
 
-<img rc="https://github.com/user-attachments/assets/454d2cbf-b5d8-4122-a947-23eecdf66ab1" alt="Figura 1. Histograma de la concentración máxima diaria de CO (8 h), 2022." width="650">
+<img src="https://github.com/user-attachments/assets/454d2cbf-b5d8-4122-a947-23eecdf66ab1" width="650">
 
 *Figura 1. Histograma de la concentración máxima diaria de CO (8 h), 2022.*
 
 </div>
 
+<div align="center">
 
-![Figura 2. Función de densidad estimada de la concentración de CO.](imagenes/figura2_densidad_co.png)
+<img src="https://github.com/user-attachments/assets/5a0da7ff-6f84-43ec-ba03-f84d4c775f82" width="650">
 
-*Figura 2. Función de densidad estimada de la concentración de CO.*
+*Figura 2. Función de densidad estimada de la concentración de CO*
+
+</div>
+
 
 Respecto a la completitud de las observaciones, el 75 % de los días registró un 100 % de observaciones horarias válidas (24 de 24 posibles), con una media de 99.69 % y una desviación estándar muy pequeña (3.07 puntos porcentuales). Esto indica una base de datos de alta calidad, pero también implica que las variables Daily Obs Count y Percent Complete tienen muy poca variabilidad real para explicar los cambios en la concentración de CO, lo que anticipa un aporte predictivo limitado de estas variables.
 
@@ -94,13 +98,19 @@ Respecto a la completitud de las observaciones, el 75 % de los días registró u
 
 La Figura 3 muestra la matriz de correlación de Pearson entre la variable objetivo y las principales variables numéricas disponibles. Se observa una correlación prácticamente perfecta entre CO y el Daily AQI Value (r = 0.99), lo cual es consistente con el hecho de que el AQI se calcula directamente a partir de la concentración del contaminante; por ello, y como se explicó en la metodología, esta variable fue excluida del modelo para evitar fuga de información. En contraste, las variables temporales (Month, Day_of_Year, Day_of_Week) muestran correlaciones prácticamente nulas con la concentración de CO (entre -0.03 y 0.00), y las variables de completitud (Percent Complete, Daily Obs Count) muestran una correlación débil y negativa (-0.06). Finalmente, se confirma la correlación casi perfecta entre Daily Obs Count y Percent Complete (r ≈ 1.00), que motivó la exclusión de la primera del modelo final.
 
-![Figura 3. Matriz de correlación entre la variable objetivo y las principales variables numéricas.](imagenes/figura3_matriz_correlacion.png)
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/40188d73-2893-4e1e-a675-da6ee49083f8"  width="650">
 
 *Figura 3. Matriz de correlación entre la variable objetivo y las principales variables numéricas.*
 
-![Figura 4. Diagramas de dispersión de cada característica utilizada frente a la concentración de CO.](imagenes/figura4_dispersion_variables.png)
+
+<img src="https://github.com/user-attachments/assets/b6540028-408d-419f-a094-08d4227b4eb9" width="700">
 
 *Figura 4. Diagramas de dispersión de cada característica utilizada frente a la concentración de CO.*
+
+</div>
+
 
 Los diagramas de dispersión de la Figura 4 son coherentes con las correlaciones reportadas: no se observa ningún patrón lineal claro entre las variables temporales o de completitud y la concentración de CO; los puntos se distribuyen de forma prácticamente horizontal (sin pendiente aparente) para Month, Day_of_Year y Day_of_Week, y de forma muy concentrada en el extremo derecho para Percent Complete, reflejando la baja variabilidad de esta última variable.
 
@@ -132,21 +142,29 @@ La interpretación formal de estos coeficientes sería: por cada mes adicional d
 
 El RMSE del modelo (0.141 ppm) es prácticamente idéntico a la desviación estándar del propio conjunto de prueba (0.1409 ppm), lo que confirma numéricamente que el modelo no logra explicar la variabilidad de la concentración de CO: en la práctica, predecir simplemente el valor promedio habría producido un error similar. Esto se traduce en un R² negativo (-0.0133), lo que significa que, sobre los datos de prueba, el modelo lineal ajustado predice ligeramente peor que una predicción constante igual a la media del conjunto de entrenamiento.
 
-![Figura 5. Concentración de CO real vs. predicha (conjunto de prueba).](imagenes/figura5_real_vs_predicho.png)
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/e0f1f364-c9e0-4e2b-9a62-e4d841b383dd" width="550">
 
 *Figura 5. Concentración de CO real vs. predicha (conjunto de prueba). La línea discontinua roja representa la predicción perfecta (y = x).*
+
+</div>
 
 La Figura 5 ilustra claramente esta limitación: las predicciones del modelo (eje vertical) se concentran en una banda muy estrecha, entre 0.28 y 0.38 ppm, independientemente del valor real observado (eje horizontal), que varía entre 0.1 y 1.2 ppm. En otras palabras, el modelo se comporta de forma muy similar a una predicción constante cercana a la media histórica, y es incapaz de anticipar los días con concentraciones elevadas (por ejemplo, el punto con CO real = 1.2 ppm fue predicho en apenas 0.29 ppm).
 
 ### 3.5 Análisis de residuos
 
-![Figura 6. Histograma de los residuos del modelo (conjunto de prueba).](imagenes/figura6_histograma_residuos.png)
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/2050a99a-5c01-4c98-9a56-8940f1dd9768" width="550">
 
 *Figura 6. Histograma de los residuos del modelo (conjunto de prueba).*
 
-![Figura 7. Residuos frente a los valores predichos (evaluación visual de homoscedasticidad).](imagenes/figura7_residuos_vs_predichos.png)
+<img src="https://github.com/user-attachments/assets/821d5d51-6c63-48cd-93d1-f4dc595f34d4" width="550">
 
 *Figura 7. Residuos frente a los valores predichos (evaluación visual de homoscedasticidad).*
+
+</div>
 
 El histograma de residuos (Figura 6) muestra una distribución con asimetría positiva y una cola larga hacia la derecha, con residuos promedio de 0.0123 ppm y desviación estándar de 0.1413 ppm: la mayoría de los residuos se agrupan cerca de cero o son ligeramente negativos, pero existen varios residuos grandes y positivos (hasta 0.9 ppm), correspondientes precisamente a los días con concentraciones de CO reales elevadas que el modelo no logró anticipar. El diagrama de residuos frente a valores predichos (Figura 7) refuerza esta lectura: en lugar de una nube de puntos dispersa aleatoriamente alrededor de cero (lo que indicaría homoscedasticidad, un supuesto clave de la regresión lineal), se observa una franja vertical muy estrecha de valores predichos (0.28–0.38 ppm) con residuos que se abren en abanico hacia arriba, evidenciando que el modelo no está capturando en absoluto la señal asociada a los picos de concentración.
 
@@ -168,11 +186,15 @@ El R² dentro de la muestra de entrenamiento es de apenas 0.008 (R² ajustado = 
 
 ### 3.7 Árbol de decisión de regresión (práctica complementaria, datos sintéticos)
 
-Como práctica adicional se generó un conjunto de datos sintético de 100 observaciones y 6 características (make_regression, de las cuales 3 son realmente informativas), sobre el cual se entrenó un árbol de decisión de regresión con profundidad máxima de 5 niveles. El modelo obtuvo un error cuadrático medio (MSE) de 7 931.57 sobre el conjunto de prueba (valores en la escala arbitraria del generador sintético) y la Figura 8 muestra la importancia relativa que el árbol asignó a cada una de las seis características.
+Como práctica adicional se generó un conjunto de datos sintético de 100 observaciones y 6 características (make_regression, de las cuales 3 son realmente informativas), sobre el cual se entrenó un árbol de decisión de regresión con profundidad máxima de 5 niveles. La Figura 8 muestra la importancia relativa que el árbol asignó a cada una de las seis características.
 
-![Figura 8. Importancia relativa de las características en el árbol de decisión (datos sintéticos).](imagenes/figura8_importancia_arbol.png)
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/5526ee39-8dd9-44b8-b620-58a40a1e4025" width="550">
 
 *Figura 8. Importancia relativa de las características en el árbol de decisión (datos sintéticos).*
+
+</div>
 
 Como es de esperar en un árbol entrenado sobre datos generados sintéticamente con variables informativas conocidas, el modelo concentra la mayor parte de la importancia en un subconjunto reducido de características, mientras que las variables no informativas reciben una importancia cercana a cero. Se reitera que estos resultados corresponden a un conjunto de datos artificial, generado únicamente con fines de práctica sobre árboles de decisión, y no son comparables con el desempeño del modelo de regresión lineal aplicado a la concentración real de CO.
 
