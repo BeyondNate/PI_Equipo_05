@@ -61,6 +61,8 @@ Finalmente, y de manera complementaria, se incluye un modelo de árbol de decisi
 
 La Tabla I resume las principales estadísticas descriptivas de la variable objetivo y de las variables relacionadas con la calidad de la medición.
 
+<div align="center">
+
 | Estadístico | CO (ppm) | AQI | Obs. Count | % Completo |
 |---|---|---|---|---|
 | Media | 0.300 | 3.21 | 23.93 | 99.69 |
@@ -72,6 +74,8 @@ La Tabla I resume las principales estadísticas descriptivas de la variable obje
 | Máximo | 1.30 | 15.00 | 24.00 | 100.00 |
 
 *Tabla I. Estadísticas descriptivas de la concentración de CO y variables de completitud (n = 365).*
+
+</div>
 
 La concentración media de CO en 2022 fue de 0.30 ppm, con una desviación estándar de 0.145 ppm, un valor mínimo de 0.10 ppm y un máximo de 1.30 ppm. La mediana (0.30 ppm) es prácticamente igual a la media, pero el histograma de la Figura 1 muestra una distribución con marcada asimetría positiva: la mayoría de los días (más del 80 %) se concentran entre 0.2 y 0.4 ppm, mientras que existe una cola derecha de días con valores más altos (0.6 a 1.3 ppm), asociados probablemente a episodios puntuales de mayor tráfico vehicular, condiciones meteorológicas de baja dispersión atmosférica (inversión térmica) o quema de biomasa. La curva de densidad (Figura 2) confirma este patrón, mostrando un pico pronunciado alrededor de 0.25–0.30 ppm y una cola larga hacia valores mayores.
 
@@ -118,6 +122,8 @@ Los diagramas de dispersión de la Figura 4 son coherentes con las correlaciones
 
 El modelo entrenado sobre el conjunto de entrenamiento (70 % de los datos, n = 255) produjo un intercepto β₀ = 0.6373 y los coeficientes reportados en la Tabla II.
 
+<div align="center">
+
 | Variable | Coeficiente (β) |
 |---|---|
 | Month | -0.018675 |
@@ -127,10 +133,14 @@ El modelo entrenado sobre el conjunto de entrenamiento (70 % de los datos, n = 2
 
 *Tabla II. Coeficientes estimados del modelo de regresión lineal múltiple.*
 
+</div>
+
 La interpretación formal de estos coeficientes sería: por cada mes adicional del año, la concentración de CO disminuye en promedio 0.0187 ppm, manteniendo las demás variables constantes; por cada día adicional del año, aumenta en promedio 0.00065 ppm; el día de la semana prácticamente no influye (coeficiente cercano a cero); y por cada punto porcentual adicional de completitud de las observaciones, la concentración de CO disminuye en promedio 0.0034 ppm. Sin embargo, como se muestra en los resultados de OLS, ninguno de estos coeficientes es estadísticamente significativo, por lo que estas magnitudes no deben interpretarse como efectos reales y consistentes, sino como el resultado del ruido muestral en ausencia de una relación lineal genuina entre estas variables y el CO.
 
 ### 3.4 Evaluación del modelo sobre el conjunto de prueba
 
+<div align="center">
+  
 | Métrica | Valor |
 |---|---|
 | MAE (Error Absoluto Medio) | 0.0799 ppm |
@@ -139,6 +149,8 @@ La interpretación formal de estos coeficientes sería: por cada mes adicional d
 | R² (conjunto de prueba) | -0.0133 |
 
 *Tabla III. Métricas de error del modelo de regresión lineal sobre el conjunto de prueba (n = 110).*
+
+</div>
 
 El RMSE del modelo (0.141 ppm) es prácticamente idéntico a la desviación estándar del propio conjunto de prueba (0.1409 ppm), lo que confirma numéricamente que el modelo no logra explicar la variabilidad de la concentración de CO: en la práctica, predecir simplemente el valor promedio habría producido un error similar. Esto se traduce en un R² negativo (-0.0133), lo que significa que, sobre los datos de prueba, el modelo lineal ajustado predice ligeramente peor que una predicción constante igual a la media del conjunto de entrenamiento.
 
@@ -172,6 +184,8 @@ El histograma de residuos (Figura 6) muestra una distribución con asimetría po
 
 El ajuste por OLS sobre el mismo conjunto de entrenamiento confirma los hallazgos anteriores desde una perspectiva de inferencia estadística (Tabla IV).
 
+<div align="center">
+  
 | Variable | Coef. | Error est. | t | P>\|t\| |
 |---|---|---|---|---|
 | const | 0.6373 | 0.279 | 2.288 | 0.023 |
@@ -181,6 +195,8 @@ El ajuste por OLS sobre el mismo conjunto de entrenamiento confirma los hallazgo
 | Percent Complete | -0.0034 | 0.003 | -1.211 | 0.227 |
 
 *Tabla IV. Resumen del modelo OLS: coeficientes, errores estándar, estadístico t y valor p (n = 255).*
+
+</div>
 
 El R² dentro de la muestra de entrenamiento es de apenas 0.008 (R² ajustado = -0.008), y el estadístico F conjunto del modelo (F = 0.512, p = 0.727) no permite rechazar la hipótesis nula de que todos los coeficientes son simultáneamente iguales a cero; es decir, el conjunto de predictores utilizado no explica de forma estadísticamente significativa la variabilidad de la concentración de CO. A nivel individual, todos los valores p son muy superiores a 0.05 (el más bajo corresponde a Percent Complete, con p = 0.227), por lo que ninguna variable predictora resulta significativa. Además, las pruebas de normalidad de los residuos (Jarque-Bera) muestran una asimetría (skewness) de 3.24 y una curtosis de 19.99, muy alejadas de los valores esperados bajo normalidad (0 y 3, respectivamente), lo que indica que el supuesto de normalidad de los residuos tampoco se cumple. El número de condición del modelo (6.88 × 10³) es menor que el obtenido antes de excluir Daily Obs Count, lo que confirma que la corrección aplicada en la metodología redujo la multicolinealidad, aunque no mejoró la capacidad explicativa del modelo, ya que el problema de fondo es la ausencia de relación lineal entre los predictores disponibles y la variable objetivo, y no la colinealidad entre ellos.
 
