@@ -1,30 +1,19 @@
 # Informe de Regresión Lineal y Random Forest para la predicción del AQI
 
-## Introducción
+## INTRODUCCIÓN
 
-El presente informe documenta el análisis realizado en el notebook
-`LEONEL_URBANO_CASTILLO.ipynb`, cuyo objetivo es estudiar la relación
-entre la concentración de ozono y el Índice de Calidad del Aire (AQI), y
-evaluar modelos de aprendizaje supervisado para predecir dicho índice.
+La calidad del aire constituye un aspecto importante para evaluar las condiciones ambientales y sus posibles efectos sobre la población. Entre los indicadores utilizados para representar estas condiciones se encuentra el Índice de Calidad del Aire (AQI), cuyo comportamiento puede relacionarse con diferentes variables asociadas a la medición de contaminantes atmosféricos. En particular, la concentración de ozono puede presentar una relación importante con las variaciones observadas en el AQI.
 
-El conjunto de datos corresponde al archivo `ad_viz_plotval_data.csv`,
-asociado a la estación **Hermiston - Municipal Airport (HMA), Oregon,
-EE.UU.**, durante el período **abril--septiembre de 2023**. El dataset
-original contiene 21 columnas; para el análisis se seleccionaron cuatro
-variables numéricas: `Concentracion_Ozono`, `Obs_Diarias`,
-`Pct_Completo` y `AQI`. La variable `AQI` se utiliza como variable
-objetivo, mientras que las tres primeras se utilizan como variables
-predictoras.
+En este estudio se analiza un conjunto de 158 observaciones correspondientes a mediciones realizadas entre abril y septiembre de 2023. El análisis considera como variable dependiente el AQI, mientras que como variables predictoras se emplean la Concentración de Ozono, el número de Observaciones Diarias y el Porcentaje de Datos Completos. Inicialmente, se realiza un análisis exploratorio mediante estadística descriptiva, gráficos de distribución, diagramas de dispersión y una matriz de correlaciones, con el propósito de identificar patrones y relaciones entre las variables.
 
-El análisis comprende una exploración descriptiva y gráfica de los
-datos, una **Regresión Lineal**, un **Random Forest Regressor** y un
-análisis adicional mediante **Mínimos Cuadrados Ordinarios (OLS)**.
-También se evalúan los modelos mediante MAE, MSE, RMSE y R², además de
-analizar los residuos y la importancia de las variables.
+Posteriormente, se desarrolla un modelo de Regresión Lineal para estimar el AQI a partir de las variables predictoras. Su desempeño se evalúa mediante métricas como el Error Absoluto Medio (MAE), Error Cuadrático Medio (MSE), Raíz del Error Cuadrático Medio (RMSE) y coeficiente de determinación (R²). Asimismo, se analizan los residuos para observar el comportamiento de los errores de predicción.
 
-------------------------------------------------------------------------
+Como complemento, se emplea un modelo de Random Forest Regressor, con el propósito de comparar su capacidad predictiva con la obtenida mediante la regresión lineal. También se analiza la importancia relativa de las variables predictoras y se utiliza un modelo de Mínimos Cuadrados Ordinarios (OLS) para profundizar en la interpretación estadística de los coeficientes.
 
-## Metodología
+Finalmente, los resultados permiten identificar las variables que presentan mayor relación con el AQI, evaluar el comportamiento de los modelos de predicción y analizar las diferencias entre un enfoque lineal y uno basado en árboles de decisión. De esta manera, el estudio busca determinar qué tan adecuadamente pueden utilizarse las variables ambientales disponibles para explicar y predecir las variaciones del Índice de Calidad del Aire.
+
+
+## METODOLOGíA
 
 ### 1. Carga y selección de los datos
 
@@ -37,21 +26,9 @@ se renombran para facilitar su manejo:
 -   `Pct_Completo`: porcentaje de datos completos.
 -   `AQI`: Índice de Calidad del Aire, utilizado como variable objetivo.
 
-La estructura obtenida en el notebook es:
+La estructura obtenida es:
 
-``` text
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 158 entries, 0 to 157
-Data columns (total 4 columns):
- #   Column               Non-Null Count  Dtype  
----  ------               --------------  -----  
- 0   Concentracion_Ozono  158 non-null   float64
- 1   Obs_Diarias          158 non-null   int64  
- 2   Pct_Completo         158 non-null   float64
- 3   AQI                  158 non-null   int64  
-dtypes: float64(2), int64(2)
-memory usage: 5.1 KB
-```
+<img width="482" height="243" alt="image" src="https://github.com/user-attachments/assets/48c3c04e-6dba-4f55-884f-7100ada7946a" />
 
 Por lo tanto, se trabajó con **158 observaciones y 4 variables**, sin
 valores nulos en las columnas seleccionadas.
@@ -61,18 +38,9 @@ valores nulos en las columnas seleccionadas.
 Se utilizó `df.describe().round(4)` para obtener los principales
 estadísticos descriptivos.
 
-            Concentracion_Ozono   Obs_Diarias   Pct_Completo        AQI
-  ------- --------------------- ------------- -------------- ----------
-  count                158.0000      158.0000       158.0000   158.0000
-  mean                   0.0464       16.9557        99.7342    44.5949
-  std                    0.0091        0.3966         2.3794    11.6652
-  min                    0.0150       13.0000        76.0000    14.0000
-  25%                    0.0400       17.0000       100.0000    37.0000
-  50%                    0.0470       17.0000       100.0000    44.0000
-  75%                    0.0530       17.0000       100.0000    49.0000
-  max                    0.0660       17.0000       100.0000    87.0000
+<img width="632" height="343" alt="image" src="https://github.com/user-attachments/assets/c2ce607e-218e-41bd-91f5-a6b59d9e5cd9" />
 
-**Interpretación:** la concentración media de ozono es 0.0464, mientras
+**Interpretación:** La concentración media de ozono es 0.0464, mientras
 que el AQI presenta una media de 44.5949 y una desviación estándar de
 11.6652. `Obs_Diarias` y `Pct_Completo` presentan poca variabilidad,
 debido a que la mayoría de los registros tienen 17 observaciones y 100 %
@@ -85,9 +53,9 @@ AQI y las relaciones entre las variables.
 
 #### Figura 1. Pairplot de las variables
 
-![Pairplot](imagenes/01_pairplot.png)
+<img width="986" height="986" alt="image" src="https://github.com/user-attachments/assets/affbb864-8197-45b4-926f-4f00ab40936e" />
 
-**Interpretación:** el pairplot muestra las relaciones bivariadas entre
+**Interpretación:** El pairplot muestra las relaciones bivariadas entre
 las variables. Se observa una relación positiva marcada entre
 `Concentracion_Ozono` y `AQI`, mientras que `Obs_Diarias` y
 `Pct_Completo` presentan variaciones muy limitadas y una relación
@@ -97,9 +65,9 @@ posteriormente se confirma mediante la matriz de correlación.
 
 #### Figura 2. Distribución del AQI diario
 
-![Distribución del AQI](imagenes/02_histograma_aqi.png)
+<img width="694" height="399" alt="image" src="https://github.com/user-attachments/assets/0f318a81-2e87-4ddf-8d69-ac365462e458" />
 
-**Interpretación:** el histograma concentra la mayor cantidad de
+**Interpretación:** El histograma concentra la mayor cantidad de
 observaciones aproximadamente entre 30 y 50 de AQI. También existe una
 cola hacia valores superiores, llegando hasta aproximadamente 87. Esto
 indica que la distribución no es perfectamente simétrica y presenta
@@ -107,9 +75,10 @@ algunos registros con AQI elevado.
 
 #### Figura 3. Función de densidad del AQI
 
-![Densidad del AQI](imagenes/03_densidad_aqi.png)
+<img width="584" height="461" alt="image" src="https://github.com/user-attachments/assets/1fe03832-8caa-4813-8755-d2f9f0880045" />
 
-**Interpretación:** la curva de densidad presenta su mayor concentración
+
+**Interpretación:** La curva de densidad presenta su mayor concentración
 alrededor de los valores medios del AQI, aproximadamente en la zona de
 40--50. La cola hacia valores mayores muestra que existen observaciones
 con AQI considerablemente superior al grupo principal.
@@ -118,55 +87,33 @@ con AQI considerablemente superior al grupo principal.
 
 Se calculó la correlación de Pearson entre las variables numéricas.
 
-  ----------------------------------------------------------------------------------------
-                          Concentracion_Ozono    Obs_Diarias   Pct_Completo            AQI
-  --------------------- --------------------- -------------- -------------- --------------
-  Concentracion_Ozono                  1.0000        -0.0302        -0.0302         0.9503
-
-  Obs_Diarias                         -0.0302         1.0000         1.0000        -0.0080
-
-  Pct_Completo                        -0.0302         1.0000         1.0000        -0.0080
-
-  AQI                                  0.9503        -0.0080        -0.0080         1.0000
-  ----------------------------------------------------------------------------------------
+<img width="681" height="187" alt="image" src="https://github.com/user-attachments/assets/9eaaa826-b6be-467d-a090-da026048273d" />
 
 #### Figura 4. Mapa de calor de correlaciones
 
-![Heatmap](imagenes/04_heatmap_correlaciones.png)
+<img width="763" height="530" alt="image" src="https://github.com/user-attachments/assets/b1a132ab-9180-4d08-9b8a-7f5248c9ccbc" />
 
-**Interpretación:** la correlación entre `Concentracion_Ozono` y `AQI`
+**Interpretación:** La correlación entre `Concentracion_Ozono` y `AQI`
 es **0.9503**, lo que representa una relación lineal positiva muy fuerte
 dentro de esta muestra. En contraste, `Obs_Diarias` y `Pct_Completo`
 presentan una correlación de **-0.0080** con el AQI. Además, ambas
 variables tienen una correlación de **1.0000 entre sí**, lo que
 evidencia una fuerte redundancia entre estos dos predictores.
 
-### 5. Definición de variables predictoras y variable objetivo
+### 5. Definición de variables predictoras y variable objetivo - Regresión lineal
 
 Se definió:
 
 -   **X:** `Concentracion_Ozono`, `Obs_Diarias` y `Pct_Completo`.
 -   **y:** `AQI`.
 
-Las primeras observaciones mostradas por el notebook son:
+Las primeras observaciones mostradas son:
 
-        Concentracion_Ozono   Obs_Diarias   Pct_Completo
-  --- --------------------- ------------- --------------
-    0                 0.043            17          100.0
-    1                 0.048            17          100.0
-    2                 0.047            17          100.0
-    3                 0.045            13           76.0
-    4                 0.038            17          100.0
+<img width="456" height="212" alt="image" src="https://github.com/user-attachments/assets/8e4cc336-48a2-42ff-8367-fc21765537e6" />
 
 Y los primeros valores de `AQI` son:
 
-        AQI
-  --- -----
-    0    40
-    1    44
-    2    44
-    3    42
-    4    35
+<img width="72" height="221" alt="image" src="https://github.com/user-attachments/assets/840bff30-1caf-49ab-881e-f24a15355f61" />
 
 ### 6. División entrenamiento-prueba
 
@@ -176,11 +123,6 @@ Los datos se dividieron mediante `train_test_split()` utilizando
 entrenamiento y 48 de prueba**, como se refleja también en el resultado
 de OLS y en el tamaño de `predictions`.
 
-**Dato derivado de la estructura del dataset:**
-
-$$N_{prueba}=158(0.30)=47.4\approx48$$
-
-$$N_{entrenamiento}=158-48=110$$
 
 ### 7. Regresión Lineal
 
@@ -189,23 +131,13 @@ predictoras.
 
 La tabla de coeficientes obtenida en el notebook es:
 
-                          coefficients
-  --------------------- --------------
-  Concentracion_Ozono      1212.210118
-  Obs_Diarias                 0.006555
-  Pct_Completo                0.039331
+<img width="297" height="162" alt="image" src="https://github.com/user-attachments/assets/8b939f7d-89eb-4550-b943-be8d6131c5e1" />
 
-El intercepto obtenido fue:
+El término de intersección del modelo lineal: -15.623800781887674
 
-``` text
--15.623800781887674
-```
+Por tanto, la ecuación del modelo lineal construido en el GoogleColab es: Coeficientes del modelo lineal: [1.21221012e+03 6.55510761e-03 3.93306457e-02]
 
-Por tanto, la ecuación del modelo lineal construido en el notebook es:
-
-$$\widehat{AQI}=-15.6238+1212.2101(Concentracion\_Ozono)+0.006555(Obs\_Diarias)+0.039331(Pct\_Completo)$$
-
-**Interpretación de los coeficientes:** manteniendo constantes las demás
+**Interpretación de los coeficientes:** Manteniendo constantes las demás
 variables, el modelo asigna el mayor coeficiente a la concentración de
 ozono. El valor de 1212.2101 indica que, según la escala utilizada en el
 dataset, cambios en la concentración de ozono tienen un efecto mucho
@@ -215,14 +147,10 @@ diferentes unidades y escalas de las variables.
 
 ### 8. Error estándar y estadística t
 
-El notebook calcula el error estándar y la estadística t de los
+Se calcula el error estándar y la estadística t de los
 coeficientes:
 
-                          coefficients   Standard Error   t-statistic
-  --------------------- -------------- ---------------- -------------
-  Concentracion_Ozono      1212.210118        39.193945     30.928504
-  Obs_Diarias                 0.006555         0.958513      0.006839
-  Pct_Completo                0.039331         0.159752      0.246198
+<img width="566" height="143" alt="image" src="https://github.com/user-attachments/assets/254d7df5-da3f-44c8-9b69-13abeb2d4d4e" />
 
 **Interpretación:** `Concentracion_Ozono` presenta una estadística t
 elevada en valor absoluto, mientras que `Obs_Diarias` y `Pct_Completo`
@@ -232,26 +160,23 @@ obstante, debido a la correlación perfecta entre `Obs_Diarias` y
 `Pct_Completo`, la interpretación individual de sus coeficientes debe
 hacerse con cautela.
 
-La ecuación utilizada para la estadística t es:
-
-$$t_i=\frac{\beta_i}{SE(\beta_i)}$$
 
 ### 9. Gráficos de dispersión de los predictores
 
 #### Figura 5. Predictores frente al AQI
 
-![Predictores vs AQI](imagenes/05_predictores_vs_aqi.png)
+<img width="1789" height="490" alt="image" src="https://github.com/user-attachments/assets/ba6a28b5-412b-4fc7-a07e-60005967135a" />
 
 **Interpretación:**
 
--   **Concentracion_Ozono vs. AQI:** se observa una relación positiva
+-   **Concentracion_Ozono vs. AQI:** Se observa una relación positiva
     clara. A medida que aumenta la concentración de ozono, también
     aumenta el AQI. La forma de la nube de puntos es coherente con la
     alta correlación de 0.9503.
--   **Obs_Diarias vs. AQI:** los puntos se concentran principalmente en
+-   **Obs_Diarias vs. AQI:** Los puntos se concentran principalmente en
     `Obs_Diarias = 17`, con pocos valores diferentes. No se aprecia una
     tendencia lineal clara.
--   **Pct_Completo vs. AQI:** ocurre algo similar. La mayoría de
+-   **Pct_Completo vs. AQI:** Ocurre algo similar. La mayoría de
     observaciones están en 100 %, por lo que existe poca variabilidad
     para explicar cambios en el AQI.
 
@@ -261,9 +186,9 @@ El modelo generó **48 predicciones** para el conjunto de prueba.
 
 #### Figura 6. AQI real vs. AQI predicho
 
-![AQI real vs predicho](imagenes/06_aqi_real_vs_predicho.png)
+<img width="851" height="647" alt="image" src="https://github.com/user-attachments/assets/7447535c-47cb-4892-9faf-e98906911f0d" />
 
-**Interpretación:** la línea roja discontinua representa la predicción
+**Interpretación:** La línea roja discontinua representa la predicción
 perfecta, es decir, `AQI Predicho = AQI Real`. Los puntos se encuentran
 relativamente próximos a esta línea, especialmente en el rango central.
 Sin embargo, en valores altos de AQI se observan desviaciones más
@@ -274,23 +199,18 @@ para reproducir algunos valores extremos.
 
 #### Figura 7. Histograma de residuos
 
-![Histograma de residuos](imagenes/07_histograma_residuos.png)
+<img width="852" height="687" alt="image" src="https://github.com/user-attachments/assets/367988eb-daf5-4b21-b052-4565af1a12f7" />
 
-**Interpretación:** el histograma permite observar la distribución de
-los errores definidos como:
-
-$$e_i=y_i-\widehat{y}_i$$
-
-La distribución se concentra alrededor de cero, pero no presenta una
+**Interpretación:** La distribución se concentra alrededor de cero, pero no presenta una
 forma perfectamente simétrica. Se observan desviaciones y colas, por lo
 que la normalidad de los residuos no debe considerarse perfecta
 únicamente a partir de esta figura.
 
 #### Figura 8. Residuos vs. AQI predicho
 
-![Residuos vs predicho](imagenes/08_residuos_vs_predicho.png)
+<img width="854" height="687" alt="image" src="https://github.com/user-attachments/assets/2daa19f0-fc1a-4fbc-a836-51f6cb81be0b" />
 
-**Interpretación:** el gráfico permite verificar si los residuos se
+**Interpretación:** El gráfico permite verificar si los residuos se
 distribuyen alrededor de cero y si la dispersión es aproximadamente
 constante. La presencia de puntos por encima y por debajo de la línea
 cero indica errores de ambos signos. Las desviaciones más grandes en
@@ -299,42 +219,17 @@ error no es completamente uniforme.
 
 ### 12. Métricas de evaluación de la Regresión Lineal
 
-La tabla de resultados del notebook es:
+La tabla de resultados es:
 
-  Métrica                                      Valor
-  ---------------------------------------- ---------
-  MAE (Error Absoluto Medio)                  2.4384
-  MSE (Error Cuadrático Medio)               10.5707
-  RMSE (Raíz del Error Cuadrático Medio)      3.2513
-  R² (Coeficiente de determinación)           0.9130
+<img width="431" height="92" alt="image" src="https://github.com/user-attachments/assets/899351ca-484b-4205-a81d-ee9be69e439c" />
 
-Las ecuaciones correspondientes son:
-
-$$MAE=\frac{1}{n}\sum_{i=1}^{n}|y_i-\widehat{y}_i|$$
-
-$$MSE=\frac{1}{n}\sum_{i=1}^{n}(y_i-\widehat{y}_i)^2$$
-
-$$RMSE=\sqrt{MSE}$$
-
-$$R^2=1-\frac{\sum(y_i-\widehat{y}_i)^2}{\sum(y_i-\bar{y})^2}$$
-
-**Interpretación:** el MAE de 2.4384 indica el error absoluto medio de
+**Interpretación:** El MAE de 2.4384 indica el error absoluto medio de
 las predicciones en unidades de AQI. El RMSE de 3.2513 penaliza más los
 errores grandes. El R² de 0.9130 indica que el modelo explica
 aproximadamente el 91.30 % de la variabilidad observada del AQI en el
 conjunto de prueba.
 
-**Dato derivado de la métrica:**
-
-$$R^2\times100=0.9130\times100=91.30\%$$
-
-Por tanto, el 91.30 % corresponde a la proporción de variabilidad del
-AQI explicada por el modelo en el conjunto de prueba, según esta
-métrica.
-
-------------------------------------------------------------------------
-
-## Resultados
+## RESULTADOS
 
 ### 1. Random Forest Regressor
 
@@ -348,17 +243,10 @@ y prueba empleadas para la regresión lineal.
 
 Los resultados obtenidos fueron:
 
-  Métrica      Valor
-  --------- --------
-  MAE         0.3481
-  MSE         0.7163
-  RMSE        0.8464
-  R²          0.9941
+<img width="200" height="111" alt="image" src="https://github.com/user-attachments/assets/79c17a3c-8e3e-4dc8-a1d6-4eb7ce82b1f2" />
 
-Las métricas se calculan mediante las mismas ecuaciones anteriores.
-
-**Interpretación:** en el conjunto de prueba, el Random Forest presenta
-un MAE y un RMSE menores que la Regresión Lineal, además de un R² mayor.
+**Interpretación:** En el conjunto de prueba, el Random forest presenta
+un MAE y un RMSE menores que la Regresión lineal, además de un R² mayor.
 Esto significa que, dentro de esta evaluación concreta, sus predicciones
 se encuentran más próximas a los valores observados y explican una mayor
 proporción de la variabilidad del AQI.
@@ -367,9 +255,9 @@ proporción de la variabilidad del AQI.
 
 #### Figura 9. Importancia de variables -- Random Forest
 
-![Importancia de variables](imagenes/09_importancia_variables.png)
+<img width="790" height="390" alt="image" src="https://github.com/user-attachments/assets/6a123729-4c76-47f0-a236-8436c059b0d2" />
 
-**Interpretación:** el gráfico muestra una importancia relativa
+**Interpretación:** El gráfico muestra una importancia relativa
 prácticamente concentrada en `Concentracion_Ozono`, mientras que
 `Obs_Diarias` y `Pct_Completo` presentan importancia cercana a cero.
 Este resultado es coherente con la matriz de correlación y con los
@@ -379,41 +267,20 @@ conjunto de datos.
 
 ### 3. Comparación de modelos
 
-La tabla comparativa generada directamente en el notebook es:
+La tabla comparativa es:
 
-  Modelo                  MAE     RMSE       R²
-  ------------------ -------- -------- --------
-  Regresión Lineal     2.4384   3.2513   0.9130
-  Random Forest        0.3481   0.8464   0.9941
+<img width="347" height="97" alt="image" src="https://github.com/user-attachments/assets/51c01a09-cabf-452a-be13-7d6dfaeead39" />
 
 #### Figura 10. Comparación de AQI real vs. predicho
 
-![Comparación de modelos](imagenes/10_comparacion_modelos.png)
+<img width="1589" height="617" alt="image" src="https://github.com/user-attachments/assets/8febbcd2-1a27-4112-81ff-5860d54d11ed" />
 
-**Interpretación:** en el gráfico de la izquierda, correspondiente a la
+**Interpretación:** En el gráfico de la izquierda, correspondiente a la
 Regresión Lineal, existe una dispersión mayor respecto de la línea de
 predicción perfecta. En el gráfico de la derecha, correspondiente al
 Random Forest, los puntos aparecen mucho más próximos a dicha línea.
 Esta diferencia visual coincide con los valores de R² y RMSE obtenidos
 para ambos modelos.
-
-**Datos derivados de la tabla comparativa:**
-
-Para calcular la reducción relativa del RMSE del Random Forest respecto
-a la Regresión Lineal:
-
-$$Reduccion\ RMSE=\frac{RMSE_{RL}-RMSE_{RF}}{RMSE_{RL}}\times100$$
-
-$$=\frac{3.2513-0.8464}{3.2513}\times100\approx73.97\%$$
-
-Para el MAE:
-
-$$Reduccion\ MAE=\frac{MAE_{RL}-MAE_{RF}}{MAE_{RL}}\times100$$
-
-$$=\frac{2.4384-0.3481}{2.4384}\times100\approx85.73\%$$
-
-Estos porcentajes son cálculos derivados de la tabla del notebook y no
-valores que hayan sido impresos directamente por el código.
 
 ### 4. Análisis OLS
 
@@ -422,44 +289,7 @@ Cuadrados Ordinarios utilizando `x_train` y `y_train`.
 
 El resumen generado por el notebook fue:
 
-``` text
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                    AQI   R-squared:                       0.899
-Model:                            OLS   Adj. R-squared:                  0.898
-Method:                 Least Squares   F-statistic:                     478.4
-Date:                Thu, 17 Sep 2026   Prob (F-statistic):           4.31e-54
-Time:                        21:22:41   Log-Likelihood:                -301.89
-No. Observations:                 110   AIC:                             609.8
-Df Residuals:                     107   BIC:                             617.9
-Df Model:                           2                                         
-Covariance Type:            nonrobust                                         
-=======================================================================================
-                          coef    std err          t      P>|t|      [0.025      0.975]
----------------------------------------------------------------------------------------
-const                 -14.0995     14.472     -0.974      0.332    -42.788      14.589
-Concentracion_Ozono  1212.2101     39.196     30.927      0.000    1134.508    1289.912
-Obs_Diarias            -4.5663      4.668     -0.978      0.330     -13.820       4.687
-Pct_Completo            0.8015      0.937     0.856      0.394      -1.056       2.659
-==============================================================================
-Omnibus:                       64.719   Durbin-Watson:                   2.245
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              253.059
-Skew:                           2.092   Prob(JB):                     1.12e-55
-Kurtosis:                       9.140   Cond. No.                     3.38e+15
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 9.87e-26. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
-```
-
-El notebook también genera la advertencia:
-
-``` text
-SingularMatrixWarning: The design matrix is rank-deficient.
-The model parameters are not uniquely determined.
-```
+<img width="807" height="552" alt="image" src="https://github.com/user-attachments/assets/910eb05f-e844-48ce-a459-3ecbd812ad3e" />
 
 **Interpretación:** el OLS confirma nuevamente que `Concentracion_Ozono`
 es la variable asociada al mayor efecto estadístico sobre el AQI. Sin
@@ -469,9 +299,7 @@ condición extremadamente elevado (`3.38e+15`) y la advertencia de matriz
 singular son señales de este problema. Por ello, los coeficientes
 individuales de estas dos variables deben interpretarse con precaución.
 
-------------------------------------------------------------------------
-
-## Discusión
+## DISCUSÍON
 
 Los resultados muestran una relación muy fuerte entre la concentración
 de ozono y el AQI en los 158 registros analizados. La correlación de
@@ -513,7 +341,6 @@ Airport y al período abril--septiembre de 2023. Por tanto, no deben
 generalizarse automáticamente a otras estaciones, períodos o condiciones
 ambientales sin realizar una validación adicional.
 
-------------------------------------------------------------------------
 
 ## Explicación de 7 funciones utilizadas en el código
 
@@ -602,10 +429,6 @@ mae = metrics.mean_absolute_error(y_test, predictions)
 **Función:** calcula el promedio de los valores absolutos de las
 diferencias entre los valores reales y los predichos.
 
-**Ecuación:**
-
-$$MAE=\frac{1}{n}\sum_{i=1}^{n}|y_i-\widehat{y}_i|$$
-
 **En este proyecto:** permitió cuantificar el error promedio de las
 predicciones de la Regresión Lineal y del Random Forest.
 
@@ -621,14 +444,9 @@ r2 = metrics.r2_score(y_test, predictions)
 proporción de la variabilidad de la variable objetivo es explicada por
 el modelo respecto a una referencia basada en la media.
 
-**Ecuación:**
-
-$$R^2=1-\frac{\sum(y_i-\widehat{y}_i)^2}{\sum(y_i-\bar{y})^2}$$
-
 **En este proyecto:** permitió comparar la capacidad explicativa de la
 Regresión Lineal y del Random Forest.
 
-------------------------------------------------------------------------
 
 ## Referencias
 
