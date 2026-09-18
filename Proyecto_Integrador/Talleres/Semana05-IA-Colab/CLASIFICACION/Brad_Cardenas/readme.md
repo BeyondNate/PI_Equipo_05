@@ -32,6 +32,9 @@ El análisis se desarrolló siguiendo estos pasos:
 
 A continuación se presentan los resultados obtenidos en cada etapa del análisis, con espacio para insertar las imágenes generadas en el notebook y su respectiva interpretación.
 
+### Relaciones entre variables
+![variasVariables](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
+
 ### 1. Distribución de la variable objetivo
 
 ![Histograma y densidad de la concentración de CO](imagenes/01_histograma_densidad_CO.png)
