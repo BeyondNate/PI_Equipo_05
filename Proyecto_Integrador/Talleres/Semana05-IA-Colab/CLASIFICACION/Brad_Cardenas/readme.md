@@ -19,7 +19,7 @@ La función `head()` permitió observar los primeros registros (por ejemplo, el 
 
 **Imagen 1 – Exploración inicial del conjunto de datos**
 
-![Exploración inicial del dataset](Capturas/exploracion_dataset.png)
+![Exploración inicial del dataset](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/PrimerosResultados.jpg)
 
 *Figura 1. Primeros registros del conjunto de datos.*
 
@@ -35,7 +35,7 @@ sns.pairplot(df1)
 
 **Imagen 2 – Relaciones entre variables**
 
-![Pairplot](Capturas/pairplot.png)
+![Pairplot](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/variasvariables.png)
 
 *Figura 2. Relaciones entre las variables del conjunto de datos.*
 
@@ -50,7 +50,7 @@ df1['Daily Max 8-hour CO Concentration'].plot.density()
 
 **Imagen 3 – Histograma de la variable objetivo**
 
-![Histograma](Capturas/histograma_objetivo.png)
+![Histograma](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/histograma.png)
 
 *Figura 3. Distribución de frecuencias de la concentración máxima diaria de CO.*
 
@@ -70,7 +70,7 @@ sns.heatmap(numeric_df.corr(), annot=True, linewidths=2)
 
 **Imagen 4 – Matriz de correlación**
 
-![Matriz de correlación](Capturas/matriz_correlacion.png)
+![Matriz de correlación](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/mapacalor.png)
 
 *Figura 4. Matriz de correlación de las variables analizadas.*
 
@@ -120,12 +120,7 @@ print(lm.coef_)
 
 **Resultados obtenidos:**
 
-| Variable | Coeficiente | t-estadístico |
-|---|---|---|
-| Daily AQI Value | 0.0852 | 189.82 |
-| Daily Obs Count | 0.2573 | 114.71 |
-| Percent Complete | -0.0611 | -114.23 |
-| Intercepto | -0.0510 | — |
+![TablaResultados](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/Tabla_resultados.jpg)
 
 **Interpretación de los coeficientes:** `Daily AQI Value` tiene el t-estadístico más alto en valor absoluto, lo que confirma que es, por lejos, la variable más determinante del modelo (relación directamente proporcional: a mayor AQI, mayor concentración de CO, consistente con la correlación de 1.00 observada antes). `Daily Obs Count` presenta un coeficiente positivo (0.257): a más observaciones registradas en el día, el modelo predice una concentración levemente mayor. `Percent Complete` tiene coeficiente negativo (-0.061): días con mayor porcentaje de completitud tienden a asociarse, dentro del modelo, con concentraciones ligeramente menores, en línea con la correlación negativa detectada previamente.
 
@@ -150,12 +145,30 @@ Percent Complete
 ```python
 fig = plt.figure(figsize=(18, 10))
 gs = gridspec.GridSpec(2, 2)
-ax0.scatter(df1[l[0]], df1[variable_objetivo]); ...
+
+ax0 = plt.subplot(gs[0])
+ax0.scatter(df1[l[0]], df1[variable_objetivo])
+ax0.set_title(l[0] + ' vs. Target', fontdict={'fontsize': 20})
+
+ax1 = plt.subplot(gs[1])
+ax1.scatter(df1[l[1]], df1[variable_objetivo])
+ax1.set_title(l[1] + ' vs. Target', fontdict={'fontsize': 20})
+
+ax2 = plt.subplot(gs[2])
+ax2.scatter(df1[l[2]], df1[variable_objetivo])
+ax2.set_title(l[2] + ' vs. Target', fontdict={'fontsize': 20})
+
+ax3 = plt.subplot(gs[3])
+ax3.scatter(df1[l[3]], df1[variable_objetivo])
+ax3.set_title(l[3] + ' vs. Target', fontdict={'fontsize': 20})
+
+plt.tight_layout()
+plt.show()
 ```
 
 **Imagen 5 – Variables más importantes vs. variable objetivo**
 
-![Variables vs target](Capturas/variables_vs_target.png)
+![Variables vs target](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/relacion4variables.png)
 
 *Figura 5. Relación de las tres variables predictoras con la concentración de CO.*
 
@@ -180,13 +193,25 @@ predictions = lm.predict(X_test)
 ### Valores reales vs. predichos
 
 ```python
+plt.figure(figsize=(10, 7))
+plt.title('Valores reales vs. predichos de CO', fontsize=25)
+plt.xlabel('Conjunto real de concentración de CO', fontsize=18)
+plt.ylabel('Valores predichos de concentración de CO', fontsize=18)
 plt.scatter(x=y_test, y=predictions, alpha=0.7)
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], ...)
+
+plt.plot(
+    [y_test.min(), y_test.max()],
+    [y_test.min(), y_test.max()],
+    color='red',
+    linestyle='--',
+    lw=2,
+)
+plt.show()
 ```
 
 **Imagen 6 – Valores reales vs. valores predichos**
 
-![Valores reales y predichos](Capturas/real_vs_predicho.png)
+![Valores reales y predichos](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/valoresrealespredichos.png)
 
 *Figura 6. Comparación entre los valores reales y los valores predichos por el modelo.*
 
@@ -206,7 +231,7 @@ plt.axhline(y=0, color='red', linestyle='--', linewidth=2)
 
 **Imagen 7 – Análisis de residuos**
 
-![Análisis de residuos](Capturas/residuos.png)
+![Análisis de residuos](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/histogramaresiduoos.png)
 
 *Figura 7. Distribución de los residuos e histograma de residuos vs. predichos.*
 
@@ -241,7 +266,7 @@ El modelo realizó predicciones sobre el conjunto de prueba, obteniéndose un **
 
 **Imagen 8 – Real vs. predicho (árbol de decisión)**
 
-![Árbol real vs predicho](Capturas/arbol_real_vs_pred.png)
+![Árbol real vs predicho](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/arbolDecision.png)
 
 *Figura 8. Comparación entre valores reales y predichos del árbol de decisión sobre datos artificiales.*
 
@@ -249,7 +274,7 @@ Además, se obtuvo la importancia relativa de cada característica utilizada por
 
 **Imagen 9 – Importancia de las características**
 
-![Importancia de características](Capturas/importancia_caracteristicas.png)
+![Importancia de características](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana05-IA-Colab/CLASIFICACION/Brad_Cardenas/capturas/final4.jpg)
 
 *Figura 9. Importancia relativa de las características en el árbol de decisión.*
 
