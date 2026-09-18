@@ -75,9 +75,14 @@ La Tabla I resume las principales estadísticas descriptivas de la variable obje
 
 La concentración media de CO en 2022 fue de 0.30 ppm, con una desviación estándar de 0.145 ppm, un valor mínimo de 0.10 ppm y un máximo de 1.30 ppm. La mediana (0.30 ppm) es prácticamente igual a la media, pero el histograma de la Figura 1 muestra una distribución con marcada asimetría positiva: la mayoría de los días (más del 80 %) se concentran entre 0.2 y 0.4 ppm, mientras que existe una cola derecha de días con valores más altos (0.6 a 1.3 ppm), asociados probablemente a episodios puntuales de mayor tráfico vehicular, condiciones meteorológicas de baja dispersión atmosférica (inversión térmica) o quema de biomasa. La curva de densidad (Figura 2) confirma este patrón, mostrando un pico pronunciado alrededor de 0.25–0.30 ppm y una cola larga hacia valores mayores.
 
-![Figura 1. Histograma de la concentración máxima diaria de CO (8 h), 2022.](imagenes/figura1_histograma_co.png)
+<div align="center">
+
+<img rc="https://github.com/user-attachments/assets/454d2cbf-b5d8-4122-a947-23eecdf66ab1" alt="Figura 1. Histograma de la concentración máxima diaria de CO (8 h), 2022." width="650">
 
 *Figura 1. Histograma de la concentración máxima diaria de CO (8 h), 2022.*
+
+</div>
+
 
 ![Figura 2. Función de densidad estimada de la concentración de CO.](imagenes/figura2_densidad_co.png)
 
