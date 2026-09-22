@@ -1,10 +1,10 @@
-# 🧠 Redes Neuronales
+#  Redes Neuronales
 
 Resumen de lo visto en el cuadernillo: **CNN (PyTorch)**, **Clasificación binaria con Keras** y **Perceptrón**.
 
 ---
 
-## 🚩 CNN — Redes Neuronales Convolucionales
+## CNN — Redes Neuronales Convolucionales
 
 Permiten el análisis de imágenes mediante los píxeles cercanos. Usan pequeños filtros llamados *kernels* que recorren la imagen buscando patrones.
 
@@ -178,7 +178,7 @@ Guarda los modelos para poder recuperarlos después sin tener que reentrenarlos.
 
 ---
 
-## 🚩 Clasificación binaria con Keras
+##  Clasificación binaria con Keras
 
 Con Keras no hay que programar todo desde cero, permite construir y entrenar redes de forma más sencilla. Ejemplo: clasificar reseñas de películas (IMDB) en positivas o negativas.
 
@@ -280,7 +280,7 @@ La predicción del índice 10 dio 99.4%: reseña positiva con un 99.4% de probab
 
 ---
 
-## 🚩 Perceptrón
+##  Perceptrón
 
 Modelo sencillo de IA que recibe datos, los combina con pesos y produce una salida (predicción).
 
