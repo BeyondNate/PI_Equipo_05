@@ -251,7 +251,7 @@ from keras import regularizers
 model3.add(layers.Dense(16, activation='relu', kernel_regularizer=regularizers.l2(0.001)))
 ```
 
-![Aquí va la gráfica con regularización]()
+![Aquí va la gráfica con regularización](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/regularacion.png)
 
 Se ve un pico porque la regularización modifica el aprendizaje y puede dar un error más alto en algunas épocas.
 
@@ -262,7 +262,7 @@ model4.add(layers.Dense(16, activation='relu'))
 model4.add(layers.Dropout(0.5))
 ```
 
-![Aquí va la gráfica con dropout]()
+![Aquí va la gráfica con dropout](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/dropout.png)
 
 Durante el entrenamiento se apagan aleatoriamente el 50% de las neuronas. Esto obliga a la red a aprender de diferentes combinaciones de neuronas, para reducir el sobreajuste.
 
@@ -330,8 +330,8 @@ def test_perceptron(inputs, weights, bias, activation_func):
 - **XOR**: da 1 cuando las entradas son diferentes.
 
 ![Aquí va el gráfico del plano cartesiano con las 4 combinaciones]()
-![Aquí va el gráfico con las fronteras de decisión de OR y AND]()
-![Aquí va el gráfico con los círculos donde XOR = 0]()
+![Aquí va el gráfico con las fronteras de decisión de OR y AND](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/and_or.png)
+![Aquí va el gráfico con los círculos donde XOR = 0](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/xor.png)
 
 - OR separa (0,0) del resto.
 - AND separa (1,1) del resto.
