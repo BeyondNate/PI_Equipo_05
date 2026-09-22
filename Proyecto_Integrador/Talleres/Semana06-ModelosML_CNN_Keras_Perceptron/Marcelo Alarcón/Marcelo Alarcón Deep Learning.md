@@ -36,7 +36,9 @@ Sin embargo, un solo perceptrón no puede resolver XOR, lo que demuestra la nece
 
 ### Imagen
 
-<!-- Colocar aquí imagen de AND, OR y XOR -->
+![OR](img/OR_PERCEPTRON.png)
+![AND](img/AND_PERPCEPTRON.png)
+![XOR](img/XOR_PERCEPTRON.png)
 
 ---
 
@@ -104,7 +106,7 @@ Genera predicciones para nuevos datos.
 
 ### Imagen
 
-<!-- Colocar aquí imagen de la arquitectura de Keras -->
+![ARQUITECTURA KERAS](img/ARQUITECTURA_KERAS.png)
 
 ---
 
@@ -114,7 +116,7 @@ El **overfitting** ocurre cuando el modelo aprende demasiado los datos de entren
 
 ### Imagen
 
-<!-- Colocar aquí gráfica de entrenamiento y validación -->
+![ENTRENAMIENTO_INICIAL_KERAS](img/ENTRENAMIENTO_INICIAL_KERAS.png)
 
 ---
 
@@ -132,6 +134,8 @@ layers.Dense(
 
 Ayuda a controlar el sobreajuste penalizando pesos demasiado grandes.
 
+![REGULARIZACION KERAS](img/REGULARIZACION_KERAS.png)
+
 ### Dropout
 
 ```python
@@ -139,6 +143,8 @@ layers.Dropout(0.5)
 ```
 
 Desactiva aleatoriamente parte de las neuronas durante el entrenamiento.
+
+![DROPOUT KERAS](img/DROPOUT_KERAS.png)
 
 **Importancia:** ambas técnicas ayudan a mejorar la generalización del modelo.
 
@@ -172,6 +178,8 @@ El dataset se divide en:
 * 15 % prueba
 
 Las imágenes se convierten a escala de grises para trabajar con un solo canal.
+
+![DATASET CNN](img/DATASET_CNN.png)
 
 ### Funciones importantes
 
