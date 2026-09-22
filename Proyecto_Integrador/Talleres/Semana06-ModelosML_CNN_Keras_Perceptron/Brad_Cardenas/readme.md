@@ -223,7 +223,7 @@ plt.legend()
 plt.show()
 ```
 
-![Aquí va la gráfica de pérdida de entrenamiento vs. validación]()
+![entrenamiento vs. validación](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/Keras.png)
 
 - Azul: error del modelo en entrenamiento.
 - Anaranjado: error sobre datos de validación.
