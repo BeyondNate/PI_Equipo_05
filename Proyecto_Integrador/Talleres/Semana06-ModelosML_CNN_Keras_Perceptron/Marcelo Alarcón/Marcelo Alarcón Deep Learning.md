@@ -1,172 +1,86 @@
-# Redes Neuronales
+# Perceptrón, Keras y CNN
 
 ## 1. Perceptrón
 
-El perceptrón es el modelo más básico de una neurona artificial. Recibe entradas, las multiplica por pesos, suma un bias y aplica una función de activación.
+El perceptrón es una neurona artificial que recibe entradas, las multiplica por pesos y utiliza una función de activación para producir una salida.
 
 ```python
 def perceptron(inputs, weights, bias, activation_func):
-    weighted_sum = np.dot(inputs, weights) + bias
-    return activation_func(weighted_sum)
-```
-
-### Conceptos importantes
-
-* **Inputs:** datos de entrada.
-* **Weights:** importancia de cada entrada.
-* **Bias:** modifica el punto de decisión.
-* **Activation function:** determina la salida.
-
-### Funciones de activación
-
-```python
-def step_function(x):
-    return 1 if x >= 0 else 0
-```
-
-```python
-np.tanh(x)
-```
-
-### AND, OR y XOR
-
-El perceptrón permite representar problemas como AND y OR.
-
-Sin embargo, un solo perceptrón no puede resolver XOR, lo que demuestra la necesidad de utilizar redes con más de una neurona o capa.
-
-### Imagen
-
-![OR](img/OR_PERCEPTRON.png)
-![AND](img/AND_PERPCEPTRON.png)
-![XOR](img/XOR_PERCEPTRON.png)
-
----
-
-# 2. Clasificación con Keras
-
-Se utilizó Keras para construir una red neuronal de clasificación binaria.
-
-### Construcción del modelo
-
-```python
-model = models.Sequential()
-
-model.add(layers.Dense(16, activation='relu'))
-model.add(layers.Dense(16, activation='relu'))
-model.add(layers.Dense(1, activation='sigmoid'))
+    total = np.dot(inputs, weights) + bias
+    return activation_func(total)
 ```
 
 ### Funciones importantes
 
-#### `compile()`
+* `np.dot()` calcula la combinación ponderada entre entradas y pesos.
+* `bias` permite desplazar el resultado de la neurona.
+* `activation_func()` transforma el resultado en la salida del perceptrón.
 
-```python
-model.compile(
-    optimizer='rmsprop',
-    loss='binary_crossentropy',
-    metrics=['accuracy']
-)
-```
+### Interpretación
 
-Configura el optimizador, la función de pérdida y las métricas.
+El perceptrón representa la operación básica de una neurona artificial. La información de entrada se combina mediante los pesos y posteriormente se transforma mediante una función de activación.
 
-#### `fit()`
-
-```python
-model.fit(
-    x_train,
-    y_train,
-    epochs=20,
-    batch_size=512,
-    validation_data=(x_val, y_val)
-)
-```
-
-Entrena el modelo utilizando los datos de entrenamiento y validación.
-
-#### `evaluate()`
-
-Permite medir el rendimiento del modelo utilizando datos de prueba.
-
-#### `predict()`
-
-```python
-predictions = model.predict(x_test)
-```
-
-Genera predicciones para nuevos datos.
-
-### Conceptos importantes
-
-* `Dense`: capa completamente conectada.
-* `ReLU`: función de activación utilizada en las capas ocultas.
-* `Sigmoid`: produce una probabilidad para clasificación binaria.
-* `Loss`: mide el error del modelo.
-* `Accuracy`: mide la cantidad de predicciones correctas.
-
-### Imagen
-
-![ARQUITECTURA KERAS](img/ARQUITECTURA_KERAS.png)
+![Diagrama del perceptrón](img/perceptron.png)
 
 ---
 
-# 3. Overfitting
+## 2. AND, OR y XOR
 
-El **overfitting** ocurre cuando el modelo aprende demasiado los datos de entrenamiento y pierde capacidad para generalizar a datos nuevos.
+Las compuertas lógicas permiten observar qué problemas puede resolver un perceptrón simple.
 
-### Imagen
+```python
+# Ejemplo conceptual
+AND = [0, 0, 0, 1]
+OR  = [0, 1, 1, 1]
+XOR = [0, 1, 1, 0]
+```
 
-![ENTRENAMIENTO_INICIAL_KERAS](img/ENTRENAMIENTO_INICIAL_KERAS.png)
+### Interpretación
+
+AND y OR pueden separarse mediante una única frontera lineal, por lo que un perceptrón puede aprenderlas.
+
+XOR no es linealmente separable. Por eso, un único perceptrón no puede resolverlo correctamente y se necesitan capas adicionales.
+
+![AND, OR y XOR](img/and_or_xor.png)
 
 ---
 
-# 4. Regularización y Dropout
+## 3. Red neuronal con Keras
 
-### Regularización L2
-
-```python
-layers.Dense(
-    16,
-    activation='relu',
-    kernel_regularizer=regularizers.l2(0.001)
-)
-```
-
-Ayuda a controlar el sobreajuste penalizando pesos demasiado grandes.
-
-![REGULARIZACION KERAS](img/REGULARIZACION_KERAS.png)
-
-### Dropout
+Keras permite construir una red neuronal mediante capas.
 
 ```python
-layers.Dropout(0.5)
+model = Sequential([
+    Dense(64, activation="relu"),
+    Dense(32, activation="relu"),
+    Dense(1, activation="sigmoid")
+])
 ```
 
-Desactiva aleatoriamente parte de las neuronas durante el entrenamiento.
+### Funciones importantes
 
-![DROPOUT KERAS](img/DROPOUT_KERAS.png)
+| Función        | Importancia                                                                   |
+| -------------- | ----------------------------------------------------------------------------- |
+| `Sequential()` | Permite construir la red como una secuencia de capas.                         |
+| `Dense()`      | Crea una capa totalmente conectada.                                           |
+| `ReLU`         | Introduce no linealidad y permite aprender relaciones más complejas.          |
+| `Sigmoid`      | Convierte la salida en un valor entre 0 y 1, útil para clasificación binaria. |
+| `compile()`    | Configura cómo se entrenará el modelo.                                        |
+| `fit()`        | Entrena la red utilizando los datos.                                          |
+| `evaluate()`   | Evalúa el modelo con datos separados.                                         |
+| `predict()`    | Genera predicciones para nuevos datos.                                        |
 
-**Importancia:** ambas técnicas ayudan a mejorar la generalización del modelo.
+### Interpretación
+
+La red utiliza varias capas para transformar progresivamente los datos. Las capas ocultas permiten aprender características más complejas que las que podría aprender un único perceptrón.
+
+![Arquitectura de red neuronal](img/red_neuronal_keras.png)
 
 ---
 
-# 5. CNN
+## 4. CNN para clasificación de imágenes
 
-Una **CNN (Convolutional Neural Network)** está diseñada especialmente para trabajar con imágenes.
-
-Las convoluciones permiten detectar características como bordes, formas y patrones.
-
-### Función principal
-
-```python
-nn.Conv2d(...)
-```
-
-Realiza la operación de convolución sobre la imagen.
-
-### Dataset
-
-Se trabajó con dos clases:
+Una CNN está diseñada para trabajar con imágenes. En este proyecto se utiliza para clasificar imágenes en dos categorías:
 
 * `glass = 0`
 * `plastic = 1`
@@ -177,143 +91,111 @@ El dataset se divide en:
 * 15 % validación
 * 15 % prueba
 
-Las imágenes se convierten a escala de grises para trabajar con un solo canal.
+La división permite entrenar el modelo y posteriormente comprobar su comportamiento con datos que no utilizó durante el entrenamiento.
 
-![DATASET CNN](img/DATASET_CNN.png)
+![Arquitectura de una CNN](img/cnn.png)
 
-### Funciones importantes
+### Interpretación
 
-```python
-nn.Conv2d()
-```
-
-Extrae características de las imágenes.
-
-```python
-nn.CrossEntropyLoss()
-```
-
-Calcula el error de clasificación.
-
-```python
-torch.optim.Adam()
-```
-
-Actualiza los pesos del modelo durante el entrenamiento.
-
-```python
-model.train()
-```
-
-Activa el modo entrenamiento.
-
-```python
-model.eval()
-```
-
-Activa el modo evaluación.
-
-### Imagen
-
-<!-- Colocar aquí imagen de la CNN -->
+Las capas convolucionales permiten detectar características visuales de la imagen. Conforme avanza la red, estas características pueden combinarse para realizar la clasificación final.
 
 ---
 
-# 6. Data Augmentation
+## 5. Preparación de las imágenes
 
-Data Augmentation genera variaciones de las imágenes de entrenamiento mediante transformaciones.
-
-Ejemplo:
+El dataset utiliza una clase personalizada:
 
 ```python
-T.RandomRotation(degrees=10)
+class TrashDataset(Dataset):
 ```
 
-### Importancia
-
-Ayuda a que el modelo generalice mejor y reduzca la dependencia de las imágenes originales.
-
-### Imagen
-
-<!-- Colocar aquí comparación antes/después de Data Augmentation -->
-
----
-
-# 7. Transfer Learning
-
-Transfer Learning consiste en utilizar un modelo previamente entrenado y adaptarlo a un nuevo problema.
-
-Ejemplo:
+Las imágenes se cargan y se convierten a escala de grises:
 
 ```python
-models.resnet18(
-    weights=models.ResNet18_Weights.DEFAULT
-)
+image = Image.open(path).convert("L")
 ```
 
-Después se adapta la capa final:
+### Interpretación
+
+La conversión a `"L"` transforma la imagen a un solo canal de intensidad. Esto mantiene la entrada compatible con una CNN configurada para recibir un canal, como `Conv2d(1, 16, ...)`.
+
+![Ejemplos de glass y plastic](img/glass_plastic.png)
+
+---
+
+## 6. División del dataset
 
 ```python
-resnet.fc = nn.Linear(
-    in_features,
-    num_classes
-)
+train_ratio = 0.70
+val_ratio = 0.15
 ```
 
-### Importancia
+La parte restante corresponde al conjunto de prueba.
 
-Permite aprovechar características que el modelo ya aprendió y evita entrenar toda la red desde cero.
+### Interpretación
 
-### Imagen
+Los tres conjuntos cumplen funciones diferentes:
 
-<!-- Colocar aquí imagen de ResNet / Transfer Learning -->
+* **Train:** utilizado para aprender los parámetros del modelo.
+* **Validation:** utilizado para comprobar el comportamiento durante el desarrollo.
+* **Test:** utilizado para realizar la evaluación final con datos que no participaron en el entrenamiento.
 
----
+La implementación del dataset realiza esta separación para cada clase y utiliza una semilla para mantener una partición reproducible.
 
-# 8. Grad-CAM
-
-Grad-CAM permite visualizar qué zonas de una imagen influyeron en la predicción del modelo.
-
-### Importancia
-
-Permite interpretar las decisiones de una CNN y observar qué partes de la imagen está utilizando para realizar una clasificación.
-
-### Imagen
-
-<!-- Colocar aquí resultado de Grad-CAM -->
+![División del dataset](img/division_dataset.png)
 
 ---
 
-# 9. Funciones principales aprendidas
+## 7. Funciones principales de la CNN
 
-| Función              | Importancia                                |
-| -------------------- | ------------------------------------------ |
-| `np.dot()`           | Calcula la combinación de entradas y pesos |
-| `Dense()`            | Construye capas de una red neuronal        |
-| `compile()`          | Configura el entrenamiento                 |
-| `fit()`              | Entrena el modelo                          |
-| `evaluate()`         | Evalúa el modelo                           |
-| `predict()`          | Realiza predicciones                       |
-| `Conv2d()`           | Extrae características de imágenes         |
-| `CrossEntropyLoss()` | Calcula el error de clasificación          |
-| `Adam()`             | Optimiza los pesos                         |
-| `Dropout()`          | Ayuda a reducir overfitting                |
-| `l2()`               | Aplica regularización                      |
-| `model.train()`      | Modo entrenamiento                         |
-| `model.eval()`       | Modo evaluación                            |
+| Función / elemento | Importancia                                             |
+| ------------------ | ------------------------------------------------------- |
+| `Dataset`          | Define cómo se obtienen las imágenes y sus etiquetas.   |
+| `__len__()`        | Indica cuántos ejemplos contiene el dataset.            |
+| `__getitem__()`    | Obtiene una imagen y su etiqueta.                       |
+| `Conv2d`           | Realiza las operaciones de convolución sobre la imagen. |
+| `transform`        | Permite aplicar transformaciones a las imágenes.        |
+| `train()`          | Coloca el modelo en modo entrenamiento.                 |
+| `eval()`           | Coloca el modelo en modo evaluación.                    |
+| `predict()`        | Permite obtener predicciones de nuevos datos.           |
+
+### Interpretación
+
+Estas funciones forman parte del flujo fundamental de una CNN: cargar los datos, transformarlos, entrenar el modelo, evaluarlo y finalmente obtener predicciones.
 
 ---
 
-# Conclusión
+## 8. Flujo general
 
-Se estudiaron tres niveles principales:
+```text
+Imagen
+   ↓
+Preprocesamiento
+   ↓
+CNN
+   ↓
+Extracción de características
+   ↓
+Clasificación
+   ↓
+Glass / Plastic
+```
 
-1. **Perceptrón:** permitió comprender entradas, pesos, bias y funciones de activación.
-2. **Keras:** permitió construir y entrenar redes neuronales para clasificación.
-3. **CNN:** permitió aplicar redes neuronales al procesamiento y clasificación de imágenes.
+### Interpretación
 
-También se aprendieron técnicas para mejorar y analizar los modelos, como regularización, Dropout, Data Augmentation, Transfer Learning y Grad-CAM.
+El flujo muestra cómo una imagen pasa desde los datos originales hasta una clasificación. El dataset se encarga de proporcionar la imagen y su etiqueta, mientras que la CNN aprende las características necesarias para distinguir entre las dos clases.
 
-# ¿Cómo podría usarse en nuestro proyecto?
+![Flujo de clasificación](img/flujo_cnn.png)
 
-Podriamos usarlo para poder entrenar a una IA a que pueda predecir la turbidez solo con ver la imágen.
+---
+
+## Conclusión
+
+Los conceptos principales estudiados son:
+
+1. **Perceptrón:** base de una neurona artificial.
+2. **Funciones de activación:** permiten introducir no linealidad.
+3. **Keras:** facilita la construcción y entrenamiento de redes neuronales.
+4. **CNN:** permite trabajar directamente con características espaciales de imágenes.
+5. **Dataset:** organiza las imágenes, etiquetas y divisiones de entrenamiento, validación y prueba.
+6. **Clasificación:** utiliza lo aprendido por la red para distinguir entre `glass` y `plastic`.
