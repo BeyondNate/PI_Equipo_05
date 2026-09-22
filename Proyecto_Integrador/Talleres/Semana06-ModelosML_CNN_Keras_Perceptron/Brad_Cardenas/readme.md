@@ -329,7 +329,7 @@ def test_perceptron(inputs, weights, bias, activation_func):
 - **OR** (pesos [2, 1], bias -0.5): da 1 cuando al menos una entrada es 1.
 - **XOR**: da 1 cuando las entradas son diferentes.
 
-![Aquí va el gráfico del plano cartesiano con las 4 combinaciones]()
+![Aquí va el gráfico del plano cartesiano con las 4 combinaciones](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/tablaComparacion.jpg)
 ![Aquí va el gráfico con las fronteras de decisión de OR y AND](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/and_or.png)
 ![Aquí va el gráfico con los círculos donde XOR = 0](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/xor.png)
 
