@@ -41,7 +41,7 @@ def show_glass_plastic(dataset):
     # ... se grafican las imágenes
 ```
 
-![Aquí va la imagen que se genera al correr show_glass_plastic()]()
+![Plastic_Vidrio](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/plasticoVidrio.png)
 
 ### Modelo 1: CNN desde cero
 
@@ -80,8 +80,8 @@ plt.legend()
 plt.show()
 ```
 
-![Aquí va la gráfica de pérdida de entrenamiento]()
-![Aquí va la gráfica de accuracy y ROC-AUC de validación]()
+![Pérdida de entrenamiento](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/perdidaEntrenamiento.png)
+![Métrica Validacion](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/MetricaValidacion.png)
 
 - A partir de la época 4 mejora la exactitud hasta 63.27%.
 - El ROC-AUC se mantiene entre 0.67 y 0.69: hay aprendizaje, pero moderado.
@@ -98,7 +98,7 @@ plt.colorbar()
 plt.show()
 ```
 
-![Aquí va la matriz de confusión del modelo desde cero]()
+![MatrizConfusion](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/MatrizConfusion.png)
 
 ### Data Augmentation
 
@@ -159,7 +159,7 @@ def grad_cam(model, image_tensor, target_class=None):
     # ...
 ```
 
-![Aquí va la imagen original, el mapa Grad-CAM y la superposición]()
+![GRAM](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/Gram.png)
 
 - Zonas claras/amarillas: mayor importancia para la predicción.
 - Zonas oscuras/moradas: menor contribución.
