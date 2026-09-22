@@ -1,5 +1,6 @@
 <h1 align="center">────୨ৎ──── TALLER DE REDES NEURONALES ────୨ৎ────</h1>
-✿ Introducción
+
+# ✿ Introducción
 
 En este taller se trabajó con diferentes metodologías de inteligencia artificial y redes neuronales, principalmente orientadas a la clasificación de datos e imágenes. A través de diferentes ejemplos se pudo observar cómo una red neuronal aprende a partir de los datos disponibles y cómo su desempeño puede mejorar o verse afectado dependiendo de la cantidad y características de la información utilizada.
 
