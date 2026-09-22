@@ -43,10 +43,15 @@ class SimpleCNN(nn.Module):
 
 La red utiliza capas de convolución, activación y pooling.
 
-**[Insertar aquí una imagen del notebook donde se muestran las imágenes de TrashNet]**
+**Imágenes de TrashNet**
+<p align="center">
+  <img src="Capturas/ImagenesTrashNet_GaelMilla.png" width="650">
+</p>
 
-**[Insertar aquí la gráfica o matriz de confusión generada en el notebook]**
-
+**Matriz de confusión**
+<p align="center">
+  <img src="Capturas/MatrizConfusion_GaelMilla.png" width="650">
+</p>
 ---
 
 ## 3. 🔄 Data Augmentation y Transfer Learning
@@ -69,7 +74,33 @@ resnet = models.resnet18(
 
 Esto permite adaptar un modelo existente a nuestro problema en lugar de entrenarlo completamente desde cero.
 
-**[Insertar aquí el resultado generado en el notebook relacionado con Transfer Learning]**
+```python
+import torchvision.models as models
+
+transform_tl_train = T.Compose([
+    T.Resize((224, 224)),
+    T.RandomRotation(degrees=10),
+    T.RandomAffine(degrees=0, translate=(0.05, 0.05)),
+    T.ToTensor(),
+    T.Lambda(lambda x: x.repeat(3, 1, 1))
+])
+
+transform_tl_eval = T.Compose([
+    T.Resize((224, 224)),
+    T.ToTensor(),
+    T.Lambda(lambda x: x.repeat(3, 1, 1))
+])
+
+train_dataset_tl = DataClass(root=DATA_DIR, split="train", transform=transform_tl_train)
+val_dataset_tl = DataClass(root=DATA_DIR, split="val", transform=transform_tl_eval)
+test_dataset_tl = DataClass(root=DATA_DIR, split="test", transform=transform_tl_eval)
+
+train_loader_tl = DataLoader(train_dataset_tl, batch_size=64, shuffle=True, num_workers=2, pin_memory=True)
+val_loader_tl = DataLoader(val_dataset_tl, batch_size=64, shuffle=False, num_workers=2, pin_memory=True)
+test_loader_tl = DataLoader(test_dataset_tl, batch_size=64, shuffle=False, num_workers=2, pin_memory=True)
+
+next(iter(train_loader_tl))[0].shape
+```
 
 ---
 
@@ -111,7 +142,21 @@ También se utilizó **Dropout** para ayudar a reducir el sobreajuste:
 layers.Dropout(...)
 ```
 
-**[Insertar aquí la gráfica de entrenamiento/validación generada en el notebook]**
+**Gráfica del análisis del resultado**
+-()
+* Azul: error del modelo en entrenamiento
+* Anaranjado: error sobre datos de validación
+
+Vemos que la *curva anaranjada* no cae al final...
+> Sobreajuste: la red está aprendiendo demasiado bien los datos de entrenamiento y pierde capacidad de generalización."
+
+**Comparando con un modelo más pequeño**
+-()
+
+* Con la muestra original hubo un sobreajuste
+* Con la muestra más pequeña el mínimo de pérdida se mantiene durante más épocas y el incremento posterior es mucho menor
+
+> Existe sobreajuste, pero es menos pronunciado
 
 ---
 
@@ -143,7 +188,18 @@ Por ejemplo, para AND:
 
 Estos ejemplos permiten entender cómo el perceptrón puede separar diferentes clases mediante una frontera de decisión.
 
-**[Insertar aquí la gráfica AND, OR y XOR generada en el notebook]**
+**Compuerta OR y AND**
+
+
+
+**Compuerta XOR**
+
+* Los círculos blancos son los casos donde XOR = 0
+* Cada línea representa la frontera de una neurona
+
+La idea es:
+* 1 perceptron --> no puede resolver XOR
+* 2 perceptrones + una capa de salida --> sí pueden
 
 ---
 
