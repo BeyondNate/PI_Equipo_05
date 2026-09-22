@@ -1,7 +1,18 @@
 <h1 align="center">────୨ৎ──── TALLER DE REDES NEURONALES ────୨ৎ────</h1>
 
-# ✿ Introducción
+# ✿ INTRODUCCIÓN
 
-En este taller se trabajó con diferentes metodologías de inteligencia artificial y redes neuronales, principalmente orientadas a la clasificación de datos e imágenes. A través de diferentes ejemplos se pudo observar cómo una red neuronal aprende a partir de los datos disponibles y cómo su desempeño puede mejorar o verse afectado dependiendo de la cantidad y características de la información utilizada.
+En este taller se trabajaron diferentes metodologías relacionadas con las redes neuronales y el aprendizaje automático, aplicadas principalmente en problemas de clasificación. Se revisó conceptos básicos, como el funcionamiento de un perceptrón, y posteriormente se trabajó con metodologías más completas como las redes neuronales convolucionales (CNN), el data augmentation, el transfer learning y algunas técnicas para evitar el sobreajuste.
 
-El taller permitió comprender desde conceptos básicos, como el funcionamiento de un perceptrón, hasta metodologías más completas como las redes neuronales convolucionales (CNN), el data augmentation, el transfer learning y técnicas para reducir el sobreajuste. Más que ejecutar el código, la práctica permitió observar cómo estas herramientas pueden utilizarse para resolver problemas reales.
+La idea principal fue observar cómo un modelo puede aprender patrones a partir de los datos y cómo diferentes técnicas pueden influir en su entrenamiento y en los resultados obtenidos. También se pudo notar que los resultados pueden variar entre ejecuciones, por lo que no solo es importante construir el modelo, sino también revisar cómo se entrenó y cómo se está evaluando.
+
+
+## 1. Redes neuronales convolucionales (CNN) reconociendo vidrio y plástico
+Una de las metodologías principales trabajadas fue la red neuronal convolucional o CNN, utilizada para clasificar imágenes. Primero armamos un dataset con fotos de vidrio y plástico (TrashNet), y entrenamos una CNN chiquita desde cero: unos bloques de convolución con ReLU y MaxPooling, y al final una capa que decide entre las dos clases.
+
+<img width="1107" height="742" alt="image" src="https://github.com/user-attachments/assets/a7aa1878-000a-4124-aa9b-735dff11fa8b" />
+
+## 2. 
+
+
+
