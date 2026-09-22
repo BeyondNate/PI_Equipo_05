@@ -25,11 +25,11 @@ En el ejercicio de clasificación, la CNN se utiliza para diferenciar imágenes 
 
 ## 2.2. Componentes principales
 
-### Convolución
+### Convolución(Conv2D)
 
 La convolución utiliza filtros que recorren la imagen. Cada filtro aprende a detectar determinados patrones.
 
-### ReLU
+### Activación(ReLU)
 
 La función ReLU se expresa como:
 
@@ -37,15 +37,14 @@ La función ReLU se expresa como:
 
 Permite introducir no linealidad y facilita que la red aprenda relaciones complejas.
 
-### MaxPooling
+### Pooling(MaxPool)
 
 El *MaxPooling* reduce las dimensiones de la información obtenida, conservando las características más importantes y disminuyendo el costo computacional.
 
-### Capas de clasificación
+### Capas fully-connected (densas)
 
 Después de extraer las características, estas se utilizan para determinar la clase correspondiente a la imagen.
 
----
 
 # 3. Interpretación de las gráficas de la CNN
 
@@ -56,6 +55,9 @@ La gráfica de **Loss** permite observar cómo cambia el error del modelo a medi
 En el entrenamiento de la CNN desde cero, la pérdida presenta una reducción progresiva. Esto significa que el modelo está aprendiendo a partir de los datos de entrenamiento.
 
 Sin embargo, la disminución no es muy pronunciada. Por ello, se observa que el aprendizaje del modelo es limitado y que la red tiene dificultades para encontrar características suficientemente discriminantes entre vidrio y plástico.
+
+<img width="863" height="395" alt="image" src="https://github.com/user-attachments/assets/804f366f-32c7-4d7e-972a-9462b96f3dbe" />
+
 
 ### Interpretación
 
@@ -77,34 +79,30 @@ El aumento de la accuracy indica que la CNN está aprendiendo a distinguir parci
 
 El ROC-AUC indica la capacidad del modelo para separar las clases. Los valores obtenidos muestran que existe capacidad de discriminación, aunque todavía limitada.
 
----
 
 ## 3.3. Matriz de confusión
 
 La matriz de confusión del modelo CNN presenta:
 
-| Clase real | Predicción 0 | Predicción 1 |
-|---|---:|---:|
-| 0 - glass | 38 | 38 |
-| 1 - plastic | 29 | 44 |
+<img width="364" height="341" alt="image" src="https://github.com/user-attachments/assets/cf021a71-9d8e-46cb-9f8e-578259daee91" />
+
 
 La interpretación es:
 
-- 38 imágenes de vidrio fueron clasificadas correctamente.
-- 38 imágenes de vidrio fueron clasificadas como plástico.
-- 29 imágenes de plástico fueron clasificadas como vidrio.
-- 44 imágenes de plástico fueron clasificadas correctamente.
+- 36 imágenes de vidrio fueron clasificadas correctamente.
+- 48 imágenes de vidrio fueron clasificadas como plástico.
+- 25 imágenes de plástico fueron clasificadas como vidrio.
+- 40 imágenes de plástico fueron clasificadas correctamente.
 
 El modelo obtiene aproximadamente:
 
-- **Accuracy = 55.03 %**
+- **Accuracy = 56.38 %**
 - **ROC-AUC = 61.91 %**
 
 ### Interpretación
 
 El resultado evidencia que el modelo entrenado desde cero presenta dificultades para diferenciar las clases. Aunque reconoce correctamente una parte de las imágenes, la cantidad de errores todavía es considerable.
 
----
 
 # 4. CNN con aumento de datos
 
@@ -114,13 +112,13 @@ Su finalidad es aumentar la variedad de ejemplos disponibles para la red y mejor
 
 En el experimento:
 
-- CNN sin aumento: **Accuracy = 55.03 %**
-- CNN con aumento: **Accuracy = 56.38 %**
+- CNN sin aumento: **Accuracy = 56.38 %**
+- CNN con aumento: **Accuracy = 54.36 %**
 
 Además:
 
 - CNN sin aumento: **ROC-AUC = 61.91 %**
-- CNN con aumento: **ROC-AUC = 64.11 %**
+- CNN con aumento: **ROC-AUC = 63.32 %**
 
 ### Interpretación
 
@@ -128,49 +126,35 @@ El aumento de datos produce una mejora respecto al modelo original, aunque la me
 
 Esto demuestra que las transformaciones ayudan a la red a trabajar con imágenes ligeramente diferentes a las originales, pero no solucionan por completo las limitaciones del modelo.
 
----
 
-# 5. Aprendizaje por transferencia con ResNet
+# 5. Aprendizaje por Transfer Learning con ResNet
 
 El aprendizaje por transferencia consiste en utilizar una red neuronal previamente entrenada y adaptarla a un nuevo problema.
 
 En el ejercicio se utiliza **ResNet**.
 
-Los resultados obtenidos son:
+Los resultados obtenidos y la matriz de confusion son:
 
-- **Accuracy = 86.58 %**
-- **ROC-AUC = 95.62 %**
-
-La matriz de confusión es:
-
-| Clase real | Predicción 0 | Predicción 1 |
-|---|---:|---:|
-| 0 - glass | 72 | 4 |
-| 1 - plastic | 16 | 57 |
+<img width="552" height="285" alt="image" src="https://github.com/user-attachments/assets/f4a43e07-f946-4680-9bfa-56168da27e4d" />
 
 ### Interpretación
 
 El modelo identifica correctamente:
 
-- 72 imágenes de vidrio.
-- 57 imágenes de plástico.
+- 73 imágenes de vidrio.
+- 61 imágenes de plástico.
 
 Los errores son:
 
-- 4 vidrios clasificados como plástico.
-- 16 plásticos clasificados como vidrio.
+- 3 vidrios clasificados como plástico.
+- 12 plásticos clasificados como vidrio.
 
 La comparación de los modelos es:
 
-| Modelo | Accuracy | ROC-AUC |
-|---|---:|---:|
-| CNN desde cero | 55.03 % | 61.91 % |
-| CNN + Data Augmentation | 56.38 % | 64.11 % |
-| Transfer Learning - ResNet | 86.58 % | 95.62 % |
+<img width="508" height="87" alt="image" src="https://github.com/user-attachments/assets/9d0645d4-365e-4a1d-b397-31fcc160d2d5" />
 
 Estos resultados muestran que el aprendizaje por transferencia consigue un rendimiento considerablemente mayor en este experimento.
 
----
 
 # 6. Keras
 
@@ -194,11 +178,10 @@ El modelo está compuesto por capas de entrada, capas ocultas y una capa de sali
 
 ## 7.1. Pérdida de entrenamiento y validación
 
-La gráfica compara la pérdida obtenida durante el entrenamiento con la pérdida obtenida durante la validación.
+<img width="826" height="813" alt="image" src="https://github.com/user-attachments/assets/fc4c3d64-ea87-4361-8d57-5431b155c7b9" />
 
-Inicialmente ambas pérdidas disminuyen.
-
-Posteriormente, la pérdida de entrenamiento continúa reduciéndose mientras que la pérdida de validación deja de mejorar y comienza a aumentar.
+Azul: error del modelo en entrenamiento
+Anaranjado: error sobre datos de validación
 
 ### Interpretación
 
@@ -208,50 +191,47 @@ El modelo empieza a adaptarse demasiado a los datos de entrenamiento y pierde ca
 
 En la evaluación se obtiene aproximadamente:
 
-- **Loss = 0.6056**
-- **Accuracy = 86.11 %**
+- **Loss = 0.5871**
+- **Accuracy = 85.96 %**
 
 La accuracy es considerable, pero la gráfica demuestra que es necesario controlar el sobreajuste.
 
----
-
 ## 7.2. Comparación con un modelo más pequeño
+
+<img width="835" height="813" alt="image" src="https://github.com/user-attachments/assets/9283297f-644c-44cc-aad3-2fcc7449f6ab" />
 
 En el segundo experimento se reduce el número de neuronas de la capa oculta.
 
-La gráfica permite comparar la pérdida de validación del modelo original con la de un modelo de menor tamaño.
 
 ### Interpretación
 
-Reducir el tamaño de la red puede disminuir la tendencia al sobreajuste, debido a que el modelo tiene menos parámetros para memorizar los datos.
+Reducir el tamaño de la red puede disminuir la tendencia al sobreajuste, debido a que el modelo tiene menos parámetros para memorizar los datos. Con la muestra más pequeña el mínimo de pérdida se mantiene durante más épocas y el incremento posterior es mucho menor
 
 Sin embargo, reducir demasiado la complejidad también puede limitar la capacidad de aprendizaje.
 
-Por lo tanto, debe existir un equilibrio entre:
 
-**Complejidad del modelo ↔ capacidad de aprendizaje ↔ generalización.**
+## 7.3. Regularización
 
----
+<img width="826" height="813" alt="image" src="https://github.com/user-attachments/assets/12662f0d-1ebc-4472-84ae-a006ab475ef0" />
 
-## 7.3. Regularización L2
+Vemos un pico porque el modelo aprende directamente de los datos de entrenamiento.
+La regularización modifica el aprendizaje y puede producir un error más alto en algunas épocas
 
-La regularización L2 incorpora una penalización sobre los pesos del modelo.
 
-La gráfica compara el comportamiento del modelo original con el modelo regularizado.
+La regularización incorpora una penalización sobre los pesos del modelo. La gráfica compara el comportamiento del modelo original con el modelo regularizado.
 
 ### Interpretación
 
-La regularización busca evitar que los pesos alcancen valores excesivos y reducir la dependencia del modelo respecto a determinadas características de los datos de entrenamiento.
+La regularización busca evitar que los pesos alcancen valores excesivos y reducir la dependencia del modelo respecto a determinadas características de los datos de entrenamiento. Su objetivo principal es mejorar la generalización.
 
-Puede provocar una pérdida de entrenamiento mayor, pero su objetivo principal es mejorar la generalización.
-
----
 
 ## 7.4. Dropout
 
 El ejercicio también utiliza **Dropout del 50 %**.
 
-Durante el entrenamiento se desactivan aleatoriamente determinadas neuronas. Esto obliga a la red a aprender patrones que no dependan exclusivamente de un grupo concreto de neuronas.
+Durante el entrenamiento se desactivan aleatoriamente el 50% de las neuronas. esto obliga a la red a aprender de diferentes combinaciones de neuronas
+
+<img width="835" height="813" alt="image" src="https://github.com/user-attachments/assets/243f81d4-90bd-477d-a2e9-78166e0959fe" />
 
 ### Interpretación
 
@@ -259,7 +239,11 @@ El Dropout constituye una técnica para reducir el sobreajuste.
 
 La comparación de las curvas de validación permite analizar si esta técnica consigue controlar mejor el comportamiento del modelo frente a datos que no fueron utilizados directamente durante el entrenamiento.
 
----
+## 7.5. Predicciones
+
+<img width="416" height="183" alt="image" src="https://github.com/user-attachments/assets/38851647-c185-4142-9413-80ee17eb2035" />
+
+El modelo tiene una certeza o probabilidad del 99.4% de que el texto analizado en el índice 10 corresponde a una reseña positiva. Es una predicción con un nivel de confianza extremadamente alto.
 
 # 8. Perceptrón
 
@@ -267,19 +251,7 @@ La comparación de las curvas de validación permite analizar si esta técnica c
 
 El Perceptrón es uno de los modelos más sencillos de una neurona artificial.
 
-Recibe varias entradas, las multiplica por pesos, agrega un sesgo y aplica una función de activación.
-
-La operación puede representarse como:
-
-`z = x₁w₁ + x₂w₂ + ... + xₙwₙ + b`
-
-Posteriormente:
-
-`salida = función_de_activación(z)`
-
-El Perceptrón permite comprender el principio fundamental de muchas redes neuronales: transformar entradas mediante pesos para producir una salida.
-
----
+Recibe varias entradas, las multiplica por pesos, agrega un sesgo y aplica una función de activación. El Perceptrón permite comprender el principio fundamental de muchas redes neuronales: transformar entradas mediante pesos para producir una salida.
 
 # 9. Ejemplo de sobrecalentamiento
 
@@ -292,6 +264,8 @@ Los pesos y el bias determinan la decisión final.
 
 Se obtiene:
 
+<img width="565" height="157" alt="image" src="https://github.com/user-attachments/assets/fff0953b-f414-4b47-84f9-99c8c92fbd38" />
+
 - Función escalón = **0**
 - Función tanh ≈ **-0.9999**
 
@@ -301,56 +275,28 @@ El valor de la suma ponderada resulta negativo. Por esta razón, la función esc
 
 El ejemplo demuestra cómo un Perceptrón puede utilizar variables de entrada para producir una decisión.
 
----
 
-# 10. Compuerta AND
+# 10. Perceptrón tipo AND
 
 El Perceptrón puede representar la operación lógica AND.
 
-| P | Q | Salida |
-|---|---|---:|
-| 0 | 0 | 0 |
-| 0 | 1 | 0 |
-| 1 | 0 | 0 |
-| 1 | 1 | 1 |
+<img width="370" height="270" alt="image" src="https://github.com/user-attachments/assets/96b6a647-900c-485d-a8c5-eb0fa8c6bdf0" />
 
 ### Interpretación
 
-La salida solamente es 1 cuando las dos entradas tienen valor 1.
+La salida solamente es 1 cuando las dos entradas tienen valor 1. Esto demuestra que el problema AND puede ser resuelto mediante una única frontera de decisión lineal.
 
-Esto demuestra que el problema AND puede ser resuelto mediante una única frontera de decisión lineal.
+# 11. Perceptrón tipo OR
 
----
-
-# 11. Compuerta OR
-
-Para OR:
-
-| P | Q | Salida |
-|---|---|---:|
-| 0 | 0 | 0 |
-| 0 | 1 | 1 |
-| 1 | 0 | 1 |
-| 1 | 1 | 1 |
+<img width="375" height="135" alt="image" src="https://github.com/user-attachments/assets/5ef4f8f4-9000-4690-9f70-418b750cdcda" />
 
 ### Interpretación
 
-La salida es 1 cuando al menos una de las entradas es 1.
-
-Al igual que AND, OR puede representarse mediante un Perceptrón simple.
-
----
+La salida es 1 cuando al menos una de las entradas es 1. Al igual que AND, OR puede representarse mediante un Perceptrón simple.
 
 # 12. Compuerta XOR
 
-XOR presenta:
 
-| P | Q | XOR |
-|---|---|---:|
-| 0 | 0 | 0 |
-| 0 | 1 | 1 |
-| 1 | 0 | 1 |
-| 1 | 1 | 0 |
 
 ### Interpretación de la gráfica
 
@@ -359,12 +305,8 @@ Los puntos correspondientes a las clases no pueden separarse correctamente media
 Por esta razón:
 
 **Un solo Perceptrón no puede resolver XOR.**
+Para resolver este tipo de problema es necesario utilizar una arquitectura con más de una neurona y, normalmente, más de una capa. Este ejemplo permite observar una de las principales limitaciones del Perceptrón simple.
 
-Para resolver este tipo de problema es necesario utilizar una arquitectura con más de una neurona y, normalmente, más de una capa.
-
-Este ejemplo permite observar una de las principales limitaciones del Perceptrón simple.
-
----
 
 # 13. Comparación entre CNN, Keras y Perceptrón
 
