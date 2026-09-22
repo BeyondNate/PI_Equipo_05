@@ -1,7 +1,5 @@
 #  Redes Neuronales
 
-Resumen de lo visto en el cuadernillo: **CNN (PyTorch)**, **Clasificación binaria con Keras** y **Perceptrón**.
-
 ---
 
 ## CNN — Redes Neuronales Convolucionales
@@ -136,7 +134,7 @@ print(f"CNN desde cero (con aug)  | acc={test_acc_aug:.4f} | auc={test_auc_aug:.
 print(f"Transfer learning (ResNet) | acc={test_acc_tl:.4f} | auc={test_auc_tl:.4f}")
 ```
 
-![Aquí va la salida con la comparación de los tres modelos]()
+![tresModelos](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/global.jpg)
 
 ### Grad-CAM (Interpretabilidad)
 
