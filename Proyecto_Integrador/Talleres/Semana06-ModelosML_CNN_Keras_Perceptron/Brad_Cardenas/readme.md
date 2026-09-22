@@ -239,7 +239,7 @@ model2.add(layers.Dense(4, activation='relu', input_shape=(10000,)))
 model2.add(layers.Dense(1, activation='sigmoid'))
 ```
 
-![Aquí va la gráfica comparando el modelo pequeño vs. el original]()
+![modelo pequeño vs. el original](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/Capturas/modelopeque%C3%B1o.png)
 
 - Con la muestra original hubo sobreajuste.
 - Con el modelo más chico, el mínimo de pérdida se mantiene más épocas y el incremento posterior es menor. Sigue habiendo sobreajuste, pero menos pronunciado.
