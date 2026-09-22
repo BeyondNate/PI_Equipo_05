@@ -1,4 +1,4 @@
-# INFORME: INTERPRETACIÓN DE CNN, KERAS Y PERCEPTRÓN Y SU APLICACIÓN AL ACLARAMIENTO DE AGUA CON QUITOSANO
+# INTERPRETACIÓN DE CNN, KERAS Y PERCEPTRÓN Y SU APLICACIÓN EN NUESTRO PROYECTO
 
 ## 1. Introducción
 
@@ -296,7 +296,7 @@ La salida es 1 cuando al menos una de las entradas es 1. Al igual que AND, OR pu
 
 # 12. Compuerta XOR
 
-
+<img width="503" height="505" alt="image" src="https://github.com/user-attachments/assets/9a06b35f-c16c-4f19-8684-995ed56c3aa4" />
 
 ### Interpretación de la gráfica
 
@@ -305,6 +305,7 @@ Los puntos correspondientes a las clases no pueden separarse correctamente media
 Por esta razón:
 
 **Un solo Perceptrón no puede resolver XOR.**
+
 Para resolver este tipo de problema es necesario utilizar una arquitectura con más de una neurona y, normalmente, más de una capa. Este ejemplo permite observar una de las principales limitaciones del Perceptrón simple.
 
 
