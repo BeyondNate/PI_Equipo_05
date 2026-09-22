@@ -292,10 +292,65 @@ def test_perceptron(inputs, weights, bias, activation_func):
 
 ---
 
-## 📌 Conclusiones generales
+## Conclusiones generales
 
 - Las **CNN** son ideales para datos con estructura espacial (imágenes), combinando convolución, activación y pooling.
 - **Transfer learning** ahorra tiempo y mejora resultados cuando hay pocos datos disponibles.
 - **Grad-CAM** ayuda a interpretar qué "mira" un modelo de visión al hacer una predicción.
 - **Keras** simplifica la construcción de redes densas, pero sigue siendo necesario controlar el **sobreajuste** con regularización, dropout o reduciendo el tamaño del modelo.
 - El **perceptrón** es la unidad básica de una red neuronal, pero por sí solo solo resuelve problemas linealmente separables — de ahí la necesidad de redes multicapa.
+---
+# El uso para el proyecto
+## 1. Perceptrón / Red densa pequeña → dosificación de quitosano
+
+Esta es la aplicación más directa y realista para un ESP32.
+
+- **Entradas**: turbidez inicial, pH inicial, quizás volumen de agua o conductividad.
+- **Salida**: dosis de quitosano recomendada (regresión) o categoría de dosis (bajo/medio/alto, clasificación).
+- Es exactamente el mismo patrón que el ejemplo del perceptrón de "sobrecalentamiento" que vimos: combina variables de sensores con pesos aprendidos y decide una acción.
+
+```python
+# Igual que perceptron(inputs, weights, bias, activation_func)
+inputs = np.array([turbidez, ph])
+dosis = perceptron(inputs, weights, bias, tanh_activation)
+```
+
+La diferencia con el proyecto real es que en vez de fijar los pesos a mano, **entrenarías** una red pequeña (Keras, 1-2 capas densas, como el modelo IMDB pero mucho más chico) con datos experimentales: pruebas de laboratorio donde midan turbidez/pH inicial y anoten qué dosis de quitosano dio mejor resultado final.
+
+```python
+model = models.Sequential()
+model.add(layers.Dense(8, activation='relu', input_shape=(2,)))  # turbidez, pH
+model.add(layers.Dense(1, activation='linear'))  # dosis recomendada (regresión)
+model.compile(optimizer='adam', loss='mse')
+```
+
+**Por qué conviene:** una fórmula fija no captura bien relaciones no lineales entre turbidez/pH y dosis óptima; una red pequeña sí puede aprenderlas a partir de los propios ensayos del proyecto.
+
+## 2. Detección de "punto final" de floculación (clasificación binaria)
+
+Igual que el ejemplo IMDB (positiva/negativa), podrían entrenar un clasificador binario:
+
+- **Entrada**: lecturas de turbidez a lo largo del tiempo (o turbidez + tiempo transcurrido).
+- **Salida**: "agua clarificada" (1) vs "aún turbia" (0).
+
+Esto le permite al ESP32 decidir automáticamente cuándo pasar de floculación/sedimentación a la medición final, en vez de usar un tiempo fijo de espera.
+
+## 3. CNN — probablemente no la necesitan
+
+Las CNN tienen sentido si hay **cámara** midiendo turbidez visualmente (imagen del agua). Si el proyecto usa solo un sensor de turbidez óptico/electrónico (lo más común y barato), no hace falta CNN — sería sobrediseño. Solo la mencionaría si en algún momento consideran análisis visual de imágenes del agua.
+
+## 4. Limitación real: correr esto en un ESP32
+
+Aquí está el punto clave a aclarar en el informe: Keras/TensorFlow normal no corre en un ESP32. Lo que se usa es **TensorFlow Lite Micro** (o TinyML):
+
+1. Entrenás el modelo en la compu con Keras (como hicieron en el notebook).
+2. Lo convertís a formato `.tflite` cuantizado.
+3. Lo cargás al ESP32 con la librería `TensorFlowLite_ESP32` o `EloquentTinyML`.
+
+Dado que es un modelo tan chico (2-3 entradas, un par de capas), esto es totalmente viable en un ESP32.
+
+## 5. Alternativa más simple si el tiempo apremia
+
+Si entrenar una red no es viable por falta de datos experimentales suficientes, puede quedar documentado como **trabajo futuro** y usar mientras tanto una función/tabla de reglas simple (similar al perceptrón con pesos fijados a mano, sin entrenar) — es válido igual y conceptualmente conecta con lo del perceptrón AND/OR que vimos.
+
+¿Quieres que te arme un diagrama del flujo completo (sensores → red neuronal → ESP32 → actuador de dosificación) para meter en el informe, o un ejemplo de código Keras + conversión a TFLite Micro más desarrollado?
