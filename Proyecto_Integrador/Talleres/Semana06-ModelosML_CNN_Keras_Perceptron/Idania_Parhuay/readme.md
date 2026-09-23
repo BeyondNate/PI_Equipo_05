@@ -156,7 +156,7 @@ Con Dropout, la curva de validación se mantiene bastante más estable en compar
 
 --- 
 
-## 3. El perceptrón (la base de todo)
+## 3. El perceptrón
 
 El perceptrón es solo una suma ponderada de entradas más un sesgo, pasada por una función de activación para tomar una decisión binaria (0 o 1). Se usó como ejemplo un equipo industrial que decide si hay riesgo de sobrecalentamiento según su temperatura y vibración.
 
