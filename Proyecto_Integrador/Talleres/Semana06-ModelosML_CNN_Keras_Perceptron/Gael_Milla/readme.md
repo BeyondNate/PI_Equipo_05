@@ -143,7 +143,11 @@ layers.Dropout(...)
 ```
 
 **Gráfica del análisis del resultado**
--()
+
+<p align="center">
+  <img src="Capturas/KerasAnalisisResultado_GaelMilla.png" width="650">
+</p>
+
 * Azul: error del modelo en entrenamiento
 * Anaranjado: error sobre datos de validación
 
@@ -151,7 +155,10 @@ Vemos que la *curva anaranjada* no cae al final...
 > Sobreajuste: la red está aprendiendo demasiado bien los datos de entrenamiento y pierde capacidad de generalización."
 
 **Comparando con un modelo más pequeño**
--()
+
+<p align="center">
+  <img src="Capturas/KerasCompararModelPeque_GaelMilla.png" width="650">
+</p>
 
 * Con la muestra original hubo un sobreajuste
 * Con la muestra más pequeña el mínimo de pérdida se mantiene durante más épocas y el incremento posterior es mucho menor
@@ -190,9 +197,15 @@ Estos ejemplos permiten entender cómo el perceptrón puede separar diferentes c
 
 **Compuerta OR y AND**
 
-
+<p align="center">
+  <img src="Capturas/AndOr_GaelMilla.png" width="650">
+</p>
 
 **Compuerta XOR**
+
+<p align="center">
+  <img src="Capturas/Xor_GaelMilla.png" width="650">
+</p>
 
 * Los círculos blancos son los casos donde XOR = 0
 * Cada línea representa la frontera de una neurona
