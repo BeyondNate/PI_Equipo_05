@@ -12,12 +12,12 @@ Una de las metodologías principales trabajadas fue la red neuronal convoluciona
 
 Antes de entrenar cualquier modelo hay que tener las imágenes bien organizadas y divididas en train/val/test; si esto no se hace bien, después el modelo se estaría evaluando con datos que ya "vio" antes, y el resultado no sería confiable.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/user-attachments/assets/a7aa1878-000a-4124-aa9b-735dff11fa8b" width="600">
   
   *Imagen 1: ejemplos de vidrio y plástico del dataset, ya cargados en escala de grises*
   
-</p>
+</div>
 
 Acá se ve cómo quedaron algunas muestras ya cargadas: vidrio y plástico en escala de grises, que es justo el formato que espera la CNN que armamos después.
 
@@ -25,22 +25,44 @@ Acá se ve cómo quedaron algunas muestras ya cargadas: vidrio y plástico en es
 
 Entrenamos una CNN chiquita desde cero, unos bloques de convolución con ReLU y MaxPooling, y al final una capa que decide entre las dos clases. Así, sin ningún conocimiento previo, el modelo apenas llegó como a 61% de exactitud. Tiene sentido porque parte de pesos aleatorios y no tuvo tantas épocas para aprender.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/user-attachments/assets/d0eb82c0-ba48-4312-92ff-96a72f1c5d4b" width="600">
-</p>
+  
+*Imagen 2: curva de pérdida de entrenamiento (CNN desde cero) a lo largo de las épocas.*
+</div>
 
-<p align="center">
+La pérdida baja, pero lento y con algunos tramos casi planos, lo que ya adelanta que al modelo le está costando aprender con tan pocas épocas.
+
+<div align="center">
   <img src="https://github.com/user-attachments/assets/bb9d189a-b7b6-439a-b026-0c9c0a7a29e1" width="600">
-</p>
+  
+*Imagen 3: métricas de validación (Accuracy vs. ROC-AUC) por época, CNN desde cero.*
+</div>
 
-<p align="center">
+Acá se nota algo curioso: el ROC-AUC de validación se mantiene bastante estable y alto (arriba de 0.70) desde temprano, pero el accuracy salta bastante de una época a otra, incluso baja antes de subir. Eso pasa porque el accuracy depende del umbral de decisión (0.5), mientras que el ROC-AUC mide qué tan bien separa las clases en general; el modelo ya distinguía razonablemente bien, pero el punto de corte todavía no estaba bien calibrado.
+
+* **Evaluación final en test:**
+  
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/bd0e808c-3b15-4cc2-be8d-c2e35b374ddd" width="600">
+
+*Imagen 4 : matriz de confusión del modelo CNN entrenado desde cero, sobre el set de test.*
+</div>
+
+En números, el modelo cerró con Test accuracy = 0.6107 y Test ROC-AUC = 0.6727, con precision y recall alrededor de 0.61 en ambas clases. Esto confirma lo que ya se veía en la matriz: el modelo funciona apenas un poco mejor que adivinar al azar, porque todavía no tuvo suficiente entrenamiento.
+
+<div align="center">
   <img src="https://github.com/user-attachments/assets/5d7461d2-7038-48fa-99bd-47c19361a2d8" width="600">
-</p>
+
+*Imagen 5: matriz de confusión del modelo CNN entrenado desde cero, sobre el set de test.*
+</div>
+
+La matriz de confusión muestra que el modelo se equivoca de forma bastante pareja entre vidrio y plástico (27 y 31 errores en cada dirección), o sea que no tiene un sesgo fuerte hacia una sola clase, simplemente le falta aprender más.
 
 
 ### 1.3. Transfer learning
 
-Lo que sí cambió todo fue usar transfer learning, ya que en vez de entrenar desde cero, partimos de una ResNet18 ya entrenada y solo reentrenamos sus últimas capas. Con eso el accuracy subió a 90%. Ahí entendí por qué se usa tanto en la práctica: no hace falta reinventar todo, con aprovechar lo que el modelo ya "sabe" ver (bordes, texturas, formas) y enseñarle solo lo específico de nuestro caso ya es suficiente.
+Acá en vez de entrenar todo desde cero, se reutiliza una red ya entrenada (ResNet18) y solo se ajustan sus últimas capas a nuestro problema específico.
 
 ```python
 resnet = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
@@ -70,13 +92,25 @@ trainable_params = [p for p in resnet.parameters() if p.requires_grad]
 len(trainable_params)
 ```
 
+El código muestra el proceso en dos pasos: primero se congelan todas las capas de la red y solo se entrena la última (la que clasifica), y después se descongelan las capas finales del extractor (layer4) para un ajuste más fino.
+
+<div align="center">
+  <img  src="https://github.com/user-attachments/assets/613dc586-0e52-44fd-9141-78839085ad10" width="600">
+
+*Imagen 6: salida del cuaderno con las métricas finales del modelo con transfer learning.*
+</div>
+
+Con esto el accuracy subió de 61% a 90.60%, y el ROC-AUC a 0.9544, con precision y recall por encima de 0.88 en las dos clases. Fue el salto más grande de todo el taller, y confirma que no hacía falta una arquitectura más compleja: bastaba con aprovechar lo que la red ya "sabía" ver (bordes, texturas, formas) y ajustar solo lo específico de nuestro caso.
+
 ### 1.4. Grad-CAM (interpretabilidad)
 
 También vimos Grad-CAM, el cual sirve para visualizar en qué parte de la imagen se está fijando el modelo al momento de decidir, algo que normalmente queda "oculto" dentro de la red.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/user-attachments/assets/a255247b-907a-458b-8089-8eaff6d79183" width="600">
-</p>
+
+*Imagen 7: : mapa de calor Grad-CAM sobre una imagen de botella de vidrio.*  
+</div>
 
 El mapa de calor se concentra en el cuerpo de la botella y no en el fondo de la imagen, lo que da bastante más confianza en que el modelo está aprendiendo algo razonable y no memorizando ruido de fondo.
 
@@ -86,25 +120,37 @@ El mapa de calor se concentra en el cuerpo de la botella y no en el fondo de la 
 
 ### 2.1. Vectorización y modelo
 
-Como una red no puede procesar texto directamente, primero se convierte cada reseña en un vector binario según qué palabras contiene (de las 10,000 más frecuentes), y luego una red densa de dos capas aprende a partir de esos vectores si la reseña es positiva o negativa. Con este modelo se llegó a casi 86% de exactitud en test.
+Como una red no puede procesar texto directamente, primero se convierte cada reseña en un vector binario según qué palabras contiene (de las 10,000 más frecuentes), y luego una red densa de dos capas aprende a partir de esos vectores si la reseña es positiva o negativa.
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3a35106e-55b5-4728-8660-8dc11a04a0a6" width="600">
+
+*Imagen 8: : salida del cuaderno al evaluar el modelo base de Keras sobre el set de test.*  
+</div>
+
+El modelo terminó con accuracy = 0.8588 y loss = 0.5923 en test, un resultado bastante bueno para una red tan simple de solo dos capas densas.
 
 ### 2.2. Sobreajuste
 
 Comparar la curva de pérdida de entrenamiento contra la de validación sirve para detectar el momento en que el modelo deja de generalizar y empieza a memorizar.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/user-attachments/assets/af34359f-724d-4985-a0b1-8f68dc1157a0" width="600">
-</p>
+
+*Imagen 9: curvas de pérdida de entrenamiento y validación, mostrando el punto de sobreajuste*
+</div>
 
 En la gráfica se nota clarito el punto donde la curva de entrenamiento (azul) sigue bajando, pero la de validación (naranja) empieza a subir. Esa separación es la señal típica de sobreajuste: el modelo ya no está aprendiendo patrones generales, solo se está aprendiendo las reseñas de entrenamiento de memoria.
 
 ### 2.3. Regularización y Dropout
 
-Después probamos dos formas de frenar eso: regularización (castigando pesos muy grandes) y Dropout (apagando neuronas al azar mientras entrena). Las dos ayudan a que la curva de validación no se dispare tanto.
+Son dos formas distintas de frenar ese sobreajuste: la regularización castiga los pesos muy grandes, y el Dropout apaga aleatoriamente la mitad de las neuronas mientras entrena, para que la red no dependa demasiado de unas pocas.
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/user-attachments/assets/102e7ede-db00-4a22-8380-14b4fd543ba4" width="600">
-</p>
+
+*Imagen 10: curva de validación con Dropout comparada con el modelo original.*
+</div>
 
 Con Dropout, la curva de validación se mantiene bastante más estable en comparación con el modelo original, aunque sí se ve un pico al inicio porque la red todavía se está acomodando a entrenar con neuronas apagándose al azar.
 
@@ -112,17 +158,33 @@ Con Dropout, la curva de validación se mantiene bastante más estable en compar
 
 ## 3. El perceptrón (la base de todo)
 
-El perceptrón es solo una suma ponderada de entradas más un sesgo, pasada por una función de activación. Se usó como ejemplo un equipo industrial que decide si hay riesgo de sobrecalentamiento según su temperatura y vibración.
+El perceptrón es solo una suma ponderada de entradas más un sesgo, pasada por una función de activación para tomar una decisión binaria (0 o 1). Se usó como ejemplo un equipo industrial que decide si hay riesgo de sobrecalentamiento según su temperatura y vibración.
+
+```python
+def perceptron(inputs, weights, bias, activation_func):
+z = np.dot(inputs, weights) + bias
+return activation_func(z)
+
+# Pesos y sesgo (bias) del perceptron
+weights = np.array([0.5,-0.5])
+bias = -30
+
+# Entradas: temperatura y vibracion del equipo
+inputs = np.array( [temperatura, vibracion])
+output_step = perceptron(inputs, weights, bias, step_function)
+
+```
+El código traduce esa idea a un caso concreto: un equipo industrial donde la temperatura y la vibración (las entradas) se combinan con pesos y un sesgo fijos para decidir si hay riesgo de sobrecalentamiento. Con los valores usados, el resultado fue que no había alerta.
 
 ### 3.1. Compuertas lógicas: AND, OR y XOR
 
 Esta parte sirve para ver hasta dónde llega un solo perceptrón, qué problemas puede resolver y cuáles no.
 
-El código traduce esa idea a un caso concreto: un equipo industrial donde la temperatura y la vibración (las entradas) se combinan con pesos y un sesgo fijos para decidir si hay riesgo de sobrecalentamiento. Con los valores usados, el resultado fue que no había alerta.
-
-<p align="center">
+<div align="center">
   <img src="https://github.com/user-attachments/assets/e206dd9d-a390-4f2f-b59d-fac71606ce45" width="600">
-</p>
+
+*Imagen 11: fronteras de decisión del perceptrón para las compuertas AND, OR y XOR.*
+</div>
 
 En el gráfico se ve que para XOR no existe ninguna línea recta que separe los puntos (0,1) y (1,0) de los otros dos, a diferencia de AND y OR donde sí se puede trazar una. Por eso XOR necesita más de un perceptrón combinado para resolverse.
 
@@ -155,13 +217,17 @@ La parte de por qué cambian los resultados entre laptops también aplica a nues
 ---
 # ✿ Discusión
 
-
-
-
-
+Sobre todos estos resultados hay dos puntos que vale la pena discutir. Primero, un número aislado puede llevar a conclusiones apresuradas si no se contrasta con su gráfico: el 61% de exactitud de la CNN desde cero, visto solo como cifra, parece un fracaso, pero la matriz de confusión muestra que el error está repartido de forma pareja entre clases, lo que indica falta de entrenamiento y no un problema estructural del modelo. Segundo, la variabilidad de resultados entre distintas corridas del mismo código, evidenciada al comparar con compañeros, confirma que la reproducibilidad importa tanto como el resultado en sí; fijar semillas y documentar la versión del entorno debería ser lo ideal.
 
 ---
 
 # ✿ Conclusión
 
-Lo que más me llevo de este taller es que un mismo principio: pesos, sesgo y una función de activación, se repite en distintas escalas: desde un perceptrón que decide con dos números si algo se está sobrecalentando, hasta una CNN con transfer learning que distingue vidrio de plástico con 90% de exactitud. Y creo que varias de estas ideas, sobre todo el perceptrón y el transfer learning, se pueden llevar directo a nuestro proyecto de clarificación de agua.
+En conclusión, los tres bloques del taller demuestran un mismo principio aplicado a distintas escalas, pesos, sesgo y una función de activación, y que el rendimiento de un modelo no depende tanto de qué tan compleja es su arquitectura, sino de cuánto conocimiento previo se aprovecha: el salto de 61% a 90.6% de exactitud en la CNN se explica casi enteramente por el uso de transfer learning, no por cambios estructurales. De forma parecida, en la red de Keras el modelo base ya alcanzaba una exactitud aceptable (85.9%), y el aporte real de la regularización y el Dropout fue de generalización, no de exactitud bruta.
+
+---
+# Bibliografía
+
+[1] I.C.Parhuay Meza, "Taller de Redes Neuronales: clasificación de imágenes con
+    CNN, análisis de texto con Keras y fundamentos del perceptrón," trabajo de curso,
+    Fac. de Ciencias e Ingeniería, Universidad Peruana Cayetano Heredia, Lima, Perú, 2026.
