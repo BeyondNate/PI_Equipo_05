@@ -1,13 +1,13 @@
 # <h1 align="center">────୨ৎ──── TALLER DE REDES NEURONALES ────୨ৎ────</h1>
 
 
-#  Introducción
+# ✿ Introducción
 
 En este taller se trabajaron diferentes metodologías relacionadas con las redes neuronales y el aprendizaje automático, aplicadas principalmente en problemas de clasificación. La idea principal fue observar cómo un modelo puede aprender patrones a partir de los datos y cómo diferentes técnicas pueden influir en su entrenamiento y en los resultados obtenidos. También se pudo notar que los resultados pueden variar entre ejecuciones, por lo que no solo es importante construir el modelo, sino también revisar cómo se entrenó y cómo se está evaluando.
 
 ---
 
-#  Documentación
+# ✿ Documentación
 
 En esta sección se encuentran los archivos utilizados como apoyo y fuente de datos para el desarrollo del taller.
 
@@ -18,7 +18,7 @@ En esta sección se encuentran los archivos utilizados como apoyo y fuente de da
 | 🗂️ **Dataset (TrashNet)**        | Script adaptador que organiza y divide el dataset de imágenes de vidrio/plástico (train/val/test), usado como aporte de datos para entrenar la CNN. | [🔎 Ver script](./trash_dataset.py)                |           |
 
 ---
-#  Desarollo
+# ✿  Desarollo
 
 ## 1. Redes neuronales convolucionales (CNN) reconociendo vidrio y plástico
 Una de las metodologías principales trabajadas fue la red neuronal convolucional o CNN, utilizada para clasificar imágenes.
@@ -230,13 +230,13 @@ Nos daría algo que actualmente no tenemos, que es poder ver en qué parte de la
 La parte de por qué cambian los resultados entre laptops también aplica a nuestros sensores: si nuestras sondas de pH y turbidez no están bien calibradas entre una prueba y otra, nos va a pasar lo mismo que a un modelo sin semilla fija, resultados que varían aunque el proceso sea "el mismo".
 
 ---
-#  Discusión
+# ✿  Discusión
 
 Sobre todos estos resultados hay dos puntos que vale la pena discutir. Primero, un número aislado puede llevar a conclusiones apresuradas si no se contrasta con su gráfico: el 61% de exactitud de la CNN desde cero, visto solo como cifra, parece un fracaso, pero la matriz de confusión muestra que el error está repartido de forma pareja entre clases, lo que indica falta de entrenamiento y no un problema estructural del modelo. Segundo, la variabilidad de resultados entre distintas corridas del mismo código, evidenciada al comparar con compañeros, confirma que la reproducibilidad importa tanto como el resultado en sí; fijar semillas y documentar la versión del entorno debería ser lo ideal.
 
 ---
 
-#  Conclusión
+# ✿  Conclusión
 
 En conclusión, los tres bloques del taller demuestran un mismo principio aplicado a distintas escalas, pesos, sesgo y una función de activación, y que el rendimiento de un modelo no depende tanto de qué tan compleja es su arquitectura, sino de cuánto conocimiento previo se aprovecha: el salto de 61% a 90.6% de exactitud en la CNN se explica casi enteramente por el uso de transfer learning, no por cambios estructurales. De forma parecida, en la red de Keras el modelo base ya alcanzaba una exactitud aceptable (85.9%), y el aporte real de la regularización y el Dropout fue de generalización, no de exactitud bruta.
 
