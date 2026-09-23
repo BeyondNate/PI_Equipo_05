@@ -18,6 +18,7 @@ En esta sección se encuentran los archivos utilizados como apoyo y fuente de da
 | 🗂️ **Dataset (TrashNet)**        | Script adaptador que organiza y divide el dataset de imágenes de vidrio/plástico (train/val/test), usado como aporte de datos para entrenar la CNN. | [🔎 Ver script](./trash_dataset.py)                |           |
 
 ---
+# ✿ Desarollo
 
 ## 1. Redes neuronales convolucionales (CNN) reconociendo vidrio y plástico
 Una de las metodologías principales trabajadas fue la red neuronal convolucional o CNN, utilizada para clasificar imágenes.
@@ -240,7 +241,7 @@ Sobre todos estos resultados hay dos puntos que vale la pena discutir. Primero, 
 En conclusión, los tres bloques del taller demuestran un mismo principio aplicado a distintas escalas, pesos, sesgo y una función de activación, y que el rendimiento de un modelo no depende tanto de qué tan compleja es su arquitectura, sino de cuánto conocimiento previo se aprovecha: el salto de 61% a 90.6% de exactitud en la CNN se explica casi enteramente por el uso de transfer learning, no por cambios estructurales. De forma parecida, en la red de Keras el modelo base ya alcanzaba una exactitud aceptable (85.9%), y el aporte real de la regularización y el Dropout fue de generalización, no de exactitud bruta.
 
 ---
-# Bibliografía
+# ✿ Bibliografía
 
 [1] I.C.Parhuay Meza, "Taller de Redes Neuronales: clasificación de imágenes con
     CNN, análisis de texto con Keras y fundamentos del perceptrón," trabajo de curso,
