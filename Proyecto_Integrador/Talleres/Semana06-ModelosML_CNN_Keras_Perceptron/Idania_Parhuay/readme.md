@@ -152,7 +152,7 @@ Son dos formas distintas de frenar ese sobreajuste: la regularización castiga l
 *Imagen 10: curva de validación con Dropout comparada con el modelo original.*
 </div>
 
-Con Dropout, la curva de validación se mantiene bastante más estable en comparación con el modelo original, aunque sí se ve un pico al inicio porque la red todavía se está acomodando a entrenar con neuronas apagándose al azar.
+Con Dropout, la curva de validación se mantiene más estable en comparación con el modelo original, aunque sí se ve un pico al inicio porque la red todavía se está acomodando a entrenar con neuronas apagándose al azar.
 
 --- 
 
