@@ -6,7 +6,7 @@ En este taller se trabajaron diferentes metodologías relacionadas con las redes
 
 ---
 
-## ✿ Documentación
+## ✿ DOCUMENTACIÓN
 
 En esta sección se encuentran los archivos utilizados como apoyo y fuente de datos para el desarrollo del taller.
 
