@@ -1,13 +1,13 @@
 # <h1 align="center">────୨ৎ──── TALLER DE REDES NEURONALES ────୨ৎ────</h1>
 
 
-# ✿ INTRODUCCIÓN
+# ✿ Introducción
 
 En este taller se trabajaron diferentes metodologías relacionadas con las redes neuronales y el aprendizaje automático, aplicadas principalmente en problemas de clasificación. La idea principal fue observar cómo un modelo puede aprender patrones a partir de los datos y cómo diferentes técnicas pueden influir en su entrenamiento y en los resultados obtenidos. También se pudo notar que los resultados pueden variar entre ejecuciones, por lo que no solo es importante construir el modelo, sino también revisar cómo se entrenó y cómo se está evaluando.
 
 ---
 
-# ✿ DOCUMENTACIÓN
+# ✿ Documentación
 
 En esta sección se encuentran los archivos utilizados como apoyo y fuente de datos para el desarrollo del taller.
 
