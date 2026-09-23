@@ -13,7 +13,7 @@ En esta sección se encuentran los archivos utilizados como apoyo y fuente de da
 
 | Archivo                          | Descripción                                                                                      | Visualización                                      |
 | --------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| 📓 **Notebook**                  | Notebook utilizado para desarrollar el taller y aplicar las metodologías (CNN, Keras y perceptrón). | [🔎 Ver notebook](./Redes_neuronales_ss__1_.ipynb) |
+| 📓 **Notebook**                  | Notebook utilizado para desarrollar el taller y aplicar las metodologías (CNN, Keras y perceptrón). | [🔎 Ver notebook](./Idania Parhuay_Redes_neuronales_ss__1_.ipynb) |
 | 🗂️ **Dataset (TrashNet)**        | Script adaptador que organiza y divide el dataset de imágenes de vidrio/plástico (train/val/test), usado como aporte de datos para entrenar la CNN. | [🔎 Ver script](./trash_dataset.py)                |
 
 ---
