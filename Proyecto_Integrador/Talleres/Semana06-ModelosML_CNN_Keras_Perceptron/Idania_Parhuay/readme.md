@@ -1,4 +1,5 @@
-<h1 align="center">────୨ৎ──── TALLER DE REDES NEURONALES ────୨ৎ────</h1>
+# <h1 align="center">────୨ৎ──── TALLER DE REDES NEURONALES ────୨ৎ────</h1>
+
 
 # ✿ INTRODUCCIÓN
 
