@@ -232,7 +232,7 @@ La parte de por qué cambian los resultados entre laptops también aplica a nues
 ---
 # ✿  Discusión
 
-Sobre todos estos resultados hay dos puntos que vale la pena discutir. Primero, un número aislado puede llevar a conclusiones apresuradas si no se contrasta con su gráfico: el 61% de exactitud de la CNN desde cero, visto solo como cifra, parece un fracaso, pero la matriz de confusión muestra que el error está repartido de forma pareja entre clases, lo que indica falta de entrenamiento y no un problema estructural del modelo. Segundo, la variabilidad de resultados entre distintas corridas del mismo código, evidenciada al comparar con compañeros, confirma que la reproducibilidad importa tanto como el resultado en sí; fijar semillas y documentar la versión del entorno debería ser lo ideal.
+Sobre todos estos resultados hay dos puntos que vale la pena discutir. Primero, un número aislado puede llevar a conclusiones apresuradas si no se contrasta con su gráfico: el 61% de exactitud de la CNN desde cero, visto solo como cifra, parece un fracaso, pero la matriz de confusión muestra que el error está repartido de forma pareja entre clases, lo que indica falta de entrenamiento y no un problema estructural del modelo. Segundo, la variabilidad de resultados entre distintas corridas del mismo código, evidenciada al comparar con compañeros, confirma que la reproducibilidad importa tanto como el resultado en sí; fijar semillas y documentar la versión del entorno debería ser lo ideal [1].
 
 ---
 
@@ -245,4 +245,4 @@ En conclusión, los tres bloques del taller demuestran un mismo principio aplica
 
 [1] I.C.Parhuay Meza, "Taller de Redes Neuronales: clasificación de imágenes con
     CNN, análisis de texto con Keras y fundamentos del perceptrón," trabajo de curso,
-    Fac. de Ciencias e Ingeniería, Universidad Peruana Cayetano Heredia, Lima, Perú, 2026.
+    *Fac. de Ciencias e Ingeniería, Universidad Peruana Cayetano Heredia*, Lima, Perú, 2026.
