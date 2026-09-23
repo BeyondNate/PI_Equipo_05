@@ -48,10 +48,15 @@ La red utiliza capas de convolución, activación y pooling.
   <img src="Capturas/ImagenesTrashNet_GaelMilla.png" width="650">
 </p>
 
+La imagen muestra ejemplos del conjunto de datos TrashNet, donde las imágenes están clasificadas en categorías como glass y plastic. Estas imágenes son utilizadas como datos de entrada para entrenar la CNN.
+
 **Matriz de confusión**
 <p align="center">
   <img src="Capturas/MatrizConfusion_GaelMilla.png" width="650">
 </p>
+
+La matriz de confusión muestra los resultados de clasificación de la CNN. Se puede observar que el modelo clasificó correctamente 65 casos de la clase 0 y 20 de la clase 1, aunque también tuvo algunas predicciones incorrectas.
+
 ---
 
 ## 3. 🔄 Data Augmentation y Transfer Learning
@@ -171,6 +176,10 @@ Vemos que la *curva anaranjada* no cae al final...
 
 El **Perceptrón** es uno de los modelos más básicos de una red neuronal. Recibe entradas, las combina utilizando **pesos y bias**, y genera una salida mediante una función de activación.
 
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Perceptr%C3%B3n_5_unidades.svg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" width="650">
+</p>
+
 ```text
 Entradas → Pesos + Bias → Función de activación → Salida
 ```
@@ -201,6 +210,8 @@ Estos ejemplos permiten entender cómo el perceptrón puede separar diferentes c
   <img src="Capturas/AndOr_GaelMilla.png" width="650">
 </p>
 
+La gráfica muestra las fronteras de decisión que utiliza el perceptrón para separar los resultados de las compuertas OR y AND. En ambos casos, los puntos pueden separarse mediante una línea, por lo que un perceptrón puede resolver estos problemas.
+
 **Compuerta XOR**
 
 <p align="center">
@@ -209,6 +220,8 @@ Estos ejemplos permiten entender cómo el perceptrón puede separar diferentes c
 
 * Los círculos blancos son los casos donde XOR = 0
 * Cada línea representa la frontera de una neurona
+
+En XOR, el perceptrón intenta separar las clases mediante fronteras de decisión, pero los puntos no pueden separarse correctamente con una sola línea.
 
 La idea es:
 * 1 perceptron --> no puede resolver XOR
@@ -240,9 +253,9 @@ También entendí que las CNN están más orientadas al procesamiento de imágen
 
 ## 8. 💧 Aplicación a nuestro proyecto
 
-Nuestro proyecto busca automatizar la **clarificación de agua mediante quitosano**, utilizando sensores de **pH y turbidez**.
+Nuestro proyecto busca automatizar la **clarificación de agua mediante una solución de quitosano en ácido acético**, utilizando sensores de **pH y turbidez**.
 
-De los tres conceptos, considero que el **Perceptrón sería el más aplicable** como una primera aproximación, ya que nuestros datos principales serían valores numéricos obtenidos de los sensores.
+De los tres conceptos, considero que el **Perceptrón** sería el más aplicable como una primera aproximación, ya que nuestros datos principales serían valores numéricos obtenidos de los sensores.
 
 Podríamos utilizar como entradas:
 
