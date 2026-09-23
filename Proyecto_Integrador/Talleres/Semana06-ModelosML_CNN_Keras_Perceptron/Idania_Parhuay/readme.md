@@ -4,6 +4,19 @@
 
 En este taller se trabajaron diferentes metodologías relacionadas con las redes neuronales y el aprendizaje automático, aplicadas principalmente en problemas de clasificación. La idea principal fue observar cómo un modelo puede aprender patrones a partir de los datos y cómo diferentes técnicas pueden influir en su entrenamiento y en los resultados obtenidos. También se pudo notar que los resultados pueden variar entre ejecuciones, por lo que no solo es importante construir el modelo, sino también revisar cómo se entrenó y cómo se está evaluando.
 
+---
+
+## ✿ Documentación
+
+En esta sección se encuentran los archivos utilizados como apoyo y fuente de datos para el desarrollo del taller.
+
+
+| Archivo                          | Descripción                                                                                      | Visualización                                      |
+| --------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 📓 **Notebook**                  | Notebook utilizado para desarrollar el taller y aplicar las metodologías (CNN, Keras y perceptrón). | [🔎 Ver notebook](./Redes_neuronales_ss__1_.ipynb) |
+| 🗂️ **Dataset (TrashNet)**        | Script adaptador que organiza y divide el dataset de imágenes de vidrio/plástico (train/val/test), usado como aporte de datos para entrenar la CNN. | [🔎 Ver script](./trash_dataset.py)                |
+
+---
 
 ## 1. Redes neuronales convolucionales (CNN) reconociendo vidrio y plástico
 Una de las metodologías principales trabajadas fue la red neuronal convolucional o CNN, utilizada para clasificar imágenes.
