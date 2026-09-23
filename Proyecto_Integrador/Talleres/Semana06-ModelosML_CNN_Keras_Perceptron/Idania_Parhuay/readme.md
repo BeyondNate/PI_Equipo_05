@@ -39,7 +39,7 @@ La pérdida baja, pero lento y con algunos tramos casi planos, lo que ya adelant
 *Imagen 3: métricas de validación (Accuracy vs. ROC-AUC) por época, CNN desde cero.*
 </div>
 
-Acá se nota algo curioso: el ROC-AUC de validación se mantiene bastante estable y alto (arriba de 0.70) desde temprano, pero el accuracy salta bastante de una época a otra, incluso baja antes de subir. Eso pasa porque el accuracy depende del umbral de decisión (0.5), mientras que el ROC-AUC mide qué tan bien separa las clases en general; el modelo ya distinguía razonablemente bien, pero el punto de corte todavía no estaba bien calibrado.
+Acá podemos apreciar que el ROC-AUC de validación se mantiene bastante estable y alto (arriba de 0.70) desde temprano, pero el accuracy salta bastante de una época a otra, incluso baja antes de subir. Eso pasa porque el accuracy depende del umbral de decisión (0.5), mientras que el ROC-AUC mide qué tan bien separa las clases en general; el modelo ya distinguía razonablemente bien, pero el punto de corte todavía no estaba bien calibrado.
 
 * **Evaluación final en test:**
   
