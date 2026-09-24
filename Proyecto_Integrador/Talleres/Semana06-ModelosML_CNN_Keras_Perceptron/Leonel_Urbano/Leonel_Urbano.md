@@ -7,7 +7,6 @@ En los ejercicios desarrollados en Google Colab se estudian estos conceptos medi
 
 El presente informe interpreta los conceptos de CNN, Keras y Perceptrón, analiza los resultados y gráficas obtenidos en los ejercicios y plantea una posible aplicación de estas herramientas a un proyecto universitario de **automatización del proceso de aclaramiento de agua mediante una solución de quitosano a baja escala**.
 
----
 
 # 2. CNN: Red Neuronal Convolucional
 
@@ -21,6 +20,8 @@ En el ejercicio de clasificación, la CNN se utiliza para diferenciar imágenes 
 
 - **0 = glass**
 - **1 = plastic**
+
+<img width="989" height="661" alt="image" src="https://github.com/user-attachments/assets/aa87f9dd-1dca-422d-8bb5-81ed580242c5" />
 
 ## 2.2. Componentes principales
 
