@@ -1,4 +1,4 @@
-# INTERPRETACIÓN DE CNN, KERAS Y PERCEPTRÓN Y SU APLICACIÓN
+# LA CNN, KERAS Y PERCEPTRÓN Y SU APLICACIÓN EN SISTEMAS AUTOMATIZADOS DE ACLARAMIENTO DE AGUA CON QUITOSANO 
 ## 1. Introducción
 
 Las redes neuronales artificiales constituyen una herramienta de inteligencia artificial que permite desarrollar sistemas capaces de identificar patrones, realizar predicciones y tomar decisiones a partir de datos. Dentro de este campo se encuentran el **Perceptrón**, las **Redes Neuronales Convolucionales (CNN)** y herramientas de desarrollo como **Keras**.
