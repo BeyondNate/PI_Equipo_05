@@ -1,5 +1,4 @@
-# INTERPRETACIÓN DE CNN, KERAS Y PERCEPTRÓN Y SU APLICACIÓN EN NUESTRO PROYECTO
-
+# INTERPRETACIÓN DE CNN, KERAS Y PERCEPTRÓN Y SU APLICACIÓN
 ## 1. Introducción
 
 Las redes neuronales artificiales constituyen una herramienta de inteligencia artificial que permite desarrollar sistemas capaces de identificar patrones, realizar predicciones y tomar decisiones a partir de datos. Dentro de este campo se encuentran el **Perceptrón**, las **Redes Neuronales Convolucionales (CNN)** y herramientas de desarrollo como **Keras**.
@@ -309,22 +308,6 @@ Por esta razón:
 Para resolver este tipo de problema es necesario utilizar una arquitectura con más de una neurona y, normalmente, más de una capa. Este ejemplo permite observar una de las principales limitaciones del Perceptrón simple.
 
 
-# 13. Comparación entre CNN, Keras y Perceptrón
-
-| Característica | Perceptrón | CNN | Keras |
-|---|---|---|---|
-| Tipo | Modelo neuronal | Arquitectura neuronal | Herramienta/framework |
-| Complejidad | Baja | Alta | Depende del modelo |
-| Entrada típica | Variables numéricas | Imágenes | Diferentes tipos de datos |
-| Clasificación | Sí | Sí | Sí |
-| Procesamiento de imágenes | Limitado | Especializado | Permite implementar CNN |
-| Aplicación industrial | Decisiones simples | Visión artificial | Desarrollo de modelos |
-| Entrenamiento | Sí | Sí | Permite entrenar modelos |
-
-Keras no debe considerarse una alternativa equivalente a CNN y Perceptrón, ya que cumple una función diferente: permite implementar y entrenar modelos.
-
----
-
 # 14. Aplicación al proyecto de aclaramiento de agua con quitosano
 
 ## 14.1. Descripción
@@ -349,15 +332,6 @@ Estas variables pueden utilizarse como entradas para un modelo de aprendizaje au
 
 Para un proyecto de baja escala basado principalmente en **datos numéricos de sensores**, una alternativa inicial sería utilizar un **modelo neuronal sencillo basado en el concepto de Perceptrón**, implementado mediante **Keras**.
 
-La CNN no sería necesaria como primera opción si no se utilizan imágenes.
-
-La diferencia principal es el tipo de información:
-
-**Datos numéricos de sensores → Perceptrón/red neuronal + Keras**
-
-**Imágenes del agua → CNN**
-
----
 
 # 16. ¿Cómo utilizar el Perceptrón?
 
@@ -387,30 +361,6 @@ Por ejemplo:
 
 `Salida = 0 → condiciones no adecuadas`
 
----
-
-# 17. Evolución hacia una red neuronal multicapa
-
-Para un proyecto más desarrollado, se podría utilizar una red neuronal multicapa en lugar de un único Perceptrón.
-
-En lugar de realizar solamente una clasificación, el modelo podría predecir una variable continua:
-
-**Turbidez final estimada = 8.4 NTU**
-
-De esta manera, se podría estudiar experimentalmente la relación entre las condiciones del proceso y el resultado obtenido.
-
-Un conjunto de datos experimental podría tener una estructura como:
-
-| pH | Dosis de quitosano | Tiempo | Agitación | Turbidez inicial | Turbidez final |
-|---:|---:|---:|---:|---:|---:|
-| 6.5 | 10 mg/L | 5 min | 100 rpm | 120 | 35 |
-| 6.5 | 20 mg/L | 5 min | 100 rpm | 120 | 18 |
-| 7.0 | 20 mg/L | 10 min | 120 rpm | 120 | 10 |
-| 7.5 | 30 mg/L | 10 min | 150 rpm | 120 | 7 |
-
-Los datos reales deberían obtenerse mediante los experimentos del proyecto y no sustituirse por estos valores ilustrativos.
-
----
 
 # 18. Función de Keras en el proyecto
 
@@ -426,123 +376,13 @@ Los datos obtenidos experimentalmente formarían el conjunto de entrenamiento.
 
 Después de entrenar el modelo, este podría recibir nuevas condiciones de operación y generar una predicción.
 
----
-
-# 19. Posible integración con el sistema de automatización
-
-Una arquitectura general podría ser:
-
-```text
-       SENSOR DE TURBIDEZ
-               │
-               ▼
-          ┌───────────┐
-          │           │
-          │ CONTROLADOR│
-          │           │
-          └─────┬─────┘
-                │
-       ┌────────┼────────┐
-       ▼        ▼        ▼
-      pH   Temperatura  Turbidez
-       │        │        │
-       └────────┼────────┘
-                ▼
-        MODELO NEURONAL
-          (Keras)
-                │
-                ▼
-       PREDICCIÓN DEL PROCESO
-                │
-                ▼
-       DOSIFICACIÓN QUITOSANO
-                │
-                ▼
-           MEZCLADOR
-                │
-                ▼
-        MEDICIÓN FINAL
-                │
-                └──────► RETROALIMENTACIÓN
-```
-
-Este sistema permitiría integrar inteligencia artificial con instrumentación y automatización.
-
----
-
-# 20. Posible utilización de CNN en el proyecto
-
-La CNN podría incorporarse en una etapa posterior si el proyecto incluye una cámara.
-
-La cámara podría tomar fotografías del agua durante el proceso y la CNN podría clasificarlas según su nivel visual de claridad.
-
-Por ejemplo:
-
-- Clase 0: agua muy turbia.
-- Clase 1: agua parcialmente aclarada.
-- Clase 2: agua aclarada.
-
-En ese caso se tendría:
-
-**Cámara → CNN → clasificación visual**
-
-Mientras que los sensores proporcionarían:
-
-**Sensores → variables numéricas → modelo neuronal**
-
-Incluso podrían combinarse ambas fuentes de información en una etapa posterior.
-
----
-
-# 21. Propuesta de implementación por etapas
-
-## Etapa 1: adquisición de datos
-
-Instalar sensores para medir las principales variables del proceso.
-
-## Etapa 2: experimentación
-
-Realizar diferentes pruebas modificando:
-
-- dosis de quitosano;
-- pH;
-- tiempo;
-- agitación;
-- condiciones iniciales del agua.
-
-## Etapa 3: creación del dataset
-
-Registrar las condiciones de cada prueba y la turbidez obtenida después del tratamiento.
-
-## Etapa 4: modelo inicial
-
-Construir un modelo sencillo utilizando el concepto de Perceptrón.
-
-## Etapa 5: implementación con Keras
-
-Utilizar Keras para entrenar una red neuronal con los datos obtenidos.
-
-## Etapa 6: evaluación
-
-Comparar las predicciones del modelo con los resultados experimentales.
-
-## Etapa 7: automatización
-
-Utilizar la predicción como parte del sistema de control y dosificación.
-
-## Etapa 8: posible incorporación de CNN
-
-Si se dispone de una cámara y suficientes imágenes etiquetadas, incorporar una CNN para analizar visualmente el agua.
-
----
-
 # 22. Conclusiones
 
 1. El **Perceptrón** representa una forma básica de neurona artificial y permite comprender el funcionamiento de las redes neuronales mediante entradas, pesos, bias y funciones de activación.
 
 2. La **CNN** es una arquitectura especializada en el procesamiento de imágenes. En el ejercicio de clasificación de vidrio y plástico, el modelo entrenado desde cero obtuvo resultados limitados, mientras que el aprendizaje por transferencia con ResNet alcanzó mejores resultados dentro del conjunto de datos utilizado.
 
-3. **Keras** es una herramienta para implementar y entrenar modelos de aprendizaje automático y redes neuronales. En el ejercicio permitió estudiar clasificación binaria y técnicas para controlar el sobreajuste, como la reducción de la arquitectura, regularización L2 y Dropout.
+3. **Keras** es una herramienta para implementar y entrenar modelos de aprendizaje automático y redes neuronales. En el ejercicio permitió estudiar clasificación binaria y técnicas para controlar el sobreajuste, como la reducción de la arquitectura, regularización y Dropout.
 
 4. Las gráficas de entrenamiento y validación permiten identificar el comportamiento del aprendizaje. Cuando la pérdida de entrenamiento disminuye mientras la pérdida de validación aumenta, existe evidencia de sobreajuste.
 
@@ -552,9 +392,8 @@ Si se dispone de una cámara y suficientes imágenes etiquetadas, incorporar una
 
 7. Una implementación progresiva permitiría comenzar con sensores, generar datos experimentales, entrenar un modelo, evaluar sus predicciones y posteriormente integrar el modelo al sistema automatizado de dosificación y control.
 
----
 
-# 23. Recomendación de arquitectura para el proyecto
+# 23. Arquitectura Hipotética
 
 La estructura conceptual recomendada para desarrollar el proyecto sería:
 
