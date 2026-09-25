@@ -1,5 +1,5 @@
 
-#Descripcion
+# Descripcion
 
 En esta actividad se desarrolla un modelo de Red Neuronal Convolucional (CNN) para la clasificación del estado de frescura de frutas (Fresh vs Rotten) a partir de imágenes de manzanas, plátanos y fresas obtenidas de un dataset de Kaggle. Para ello, se trabaja con una muestra de 522 imágenes únicas, distribuidas en conjuntos de entrenamiento, validación y prueba.
 
