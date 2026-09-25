@@ -1,4 +1,4 @@
-**DESCRIPCION DE ACTIVIDAD**
+# DESCRIPCION DE ACTIVIDAD**
 
 En este proyecto construí un modelo de Red Neuronal Convolucional (CNN) para clasificar caracteres del dataset EMNIST ByClass, separando letras de números. 
 Para el desarrollo del modelo, utilicé una muestra balanceada de 15,000 imágenes divididas en bloques de entrenamiento, validación y prueba.El objetivo principal
