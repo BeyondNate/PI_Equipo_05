@@ -8,4 +8,4 @@ Además, se compara el desempeño de diferentes configuraciones de CNN, incluyen
 
 ### 🔗 Archivo de la actividad
 
-[📄 CNN_TransferLearning_Fruit_Freshness_Idania.ipynb](./Proyecto_Integrador/Talleres/Semana06-ModelosML_CNN_Keras_Perceptron/CNN_TransferLearning/Idania_Parhuay/CNN_TransferLearning_Fruit_Freshness_Idania.ipynb)
+[📄 CNN_TransferLearning_Fruit_Freshness_Idania.ipynb](./CNN_TransferLearning_Fruit_Freshness_Idania.ipynb)
