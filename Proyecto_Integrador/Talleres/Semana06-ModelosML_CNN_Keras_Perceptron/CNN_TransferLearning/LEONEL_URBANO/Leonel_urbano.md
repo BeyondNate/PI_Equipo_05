@@ -1,6 +1,6 @@
 # Actividad: Clasificación de Caracteres con CNN y Transfer Learning
 
-En este proyecto construí un modelo de **Red Neuronal Convolucional (CNN)** para clasificar caracteres del dataset **EMNIST ByClass**, logrando diferenciar con éxito entre letras y números. Para el desarrollo del modelo, utilicé una muestra balanceada de **15,000 imágenes** divididas en los bloques estándar de entrenamiento, validación y prueba.
+En este proyecto construí un modelo de **Red Neuronal Convolucional (CNN)** para clasificar caracteres , logrando diferenciar con éxito entre letras y números. Para el desarrollo del modelo, utilicé una muestra balanceada de **3,000 imágenes** aprox. divididas en los bloques estándar de entrenamiento, validación y prueba.
 
 El objetivo principal fue comparar el rendimiento de tres enfoques distintos:
 * Una **CNN diseñada desde cero**.
