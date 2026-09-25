@@ -1,1 +1,10 @@
+**DESCRIPCION DE ACTIVIDAD**
 
+En este proyecto construí un modelo de Red Neuronal Convolucional (CNN) para clasificar caracteres del dataset EMNIST ByClass, separando letras de números. 
+Para el desarrollo del modelo, utilicé una muestra balanceada de 15,000 imágenes divididas en bloques de entrenamiento, validación y prueba.El objetivo principal
+fue comparar el rendimiento de tres enfoques distintos: una CNN diseñada desde cero, esa misma arquitectura implementada con Data Augmentation, y un modelo de 
+Transfer Learning basado en ResNet18. Para concluir, evalué el desempeño de cada uno mediante métricas de clasificación y apliqué Grad-CAM para analizar visualmente
+qué zonas de las imágenes pesaron más en las predicciones.
+
+Archivo trabajado:
+https://drive.google.com/drive/folders/1NhWnbLmwBA1ga0VlqRTXR0tBQ_wgkJ8t?usp=sharing
