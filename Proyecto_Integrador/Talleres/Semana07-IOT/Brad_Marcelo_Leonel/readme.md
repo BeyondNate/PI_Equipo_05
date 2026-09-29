@@ -4,7 +4,7 @@ Este repositorio contiene una serie de prácticas y actividades desarrolladas co
 
 ## Contenido de las Actividades
 
-1. [Actividad 01: Lectura Analógica y Promediado con Potenciómetro](#actividad-01)
+1. [Actividad 01: Lectura Analógica y Promediado con Potenciómetro](###Actividad_01)
 
 2. [Actividad 02: Conexión Wi-Fi a Hotspot de Smartphone](#actividad-02)
 
