@@ -4,13 +4,13 @@ Este repositorio contiene una serie de prácticas y actividades desarrolladas co
 
 ## Contenido de las Actividades
 
-1. Actividad 01: Lectura Analógica y Promediado con Potenciómetro
+1. [Actividad 01: Lectura Analógica y Promediado con Potenciómetro](#actividad-01-lectura-de-un-potenciómetro-con-promediado-y-voltaje)
 
-2. Actividad 02: Conexión Wi-Fi a Hotspot de Smartphone
+2. [Actividad 02: Conexión Wi-Fi a Hotspot de Smartphone](#actividad-02-conexión-wi-fi-a-hotspot-de-smartphone)
 
-3. Actividad 03: Envío de Datos de Potenciómetro a la Nube (IoT)
+3. [Actividad 03: Envío de Datos de Potenciómetro a la Nube (IoT)](#actividad-03-envío-de-datos-del-potenciómetro-a-la-nube)
 
-4. Actividad 04: Envío de Sensores Keystudio a la Nube (IoT)
+4. [Actividad 04: Envío de Sensores Keystudio a la Nube (IoT)](#actividad-04-envío-de-sensores-keystudio-a-la-nube)
 
 ### Actividad 01: Lectura de un Potenciómetro con Promediado y Voltaje
 
