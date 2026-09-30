@@ -2,7 +2,8 @@
 
 **Curso:** Proyectos de Ingeniería
 **Universidad:** Universidad Peruana Cayetano Heredia (UPCH)
-**Estudiante:** _Nombre completo_
+
+**Estudiante:** Idania Parhuay Meza
 **Fecha:** _dd/mm/aaaa_
 
 ---
