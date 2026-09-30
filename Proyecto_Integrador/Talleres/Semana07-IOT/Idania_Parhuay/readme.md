@@ -689,11 +689,5 @@ _Adaptar a lo observado en las Figuras 14 y 15._ Al accionar el switch desde el 
 - `ArduinoIoTCloud` y `Arduino_ConnectionHandler` (Arduino Cloud)
 - ThingSpeak y Arduino Cloud como plataformas IoT
 
-## Referencias
-
-- Presentación del taller de IoT, Proyectos de Ingeniería, UPCH.
-- Documentación de Arduino Cloud: https://docs.arduino.cc/arduino-cloud/guides/overview/
-- Tutorial de envío de datos a ThingSpeak con ESP32: https://todomaker.com/blog/envio-de-datos-a-thingspeak-usando-esp32/
-- Pinout del ESP32: https://lastminuteengineers.com/getting-started-with-esp32/
 
 > **Seguridad:** las claves de Wi-Fi, la *Write API Key* y el *Secret Key* no se incluyen en este repositorio; en los códigos aparecen como texto de ejemplo y deben reemplazarse por los datos propios.
