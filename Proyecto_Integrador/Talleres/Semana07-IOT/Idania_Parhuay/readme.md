@@ -213,8 +213,6 @@ void loop() {
 }
 ```
 
-> En el código publicado, `WIFI_SSID` y `WIFI_PASSWORD` aparecen como texto de ejemplo; durante las pruebas usé los datos reales de mi hotspot.
-
 ### Resultados
 
 | Parámetro | Resultado |
