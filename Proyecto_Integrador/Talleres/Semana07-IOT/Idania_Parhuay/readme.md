@@ -157,8 +157,8 @@ Además, revisa cada cierto tiempo si la conexión sigue activa y, si se pierde,
 ```cpp
 #include <WiFi.h>
 
-const char* WIFI_SSID     = "NOMBRE_DE_SU_HOTSPOT";
-const char* WIFI_PASSWORD = "CLAVE_DE_SU_HOTSPOT";
+const char* WIFI_SSID     = "ajam";
+const char* WIFI_PASSWORD = "Idania123";
 
 void conectarWiFi() {
   Serial.printf("\nConectando a: %s\n", WIFI_SSID);
