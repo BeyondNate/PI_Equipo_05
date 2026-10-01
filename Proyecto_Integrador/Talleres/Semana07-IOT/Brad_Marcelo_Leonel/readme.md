@@ -152,7 +152,7 @@ void loop() {
 
 En el Monitor Serie se muestran los valores obtenidos del potenciómetro y el voltaje correspondiente.
 
-![Monitor Serie de la Actividad 01](images/actividad-01/monitor-serie.png)
+![Monitor Serie de la Actividad 01](images/actividad-01/monitor-serie.jpeg)
 
 ## Resultado
 
@@ -209,7 +209,7 @@ Se habilita el Hotspot del Smartphone y se configura el nombre y contraseña de 
 
 El ESP32 se conecta a la red Wi-Fi creada mediante el Smartphone.
 
-![Circuito de la Actividad 02](images/actividad-02/circuito.png)
+El circuito de la actividad 2 es la misma que la de la actividad 1.
 
 ## Monitor Serie
 
@@ -281,11 +281,7 @@ La dirección IP asignada por la red fue visualizada mediante el Monitor Serie.
 
 ## Objetivo
 
-Enviar y visualizar en tiempo real la variación de un potenciómetro conectado al ESP32 utilizando diferentes plataformas de Internet de las Cosas:
-
-- Arduino Cloud.
-- ThingSpeak.
-- Ubidots.
+Enviar y visualizar en tiempo real la variación de un potenciómetro conectado al ESP32 utilizando ThingSpeak, plataforma de Internet de las Cosas.
 
 ## Funcionamiento
 
@@ -305,66 +301,12 @@ Lectura del sensor
       ▼
     Wi-Fi
       │
-      ├───────────────┐
-      ▼               ▼
-Arduino Cloud    ThingSpeak
-      │
-      ▼
-   Ubidots
+      |
+      ▼               
+ ThingSpeak
 ```
 
 El valor del potenciómetro es enviado periódicamente a las plataformas para poder observar su variación.
-
-## Circuito
-
-![Circuito de la Actividad 03](images/actividad-03/circuito.png)
-
-## Arduino Cloud
-
-Arduino Cloud permite conectar dispositivos IoT a Internet y visualizar los datos obtenidos desde una interfaz web.
-
-La siguiente imagen muestra la evidencia de los datos enviados desde el ESP32 hacia Arduino Cloud.
-
-![Arduino Cloud - Actividad 03](images/actividad-03/arduino-cloud.png)
-```cpp
-#include <WiFi.h>
-#include <HTTPClient.h>
-
-const char* ssid = "UPCH_CENTRAL";
-const char* password = "CAYETANO2022";
-String apiKey = "5QTSTW5OQN710G30";
-const int POT_PIN = 34;
-
-void setup() {
-  Serial.begin(115200);
-  analogReadResolution(12);
-  WiFi.begin(ssid, password);
-  Serial.print("Conectando a Wi-Fi");
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println();
-  Serial.println("Wi-Fi conectado");
-  Serial.println(WiFi.localIP());
-}
-
-void loop() {
-  int valor = analogRead(POT_PIN);
-  Serial.print("Potenciometro: ");
-  Serial.println(valor);
-  if (WiFi.status() == WL_CONNECTED) {
-    HTTPClient http;
-    String url = "http://api.thingspeak.com/update?api_key=" + apiKey + "&field1=" + String(valor);
-    http.begin(url);
-    int codigo = http.GET();
-    Serial.print("Respuesta ThingSpeak: ");
-    Serial.println(codigo);
-    http.end();
-  }
-  delay(15000);
-}
-```
 
 ## ThingSpeak
 
@@ -372,34 +314,11 @@ ThingSpeak es una plataforma utilizada para recibir y visualizar datos provenien
 
 La siguiente imagen muestra la evidencia de los datos del potenciómetro enviados a ThingSpeak.
 
-![ThingSpeak - Actividad 03](images/actividad-03/thingspeak.png)
-
-## Ubidots
-
-Ubidots permite recibir información de dispositivos IoT y visualizarla mediante diferentes elementos gráficos.
-
-La siguiente imagen muestra la evidencia correspondiente a la actividad.
-
-![Ubidots - Actividad 03](images/actividad-03/ubidots.png)
-
-## Código
-
-El código correspondiente a esta actividad se encuentra en:
-
-```text
-actividad-03-nube-potenciometro/
-└── actividad-03.ino
-```
-
-[Ver código de la Actividad 03](actividad-03-nube-potenciometro/actividad-03.ino)
+![ThingSpeak - Actividad 03](images/actividad-03/thingspeak.jpg)
 
 ## Resultado
 
-Se logró enviar la información correspondiente a la variación del potenciómetro hacia las tres plataformas IoT utilizadas:
-
-- Arduino Cloud.
-- ThingSpeak.
-- Ubidots.
+Se logró enviar la información correspondiente a la variación del potenciómetro hacia la plataforma IoT utilizada:
 
 Los datos pudieron ser observados mediante las interfaces de cada plataforma.
 
@@ -419,9 +338,7 @@ Entre los sensores propuestos en el taller se encuentran, por ejemplo:
 
 Los datos deben visualizarse en tiempo real utilizando:
 
-- Arduino Cloud.
 - ThingSpeak.
-- Ubidots.
 
 ## Funcionamiento
 
@@ -441,21 +358,12 @@ Lectura del sensor
        ▼
       Wi-Fi
        │
-       ├───────────────┐
-       ▼               ▼
-Arduino Cloud    ThingSpeak
-       │
+       |
        ▼
-    Ubidots
+  ThingSpeak
 ```
 
 El ESP32 obtiene las mediciones del sensor y las transmite mediante Wi-Fi a las plataformas IoT.
-
-## Circuito
-
-El sensor seleccionado se conecta al ESP32 de acuerdo con sus características y el pin utilizado en el programa.
-
-![Circuito de la Actividad 04](images/actividad-04/circuito.png)
 
 ## ThingSpeak
 
@@ -465,9 +373,8 @@ Evidencia de los datos obtenidos del sensor y enviados a ThingSpeak.
 
 ## Código
 
-El código correspondiente a esta actividad se encuentra en:
 
-´´´cpp
+```cpp
 #include <WiFi.h>
 #include "ThingSpeak.h"
 
@@ -544,12 +451,12 @@ void loop() {
   // ThingSpeak requiere aproximadamente 15 s entre actualizaciones
   delay(16000);
 }
-´´´
+```
 ## Resultado
 
-Se logró enviar los datos obtenidos del sensor hacia la plataformas IoT utilizada:
+Se logró enviar los datos obtenidos del sensor hacia la plataforma IoT utilizada:
 
-Los datos pudieron ser visualizados mediante las interfaces de cada plataforma.
+Los datos pudieron ser visualizados mediante la interfaz de la plataforma.
 
 ---
 
@@ -561,9 +468,7 @@ Los datos pudieron ser visualizados mediante las interfaces de cada plataforma.
 | Arduino IDE | Programación del ESP32 |
 | C/C++ | Lenguaje utilizado para los programas |
 | Wi-Fi | Comunicación inalámbrica |
-| Arduino Cloud | Plataforma IoT para monitoreo de datos |
 | ThingSpeak | Plataforma IoT para recepción y visualización de datos |
-| Ubidots | Plataforma IoT para monitoreo y visualización |
 | GitHub | Almacenamiento y documentación del proyecto |
 
 ---
@@ -626,11 +531,9 @@ El proceso puede resumirse de la siguiente manera:
            │
            ▼
 ┌──────────────────────┐
-│    PLATAFORMAS IoT   │
+│    PLATAFORMA IoT    │
 │                      │
-│ Arduino Cloud        │
-│ ThingSpeak           │
-│ Ubidots              │
+│      ThingSpeak      │
 └──────────────────────┘
 ```
 
@@ -646,7 +549,7 @@ Las actividades permitieron pasar de una lectura local mediante el Monitor Serie
 - Se estableció una conexión entre el ESP32 y una red Wi-Fi mediante el Hotspot de un Smartphone.
 - Se obtuvo y visualizó la dirección IP asignada al ESP32.
 - Se enviaron datos del potenciómetro a plataformas IoT.
-- Se trabajó con Arduino Cloud, ThingSpeak y Ubidots para visualizar los datos.
+- Se trabajó con ThingSpeak para visualizar los datos.
 - Se realizó la adquisición de datos de un sensor del kit Keyestudio.
 - Se enviaron los datos del sensor a plataformas IoT para su monitoreo.
 
