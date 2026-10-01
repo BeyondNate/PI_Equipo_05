@@ -252,14 +252,17 @@ Mostrar en tiempo real la variación del potenciómetro en plataformas IoT. Se t
 
 Se creó un canal con dos campos: el voltaje (Field 1) y el valor del ADC (Field 2). El ESP32 se conecta al Wi-Fi y, cada 20 segundos, arma una petición HTTP con la *Write API Key* del canal y los valores medidos. El intervalo no es casual: la cuenta gratuita de ThingSpeak exige al menos 15 segundos entre envíos, así que dejé un pequeño margen de seguridad.
 
-![Configuración del canal en ThingSpeak](images/act03_ts_canal.png)
+
+<img width="1918" height="1032" alt="image" src="https://github.com/user-attachments/assets/031dc061-b8df-4372-b4c2-a264fc9989af" />
 *Figura 6. Canal de ThingSpeak con sus campos configurados.*
 
-![Monitor serie enviando datos a ThingSpeak](images/act03_ts_serial.png)
+<img width="957" height="1020" alt="image" src="https://github.com/user-attachments/assets/199e9f2d-9067-44dc-8389-461ba343414d" />
 *Figura 7. Monitor serie confirmando cada envío (código HTTP 200 y número de entrada).*
 
-![Gráficas en tiempo real en ThingSpeak](images/act03_ts_graficas.png)
+
+<img width="1918" height="1022" alt="image" src="https://github.com/user-attachments/assets/ed89e769-dc04-4fc5-a314-4c6731143d3d" />
 *Figura 8. Gráficas del voltaje y del ADC en el canal.*
+
 
 **Código**
 
@@ -347,112 +350,6 @@ void loop() {
 
 **Interpretación.** _Adaptar a lo que muestren las Figuras 7 y 8._ En el monitor serie, cada envío devuelve un número de entrada que va creciendo, señal de que ThingSpeak está recibiendo y guardando los datos. En las gráficas se aprecia cómo el voltaje sube y baja según lo que hice con el potenciómetro, y las dos curvas tienen la misma forma porque el voltaje no es más que el ADC escalado. También se nota una limitación: con un dato cada 20 segundos, los movimientos rápidos se pierden y el resultado se parece más a una serie de puntos que a una señal continua.
 
-### 3.2 Arduino Cloud
-
-Aquí el proceso es bastante distinto. Primero se registró el ESP32 como *dispositivo de terceros* (ESP32 Dev Module), lo que entrega un Device ID y un Secret Key. Después se creó un *Thing* con dos variables de solo lectura, `voltaje` (float) y `valorADC` (entero), y se armó un dashboard con un indicador y un gráfico. En el código, las variables se actualizan en cada vuelta del `loop()` y la biblioteca `ArduinoIoTCloud` se encarga de sincronizarlas con la nube.
-
-![Dispositivo y Thing en Arduino Cloud](images/act03_ac_thing.png)
-*Figura 9. Thing con las variables `voltaje` y `valorADC`, asociado al ESP32.*
-
-![Dashboard en Arduino Cloud](images/act03_ac_dashboard.png)
-*Figura 10. Dashboard mostrando la variación del potenciómetro.*
-
-**Código**
-
-El sketch de Arduino Cloud se reparte en tres archivos que van como pestañas dentro de la misma carpeta.
-
-**Actividad03_ArduinoCloud.ino**
-
-```cpp
-/*
-  Actividad 03 (Potenciometro) - Arduino Cloud
-  Librerias: ArduinoIoTCloud y Arduino_ConnectionHandler.
-  Pasos en app.arduino.cc: Devices > Add > Third party device > ESP32 > "ESP32 Dev Module"
-  (guarde el Device ID y el Secret Key) > cree un Thing con las variables indicadas en
-  thingProperties.h > asocie el dispositivo > cree un Dashboard con widgets.
-*/
-#include "arduino_secrets.h"
-#include "thingProperties.h"
-
-// ---------- Lectura del potenciometro (GPIO34, ADC1) ----------
-const int POT_PIN      = 34;
-const int NUM_MUESTRAS = 32;
-
-void iniciarSensor() {
-  analogReadResolution(12);
-  analogSetPinAttenuation(POT_PIN, ADC_11db);
-}
-
-// Devuelve el voltaje promedio en voltios y el ADC promedio (por referencia)
-float leerValor(int &adcProm) {
-  long sumaADC = 0, sumaMv = 0;
-  for (int i = 0; i < NUM_MUESTRAS; i++) {
-    sumaADC += analogRead(POT_PIN);
-    sumaMv  += analogReadMilliVolts(POT_PIN);
-    delay(2);
-  }
-  adcProm = sumaADC / NUM_MUESTRAS;
-  return (sumaMv / (float)NUM_MUESTRAS) / 1000.0;
-}
-const char* NOMBRE_VAR = "voltaje";
-
-void setup() {
-  Serial.begin(115200);
-  delay(1500);
-  iniciarSensor();
-
-  initProperties();
-  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
-  setDebugMessageLevel(2);
-  ArduinoCloud.printDebugInfo();
-}
-
-void loop() {
-  ArduinoCloud.update();
-  int adc;
-  voltaje  = leerValor(adc);
-  valorADC = adc;
-  delay(200);
-}
-```
-
-**thingProperties.h**
-
-```cpp
-// thingProperties.h - equivalente al archivo que genera Arduino Cloud
-#include <ArduinoIoTCloud.h>
-#include <Arduino_ConnectionHandler.h>
-
-const char DEVICE_LOGIN_NAME[] = "PEGUE_AQUI_EL_DEVICE_ID";
-
-const char SSID[]     = SECRET_SSID;
-const char PASS[]     = SECRET_OPTIONAL_PASS;
-const char DEVICE_KEY[] = SECRET_DEVICE_KEY;
-
-float voltaje;
-int valorADC;
-
-void initProperties() {
-  ArduinoCloud.setBoardId(DEVICE_LOGIN_NAME);
-  ArduinoCloud.setSecretDeviceKey(DEVICE_KEY);
-  ArduinoCloud.addProperty(voltaje,  READ, 1 * SECONDS, NULL);
-  ArduinoCloud.addProperty(valorADC, READ, 1 * SECONDS, NULL);
-}
-
-WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
-```
-
-**arduino_secrets.h**
-
-```cpp
-#define SECRET_SSID "NOMBRE_DE_SU_RED"
-#define SECRET_OPTIONAL_PASS "CLAVE_DE_SU_RED"
-#define SECRET_DEVICE_KEY "PEGUE_AQUI_EL_SECRET_KEY"
-```
-
-> Los valores de `DEVICE_LOGIN_NAME`, `SECRET_DEVICE_KEY` y la red Wi-Fi se completan con los datos propios de Arduino Cloud.
-
-**Interpretación.** _Completar según el resultado obtenido._ A diferencia de ThingSpeak, donde uno arma las peticiones a mano, Arduino Cloud resuelve la comunicación por su cuenta: basta con declarar las variables y el dispositivo queda conectado de forma permanente, por lo que el dashboard se actualiza casi al instante. La contrapartida es una configuración inicial más larga (credenciales, Thing, asociación del dispositivo), con más puntos donde algo puede fallar.
 
 > **Nota:** la parte de Ubidots que plantea el enunciado no se desarrolló en este informe.
 
@@ -466,12 +363,17 @@ Repetir el envío de datos a la nube, pero ahora con un sensor real del kit Keys
 
 ### Desarrollo
 
-Se utilizó el sensor _(LDR o LM35)_ conectado al **GPIO35**, otro pin del ADC1. La lectura sigue la misma lógica de la Actividad 1, con promedio de muestras, pero el voltaje ahora se interpreta según el sensor: en el LM35, cada 10 mV equivalen a 1 °C, mientras que en el LDR se expresa como un porcentaje de luz. Los datos se enviaron a _(ThingSpeak o Arduino Cloud)_.
+Se utilizó el sensor _(LDR o LM35)_ conectado al **GPIO35**, otro pin del ADC1. La lectura sigue la misma lógica de la Actividad 1, con promedio de muestras, pero el voltaje ahora se interpreta según el sensor: en el LM35, cada 10 mV equivalen a 1 °C, mientras que en el LDR se expresa como un porcentaje de luz. Los datos se enviaron a _(ThingSpeak o Arduino Cloud)_.}
+
+<img width="1918" height="1026" alt="image" src="https://github.com/user-attachments/assets/07795bcc-4170-4605-b971-04b6941e1b05" />
+
+<img width="956" height="1021" alt="image" src="https://github.com/user-attachments/assets/2b042b73-bf60-4508-90fd-a79629ca3066" />
+
 
 ![Montaje del sensor con el ESP32](images/act04_montaje.jpg)
 *Figura 11. Conexión del sensor al ESP32.*
 
-![Datos del sensor en la plataforma](images/act04_plataforma.png)
+<img width="1918" height="1022" alt="image" src="https://github.com/user-attachments/assets/42ca3c71-5f30-437d-8837-b92d0a3a8379" />
 *Figura 12. Visualización de la medición en la plataforma IoT.*
 
 ### Código
@@ -578,6 +480,10 @@ _Describir qué se hizo para provocar cambios en el sensor y cómo respondió la
 ---
 
 ## Actividad 05: Control de un LED desde la nube
+
+<img width="1918" height="957" alt="image" src="https://github.com/user-attachments/assets/236650ba-e061-4960-a985-7c39f143b6be" />
+
+
 
 ### Objetivo
 
