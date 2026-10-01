@@ -517,7 +517,7 @@ Plataforma Web / Navegador
 
 ## Circuito
 
-![Circuito de la Actividad 05](../images/actividad-05/circuito.jpg)
+![Circuito de la Actividad 05](images/actividad-05/circuito.jpg)
 
 ---
 
@@ -634,11 +634,11 @@ void loop() {
 
 A continuación se muestra la interfaz visualizada desde el navegador al ingresar a la dirección IP asignada al ESP32:
 
-![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-1.jpg)
+![Interfaz de Control Web - Actividad 05](images/actividad-05/web-interface-1.jpg)
 
-![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-2.jpg)
+![Interfaz de Control Web - Actividad 05](images/actividad-05/web-interface-2.jpg)
 
-![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-3.jpg)
+![Interfaz de Control Web - Actividad 05](images/actividad-05/web-interface-3.jpg)
 
 ---
 
