@@ -1,152 +1,600 @@
-# Guía de Prácticas con ESP32: Sensores, Wi-Fi e IoT
+# Taller de Internet de las Cosas (IoT) con ESP32
 
-Este repositorio contiene una serie de prácticas y actividades desarrolladas con el microcontrolador **ESP32**, abarcando desde la lectura de señales analógicas básicas hasta la conectividad Wi-Fi y el envío de datos en tiempo real a plataformas en la nube (IoT).
+Repositorio correspondiente al desarrollo de las actividades prácticas del **Taller de Internet de las Cosas (IoT)**.
 
-## Contenido de las Actividades
+En este taller se trabaja con el **ESP32 Dev Kit 1**, sensores y plataformas IoT para realizar adquisición de datos, comunicación mediante Wi-Fi y visualización de información en la nube.
 
-1. [Actividad 01: Lectura Analógica y Promediado con Potenciómetro](#actividad-01-lectura-de-un-potenciómetro-con-promediado-y-voltaje)
+Las actividades desarrolladas abarcan desde la lectura de un potenciómetro y el procesamiento de señales analógicas, hasta el envío de datos a plataformas IoT como **Arduino Cloud, ThingSpeak y Ubidots**.
 
-2. [Actividad 02: Conexión Wi-Fi a Hotspot de Smartphone](#actividad-02-conexión-wi-fi-a-hotspot-de-smartphone)
+---
 
-3. [Actividad 03: Envío de Datos de Potenciómetro a la Nube (IoT)](#actividad-03-envío-de-datos-del-potenciómetro-a-la-nube)
+## Contenido
 
-4. [Actividad 04: Envío de Sensores Keystudio a la Nube (IoT)](#actividad-04-envío-de-sensores-keystudio-a-la-nube)
+- [Objetivos](#-objetivos)
+- [Materiales](#-materiales)
+- [Actividad 01 - Lectura de un potenciómetro](#-actividad-01---lectura-de-un-potenciómetro-con-esp32)
+- [Actividad 02 - Conexión Wi-Fi](#-actividad-02---conexión-wi-fi-mediante-hotspot)
+- [Actividad 03 - Envío del potenciómetro a la nube](#-actividad-03---enviando-datos-del-potenciómetro-a-la-nube)
+- [Actividad 04 - Envío de datos de un sensor a la nube](#-actividad-04---enviando-datos-de-un-sensor-a-la-nube)
+- [Tecnologías y plataformas utilizadas](#-tecnologías-y-plataformas-utilizadas)
+- [Resultados](#-resultados)
+- [Conclusiones](#-conclusiones)
+- [Estructura del repositorio](#-estructura-del-repositorio)
 
-### Actividad 01: Lectura de un Potenciómetro con Promediado y Voltaje
+---
 
-Mejora la lectura analógica básica del ESP32 implementando un filtro de promedio móvil simple para reducir el ruido y realizando la conversión matemática a valores reales de voltaje ($0.0\text{V} - 3.3\text{V}$).
+# Objetivos
 
-* **Requisitos específicos de la Actividad 01:**
+El taller tiene como objetivo desarrollar conocimientos prácticos y teóricos relacionados con el **Internet de las Cosas (IoT)** mediante el uso de dispositivos como el ESP32.
 
-  * **Hardware:** 1x Tarjeta ESP32, 1x Potenciómetro de $10\text{k}\Omega$, Protoboard y cables de conexión (Jumpers).
+Durante las actividades se trabaja con:
 
-  * **Conexiones:**
+- Configuración y programación del ESP32.
+- Adquisición de datos mediante sensores.
+- Lectura de señales analógicas.
+- Conversión de valores ADC a voltaje.
+- Procesamiento y promediado de datos.
+- Comunicación mediante Wi-Fi.
+- Conexión del ESP32 a una red inalámbrica.
+- Envío de información a plataformas IoT.
+- Monitoreo de datos en tiempo real mediante plataformas en la nube.
 
-    * Extremo 1 del potenciómetro a $3.3\text{V}$.
+---
 
-    * Extremo 2 del potenciómetro a GND.
+# Materiales
 
-    * Pin central (cursor) al **Pin GPIO 34** del ESP32.
+Para el desarrollo del taller se utilizaron los siguientes materiales:
 
-  * **Software / IDE:** Arduino IDE con el paquete de tarjetas ESP32 instalado.
+- ESP32 Dev Kit 1.
+- Arduino Explore IoT Kit.
+- Kit de sensores Keyestudio 48 en 1.
+- Multímetro.
+- Protoboard.
+- Cables de conexión.
+- Potenciómetro.
+- Smartphone utilizado como Hotspot Wi-Fi.
 
-* **Diagrama de Conexión:**
-  * **
-  * **Protoboard y Conexiones:**
-  ![Conexión de Protoboard con ESP32 y Potenciómetro](images/act1_protoboard_setup.jpeg)
+---
 
-  * **Monitor Serie funcionando:**
-  ![Lecturas de ADC y Voltaje en Monitor Serie](images/act1_serial_monitor.jpeg)
+# Actividad 01 - Lectura de un potenciómetro con ESP32
 
-* **Código de Ejemplo:**
+## Objetivo
 
+Mejorar el código básico de lectura de un potenciómetro conectado al ESP32 mediante:
+
+1. Promediado de los datos obtenidos.
+2. Conversión de los valores del ADC a valores de voltaje.
+3. Visualización de los resultados mediante el Monitor Serie.
+
+## Funcionamiento
+
+El potenciómetro se conecta a una entrada analógica del ESP32.
+
+Para esta actividad se utiliza el **GPIO 34** como entrada analógica.
+
+El ESP32 realiza la lectura mediante:
+
+```cpp
+analogRead()
 ```
-const int potPin = 34; // Pin ADC del ESP32
-const int numMuestras = 10;
+
+Posteriormente, se realizan varias lecturas para obtener un promedio y reducir las variaciones de la señal.
+
+Finalmente, el valor obtenido del ADC se convierte a voltaje.
+
+El proceso general es:
+
+```text
+Potenciómetro
+      │
+      ▼
+Entrada analógica GPIO 34
+      │
+      ▼
+Lectura ADC
+      │
+      ▼
+Promediado de lecturas
+      │
+      ▼
+Conversión a voltaje
+      │
+      ▼
+Monitor Serie
+```
+
+## Circuito
+
+![Circuito de la Actividad 01](images/actividad-01/circuito.jpeg)
+
+## Código
+
+```cpp
+/*
+  Actividad 01 - Lectura de potenciometro con ESP32 (promediado + conversion a voltaje)
+  Conexion: GND -> GND | VCC -> 3V3 | SIG -> GPIO34 (ADC1_CH6)
+*/
+const int   POT_PIN      = 34;     // Pin ADC1 (compatible con Wi-Fi)
+const int   NUM_MUESTRAS = 32;     // Cantidad de muestras a promediar
+const float VREF         = 3.3;    // Voltaje de referencia (V)
+const int   ADC_MAX      = 4095;   // 12 bits -> 0..4095
 
 void setup() {
   Serial.begin(115200);
+  analogReadResolution(12);                    // Resolucion de 12 bits
+  analogSetPinAttenuation(POT_PIN, ADC_11db);  // Rango aprox. 0 - 3.3 V
+  Serial.println("Actividad 01: Potenciometro con promediado");
 }
 
 void loop() {
-  long sumaLecturas = 0;
-  for (int i = 0; i < numMuestras; i++) {
-    sumaLecturas += analogRead(potPin);
-    delay(5);
-  }
-  int valorPromedio = sumaLecturas / numMuestras;
-  float voltaje = (valorPromedio * 3.3) / 4095.0;
+  long sumaADC = 0;
+  long sumaMv  = 0;
 
-  Serial.print("ADC Promedio: ");
-  Serial.print(valorPromedio);
-  Serial.print("\t Voltaje: ");
-  Serial.print(voltaje, 3);
-  Serial.println(" V");
+  for (int i = 0; i < NUM_MUESTRAS; i++) {
+    sumaADC += analogRead(POT_PIN);
+    sumaMv  += analogReadMilliVolts(POT_PIN);  // Lectura con calibracion de fabrica
+    delay(2);
+  }
+
+  float adcProm = sumaADC / (float)NUM_MUESTRAS;
+  float vLineal = adcProm * VREF / ADC_MAX;         // Conversion lineal teorica
+  float vCalib  = (sumaMv / (float)NUM_MUESTRAS) / 1000.0;  // Conversion calibrada
+
+  Serial.print("ADC promedio: ");  Serial.print(adcProm, 1);
+  Serial.print(" | V (lineal): "); Serial.print(vLineal, 3); Serial.print(" V");
+  Serial.print(" | V (calibrado): "); Serial.print(vCalib, 3); Serial.println(" V");
+
   delay(500);
 }
-
 ```
 
-### Actividad 02: Conexión Wi-Fi a Hotspot de Smartphone
+## Monitor Serie
 
-Crear una red Wi-Fi usando un teléfono inteligente como Hotspot y programar el ESP32 para conectarse a ella, visualizando la dirección IP local asignada en el monitor serie.
+En el Monitor Serie se muestran los valores obtenidos del potenciómetro y el voltaje correspondiente.
 
-* **Requisitos específicos de la Actividad 02:**
+![Monitor Serie de la Actividad 01](images/actividad-01/monitor-serie.png)
 
-  * **Hardware:** 1x Tarjeta ESP32 y un Smartphone con función de Zona Wi-Fi / Hotspot activo.
+## Resultado
 
-  * **Configuración de Red:** El Hotspot del celular debe configurarse en la banda de $2.4\text{GHz}$ (el ESP32 no es compatible con redes de $5\text{GHz}$).
+Se logró obtener una lectura más estable del potenciómetro mediante el promediado de varias mediciones.
 
-  * **Software / Librerías:** Librería nativa `WiFi.h`.
+Además, los valores obtenidos mediante el ADC fueron convertidos a valores de voltaje para facilitar su interpretación.
 
-* **Resultado en el Monitor Serie:**
-  * **Monitor Serie mostrando la IP asignada:**
-  ![Monitor Serie - Conexión Exitosa e IP Hotspot](images/act2_serial_ip.jpeg)
+---
 
-* **Código de Ejemplo:**
+# Actividad 02 - Conexión Wi-Fi mediante Hotspot
 
+## Objetivo
+
+Crear una red Wi-Fi utilizando un Smartphone como **Hotspot** y conectar el ESP32 a dicha red.
+
+Una vez realizada la conexión, se debe visualizar en el Monitor Serie la **dirección IP asignada al ESP32**.
+
+## Funcionamiento
+
+Para realizar esta actividad se utiliza el Smartphone como punto de acceso Wi-Fi.
+
+El proceso de conexión es:
+
+```text
+Smartphone
+    │
+    │ Hotspot Wi-Fi
+    ▼
+  ESP32
+    │
+    ▼
+Conexión Wi-Fi
+    │
+    ▼
+Dirección IP
+    │
+    ▼
+Monitor Serie
 ```
+
+El ESP32 utiliza la biblioteca:
+
+```cpp
+#include "WiFi.h"
+```
+
+Esta biblioteca permite gestionar la conectividad Wi-Fi del ESP32.
+
+## Configuración del Hotspot
+
+Se habilita el Hotspot del Smartphone y se configura el nombre y contraseña de la red.
+
+## Conexión del ESP32
+
+El ESP32 se conecta a la red Wi-Fi creada mediante el Smartphone.
+
+![Circuito de la Actividad 02](images/actividad-02/circuito.png)
+
+## Monitor Serie
+
+Una vez establecida la conexión, el Monitor Serie muestra la información correspondiente a la conexión y la dirección IP asignada al ESP32.
+
+![Monitor Serie con la IP del ESP32](images/actividad-02/monitor-serie-ip.png)
+
+## Código
+
+```cpp
 #include <WiFi.h>
-
-const char* ssid = "TU_HOTSPOT_SSID";
-const char* password = "TU_PASSWORD";
 
 void setup() {
   Serial.begin(115200);
-  delay(1000);
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+  delay(100);
+  Serial.println("Escaner de redes Wi-Fi");
+}
 
+void loop() {
+  Serial.println();
+  Serial.println("Escaneando redes Wi-Fi...");
+  int numeroRedes = WiFi.scanNetworks();
+  if (numeroRedes == 0) {
+    Serial.println("No se encontraron redes.");
+  } else {
+    Serial.print("Redes encontradas: ");
+    Serial.println(numeroRedes);
+    for (int i = 0; i < numeroRedes; i++) {
+      Serial.print(i + 1);
+      Serial.print(". SSID: ");
+      Serial.print(WiFi.SSID(i));
+      Serial.print(" | RSSI: ");
+      Serial.print(WiFi.RSSI(i));
+      Serial.print(" dBm");
+      Serial.print(" | Cifrado: ");
+      switch (WiFi.encryptionType(i)) {
+        case WIFI_AUTH_OPEN: Serial.println("Abierta"); break;
+        case WIFI_AUTH_WEP: Serial.println("WEP"); break;
+        case WIFI_AUTH_WPA_PSK: Serial.println("WPA"); break;
+        case WIFI_AUTH_WPA2_PSK: Serial.println("WPA2"); break;
+        case WIFI_AUTH_WPA_WPA2_PSK: Serial.println("WPA/WPA2"); break;
+        case WIFI_AUTH_WPA2_ENTERPRISE: Serial.println("WPA2 Enterprise"); break;
+        case WIFI_AUTH_WPA3_PSK: Serial.println("WPA3"); break;
+        case WIFI_AUTH_WPA2_WPA3_PSK: Serial.println("WPA2/WPA3"); break;
+        default: Serial.println("Desconocido"); break;
+      }
+      delay(10);
+    }
+  }
+  WiFi.scanDelete();
+  Serial.println();
+  Serial.println("Proximo escaneo en 5 segundos...");
+  delay(5000);
+}
+```
+
+
+## Resultado
+
+Se logró conectar el ESP32 a la red Wi-Fi creada mediante el Hotspot del Smartphone.
+
+La dirección IP asignada por la red fue visualizada mediante el Monitor Serie.
+
+---
+
+# Actividad 03 - Enviando datos del potenciómetro a la nube
+
+## Objetivo
+
+Enviar y visualizar en tiempo real la variación de un potenciómetro conectado al ESP32 utilizando diferentes plataformas de Internet de las Cosas:
+
+- Arduino Cloud.
+- ThingSpeak.
+- Ubidots.
+
+## Funcionamiento
+
+En esta actividad se combina la adquisición de datos del potenciómetro con la comunicación Wi-Fi y el envío de información a plataformas IoT.
+
+El proceso general es:
+
+```text
+Potenciómetro
+      │
+      ▼
+    ESP32
+      │
+      ▼
+Lectura del sensor
+      │
+      ▼
+    Wi-Fi
+      │
+      ├───────────────┐
+      ▼               ▼
+Arduino Cloud    ThingSpeak
+      │
+      ▼
+   Ubidots
+```
+
+El valor del potenciómetro es enviado periódicamente a las plataformas para poder observar su variación.
+
+## Circuito
+
+![Circuito de la Actividad 03](images/actividad-03/circuito.png)
+
+## Arduino Cloud
+
+Arduino Cloud permite conectar dispositivos IoT a Internet y visualizar los datos obtenidos desde una interfaz web.
+
+La siguiente imagen muestra la evidencia de los datos enviados desde el ESP32 hacia Arduino Cloud.
+
+![Arduino Cloud - Actividad 03](images/actividad-03/arduino-cloud.png)
+```cpp
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+const char* ssid = "UPCH_CENTRAL";
+const char* password = "CAYETANO2022";
+String apiKey = "5QTSTW5OQN710G30";
+const int POT_PIN = 34;
+
+void setup() {
+  Serial.begin(115200);
+  analogReadResolution(12);
   WiFi.begin(ssid, password);
-  Serial.print("Conectando a la red");
-  
+  Serial.print("Conectando a Wi-Fi");
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-
-  Serial.println("\n¡Conexión exitosa!");
-  Serial.print("Dirección IP asignada: ");
+  Serial.println();
+  Serial.println("Wi-Fi conectado");
   Serial.println(WiFi.localIP());
 }
 
-void loop() {}
-
+void loop() {
+  int valor = analogRead(POT_PIN);
+  Serial.print("Potenciometro: ");
+  Serial.println(valor);
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    String url = "http://api.thingspeak.com/update?api_key=" + apiKey + "&field1=" + String(valor);
+    http.begin(url);
+    int codigo = http.GET();
+    Serial.print("Respuesta ThingSpeak: ");
+    Serial.println(codigo);
+    http.end();
+  }
+  delay(15000);
+}
 ```
 
-### Actividad 03: Envío de Datos del Potenciómetro a la Nube
+## ThingSpeak
 
-Escribir un código que muestre en tiempo real la variación del potenciómetro conectado al ESP32 en plataformas de IoT: **Arduino Cloud**, **ThingSpeak** y **Ubidots**.
+ThingSpeak es una plataforma utilizada para recibir y visualizar datos provenientes de dispositivos IoT.
 
-* **Requisitos específicos de la Actividad 03:**
+La siguiente imagen muestra la evidencia de los datos del potenciómetro enviados a ThingSpeak.
 
-  * **Hardware:** ESP32 + Potenciómetro en pin analógico (GPIO 34).
+![ThingSpeak - Actividad 03](images/actividad-03/thingspeak.png)
 
-  * **Cuentas y Credenciales:**
+## Ubidots
 
-    * Cuenta activa en ThingSpeak (Channel ID y API Key de escritura).
+Ubidots permite recibir información de dispositivos IoT y visualizarla mediante diferentes elementos gráficos.
 
-    * Cuenta en Arduino Cloud o Ubidots (Tokens de acceso / Device Tokens).
+La siguiente imagen muestra la evidencia correspondiente a la actividad.
 
-  * **Software / Librerías:**
+![Ubidots - Actividad 03](images/actividad-03/ubidots.png)
 
-    * `WiFi.h` y `HTTPClient.h` (para ThingSpeak/Ubidots vía HTTP).
+## Código
 
-    * Librería oficial de Arduino IoT Cloud (si se opta por esta plataforma).
+El código correspondiente a esta actividad se encuentra en:
 
-* **Dashboard en la Nube:**
-  ![Gráfica en Tiempo Real en Dashboard IoT en Cloud Dashboards](images/act3_cloud_dashboard.jpeg)
-  ![Gráfica en Tiempo Real en Dashboard IoT en Thing Speak](images/act3_thing_speak.jpeg)
-  ![Gráfica en Tiempo Real en Dashboard IoT en Ubidots](images/act3_ubidots.jpeg)
-### Actividad 04: Envío de Sensores Keystudio a la Nube
+```text
+actividad-03-nube-potenciometro/
+└── actividad-03.ino
+```
 
-Escribir un código que muestre en tiempo real la variación de uno de los sensores del kit Keystudio (LM35, LDR, etc.) conectado al ESP32 en las plataformas de IoT: **Arduino Cloud**, **ThingSpeak** y **Ubidots**.
+[Ver código de la Actividad 03](actividad-03-nube-potenciometro/actividad-03.ino)
 
-* **Requisitos específicos de la Actividad 04:**
+## Resultado
 
-  * **Hardware:** ESP32, Sensor del kit Keystudio (Sensor de temperatura LM35 o Fotorresistencia LDR) y cables de conexión.
+Se logró enviar la información correspondiente a la variación del potenciómetro hacia las tres plataformas IoT utilizadas:
 
-  * **Conexiones:** Alimentación del sensor a $3.3\text{V}$ o $5\text{V}$ (según especificación del sensor Keystudio) y salida de señal analógica conectada al pin ADC del ESP32.
+- Arduino Cloud.
+- ThingSpeak.
+- Ubidots.
 
-  * **Plataformas IoT:** Canales configurados previamente en ThingSpeak, Arduino Cloud y Ubidots para recibir el flujo de datos del sensor.
+Los datos pudieron ser observados mediante las interfaces de cada plataforma.
 
-* **Conexión de Sensores Keystudio:**
-    ![Circuito con Sensor Keystudio y ESP32](images/act4_keystudio_setup.jpeg) 
+---
+
+# Actividad 04 - Enviando datos de un sensor a la nube
+
+## Objetivo
+
+Enviar a plataformas IoT los datos obtenidos de uno de los sensores disponibles en el **kit Keyestudio**, conectado al ESP32.
+
+Entre los sensores propuestos en el taller se encuentran, por ejemplo:
+
+- LM35.
+- LDR.
+- Otros sensores disponibles en el kit.
+
+Los datos deben visualizarse en tiempo real utilizando:
+
+- Arduino Cloud.
+- ThingSpeak.
+- Ubidots.
+
+## Funcionamiento
+
+En esta actividad se reemplaza el potenciómetro por un sensor del kit Keyestudio.
+
+El proceso general es:
+
+```text
+Sensor Keyestudio
+       │
+       ▼
+      ESP32
+       │
+       ▼
+Lectura del sensor
+       │
+       ▼
+      Wi-Fi
+       │
+       ├───────────────┐
+       ▼               ▼
+Arduino Cloud    ThingSpeak
+       │
+       ▼
+    Ubidots
+```
+
+El ESP32 obtiene las mediciones del sensor y las transmite mediante Wi-Fi a las plataformas IoT.
+
+## Circuito
+
+El sensor seleccionado se conecta al ESP32 de acuerdo con sus características y el pin utilizado en el programa.
+
+![Circuito de la Actividad 04](images/actividad-04/circuito.png)
+
+## Arduino Cloud
+
+Evidencia de los datos obtenidos del sensor y enviados a Arduino Cloud.
+
+![Arduino Cloud - Actividad 04](images/actividad-04/arduino-cloud.png)
+
+## ThingSpeak
+
+Evidencia de los datos obtenidos del sensor y enviados a ThingSpeak.
+
+![ThingSpeak - Actividad 04](images/actividad-04/thingspeak.png)
+
+## Ubidots
+
+Evidencia de los datos obtenidos del sensor y enviados a Ubidots.
+
+![Ubidots - Actividad 04](images/actividad-04/ubidots.png)
+
+## Código
+
+El código correspondiente a esta actividad se encuentra en:
+
+```text
+actividad-04-nube-sensor/
+└── actividad-04.ino
+```
+
+[Ver código de la Actividad 04](actividad-04-nube-sensor/actividad-04.ino)
+
+## Resultado
+
+Se logró enviar los datos obtenidos del sensor hacia las tres plataformas IoT utilizadas:
+
+- Arduino Cloud.
+- ThingSpeak.
+- Ubidots.
+
+Los datos pudieron ser visualizados mediante las interfaces de cada plataforma.
+
+---
+
+# Tecnologías y plataformas utilizadas
+
+| Tecnología / herramienta | Uso |
+|---|---|
+| ESP32 Dev Kit 1 | Microcontrolador utilizado en las actividades |
+| Arduino IDE | Programación del ESP32 |
+| C/C++ | Lenguaje utilizado para los programas |
+| Wi-Fi | Comunicación inalámbrica |
+| Arduino Cloud | Plataforma IoT para monitoreo de datos |
+| ThingSpeak | Plataforma IoT para recepción y visualización de datos |
+| Ubidots | Plataforma IoT para monitoreo y visualización |
+| GitHub | Almacenamiento y documentación del proyecto |
+
+---
+
+# Conceptos trabajados
+
+Durante el desarrollo de las actividades se trabajaron diferentes conceptos relacionados con IoT.
+
+### Adquisición de datos
+
+La adquisición de datos consiste en capturar información del entorno mediante sensores y convertirla en señales que puedan ser procesadas.
+
+```text
+Sensor → Señal → ESP32 → Procesamiento → Datos
+```
+
+### ADC
+
+El **ADC (Analog to Digital Converter)** permite convertir una señal analógica en un valor digital que puede ser procesado por el ESP32.
+
+En la Actividad 01 se utilizó el ADC para obtener la lectura del potenciómetro.
+
+### Wi-Fi
+
+La comunicación Wi-Fi permite conectar el ESP32 a una red inalámbrica para transmitir y recibir información.
+
+En la Actividad 02 se utilizó un Smartphone como Hotspot para proporcionar conectividad al ESP32.
+
+### IoT
+
+El Internet de las Cosas permite conectar dispositivos físicos a redes para adquirir, transmitir y monitorear datos.
+
+En las Actividades 03 y 04, los datos obtenidos por el ESP32 fueron enviados a plataformas IoT para su visualización.
+
+---
+
+# Resultados generales
+
+A través de las cuatro actividades se desarrolló progresivamente un sistema básico de adquisición y transmisión de datos mediante ESP32.
+
+El proceso puede resumirse de la siguiente manera:
+
+```text
+┌──────────────────────┐
+│                      │
+│    Potenciómetro     │
+│                      │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│        ESP32         │
+│                      │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│        Wi-Fi         │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│    PLATAFORMAS IoT   │
+│                      │
+│ Arduino Cloud        │
+│ ThingSpeak           │
+│ Ubidots              │
+└──────────────────────┘
+```
+
+Las actividades permitieron pasar de una lectura local mediante el Monitor Serie a la transmisión y visualización de datos mediante plataformas en la nube.
+
+---
+
+# Conclusiones
+
+- Se logró realizar la lectura de un potenciómetro utilizando una entrada analógica del ESP32.
+- Se aplicó un promediado de datos para obtener lecturas más estables.
+- Se realizó la conversión de valores ADC a valores de voltaje.
+- Se estableció una conexión entre el ESP32 y una red Wi-Fi mediante el Hotspot de un Smartphone.
+- Se obtuvo y visualizó la dirección IP asignada al ESP32.
+- Se enviaron datos del potenciómetro a plataformas IoT.
+- Se trabajó con Arduino Cloud, ThingSpeak y Ubidots para visualizar los datos.
+- Se realizó la adquisición de datos de un sensor del kit Keyestudio.
+- Se enviaron los datos del sensor a plataformas IoT para su monitoreo.
+
+En conjunto, las actividades permitieron comprender el flujo básico de un sistema IoT:
+
+**Adquisición de datos → Procesamiento → Comunicación → Nube → Visualización**
