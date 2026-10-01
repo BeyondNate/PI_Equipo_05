@@ -475,6 +475,54 @@ Los datos pudieron ser visualizados mediante la interfaz de la plataforma.
 # Actividad 05 - Enviando datos de un sensor a la nube
 
 ## Objetivo
+Conectar un LED en uno de los pines digitales del ESP32 y controlar su encendido y apagado de forma remota desde una interfaz web o plataforma IoT, tal como se indica en el taller.
+
+## Funcionamiento
+
+Mediante la conectividad Wi-Fi del ESP32, se habilita un punto de control remoto. El flujo del sistema es el siguiente:
+
+```text
+Plataforma Web / Navegador
+            │
+            │ Orden (Encender / Apagar)
+            ▼
+        Red Wi-Fi
+            │
+            ▼
+     ESP32 (Servidor)
+            │
+            ▼
+   Pin Digital (GPIO 2)
+            │
+            ▼
+       LED Actuador
+```
+
+## Requisitos Específicos
+
+* **Hardware:** 
+  * ESP32 Dev Kit 1
+  * 1 x LED indicador
+  * 1 x Resistencia de $220\,\Omega$
+  * Protoboard y cables de conexión (Jumpers)
+* **Conexiones:**
+  * Ánodo del LED (pata larga) conectado a través de la resistencia de $220\,\Omega$ hacia el **GPIO 2** del ESP32.
+  * Cátodo del LED (pata corta) conectado a **GND**.
+* **Software:** 
+  * Arduino IDE con soporte para ESP32.
+  * Librería `#include <WiFi.h>` (nativa).
+
+---
+
+## Circuito
+
+![Circuito de la Actividad 05](../images/actividad-05/circuito.jpg)
+
+---
+
+## Código
+
+El código implementa un servidor web embebido en el ESP32 para gestionar las peticiones HTTP y conmutar el estado del pin digital:
 
 ```cpp
 #include <WiFi.h>
@@ -581,9 +629,21 @@ void loop() {
 }
 ```
 
+## Evidencia de la Interfaz Web
 
-## Resultados
-Rellene aqui
+A continuación se muestra la interfaz visualizada desde el navegador al ingresar a la dirección IP asignada al ESP32:
+
+![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-1.jpg)
+
+![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-2.jpg)
+
+![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-3.jpg)
+
+---
+
+## Resultado
+
+Se logró establecer comunicación bidireccional permitiendo enviar comandos desde una interfaz web conectada por Wi-Fi para modificar en tiempo real el estado físico de un LED conectado al ESP32.
 
 
 # Conceptos trabajados
