@@ -473,7 +473,7 @@ Los datos pudieron ser visualizados mediante la interfaz de la plataforma.
 | GitHub | Almacenamiento y documentación del proyecto |
 
 ---
-# Actividad 05 - Enviando datos de un sensor a la nube
+# Actividad 05 - Controlando un Actuador (LED) desde la Nube / Red
 
 ## Objetivo
 Conectar un LED en uno de los pines digitales del ESP32 y controlar su encendido y apagado de forma remota desde una interfaz web o plataforma IoT, tal como se indica en el taller.
