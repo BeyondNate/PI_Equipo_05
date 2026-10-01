@@ -215,7 +215,7 @@ El circuito de la actividad 2 es la misma que la de la actividad 1.
 
 Una vez establecida la conexión, el Monitor Serie muestra la información correspondiente a la conexión y la dirección IP asignada al ESP32.
 
-![Monitor Serie con la IP del ESP32](images/actividad-02/monitor-serie-ip.png)
+![Monitor Serie con la IP del ESP32](images/actividad-02/monitor-serie-ip.jpg)
 
 ## Código
 
@@ -369,7 +369,7 @@ El ESP32 obtiene las mediciones del sensor y las transmite mediante Wi-Fi a las 
 
 Evidencia de los datos obtenidos del sensor y enviados a ThingSpeak.
 
-![ThingSpeak - Actividad 04](images/actividad-04/thingspeak.png)
+![ThingSpeak - Actividad 04](images/actividad-04/thingspeak.jpg)
 
 ## Código
 
