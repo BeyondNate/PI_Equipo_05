@@ -457,42 +457,97 @@ El sensor seleccionado se conecta al ESP32 de acuerdo con sus características y
 
 ![Circuito de la Actividad 04](images/actividad-04/circuito.png)
 
-## Arduino Cloud
-
-Evidencia de los datos obtenidos del sensor y enviados a Arduino Cloud.
-
-![Arduino Cloud - Actividad 04](images/actividad-04/arduino-cloud.png)
-
 ## ThingSpeak
 
 Evidencia de los datos obtenidos del sensor y enviados a ThingSpeak.
 
 ![ThingSpeak - Actividad 04](images/actividad-04/thingspeak.png)
 
-## Ubidots
-
-Evidencia de los datos obtenidos del sensor y enviados a Ubidots.
-
-![Ubidots - Actividad 04](images/actividad-04/ubidots.png)
-
 ## Código
 
 El código correspondiente a esta actividad se encuentra en:
 
-```text
-actividad-04-nube-sensor/
-└── actividad-04.ino
-```
+´´´cpp
+#include <WiFi.h>
+#include "ThingSpeak.h"
 
-[Ver código de la Actividad 04](actividad-04-nube-sensor/actividad-04.ino)
+// ==========================
+// DATOS DE WIFI
+// ==========================
+const char* WIFI_SSID = "UPCH_CENTRAL";
+const char* WIFI_PASSWORD = "CAYETANO2022";
 
+// ==========================
+// DATOS DE THINGSPEAK
+// ==========================
+unsigned long CHANNEL_ID = 3515273;
+const char* WRITE_API_KEY = "Y8NYGSJWVKEHQE6T";
+
+// ==========================
+// SENSOR MQ-2
+// ==========================
+const int MQ2_PIN = 34;
+
+WiFiClient client;
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+
+  analogReadResolution(12);
+
+  Serial.println("================================");
+  Serial.println("ESP32 + MQ-2 + ThingSpeak");
+  Serial.println("================================");
+
+  // Conectar WiFi
+  Serial.print("Conectando a WiFi");
+
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println();
+  Serial.println("WiFi conectado");
+  Serial.print("IP: ");
+  Serial.println(WiFi.localIP());
+
+  // Iniciar ThingSpeak
+  ThingSpeak.begin(client);
+}
+
+void loop() {
+
+  // Leer sensor MQ-2
+  int valorMQ2 = analogRead(MQ2_PIN);
+
+  Serial.print("MQ-2: ");
+  Serial.println(valorMQ2);
+
+  // Enviar valor al Field 1
+  ThingSpeak.setField(1, valorMQ2);
+
+  int respuesta = ThingSpeak.writeFields(CHANNEL_ID, WRITE_API_KEY);
+
+  if (respuesta == 200) {
+    Serial.println("Dato enviado correctamente a ThingSpeak");
+  } else {
+    Serial.print("Error enviando datos. Codigo HTTP: ");
+    Serial.println(respuesta);
+  }
+
+  Serial.println("-----------------------------");
+
+  // ThingSpeak requiere aproximadamente 15 s entre actualizaciones
+  delay(16000);
+}
+´´´
 ## Resultado
 
-Se logró enviar los datos obtenidos del sensor hacia las tres plataformas IoT utilizadas:
-
-- Arduino Cloud.
-- ThingSpeak.
-- Ubidots.
+Se logró enviar los datos obtenidos del sensor hacia la plataformas IoT utilizada:
 
 Los datos pudieron ser visualizados mediante las interfaces de cada plataforma.
 
