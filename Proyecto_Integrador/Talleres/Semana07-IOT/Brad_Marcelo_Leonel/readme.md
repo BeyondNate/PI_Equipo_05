@@ -16,6 +16,7 @@ Las actividades desarrolladas abarcan desde la lectura de un potenciómetro y el
 - [Actividad 02 - Conexión Wi-Fi](#-actividad-02---conexión-wi-fi-mediante-hotspot)
 - [Actividad 03 - Envío del potenciómetro a la nube](#-actividad-03---enviando-datos-del-potenciómetro-a-la-nube)
 - [Actividad 04 - Envío de datos de un sensor a la nube](#-actividad-04---enviando-datos-de-un-sensor-a-la-nube)
+- [Actividad 05 - Envío de datos de un sensor a la nube](#-actividad-05---controlando-un-actuador-led-desde-la-nube--red)
 - [Tecnologías y plataformas utilizadas](#-tecnologías-y-plataformas-utilizadas)
 - [Resultados](#-resultados)
 - [Conclusiones](#-conclusiones)
