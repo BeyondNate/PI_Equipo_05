@@ -152,7 +152,7 @@ void loop() {
 
 En el Monitor Serie se muestran los valores obtenidos del potenciómetro y el voltaje correspondiente.
 
-![Monitor Serie de la Actividad 01](images/actividad-01/monitor-serie.jpeg)
+![Monitor Serie de la Actividad 01](images/actividad-01/monitor-serie.jpg)
 
 ## Resultado
 
