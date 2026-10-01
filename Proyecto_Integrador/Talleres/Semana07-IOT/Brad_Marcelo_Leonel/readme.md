@@ -472,6 +472,119 @@ Los datos pudieron ser visualizados mediante la interfaz de la plataforma.
 | GitHub | Almacenamiento y documentación del proyecto |
 
 ---
+# Actividad 05 - Enviando datos de un sensor a la nube
+
+## Objetivo
+
+```cpp
+#include <WiFi.h>
+#include <PubSubClient.h>
+
+const char* ssid = "ZTE Blade A56 Pro";
+const char* password = "702047779448";
+
+const char* mqtt_server = "broker.emqx.io";
+
+const int LED_PIN = 2;
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+void callback(char* topic, byte* payload, unsigned int length) {
+
+  String mensaje = "";
+
+  for (unsigned int i = 0; i < length; i++) {
+    mensaje += (char)payload[i];
+  }
+
+  Serial.print("Mensaje recibido: ");
+  Serial.println(mensaje);
+
+  if (mensaje == "ON") {
+    digitalWrite(LED_PIN, HIGH);
+    Serial.println("LED ENCENDIDO");
+  }
+
+  if (mensaje == "OFF") {
+    digitalWrite(LED_PIN, LOW);
+    Serial.println("LED APAGADO");
+  }
+}
+
+void conectarMQTT() {
+
+  while (!client.connected()) {
+
+    Serial.println("Intentando conectar a MQTT...");
+
+    String clientId = "ESP32-";
+    clientId += String(random(0xffff), HEX);
+
+    if (client.connect(clientId.c_str())) {
+
+      Serial.println("MQTT CONECTADO");
+
+      client.subscribe("esp32/led");
+
+      Serial.println("Suscrito a: esp32/led");
+
+    } else {
+
+      Serial.print("Fallo MQTT. Estado: ");
+      Serial.println(client.state());
+
+      delay(3000);
+    }
+  }
+}
+
+void setup() {
+
+  Serial.begin(115200);
+
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+  delay(1000);
+
+  WiFi.begin(ssid, password);
+
+  Serial.print("Conectando al WiFi");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println();
+  Serial.println("WiFi conectado");
+
+  Serial.print("IP: ");
+  Serial.println(WiFi.localIP());
+
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+
+  conectarMQTT();
+}
+
+void loop() {
+
+  if (!client.connected()) {
+    conectarMQTT();
+  }
+
+  client.loop();
+}
+```
+
+
+## Resultados
+Rellene aqui
+
 
 # Conceptos trabajados
 
