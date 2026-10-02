@@ -419,6 +419,7 @@ El procesamiento de la información en el lado del servidor/cliente se realiza m
   <img src="images/flujo-nodered.jpeg" width="700" alt="Flujo de trabajo en Node-RED"><br>
   <em>Flujo de trabajo en Node-RED</em>
 </p>
+
 ---
 
 ## Dashboard y pruebas
