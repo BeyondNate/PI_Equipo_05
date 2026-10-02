@@ -2,10 +2,11 @@
 
 Este repositorio contiene la implementación de un sistema de Internet de las Cosas (IoT) con comunicación bidireccional en tiempo real utilizando el protocolo MQTT.
 
-## Descripción del Proyecto
-El proyecto utiliza un microcontrolador **ESP32** para capturar variables ambientales (temperatura y humedad) a través de un **sensor DHT11**. Estos datos son empaquetados en formato JSON y publicados en un broker MQTT. Simultáneamente, el ESP32 se suscribe a un tópico de control para escuchar comandos remotos y accionar un actuador físico (LED).
-
-La interfaz gráfica y el enrutamiento de los mensajes se gestionan desde **Node-RED**, proporcionando un Dashboard interactivo accesible desde cualquier navegador.
+## Descripción general
+ 
+El proyecto utiliza un microcontrolador **ESP32** para capturar variables ambientales (temperatura y humedad) con un sensor **DHT11**. Los datos se empaquetan en formato JSON y se publican en un broker MQTT. Al mismo tiempo, el ESP32 se suscribe a un tópico de control para escuchar comandos remotos y accionar un actuador físico, un LED.
+ 
+El enrutamiento de los mensajes y la interfaz gráfica se gestionan desde **Node-RED**, que ofrece un dashboard interactivo accesible desde cualquier navegador.
 
 ---
 
@@ -16,8 +17,11 @@ Para la implementación física de este proyecto se utilizaron los siguientes co
 - Diodo LED y Resistencia (220Ω)
 - Protoboard y cables jumper
 
-![Montaje Físico del Circuito](images/circuito-fisico.png)
 
+<p align="center">
+  <img src="images/circuito-fisico.png" width="700" alt="Montaje Físico del Circuito"><br>
+  <em>Montaje Físico del Circuito</em>
+</p>
 ---
 
 ## Código del Firmware (ESP32)
@@ -173,7 +177,10 @@ void loop() {
   }
 }
 ```
+
 ## Código del Arduino / DontPad
+
+
 ```cpp
 #include <WiFi.h>
 #include <PubSubClient.h>
@@ -315,7 +322,10 @@ void loop() {
 }
 ```
 
-![Monitor Serie - Conexión y Publicación](images/monitor-serie.png)
+<p align="center">
+  <img src="images/monitor-serie.png" width="700" alt="Monitor Serie - Conexión y Publicación"><br>
+  <em>Monitor Serie - Conexión y Publicación</em>
+</p>
 
 ---
 
@@ -327,8 +337,10 @@ El procesamiento de la información en el lado del servidor/cliente se realiza m
 2. **Parseo y Enrutamiento:** Se extraen las variables específicas mediante nodos intermedios (`msg.payload`) y se dirigen a los componentes de la interfaz de usuario (UI).
 3. **Control (Publisher):** Un nodo de tipo *Switch* genera un payload con los comandos `ON`/`OFF` y los publica en el tópico `equipo05/actuadores/led`.
 
-![Flujo de trabajo en Node-RED](images/flujo-nodered.jpeg)
-
+<p align="center">
+  <img src="images/flujo-nodered.jpeg" width="700" alt="Flujo de trabajo en Node-RED"><br>
+  <em>Flujo de trabajo en Node-RED</em>
+</p>
 ---
 
 ## Dashboard Interactivo y Pruebas
@@ -338,14 +350,22 @@ El panel de control IoT provee una interfaz gráfica intuitiva para el monitoreo
 ### Indicadores en Tiempo Real
 Visualización inmediata de las condiciones ambientales a través de medidores semicirculares (*Gauges*), indicando grados Celsius y porcentaje de humedad relativa. En la esquina superior derecha se ubica el interruptor de control remoto.
 
-![Indicadores Gauge y Switch](images/dashboard-indicadores-25.png)
-
-![Indicadores Gauge y Switch](images/dashboard-indicadores-random.jpeg)
+<p align="center">
+  <img src="images/dashboard-indicadores-25.png" width="700" alt="Indicadores Gauge y Switch"><br>
+  <em>Indicadores Gauge y Switch</em>
+</p>
+<p align="center">
+  <img src="images/dashboard-indicadores-random.jpeg" width="700" alt="Indicadores Gauge y Switch"><br>
+  <em>Indicadores Gauge y Switch</em>
+</p>
 
 ### Histórico de Telemetría (Charts)
 Se incorporan gráficas lineales que registran el histórico de las variables, permitiendo visualizar tendencias, caídas de temperatura o variaciones a lo largo del tiempo.
 
-![Gráfica de Variación de Temperatura](images/dashboard-grafica-tendencia.jpeg)
+<p align="center">
+  <img src="images/dashboard-grafica-tendencia.jpeg" width="700" alt="Gráfica de Variación de Temperatura"><br>
+  <em>Gráfica de Variación de Temperatura</em>
+</p>
 
 ### Prueba de Comunicación Bidireccional
 Interacción en tiempo real accionando el actuador físico desde la nube. Al cambiar el interruptor a "ON" en Node-RED, el ESP32 recibe el comando MQTT y enciende el LED de manera instantánea se puede ver en el siguiente link:
