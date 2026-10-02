@@ -2,31 +2,109 @@
 
 Este repositorio contiene la implementación de un sistema de Internet de las Cosas (IoT) con comunicación bidireccional en tiempo real utilizando el protocolo MQTT.
 
+##  Tabla de contenidos
+ 
+1. [Descripción general](#-descripción-general)
+2. [Arquitectura](#-arquitectura)
+3. [Hardware y montaje](#-hardware-y-montaje)
+4. [Configuración MQTT](#-configuración-mqtt)
+5. [Firmware del ESP32](#-firmware-del-esp32)
+6. [Flujo en Node-RED](#-flujo-en-node-red)
+7. [Dashboard y pruebas](#-dashboard-y-pruebas)
+8. [Estructura del repositorio](#-estructura-del-repositorio)
+
+---
+
 ## Descripción general
  
+| Función | Detalle |
+|---|---|
+| **Sensado** | Temperatura y humedad con un sensor DHT11 |
+| **Publicación** | Datos en formato JSON cada 2 segundos al broker MQTT |
+| **Control** | El ESP32 se suscribe a un tópico y acciona su LED integrado con los comandos `ON` / `OFF` |
+| **Visualización** | Dashboard en Node-RED accesible desde cualquier navegador |
+
 El proyecto utiliza un microcontrolador **ESP32** para capturar variables ambientales (temperatura y humedad) con un sensor **DHT11**. Los datos se empaquetan en formato JSON y se publican en un broker MQTT. Al mismo tiempo, el ESP32 se suscribe a un tópico de control para escuchar comandos remotos y accionar un actuador físico, un LED.
  
 El enrutamiento de los mensajes y la interfaz gráfica se gestionan desde **Node-RED**, que ofrece un dashboard interactivo accesible desde cualquier navegador.
 
 ---
+ 
+## Arquitectura
+ 
+```
+┌───────────┐  publica JSON   ┌─────────────┐   suscribe    ┌────────────┐
+│   ESP32   │ ──────────────► │ Broker MQTT │ ────────────► │  Node-RED  │
+│ DHT11+LED │ ◄────────────── │   (EMQX)    │ ◄──────────── │ (Dashboard)│
+└───────────┘ comandos ON/OFF └─────────────┘  publica ON/OFF└────────────┘
+```
+ 
+---
 
 ## Hardware y Montaje
-Para la implementación física de este proyecto se utilizaron los siguientes componentes:
+
+### Componentes
+ 
 - ESP32 Dev Kit 1
-- Sensor de Temperatura y Humedad DHT11
-- Diodo LED y Resistencia (220Ω)
+- Sensor de temperatura y humedad DHT11
 - Protoboard y cables jumper
+- LED integrado de la placa ESP32
+
+### Conexiones
+ 
+| Componente | Pin del ESP32 |
+|---|---|
+| DHT11 (señal) | GPIO 4 |
+| Alimentación DHT11 | 3.3 V / GND |
+| LED integrado de la placa | GPIO 2 (interno, sin cableado) |
 
 
 <p align="center">
   <img src="images/circuito-fisico.png" width="700" alt="Montaje Físico del Circuito"><br>
   <em>Montaje Físico del Circuito</em>
 </p>
+
 ---
 
-## Código del Firmware (ESP32)
+## 📡 Configuración MQTT
 
-El siguiente código en C++ se carga en el ESP32. Maneja la conexión a la red Wi-Fi local, la reconexión automática al broker MQTT y la serialización/deserialización de los datos de forma no bloqueante.
+| Parámetro | Valor |
+|---|---|
+| Broker | `mqtt.rcr-labs.com` |
+| Puerto | `1883` |
+| Client ID | `ESP32_Equipo05` |
+ 
+### Tópicos
+ 
+| Tópico | Dirección | Contenido |
+|---|---|---|
+| `equipo05/sensor/datos` | ESP32 → Node-RED | JSON con temperatura y humedad |
+| `equipo05/actuadores/led` | Node-RED → ESP32 | `ON` u `OFF` |
+ 
+### Formato del mensaje
+ 
+```json
+{
+  "dispositivo": "ESP32_Equipo05",
+  "temperatura": 25.40,
+  "humedad": 60.00
+}
+```
+
+## Firmware del ESP32
+
+### Librerías necesarias
+ 
+Se instalan desde el Gestor de Librerías del Arduino IDE:
+ 
+- `PubSubClient`
+- `ArduinoJson`
+- `DHT sensor library` (Adafruit)
+
+
+### Código principal (con sensor DHT11 real)
+ 
+Gestiona la conexión Wi-Fi, la reconexión automática al broker MQTT y la serialización/deserialización de datos. El envío periódico usa `millis()` en lugar de `delay()`, de modo que el ESP32 sigue atendiendo mensajes entrantes.
 
 ```cpp
 #include <WiFi.h>
@@ -323,13 +401,13 @@ void loop() {
 ```
 
 <p align="center">
-  <img src="images/monitor-serie.png" width="700" alt="Monitor Serie - Conexión y Publicación"><br>
+  <img src="https://github.com/user-attachments/assets/89a83f14-5d36-4434-9dcd-e2adb0a13481" width="900" alt="Monitor Serie - Conexión y Publicación"><br>
   <em>Monitor Serie - Conexión y Publicación</em>
 </p>
 
 ---
 
-## Procesamiento de Datos (Node-RED)
+## Flujo en Node-RED
 
 El procesamiento de la información en el lado del servidor/cliente se realiza mediante flujos visuales en Node-RED. 
 
@@ -346,6 +424,7 @@ El procesamiento de la información en el lado del servidor/cliente se realiza m
 ## Dashboard Interactivo y Pruebas
 
 El panel de control IoT provee una interfaz gráfica intuitiva para el monitoreo y control del hardware a distancia.
+
 
 ### Indicadores en Tiempo Real
 Visualización inmediata de las condiciones ambientales a través de medidores semicirculares (*Gauges*), indicando grados Celsius y porcentaje de humedad relativa. En la esquina superior derecha se ubica el interruptor de control remoto.
@@ -369,3 +448,15 @@ Se incorporan gráficas lineales que registran el histórico de las variables, p
 
 ### Prueba de Comunicación Bidireccional
 Interacción en tiempo real accionando el actuador físico desde la nube. Al cambiar el interruptor a "ON" en Node-RED, el ESP32 recibe el comando MQTT y enciende el LED de manera instantánea se puede ver en el siguiente link:
+
+---
+
+##  Conclusiones
+
+Este taller mostró que es posible construir un sistema IoT completo con pocos componentes. MQTT permitió desacoplar al ESP32 de Node-RED: el sensor publica sus datos en un tópico y el dashboard los recibe a través del broker, sin que ninguno conozca al otro. Esa misma vía funcionó en sentido contrario, y al accionar el interruptor en Node-RED el LED integrado respondió en tiempo real.
+
+Dos decisiones técnicas hicieron al sistema más robusto: usar `millis()` en lugar de `delay()`, para atender mensajes mientras se publican datos periódicamente, y la reconexión automática al Wi-Fi y al broker. Además, Node-RED redujo el esfuerzo de construir la interfaz, y la versión con datos simulados permitió validar el flujo completo antes de conectar el sensor.
+
+Como mejoras a futuro, convendría reemplazar el DHT11 por un sensor más preciso (DHT22 o BME280), cifrar la comunicación con TLS y agregar más sensores, actuadores o almacenamiento histórico.
+
+
