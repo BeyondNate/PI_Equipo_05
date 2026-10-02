@@ -405,7 +405,11 @@ El ESP32 obtiene las mediciones del sensor y las transmite mediante Wi-Fi a las 
 
 Evidencia de los datos obtenidos del sensor y enviados a ThingSpeak.
 
+
+
 <img width="312" height="222" alt="image" src="https://github.com/user-attachments/assets/64bb778f-0ca4-47a1-ac15-2e3d341db341" />
+
+
 
 <img width="311" height="577" alt="image" src="https://github.com/user-attachments/assets/cc504ee1-7c71-4e74-87ed-720462d2bdd8" />
 
