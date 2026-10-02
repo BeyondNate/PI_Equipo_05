@@ -1,10 +1,5 @@
 # <h1 align="center"> Taller de Internet de las Cosas (IoT) con ESP32 </h1>
 
-**Universidad:** Universidad Peruana Cayetano Heredia (UPCH)
-**Estudiante:** Idania Parhuay Meza
-
----
-
 ## Introducción
 
 Este taller me ayudó a llevar la teoría de IoT a la práctica y ver cómo funciona todo en la realidad. Usamos una placa ESP32 para tomar datos del entorno, conectarla a internet y subir la información a la nube para verla en tiempo real. Las cinco actividades siguen una progresión natural. Primero se entiende cómo el microcontrolador transforma una señal analógica en un número; luego se le da conectividad; y al final se envían datos a plataformas en línea y se controla un componente de forma remota.
