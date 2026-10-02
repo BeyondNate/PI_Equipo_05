@@ -345,7 +345,7 @@ Visualización inmediata de las condiciones ambientales a través de medidores s
 ### Histórico de Telemetría (Charts)
 Se incorporan gráficas lineales que registran el histórico de las variables, permitiendo visualizar tendencias, caídas de temperatura o variaciones a lo largo del tiempo.
 
-![Gráfica de Variación de Temperatura](images/dashboard-grafica-tendencia.jpg)
+![Gráfica de Variación de Temperatura](images/dashboard-grafica-tendencia.jpeg)
 
 ### Prueba de Comunicación Bidireccional
 Interacción en tiempo real accionando el actuador físico desde la nube. Al cambiar el interruptor a "ON" en Node-RED, el ESP32 recibe el comando MQTT y enciende el LED de manera instantánea se puede ver en el siguiente link:
