@@ -490,8 +490,18 @@ Describir qué se hizo para provocar cambios en el sensor y cómo respondió la 
 
 ## Actividad 05: Control de un LED desde la nube
 
-<img width="1918" height="957" alt="image" src="https://github.com/user-attachments/assets/236650ba-e061-4960-a985-7c39f143b6be" />
+<img width="1565" height="940" alt="image" src="https://github.com/user-attachments/assets/79d5f316-fbca-4d7b-a82b-7b0969f91d38" />
 
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/c719a8bc-d0aa-4876-a7c8-50feef4bf23b" />
+
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/d085c998-668a-4d16-bc36-ca40752f7377" />
+
+
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/4eabf3b3-2ef0-4863-a0dc-b09be273ba18" />
+
+<img width="448" height="620" alt="image" src="https://github.com/user-attachments/assets/c450a1e0-d9dc-4733-b720-335ddcb95448" />
+
+<img width="447" height="616" alt="image" src="https://github.com/user-attachments/assets/b63de407-809d-42ac-81f7-af8c47cb5053" />
 
 
 ### Objetivo
@@ -516,71 +526,108 @@ El LED se conectó al **GPIO26** mediante una resistencia de 220 Ω que limita l
 **Actividad05_LED_ArduinoCloud.ino**
 
 ```cpp
-/*
-  Actividad 05 - Control de un LED desde Arduino Cloud
-  Conexion: GPIO26 -> resistencia 220 ohm -> LED (anodo) ; catodo -> GND
-  (Alternativa sin componentes: use LED_PIN = 2, LED integrado de la placa)
-  En Arduino Cloud cree la variable "led" (Boolean, Read & Write) y un widget Switch.
-*/
-#include "arduino_secrets.h"
-#include "thingProperties.h"
+#include <WiFi.h>
+#include <PubSubClient.h>
 
-const int LED_PIN = 26;
+const char* ssid = "ZTE Blade A56 Pro";
+const char* password = "702047779448";
+
+const char* mqtt_server = "broker.emqx.io";
+
+const int LED_PIN = 2;
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+void callback(char* topic, byte* payload, unsigned int length) {
+
+  String mensaje = "";
+
+  for (unsigned int i = 0; i < length; i++) {
+    mensaje += (char)payload[i];
+  }
+
+  Serial.print("Mensaje recibido: ");
+  Serial.println(mensaje);
+
+  if (mensaje == "ON") {
+    digitalWrite(LED_PIN, HIGH);
+    Serial.println("LED ENCENDIDO");
+  }
+
+  if (mensaje == "OFF") {
+    digitalWrite(LED_PIN, LOW);
+    Serial.println("LED APAGADO");
+  }
+}
+
+void conectarMQTT() {
+
+  while (!client.connected()) {
+
+    Serial.println("Intentando conectar a MQTT...");
+
+    String clientId = "ESP32-";
+    clientId += String(random(0xffff), HEX);
+
+    if (client.connect(clientId.c_str())) {
+
+      Serial.println("MQTT CONECTADO");
+
+      client.subscribe("esp32/led");
+
+      Serial.println("Suscrito a: esp32/led");
+
+    } else {
+
+      Serial.print("Fallo MQTT. Estado: ");
+      Serial.println(client.state());
+
+      delay(3000);
+    }
+  }
+}
 
 void setup() {
+
   Serial.begin(115200);
-  delay(1500);
+
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, LOW);
 
-  initProperties();
-  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
-  setDebugMessageLevel(2);
-  ArduinoCloud.printDebugInfo();
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+  delay(1000);
+
+  WiFi.begin(ssid, password);
+
+  Serial.print("Conectando al WiFi");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println();
+  Serial.println("WiFi conectado");
+
+  Serial.print("IP: ");
+  Serial.println(WiFi.localIP());
+
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+
+  conectarMQTT();
 }
 
 void loop() {
-  ArduinoCloud.update();
+
+  if (!client.connected()) {
+    conectarMQTT();
+  }
+
+  client.loop();
 }
-
-// Se ejecuta cada vez que el Switch del dashboard cambia
-void onLedChange() {
-  digitalWrite(LED_PIN, led ? HIGH : LOW);
-  Serial.println(led ? "LED encendido" : "LED apagado");
-}
-```
-
-**thingProperties.h**
-
-```cpp
-// thingProperties.h - equivalente al archivo que genera Arduino Cloud
-#include <ArduinoIoTCloud.h>
-#include <Arduino_ConnectionHandler.h>
-
-const char DEVICE_LOGIN_NAME[] = "PEGUE_AQUI_EL_DEVICE_ID";
-
-const char SSID[]     = SECRET_SSID;
-const char PASS[]     = SECRET_OPTIONAL_PASS;
-const char DEVICE_KEY[] = SECRET_DEVICE_KEY;
-
-void onLedChange();
-bool led;
-
-void initProperties() {
-  ArduinoCloud.setBoardId(DEVICE_LOGIN_NAME);
-  ArduinoCloud.setSecretDeviceKey(DEVICE_KEY);
-  ArduinoCloud.addProperty(led, READWRITE, ON_CHANGE, onLedChange);
-}
-
-WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
-```
-
-**arduino_secrets.h**
-
-```cpp
-#define SECRET_SSID "NOMBRE_DE_SU_RED"
-#define SECRET_OPTIONAL_PASS "CLAVE_DE_SU_RED"
-#define SECRET_DEVICE_KEY "PEGUE_AQUI_EL_SECRET_KEY"
 ```
 
 ### Interpretación
@@ -604,5 +651,3 @@ _Adaptar a lo observado en las Figuras 14 y 15._ Al accionar el switch desde el 
 - `ArduinoIoTCloud` y `Arduino_ConnectionHandler` (Arduino Cloud)
 - ThingSpeak y Arduino Cloud como plataformas IoT
 
-
-> **Seguridad:** las claves de Wi-Fi, la *Write API Key* y el *Secret Key* no se incluyen en este repositorio; en los códigos aparecen como texto de ejemplo y deben reemplazarse por los datos propios.
