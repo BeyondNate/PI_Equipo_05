@@ -118,7 +118,7 @@ En el Monitor Serie se muestran los valores obtenidos del potenciómetro y el vo
 
 <img width="1600" height="1204" alt="image" src="https://github.com/user-attachments/assets/d804cf8c-1ecb-4ef6-b5fc-68b8a0289534" />
 
-![Monitor Serie de la Actividad 01](images/actividad-01/monitor-serie.jpg)
+<img width="650" height="1001" alt="image" src="https://github.com/user-attachments/assets/1d6d3d74-4cea-4743-80d9-b461235313c6" />
 
 ## Resultado
 
