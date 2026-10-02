@@ -4,14 +4,14 @@ Este repositorio contiene la implementación de un sistema de Internet de las Co
 
 ##  Tabla de contenidos
  
-1. [Descripción general](#-descripción-general)
-2. [Arquitectura](#-arquitectura)
-3. [Hardware y montaje](#-hardware-y-montaje)
-4. [Configuración MQTT](#-configuración-mqtt)
-5. [Firmware del ESP32](#-firmware-del-esp32)
-6. [Flujo en Node-RED](#-flujo-en-node-red)
-7. [Dashboard y pruebas](#-dashboard-y-pruebas)
-8. [Estructura del repositorio](#-estructura-del-repositorio)
+1. [Descripción general](#descripción-general)
+2. [Arquitectura](#arquitectura)
+3. [Hardware y montaje](#hardware-y-montaje)
+4. [Configuración MQTT](#configuración-mqtt)
+5. [Firmware del ESP32](#firmware-del-esp32)
+6. [Flujo en Node-RED](#flujo-en-node-red)
+7. [Dashboard y pruebas](#dashboard-y-pruebas)
+8. [Estructura del repositorio](#estructura-del-repositorio)
 
 ---
 
@@ -66,7 +66,7 @@ El enrutamiento de los mensajes y la interfaz gráfica se gestionan desde **Node
 
 ---
 
-## 📡 Configuración MQTT
+## Configuración MQTT
 
 | Parámetro | Valor |
 |---|---|
