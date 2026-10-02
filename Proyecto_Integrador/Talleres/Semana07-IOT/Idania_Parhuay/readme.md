@@ -502,7 +502,7 @@ Recorrer el camino inverso: en lugar de mandar datos hacia la nube, recibir una 
 
 El LED se conectó al **GPIO26** mediante una resistencia de 220 Ω que limita la corriente. En Arduino Cloud se creó la variable `led`, de tipo booleano y con permiso de lectura y escritura, y en el dashboard se agregó un *switch*. En el código, la función `onLedChange()` se ejecuta automáticamente cada vez que el interruptor cambia de estado, y es ahí donde se enciende o se apaga el pin.
 
-![Montaje del LED en la protoboard](images/act05_montaje.jpg)
+<img width="406" height="648" alt="image" src="https://github.com/user-attachments/assets/2830c55d-b177-49ee-abc0-28648e3a9dec" />
 *Figura 13. LED con su resistencia conectado al GPIO26.*
 
 ![Switch en el dashboard](images/act05_dashboard.png)
