@@ -23,6 +23,18 @@ Todo el trabajo se desarrolló con una **ESP32 WROOM** programada desde el **Ard
 - Cable USB con transmisión de datos
 - Celular con hotspot en banda de 2.4 GHz
 
+## Resumen de actividades
+ 
+| Actividad | Tema | Pin / Plataforma |
+|---|---|---|
+| 01 | Potenciómetro con promediado y conversión a voltaje | GPIO34 |
+| 02 | Conexión Wi-Fi mediante hotspot | Hotspot del celular |
+| 03 | Potenciómetro enviado a la nube | GPIO34 · ThingSpeak (HTTP) |
+| 04 | Sensor LM35 enviado a la nube | GPIO35 · ThingSpeak (HTTP) |
+| 05 | Control de un LED desde la nube | GPIO2 · MQTT (broker público EMQX) |
+ 
+---
+
 ## Actividad 01: Potenciómetro con promediado y conversión a voltaje
 
 ### Objetivo
@@ -33,16 +45,17 @@ Leer los valores de un potenciómetro conectado al ESP32, estabilizar las medici
 
 Conecté el potenciómetro con GND a tierra, VCC a los 3.3 V de la placa y la señal (SIG) al **GPIO34**. Elegí ese pin a propósito: pertenece al ADC1, que sigue funcionando con normalidad cuando el Wi-Fi está activo, algo que iba a necesitar en las actividades siguientes.
 
-<img width="894" height="710" alt="image" src="https://github.com/user-attachments/assets/8421c653-a486-4b3f-9ee8-981cd5ad93a9" />
-
-*Figura 1. Montaje del potenciómetro en la protoboard.*
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8421c653-a486-4b3f-9ee8-981cd5ad93a9" width="700" alt="Montaje del potenciómetro"><br>
+  <em>Figura 1. Montaje del potenciómetro en la protoboard.</em>
+</p>
 
 ### Desarrollo
 
 La lectura del ADC tiene una resolución de 12 bits, así que el valor se mueve entre 0 y 4095. El detalle es que, incluso con el potenciómetro quieto, ese número oscila un poco de una lectura a otra. Para suavizarlo, el código toma 32 muestras consecutivas y trabaja con su promedio.
-
+ 
 Con ese valor promedio calculé el voltaje de dos maneras:
-
+ 
 - **Conversión lineal:** usa la referencia de 3.3 V y el máximo del ADC (4095), o sea, la relación teórica entre ambos.
 - **Conversión calibrada:** usa `analogReadMilliVolts()`, que tiene en cuenta la calibración que el fabricante grabó en el ESP32.
 
@@ -95,14 +108,15 @@ void loop() {
 
 ### Resultados
 
-<img width="1015" height="629" alt="image" src="https://github.com/user-attachments/assets/30829e6e-f250-40f1-949f-64d961b0dcdc" />
-
-*Figura 3. Monitor serie con el ADC promedio y el voltaje lineal y calibrado en distintas posiciones del potenciómetro.*
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/30829e6e-f250-40f1-949f-64d961b0dcdc" width="700" alt="Monitor serie de la Actividad 01"><br>
+  <em>Figura 2. Monitor serie con el ADC promedio y el voltaje lineal y calibrado en distintas posiciones del potenciómetro.</em>
+</p>
 
 ### Interpretación
 
 Promediar las 32 muestras dio lecturas bastante más estables que la lectura directa del ADC. Al girar el potenciómetro, el valor promedio sube o baja según la posición, y el voltaje lo acompaña de forma proporcional, lo que vuelve los datos mucho más fáciles de interpretar que un simple número entre 0 y 4095.
-
+ 
 Entre las dos columnas de voltaje aparece una pequeña diferencia, y tiene una explicación sencilla: la conversión lineal parte de una relación teórica, mientras que `analogReadMilliVolts()` incorpora la calibración propia del ESP32, que corrige parte de la no linealidad del conversor. En conjunto, la actividad me sirvió para comprobar cómo se lee una señal analógica con el ESP32 y para ver que unas pocas líneas de código (promediar y convertir) mejoran bastante la calidad de la medición.
 
 ---
@@ -203,8 +217,10 @@ void loop() {
 | RSSI posterior | -40 dBm |
 | RSSI final | -38 dBm |
 
-<img width="1012" height="607" alt="image" src="https://github.com/user-attachments/assets/696f954d-e72b-4559-8726-c00411d9ee1f" />
-*Figura 5. Monitor serie con la conexión exitosa y los parámetros de red del ESP32.*
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/696f954d-e72b-4559-8726-c00411d9ee1f" width="700" alt="Monitor serie de la Actividad 02"><br>
+  <em>Figura 3. Monitor serie con la conexión exitosa y los parámetros de red del ESP32.</em>
+</p>
 
 ### Interpretación
 
@@ -227,19 +243,7 @@ Mostrar en tiempo real la variación del potenciómetro en plataformas IoT. Se t
 
 ### 3.1 ThingSpeak
 
-Se creó un canal con dos campos: el voltaje (Field 1) y el valor del ADC (Field 2). El ESP32 se conecta al Wi-Fi y, cada 20 segundos, arma una petición HTTP con la *Write API Key* del canal y los valores medidos. El intervalo no es casual: la cuenta gratuita de ThingSpeak exige al menos 15 segundos entre envíos, así que dejé un pequeño margen de seguridad.
-
-
-<img width="1918" height="1032" alt="image" src="https://github.com/user-attachments/assets/031dc061-b8df-4372-b4c2-a264fc9989af" />
-*Figura 6. Canal de ThingSpeak con sus campos configurados.*
-
-<img width="957" height="1020" alt="image" src="https://github.com/user-attachments/assets/199e9f2d-9067-44dc-8389-461ba343414d" />
-*Figura 7. Monitor serie confirmando cada envío (código HTTP 200 y número de entrada).*
-
-
-<img width="1918" height="1022" alt="image" src="https://github.com/user-attachments/assets/ed89e769-dc04-4fc5-a314-4c6731143d3d" />
-*Figura 8. Gráficas del voltaje y del ADC en el canal.*
-
+Creé un canal con dos campos: el voltaje (Field 1) y el valor del ADC (Field 2). El ESP32 se conecta al Wi-Fi y, cada 20 segundos, arma una petición HTTP con la *Write API Key* del canal y los valores medidos. El intervalo no es casual: la cuenta gratuita de ThingSpeak exige al menos 15 segundos entre envíos, así que dejé un pequeño margen de seguridad. La lectura del potenciómetro es la misma de la Actividad 1, con promedio de 32 muestras, para enviar un dato limpio.
 
 **Código**
 
@@ -317,38 +321,50 @@ void loop() {
 }
 ```
 
+### Resultados
+ 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/031dc061-b8df-4372-b4c2-a264fc9989af" width="700" alt="Canal de ThingSpeak"><br>
+  <em>Figura 4. Canal de ThingSpeak con sus campos configurados.</em>
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/199e9f2d-9067-44dc-8389-461ba343414d" width="700" alt="Monitor serie de la Actividad 03"><br>
+  <em>Figura 5. Monitor serie confirmando cada envío (código HTTP 200 y número de entrada).</em>
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ed89e769-dc04-4fc5-a314-4c6731143d3d" width="700" alt="Gráficas de ThingSpeak"><br>
+  <em>Figura 6. Gráficas del voltaje y del ADC en el canal.</em>
+</p>
 
-**Interpretación.** _Adaptar a lo que muestren las Figuras 7 y 8._ En el monitor serie, cada envío devuelve un número de entrada que va creciendo, señal de que ThingSpeak está recibiendo y guardando los datos. En las gráficas se aprecia cómo el voltaje sube y baja según lo que hice con el potenciómetro, y las dos curvas tienen la misma forma porque el voltaje no es más que el ADC escalado. También se nota una limitación: con un dato cada 20 segundos, los movimientos rápidos se pierden y el resultado se parece más a una serie de puntos que a una señal continua.
+### Interpretación
+ 
+En el monitor serie, cada envío devuelve el código HTTP 200 y un número de entrada que va creciendo, señal de que ThingSpeak está recibiendo y guardando los datos. En las gráficas se aprecia cómo el voltaje sube y baja según lo que hice con el potenciómetro, y las dos curvas tienen la misma forma porque el voltaje no es más que el ADC escalado.
+ 
+También se nota una limitación de la plataforma: con un dato cada 20 segundos, los movimientos rápidos se pierden y el resultado se parece más a una serie de puntos que a una señal continua. Para registrar tendencias es suficiente, pero no para observar cambios veloces.
 
 
-> **Nota:** la parte de Ubidots que plantea el enunciado no se desarrolló en este informe.
+> **Nota:** Desarrollé únicamente la parte de ThingSpeak; Arduino Cloud y Ubidots no se incluyeron en este taller.
 
 ---
 
-## Actividad 04: Envío de datos de un sensor del kit Keystudio
+## Actividad 04: Envío de datos del sensor LM35 a la nube
 
 ### Objetivo
 
-Repetir el envío de datos a la nube, pero ahora con un sensor real del kit Keystudio en lugar del potenciómetro.
+Repetir el envío de datos a la nube, pero ahora con un sensor real del kit Keystudio, el LM35, en lugar del potenciómetro.
 
 ### Desarrollo
 
-Se utilizó el sensor _(LDR o LM35)_ conectado al **GPIO35**, otro pin del ADC1. La lectura sigue la misma lógica de la Actividad 1, con promedio de muestras, pero el voltaje ahora se interpreta según el sensor: en el LM35, cada 10 mV equivalen a 1 °C, mientras que en el LDR se expresa como un porcentaje de luz. Los datos se enviaron a _(ThingSpeak o Arduino Cloud)_.}
+Utilicé el sensor de temperatura **LM35**, conectado al **GPIO35**, otro pin del ADC1. Lo alimenté con los 5 V del pin VIN en lugar de los 3.3 V, porque el LM35 necesita alrededor de 4 V o más para funcionar bien; su salida, en cambio, es de apenas unas décimas de voltio, así que no representa riesgo para el ADC del ESP32.
+ 
+La lectura sigue la misma lógica de la Actividad 1, con promedio de 32 muestras, pero ahora el voltaje se interpreta como temperatura: el LM35 entrega 10 mV por cada grado Celsius, por lo que basta dividir los milivoltios entre 10. Los datos se enviaron a un canal propio de ThingSpeak, con la temperatura en el Field 1 y el valor del ADC en el Field 2, una vez cada 20 segundos.
 
-<img width="1918" height="1026" alt="image" src="https://github.com/user-attachments/assets/07795bcc-4170-4605-b971-04b6941e1b05" />
-
-<img width="956" height="1021" alt="image" src="https://github.com/user-attachments/assets/2b042b73-bf60-4508-90fd-a79629ca3066" />
-
-
-![Montaje del sensor con el ESP32](images/act04_montaje.jpg)
-*Figura 11. Conexión del sensor al ESP32.*
-
-<img width="1918" height="1022" alt="image" src="https://github.com/user-attachments/assets/42ca3c71-5f30-437d-8837-b92d0a3a8379" />
-*Figura 12. Visualización de la medición en la plataforma IoT.*
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/12c1b26d-a474-462d-85eb-223e2426aa19" width="700" ><br>
+  <em>Figura 7. Figura de montaje.</em>
+</p>
 
 ### Código
-
-Esta es la versión para ThingSpeak. Con una sola línea `#define` se elige el sensor (LDR o LM35).
 
 **Actividad04_ThingSpeak.ino**
 
@@ -482,44 +498,46 @@ void loop() {
 }
 ```
 
+### Resultados
+ 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/07795bcc-4170-4605-b971-04b6941e1b05" width="700" alt="Canal de ThingSpeak para el LM35"><br>
+  <em>Figura 8. Canal de ThingSpeak configurado para la temperatura y el ADC.</em>
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2b042b73-bf60-4508-90fd-a79629ca3066" width="700" alt="Monitor serie de la Actividad 04"><br>
+  <em>Figura 9. Monitor serie con los envíos de temperatura y ADC.</em>
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/42ca3c71-5f30-437d-8837-b92d0a3a8379" width="700" alt="Gráficas de ThingSpeak para el LM35"><br>
+  <em>Figura 10. Visualización de la temperatura medida en la plataforma IoT.</em>
+</p>
+
 ### Interpretación
 
-Describir qué se hizo para provocar cambios en el sensor y cómo respondió la gráfica._ Por ejemplo, al tapar el LDR con la mano el porcentaje de luz cae y al acercarle una linterna sube; con el LM35, la temperatura aumenta al sostener el sensor entre los dedos. Lo interesante de esta actividad es que ya no se trata de una señal que uno controla girando una perilla, sino de una variable del entorno que el sistema mide y reporta por sí solo.
+Para comprobar que el sensor respondía, lo calenté sosteniéndolo entre los dedos, y en la gráfica de ThingSpeak se ve cómo la temperatura sube y luego vuelve poco a poco hacia el valor ambiente. Esa lentitud al bajar es normal, porque el sensor tarda en disipar el calor que recibió.
+ 
+Lo interesante de esta actividad es que ya no se trata de una señal que yo controlo girando una perilla, sino de una variable del entorno que el sistema mide y reporta por su cuenta. También noté que las lecturas del LM35 con el ESP32 pueden variar un poco de una medición a otra: la señal que entrega es muy pequeña (unos 250 mV a 25 °C) y justo en ese rango el ADC es menos preciso, por lo que el promedio de muestras resultó especialmente útil.
 
 ---
 
 ## Actividad 05: Control de un LED desde la nube
 
-<img width="1565" height="940" alt="image" src="https://github.com/user-attachments/assets/79d5f316-fbca-4d7b-a82b-7b0969f91d38" />
-
-<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/c719a8bc-d0aa-4876-a7c8-50feef4bf23b" />
-
-<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/d085c998-668a-4d16-bc36-ca40752f7377" />
-
-
-<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/4eabf3b3-2ef0-4863-a0dc-b09be273ba18" />
-
-<img width="448" height="620" alt="image" src="https://github.com/user-attachments/assets/c450a1e0-d9dc-4733-b720-335ddcb95448" />
-
-<img width="447" height="616" alt="image" src="https://github.com/user-attachments/assets/b63de407-809d-42ac-81f7-af8c47cb5053" />
-
-
 ### Objetivo
-
-Recorrer el camino inverso: en lugar de mandar datos hacia la nube, recibir una orden desde una plataforma web para encender y apagar un LED conectado al ESP32.
+ 
+Recorrer el camino inverso al de las actividades anteriores: en lugar de mandar datos hacia la nube, recibir una orden desde internet para encender y apagar un LED conectado al ESP32.
 
 ### Desarrollo
+ 
+Para esta actividad usé el protocolo **MQTT**, que funciona con un esquema de publicación y suscripción. El ESP32 se conecta primero al Wi-Fi del hotspot y luego al broker público **broker.emqx.io** (puerto 1883), donde se suscribe al topic `esp32/led`. Cualquier mensaje publicado en ese topic llega a la placa: si el texto es `ON`, la función `callback()` enciende el LED, y si es `OFF`, lo apaga. Para la prueba monté un **LED externo** en la protoboard, con una resistencia limitadora en serie, conectado al **GPIO2** y con su otro extremo a GND. Las órdenes las envié desde una aplicación cliente MQTT instalada en el celular.
+ 
+Dos detalles del código vale la pena destacar. Por un lado, el identificador de cliente se genera de forma aleatoria en cada conexión, para evitar choques con otros usuarios del broker público. Por otro, si la conexión con el broker se interrumpe, el programa se reconecta y vuelve a suscribirse por su cuenta.
+ 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2830c55d-b177-49ee-abc0-28648e3a9dec" width="700" alt="Montaje de la Actividad 05"><br>
+  <em>Figura 11. Montaje de la Actividad 05: ESP32 y LED externo con su resistencia en la protoboard (LED resaltado en rojo).</em>
+</p>
 
-El LED se conectó al **GPIO26** mediante una resistencia de 220 Ω que limita la corriente. En Arduino Cloud se creó la variable `led`, de tipo booleano y con permiso de lectura y escritura, y en el dashboard se agregó un *switch*. En el código, la función `onLedChange()` se ejecuta automáticamente cada vez que el interruptor cambia de estado, y es ahí donde se enciende o se apaga el pin.
-
-<img width="406" height="648" alt="image" src="https://github.com/user-attachments/assets/2830c55d-b177-49ee-abc0-28648e3a9dec" />
-*Figura 13. LED con su resistencia conectado al GPIO26.*
-
-![Switch en el dashboard](images/act05_dashboard.png)
-*Figura 14. Dashboard con el interruptor que controla el LED.*
-
-![LED encendido y apagado](images/act05_led.jpg)
-*Figura 15. Estado del LED al activar y desactivar el switch.*
 
 ### Código
 
@@ -630,24 +648,48 @@ void loop() {
 }
 ```
 
-### Interpretación
+### Resultados
+ 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/79d5f316-fbca-4d7b-a82b-7b0969f91d38" width="700" alt="Captura en el computador"><br>
+  <em>Figura 12. Captura realizada en el computador durante la prueba.</em>
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c719a8bc-d0aa-4876-a7c8-50feef4bf23b" width="200" alt="Captura en el celular 1">
+  <img src="https://github.com/user-attachments/assets/d085c998-668a-4d16-bc36-ca40752f7377" width="200" alt="Captura en el celular 2">
+  <img src="https://github.com/user-attachments/assets/4eabf3b3-2ef0-4863-a0dc-b09be273ba18" width="200" alt="Captura en el celular 3"><br>
+  <em>Figuras 13 a 15. Capturas realizadas en el celular durante la prueba.</em>
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c450a1e0-d9dc-4733-b720-335ddcb95448" width="260" alt="LED de la placa">
+  <img src="https://github.com/user-attachments/assets/b63de407-809d-42ac-81f7-af8c47cb5053" width="260" alt="LED de la placa"><br>
+  <em>Figuras 16 y 17. Estado del LED de la placa durante la prueba.</em>
+</p>
 
-_Adaptar a lo observado en las Figuras 14 y 15._ Al accionar el switch desde el dashboard, el LED responde con un retraso de aproximadamente _(un segundo, medio segundo)_, que corresponde al viaje de la orden por internet hasta la placa. Esto ilustra la comunicación bidireccional propia de un sistema IoT: la misma conexión sirve para monitorear y para actuar, y se puede trasladar a aplicaciones reales como el control de una bomba, un ventilador o una válvula.
+### Interpretación
+ 
+La prueba confirmó que el ESP32 puede recibir órdenes desde internet sin necesidad de montar un servidor propio. Desde la aplicación del celular me conecté al mismo broker (Figura 12) y publiqué mensajes en el topic `esp32/led` (Figuras 13 y 14): al enviar `ON`, el broker reenvía el mensaje a la placa, que está suscrita, y el LED externo se enciende; con `OFF` se apaga. Los mensajes se enviaron con calidad de servicio 0, es decir, con entrega como máximo una vez, algo más que suficiente para un LED, donde perder un mensaje no tiene consecuencias graves. A diferencia de las actividades anteriores, aquí la placa no consulta ni envía nada por iniciativa propia: se queda a la escucha, y el broker le entrega el mensaje apenas llega. Por eso la respuesta del LED es casi inmediata, algo que no se logra con un esquema de consulta periódica, que tendría que esperar al siguiente ciclo.
+ 
+Esto ilustra la comunicación bidireccional propia de un sistema IoT y explica por qué MQTT se usa tanto en este campo: los mensajes son pequeños, la conexión es liviana y un mismo dato puede llegar a varios dispositivos a la vez. También deja ver una limitación importante. El broker utilizado es público y no pide usuario ni contraseña (en la Figura 12 los campos de credenciales quedaron vacíos), así que cualquiera que conozca el topic podría enviar órdenes a la placa. En una aplicación real convendría un broker con autenticación, como el del mini proyecto de Node-RED del taller, y un topic menos evidente.
 
 ---
 
 ## Conclusiones
-
+ 
 - El ADC del ESP32 entrega valores con algo de ruido y cierta no linealidad. Conviene promediar las lecturas y, cuando se necesita precisión en voltios, recurrir a la lectura calibrada.
 - Para trabajar con Wi-Fi hay que usar pines del ADC1 y redes de 2.4 GHz. Son detalles que pasan desapercibidos hasta que algo deja de funcionar.
-- ThingSpeak resulta más directo para registrar y graficar datos, mientras que Arduino Cloud facilita la comunicación en ambos sentidos, a cambio de una configuración inicial más larga.
+- ThingSpeak, con peticiones HTTP, resulta práctico para registrar y graficar datos, pero su límite de un envío cada 15 segundos lo hace poco adecuado para el control en tiempo real. MQTT, en cambio, ofrece una comunicación liviana e inmediata en ambos sentidos, aunque exige cuidar la seguridad del broker.
 - Un sistema IoT se entiende mejor como una cadena completa (sensor, microcontrolador, red y plataforma), donde la falla de cualquier eslabón se traduce en datos que no llegan.
-- _Agregar una conclusión personal o una posible aplicación al proyecto integrador._
+- Lo aprendido se puede trasladar al proyecto integrador. Por ejemplo, en un sistema automatizado de clarificación de agua con quitosano, un ESP32 podría registrar variables del proceso en la nube y recibir órdenes remotas, como activar o detener la dosificación.
 
 ## Herramientas y bibliotecas
-
+ 
 - Arduino IDE con el paquete de placas **esp32** (placa "ESP32 Dev Module")
 - `WiFi.h` y `HTTPClient.h` (incluidas en el paquete de la ESP32)
-- `ArduinoIoTCloud` y `Arduino_ConnectionHandler` (Arduino Cloud)
-- ThingSpeak y Arduino Cloud como plataformas IoT
+- `PubSubClient` (cliente MQTT)
+- ThingSpeak como plataforma IoT y EMQX como broker MQTT público
 
+
+## Referencias
+ 
+- Presentación del taller de IoT, Proyectos de Ingeniería, UPCH.
