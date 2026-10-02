@@ -448,7 +448,8 @@ Se incorporan gráficas lineales que registran el histórico de las variables, p
 </p>
 
 ### Prueba de Comunicación Bidireccional
-Interacción en tiempo real accionando el actuador físico desde la nube. Al cambiar el interruptor a "ON" en Node-RED, el ESP32 recibe el comando MQTT y enciende el LED de manera instantánea se puede ver en el siguiente link:
+Interacción en tiempo real accionando el actuador físico desde la nube. Al cambiar el interruptor a "ON" en Node-RED, el ESP32 recibe el comando MQTT y enciende el LED de manera instantánea se puede ver en el siguiente link: 
+https://equipo5.rcr-labs.com/#flow/69548c7b0668ecd5
 
 ---
 
