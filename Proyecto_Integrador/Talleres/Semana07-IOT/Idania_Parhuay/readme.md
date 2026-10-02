@@ -1,8 +1,6 @@
-# Taller de Internet de las Cosas (IoT) con ESP32
+# <h1 align="center">────୨ৎ──── Taller de Internet de las Cosas (IoT) con ESP32 ────୨ৎ────</h1>
 
-**Curso:** Proyectos de Ingeniería
 **Universidad:** Universidad Peruana Cayetano Heredia (UPCH)
-
 **Estudiante:** Idania Parhuay Meza
 
 ---
