@@ -11,7 +11,7 @@ Este repositorio contiene la implementación de un sistema de Internet de las Co
 5. [Firmware del ESP32](#firmware-del-esp32)
 6. [Flujo en Node-RED](#flujo-en-node-red)
 7. [Dashboard y pruebas](#dashboard-y-pruebas)
-8. [Estructura del repositorio](#estructura-del-repositorio)
+8. [Conclusiones](#Conclusiones)
 
 ---
 
@@ -421,7 +421,7 @@ El procesamiento de la información en el lado del servidor/cliente se realiza m
 </p>
 ---
 
-## Dashboard Interactivo y Pruebas
+## Dashboard y pruebas
 
 El panel de control IoT provee una interfaz gráfica intuitiva para el monitoreo y control del hardware a distancia.
 
