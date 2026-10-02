@@ -23,11 +23,7 @@ Este repositorio contiene la implementación de un sistema de Internet de las Co
 | **Publicación** | Datos en formato JSON cada 2 segundos al broker MQTT |
 | **Control** | El ESP32 se suscribe a un tópico y acciona su LED integrado con los comandos `ON` / `OFF` |
 | **Visualización** | Dashboard en Node-RED accesible desde cualquier navegador |
-
-El proyecto utiliza un microcontrolador **ESP32** para capturar variables ambientales (temperatura y humedad) con un sensor **DHT11**. Los datos se empaquetan en formato JSON y se publican en un broker MQTT. Al mismo tiempo, el ESP32 se suscribe a un tópico de control para escuchar comandos remotos y accionar un actuador físico, un LED.
  
-El enrutamiento de los mensajes y la interfaz gráfica se gestionan desde **Node-RED**, que ofrece un dashboard interactivo accesible desde cualquier navegador.
-
 ---
  
 ## Arquitectura
