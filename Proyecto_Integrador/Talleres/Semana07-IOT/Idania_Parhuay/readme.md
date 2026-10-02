@@ -9,7 +9,7 @@
 
 ## Introducción
 
-Este taller me llevó de la teoría del Internet de las Cosas a algo que se puede ver funcionando sobre la mesa: una placa ESP32 que lee una señal del mundo físico, se conecta a una red y envía esa información a la nube, desde donde puede consultarse en cualquier momento. Las cinco actividades siguen una progresión natural. Primero se entiende cómo el microcontrolador transforma una señal analógica en un número; luego se le da conectividad; y al final se envían datos a plataformas en línea y se controla un componente de forma remota.
+Este taller me ayudó a llevar la teoría de IoT a la práctica y ver cómo funciona todo en la realidad. Usamos una placa ESP32 para tomar datos del entorno, conectarla a internet y subir la información a la nube para verla en tiempo real. Las cinco actividades siguen una progresión natural. Primero se entiende cómo el microcontrolador transforma una señal analógica en un número; luego se le da conectividad; y al final se envían datos a plataformas en línea y se controla un componente de forma remota.
 
 Todo el trabajo se desarrolló con una **ESP32 WROOM** programada desde el **Arduino IDE**.
 
@@ -17,7 +17,7 @@ Todo el trabajo se desarrolló con una **ESP32 WROOM** programada desde el **Ard
 
 - ESP32 WROOM (Dev Kit)
 - Potenciómetro
-- Sensor del kit Keystudio 48 en 1 _(indicar cuál: LDR, LM35 u otro)_
+- Sensor del kit Keystudio 48 en 1 (LM35)
 - LED y resistencia de 220 Ω
 - Protoboard, cables y multímetro
 - Cable USB con transmisión de datos
@@ -243,7 +243,7 @@ Mostrar en tiempo real la variación del potenciómetro en plataformas IoT. Se t
 
 ### 3.1 ThingSpeak
 
-Creé un canal con dos campos: el voltaje (Field 1) y el valor del ADC (Field 2). El ESP32 se conecta al Wi-Fi y, cada 20 segundos, arma una petición HTTP con la *Write API Key* del canal y los valores medidos. El intervalo no es casual: la cuenta gratuita de ThingSpeak exige al menos 15 segundos entre envíos, así que dejé un pequeño margen de seguridad. La lectura del potenciómetro es la misma de la Actividad 1, con promedio de 32 muestras, para enviar un dato limpio.
+Se creó un canal con dos campos: el voltaje (Field 1) y el valor del ADC (Field 2). El ESP32 se conecta al Wi-Fi y, cada 20 segundos, arma una petición HTTP con la *Write API Key* del canal y los valores medidos. El intervalo no es casual: la cuenta gratuita de ThingSpeak exige al menos 15 segundos entre envíos, así que dejé un pequeño margen de seguridad. La lectura del potenciómetro es la misma de la Actividad 1, con promedio de 32 muestras, para enviar un dato limpio.
 
 **Código**
 
@@ -355,7 +355,7 @@ Repetir el envío de datos a la nube, pero ahora con un sensor real del kit Keys
 
 ### Desarrollo
 
-Utilicé el sensor de temperatura **LM35**, conectado al **GPIO35**, otro pin del ADC1. Lo alimenté con los 5 V del pin VIN en lugar de los 3.3 V, porque el LM35 necesita alrededor de 4 V o más para funcionar bien; su salida, en cambio, es de apenas unas décimas de voltio, así que no representa riesgo para el ADC del ESP32.
+Se utilizó el sensor de temperatura **LM35**, conectado al **GPIO35**, otro pin del ADC1. Lo alimenté con los 5 V del pin VIN en lugar de los 3.3 V, porque el LM35 necesita alrededor de 4 V o más para funcionar bien; su salida, en cambio, es de apenas unas décimas de voltio, así que no representa riesgo para el ADC del ESP32.
  
 La lectura sigue la misma lógica de la Actividad 1, con promedio de 32 muestras, pero ahora el voltaje se interpreta como temperatura: el LM35 entrega 10 mV por cada grado Celsius, por lo que basta dividir los milivoltios entre 10. Los datos se enviaron a un canal propio de ThingSpeak, con la temperatura en el Field 1 y el valor del ADC en el Field 2, una vez cada 20 segundos.
 
