@@ -4,7 +4,6 @@
 **Universidad:** Universidad Peruana Cayetano Heredia (UPCH)
 
 **Estudiante:** Idania Parhuay Meza
-**Fecha:** _dd/mm/aaaa_
 
 ---
 
@@ -24,24 +23,6 @@ Todo el trabajo se desarrolló con una **ESP32 WROOM** programada desde el **Ard
 - Cable USB con transmisión de datos
 - Celular con hotspot en banda de 2.4 GHz
 
-## Organización del repositorio
-
-```
-Taller_IoT_ESP32/
-├── Actividad01_Potenciometro_Promedio/
-├── Actividad02_WiFi_Hotspot/
-├── Actividad03_ThingSpeak/
-├── Actividad03_ArduinoCloud/
-├── Actividad04_.../
-├── Actividad05_LED_ArduinoCloud/
-├── images/
-└── README.md
-```
-
-> Las capturas se guardan en la carpeta `images/`. Debajo de cada actividad aparece el espacio para insertarlas, con el nombre de archivo sugerido.
-
----
-
 ## Actividad 01: Potenciómetro con promediado y conversión a voltaje
 
 ### Objetivo
@@ -52,8 +33,9 @@ Leer los valores de un potenciómetro conectado al ESP32, estabilizar las medici
 
 Conecté el potenciómetro con GND a tierra, VCC a los 3.3 V de la placa y la señal (SIG) al **GPIO34**. Elegí ese pin a propósito: pertenece al ADC1, que sigue funcionando con normalidad cuando el Wi-Fi está activo, algo que iba a necesitar en las actividades siguientes.
 
-![Montaje del potenciómetro con el ESP32](images/act01_montaje.jpg)
-*Figura 1. Montaje del potenciómetro en la protoboard, conectado al GPIO34.*
+<img width="894" height="710" alt="image" src="https://github.com/user-attachments/assets/8421c653-a486-4b3f-9ee8-981cd5ad93a9" />
+
+*Figura 1. Montaje del potenciómetro en la protoboard.*
 
 ### Desarrollo
 
@@ -113,10 +95,8 @@ void loop() {
 
 ### Resultados
 
-![Compilación exitosa de la Actividad 01](images/act01_compilacion.png)
-*Figura 2. Resultado de la compilación en el Arduino IDE.*
+<img width="1015" height="629" alt="image" src="https://github.com/user-attachments/assets/30829e6e-f250-40f1-949f-64d961b0dcdc" />
 
-![Monitor serie con las lecturas del potenciómetro](images/act01_monitor_serie.png)
 *Figura 3. Monitor serie con el ADC promedio y el voltaje lineal y calibrado en distintas posiciones del potenciómetro.*
 
 ### Interpretación
@@ -146,9 +126,6 @@ Cuando la conexión se establece, el programa imprime:
 - **RSSI:** la intensidad de la señal recibida.
 
 Además, revisa cada cierto tiempo si la conexión sigue activa y, si se pierde, intenta reconectarse.
-
-![Hotspot activado en el celular](images/act02_hotspot.jpg)
-*Figura 4. Punto de acceso del celular configurado en 2.4 GHz.*
 
 ### Código
 
@@ -226,7 +203,7 @@ void loop() {
 | RSSI posterior | -40 dBm |
 | RSSI final | -38 dBm |
 
-![Monitor serie con la IP asignada](images/act02_ip.png)
+<img width="1012" height="607" alt="image" src="https://github.com/user-attachments/assets/696f954d-e72b-4559-8726-c00411d9ee1f" />
 *Figura 5. Monitor serie con la conexión exitosa y los parámetros de red del ESP32.*
 
 ### Interpretación
@@ -269,18 +246,12 @@ Se creó un canal con dos campos: el voltaje (Field 1) y el valor del ADC (Field
 **Actividad03_ThingSpeak.ino**
 
 ```cpp
-/*
-  Actividad 03 (Potenciometro) - ThingSpeak (HTTP)
-  1) Cree un canal en thingspeak.com con Field1 = Voltaje (V) y Field2 = ADC.
-  2) Copie la "Write API Key" del canal.
-  Nota: la cuenta gratuita permite 1 dato cada 15 s como minimo.
-*/
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* WIFI_SSID     = "NOMBRE_DE_SU_RED";
-const char* WIFI_PASSWORD = "CLAVE_DE_SU_RED";
-const char* WRITE_API_KEY = "SU_WRITE_API_KEY";
+const char* WIFI_SSID     = "ajam";
+const char* WIFI_PASSWORD = "Idania123";
+const char* WRITE_API_KEY = "U8EKFOD3X40ZAD8X";
 
 const unsigned long INTERVALO_MS = 20000;
 unsigned long ultimoEnvio = 0;
@@ -294,7 +265,7 @@ void iniciarSensor() {
   analogSetPinAttenuation(POT_PIN, ADC_11db);
 }
 
-// Devuelve el voltaje promedio en voltios y el ADC promedio (por referencia)
+// Devuelve el voltaje promedio (V) y el ADC promedio (por referencia)
 float leerValor(int &adcProm) {
   long sumaADC = 0, sumaMv = 0;
   for (int i = 0; i < NUM_MUESTRAS; i++) {
@@ -305,7 +276,7 @@ float leerValor(int &adcProm) {
   adcProm = sumaADC / NUM_MUESTRAS;
   return (sumaMv / (float)NUM_MUESTRAS) / 1000.0;
 }
-const char* NOMBRE_VAR = "voltaje";
+const char* NOMBRE_VAR = "Voltaje";
 
 void conectarWiFi() {
   WiFi.mode(WIFI_STA);
@@ -334,7 +305,7 @@ void loop() {
 
     HTTPClient http;
     http.begin(url);
-    int codigo = http.GET();   // ThingSpeak responde con el numero de entrada (0 = error)
+    int codigo = http.GET();   // ThingSpeak responde con el n.° de entrada (0 = error)
     if (codigo > 0) {
       Serial.printf("Enviado -> valor: %.3f | ADC: %d | HTTP: %d | entrada #%s\n",
                     valor, adc, codigo, http.getString().c_str());
@@ -346,7 +317,6 @@ void loop() {
 }
 ```
 
-> Reemplazar la red Wi-Fi y la `WRITE_API_KEY` por los datos propios.
 
 **Interpretación.** _Adaptar a lo que muestren las Figuras 7 y 8._ En el monitor serie, cada envío devuelve un número de entrada que va creciendo, señal de que ThingSpeak está recibiendo y guardando los datos. En las gráficas se aprecia cómo el voltaje sube y baja según lo que hice con el potenciómetro, y las dos curvas tienen la misma forma porque el voltaje no es más que el ADC escalado. También se nota una limitación: con un dato cada 20 segundos, los movimientos rápidos se pierden y el resultado se parece más a una serie de puntos que a una señal continua.
 
@@ -384,98 +354,137 @@ Esta es la versión para ThingSpeak. Con una sola línea `#define` se elige el s
 
 ```cpp
 /*
-  Actividad 04 (Sensor Keystudio) - ThingSpeak (HTTP)
-  1) Cree un canal en thingspeak.com con Field1 = Medicion (°C o % luz) y Field2 = ADC.
-  2) Copie la "Write API Key" del canal.
-  Nota: la cuenta gratuita permite 1 dato cada 15 s como minimo.
+  Actividad 04 - Sensor LM35 + ThingSpeak
+
+  Conexiones:
+  LM35 VCC  -> ESP32 VIN (5 V)
+  LM35 OUT  -> ESP32 GPIO35
+  LM35 GND  -> ESP32 GND
+
+  ThingSpeak:
+  Field 1 = Temperatura (°C)
+  Field 2 = ADC
+
+  El ESP32 envía una medición cada 20 segundos.
 */
+
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* WIFI_SSID     = "NOMBRE_DE_SU_RED";
-const char* WIFI_PASSWORD = "CLAVE_DE_SU_RED";
-const char* WRITE_API_KEY = "SU_WRITE_API_KEY";
+// ---------- Datos de conexión ----------
+const char* WIFI_SSID     = "ajam";
+const char* WIFI_PASSWORD = "Idania123";
+const char* WRITE_API_KEY = "78IAZ1G9HXTYS73H";
 
+// ---------- Intervalo de envío ----------
 const unsigned long INTERVALO_MS = 20000;
 unsigned long ultimoEnvio = 0;
 
-// ---------- Lectura del sensor Keystudio (GPIO35, ADC1) ----------
-// Deje ACTIVA solo UNA de las dos lineas siguientes:
-#define SENSOR_LDR
-//#define SENSOR_LM35
-
+// ---------- Sensor LM35 ----------
 const int SENSOR_PIN   = 35;
 const int NUM_MUESTRAS = 32;
 
+// Configuración del ADC
 void iniciarSensor() {
   analogReadResolution(12);
   analogSetPinAttenuation(SENSOR_PIN, ADC_11db);
 }
 
-// Devuelve la medicion (°C para LM35, % de luz para LDR); adcProm por referencia
-float leerValor(int &adcProm) {
-  long sumaADC = 0, sumaMv = 0;
+// Lee el LM35 y devuelve la temperatura en °C
+// adcProm recibe el valor ADC promedio
+float leerTemperatura(int &adcProm) {
+  long sumaADC = 0;
+  long sumaMv  = 0;
+
+  // Tomar varias muestras para estabilizar la lectura
   for (int i = 0; i < NUM_MUESTRAS; i++) {
     sumaADC += analogRead(SENSOR_PIN);
     sumaMv  += analogReadMilliVolts(SENSOR_PIN);
     delay(2);
   }
+
   adcProm = sumaADC / NUM_MUESTRAS;
   float mv = sumaMv / (float)NUM_MUESTRAS;
-#ifdef SENSOR_LM35
-  return mv / 10.0;            // LM35: 10 mV por °C
-#else
-  return mv * 100.0 / 3300.0;  // LDR: porcentaje respecto a 3.3 V
-#endif
-}
-#ifdef SENSOR_LM35
-const char* NOMBRE_VAR = "temperatura";
-#else
-const char* NOMBRE_VAR = "luz";
-#endif
 
+  // LM35: 10 mV = 1 °C
+  return mv / 10.0;
+}
+
+// ---------- Conexión Wi-Fi (máximo 20 intentos) ----------
 void conectarWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+
   Serial.print("Conectando a Wi-Fi");
-  while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print("."); }
-  Serial.print("\nIP: "); Serial.println(WiFi.localIP());
+
+  int intentos = 0;
+  while (WiFi.status() != WL_CONNECTED && intentos < 20) {
+    delay(500);
+    Serial.print(".");
+    intentos++;
+  }
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.println("\nConectado exitosamente");
+    Serial.print("IP: ");
+    Serial.println(WiFi.localIP());
+  } else {
+    Serial.println("\nNo se pudo conectar. Verifique SSID, clave y banda 2.4 GHz.");
+  }
 }
 
+// ---------- Configuración inicial ----------
 void setup() {
   Serial.begin(115200);
+  delay(1000);
+
   iniciarSensor();
   conectarWiFi();
+
+  ultimoEnvio = millis() - INTERVALO_MS;   // Primer envío inmediato
 }
 
+// ---------- Programa principal ----------
 void loop() {
-  if (WiFi.status() != WL_CONNECTED) conectarWiFi();
+  // Si se cayó el Wi-Fi, reintentar
+  if (WiFi.status() != WL_CONNECTED) {
+    conectarWiFi();
+  }
 
+  // Esperar hasta cumplir el intervalo de envío
   if (millis() - ultimoEnvio >= INTERVALO_MS) {
     ultimoEnvio = millis();
+
     int adc;
-    float valor = leerValor(adc);
+    float temperatura = leerTemperatura(adc);
 
-    String url = "http://api.thingspeak.com/update?api_key=" + String(WRITE_API_KEY) +
-                 "&field1=" + String(valor, 3) + "&field2=" + String(adc);
+    if (WiFi.status() == WL_CONNECTED) {
+      String url = "http://api.thingspeak.com/update?api_key=" +
+                   String(WRITE_API_KEY) +
+                   "&field1=" + String(temperatura, 3) +
+                   "&field2=" + String(adc);
 
-    HTTPClient http;
-    http.begin(url);
-    int codigo = http.GET();   // ThingSpeak responde con el numero de entrada (0 = error)
-    if (codigo > 0) {
-      Serial.printf("Enviado -> valor: %.3f | ADC: %d | HTTP: %d | entrada #%s\n",
-                    valor, adc, codigo, http.getString().c_str());
+      HTTPClient http;
+      http.begin(url);
+      int codigo = http.GET();
+
+      if (codigo > 0) {
+        Serial.printf("Enviado -> Temperatura: %.3f °C | ADC: %d | HTTP: %d | entrada #%s\n",
+                      temperatura, adc, codigo, http.getString().c_str());
+      } else {
+        Serial.printf("Error HTTP: %s\n", http.errorToString(codigo).c_str());
+      }
+      http.end();
     } else {
-      Serial.printf("Error HTTP: %s\n", http.errorToString(codigo).c_str());
+      Serial.printf("Lectura local -> Temperatura: %.3f °C | ADC: %d (sin Wi-Fi)\n", temperatura, adc);
     }
-    http.end();
   }
 }
 ```
 
 ### Interpretación
 
-_Describir qué se hizo para provocar cambios en el sensor y cómo respondió la gráfica._ Por ejemplo, al tapar el LDR con la mano el porcentaje de luz cae y al acercarle una linterna sube; con el LM35, la temperatura aumenta al sostener el sensor entre los dedos. Lo interesante de esta actividad es que ya no se trata de una señal que uno controla girando una perilla, sino de una variable del entorno que el sistema mide y reporta por sí solo.
+Describir qué se hizo para provocar cambios en el sensor y cómo respondió la gráfica._ Por ejemplo, al tapar el LDR con la mano el porcentaje de luz cae y al acercarle una linterna sube; con el LM35, la temperatura aumenta al sostener el sensor entre los dedos. Lo interesante de esta actividad es que ya no se trata de una señal que uno controla girando una perilla, sino de una variable del entorno que el sistema mide y reporta por sí solo.
 
 ---
 
