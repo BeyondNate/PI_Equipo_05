@@ -287,7 +287,7 @@ La siguiente imagen muestra la evidencia de los datos del potenciómetro enviado
 
 <img width="830" height="463" alt="image" src="https://github.com/user-attachments/assets/da2af022-5b27-4ffc-9312-04fa33d6ac0b" />
 
-![ThingSpeak - Actividad 03](images/actividad-03/thingspeak.jpg)
+<img width="900" height="1600" alt="image" src="https://github.com/user-attachments/assets/2c7a431b-44b1-4594-b8b2-973b7aac4c9f" />
 
 Datos + Grafica resultante:
 
