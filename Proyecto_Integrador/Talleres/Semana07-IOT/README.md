@@ -419,11 +419,11 @@ El panel de control IoT provee una interfaz gráfica intuitiva para el monitoreo
 Visualización inmediata de las condiciones ambientales a través de medidores semicirculares (*Gauges*), indicando grados Celsius y porcentaje de humedad relativa. En la esquina superior derecha se ubica el interruptor de control remoto.
 
 <p align="center">
-  <img src="images/dashboard-indicadores-25.png" width="700" alt="Indicadores Gauge y Switch"><br>
+  <img src="images/dashboard-indicadores-25.png" width="500" alt="Indicadores Gauge y Switch"><br>
   <em>Indicadores Gauge y Switch</em>
 </p>
 <p align="center">
-  <img src="images/dashboard-indicadores-random.jpeg" width="700" alt="Indicadores Gauge y Switch"><br>
+  <img src="images/dashboard-indicadores-random.jpeg" width="500" alt="Indicadores Gauge y Switch"><br>
   <em>Indicadores Gauge y Switch</em>
 </p>
 
@@ -431,7 +431,7 @@ Visualización inmediata de las condiciones ambientales a través de medidores s
 Se incorporan gráficas lineales que registran el histórico de las variables, permitiendo visualizar tendencias, caídas de temperatura o variaciones a lo largo del tiempo.
 
 <p align="center">
-  <img src="images/dashboard-grafica-tendencia.jpeg" width="700" alt="Gráfica de Variación de Temperatura"><br>
+  <img src="images/dashboard-grafica-tendencia.jpeg" width="500" alt="Gráfica de Variación de Temperatura"><br>
   <em>Gráfica de Variación de Temperatura</em>
 </p>
 
