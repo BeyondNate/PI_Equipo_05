@@ -77,15 +77,7 @@ Este repositorio contiene la implementación de un sistema de Internet de las Co
 | `equipo05/sensor/datos` | ESP32 → Node-RED | JSON con temperatura y humedad |
 | `equipo05/actuadores/led` | Node-RED → ESP32 | `ON` u `OFF` |
  
-### Formato del mensaje
- 
-```json
-{
-  "dispositivo": "ESP32_Equipo05",
-  "temperatura": 25.40,
-  "humedad": 60.00
-}
-```
+---
 
 ## Firmware del ESP32
 
