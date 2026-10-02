@@ -1,32 +1,10 @@
-# Taller de Internet de las Cosas (IoT) con ESP32
+# Taller de Internet IoT con ESP32
 
 Repositorio correspondiente al desarrollo de las actividades prácticas del **Taller de Internet de las Cosas (IoT)**.
 
 En este taller se trabaja con el **ESP32 Dev Kit 1**, sensores y plataformas IoT para realizar adquisición de datos, comunicación mediante Wi-Fi y visualización de información en la nube.
 
 Las actividades desarrolladas abarcan desde la lectura de un potenciómetro y el procesamiento de señales analógicas, hasta el envío de datos a plataformas IoT como **Arduino Cloud, ThingSpeak y Ubidots**.
-
----
-
-## Contenido
-
-- [Objetivos](#-objetivos)
-- [Materiales](#-materiales)
-- [Actividad 01 - Lectura de un potenciómetro](#-actividad-01---lectura-de-un-potenciómetro-con-esp32)
-- [Actividad 02 - Conexión Wi-Fi](#-actividad-02---conexión-wi-fi-mediante-hotspot)
-- [Actividad 03 - Envío del potenciómetro a la nube](#-actividad-03---enviando-datos-del-potenciómetro-a-la-nube)
-- [Actividad 04 - Envío de datos de un sensor a la nube](#-actividad-04---enviando-datos-de-un-sensor-a-la-nube)
-- [Actividad 05 - Envío de datos de un sensor a la nube](#-actividad-05---controlando-un-actuador-led-desde-la-nube--red)
-- [Tecnologías y plataformas utilizadas](#-tecnologías-y-plataformas-utilizadas)
-- [Resultados](#-resultados)
-- [Conclusiones](#-conclusiones)
-- [Estructura del repositorio](#-estructura-del-repositorio)
-
----
-
-# Objetivos
-
-El taller tiene como objetivo desarrollar conocimientos prácticos y teóricos relacionados con el **Internet de las Cosas (IoT)** mediante el uso de dispositivos como el ESP32.
 
 Durante las actividades se trabaja con:
 
@@ -39,23 +17,6 @@ Durante las actividades se trabaja con:
 - Conexión del ESP32 a una red inalámbrica.
 - Envío de información a plataformas IoT.
 - Monitoreo de datos en tiempo real mediante plataformas en la nube.
-
----
-
-# Materiales
-
-Para el desarrollo del taller se utilizaron los siguientes materiales:
-
-- ESP32 Dev Kit 1.
-- Arduino Explore IoT Kit.
-- Kit de sensores Keyestudio 48 en 1.
-- Multímetro.
-- Protoboard.
-- Cables de conexión.
-- Potenciómetro.
-- Smartphone utilizado como Hotspot Wi-Fi.
-
----
 
 # Actividad 01 - Lectura de un potenciómetro con ESP32
 
@@ -106,7 +67,9 @@ Monitor Serie
 
 ## Circuito
 
-![Circuito de la Actividad 01](images/actividad-01/circuito.jpeg)
+<img width="1204" height="1599" alt="image" src="https://github.com/user-attachments/assets/5c88f3e7-f64c-481b-b0c0-7d3781c23414" />
+
+<img width="827" height="470" alt="image" src="https://github.com/user-attachments/assets/38a34845-f946-40ea-8066-9dffe979d126" />
 
 ## Código
 
@@ -152,6 +115,8 @@ void loop() {
 ## Monitor Serie
 
 En el Monitor Serie se muestran los valores obtenidos del potenciómetro y el voltaje correspondiente.
+
+<img width="1600" height="1204" alt="image" src="https://github.com/user-attachments/assets/d804cf8c-1ecb-4ef6-b5fc-68b8a0289534" />
 
 ![Monitor Serie de la Actividad 01](images/actividad-01/monitor-serie.jpg)
 
@@ -216,7 +181,12 @@ El circuito de la actividad 2 es la misma que la de la actividad 1.
 
 Una vez establecida la conexión, el Monitor Serie muestra la información correspondiente a la conexión y la dirección IP asignada al ESP32.
 
-![Monitor Serie con la IP del ESP32](images/actividad-02/monitor-serie-ip.jpg)
+<img width="321" height="583" alt="image" src="https://github.com/user-attachments/assets/e9e2266a-e9b9-4341-b988-64370fd40e75" />
+
+<img width="660" height="861" alt="image" src="https://github.com/user-attachments/assets/83004304-e79c-4ea7-9eed-0556f91d2794" />
+
+En esta imagen el teléfono móvil que cumple la función de hostpost tiene como nombre "POCO_F5"
+
 
 ## Código
 
@@ -315,8 +285,73 @@ ThingSpeak es una plataforma utilizada para recibir y visualizar datos provenien
 
 La siguiente imagen muestra la evidencia de los datos del potenciómetro enviados a ThingSpeak.
 
+<img width="830" height="463" alt="image" src="https://github.com/user-attachments/assets/da2af022-5b27-4ffc-9312-04fa33d6ac0b" />
+
 ![ThingSpeak - Actividad 03](images/actividad-03/thingspeak.jpg)
 
+Datos + Grafica resultante:
+
+<img width="838" height="467" alt="image" src="https://github.com/user-attachments/assets/33c77840-436f-4144-9e6c-c0439f952094" />
+
+## Codigo:
+
+```cpp
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+const char* ssid = "UPCH_CENTRAL";
+const char* password = "CAYETANO2022";
+
+String apiKey = "5QTSTW5OQN710G30";
+
+const int POT_PIN = 34;
+
+void setup() {
+  Serial.begin(115200);
+
+  analogReadResolution(12);
+
+  WiFi.begin(ssid, password);
+
+  Serial.print("Conectando a Wi-Fi");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println();
+  Serial.println("Wi-Fi conectado");
+  Serial.println(WiFi.localIP());
+}
+
+void loop() {
+
+  int valor = analogRead(POT_PIN);
+
+  Serial.print("Potenciometro: ");
+  Serial.println(valor);
+
+  if (WiFi.status() == WL_CONNECTED) {
+
+    HTTPClient http;
+
+    String url = "http://api.thingspeak.com/update?api_key=" 
+                 + apiKey + "&field1=" + String(valor);
+
+    http.begin(url);
+
+    int codigo = http.GET();
+
+    Serial.print("Respuesta ThingSpeak: ");
+    Serial.println(codigo);
+
+    http.end();
+  }
+
+  delay(15000);
+}
+```
 ## Resultado
 
 Se logró enviar la información correspondiente a la variación del potenciómetro hacia la plataforma IoT utilizada:
@@ -372,8 +407,10 @@ Evidencia de los datos obtenidos del sensor y enviados a ThingSpeak.
 
 ![ThingSpeak - Actividad 04](images/actividad-04/thingspeak.jpg)
 
-## Código
+<img width="311" height="577" alt="image" src="https://github.com/user-attachments/assets/cc504ee1-7c71-4e74-87ed-720462d2bdd8" />
 
+
+## Código
 
 ```cpp
 #include <WiFi.h>
@@ -517,7 +554,7 @@ Plataforma Web / Navegador
 
 ## Circuito
 
-![Circuito de la Actividad 05](../images/actividad-05/circuito.jpg)
+<img width="900" height="1600" alt="image" src="https://github.com/user-attachments/assets/8ec66d29-3cea-4557-bd8e-35b18b518b73" />
 
 ---
 
