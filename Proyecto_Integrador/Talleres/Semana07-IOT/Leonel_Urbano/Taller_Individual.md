@@ -405,7 +405,7 @@ El ESP32 obtiene las mediciones del sensor y las transmite mediante Wi-Fi a las 
 
 Evidencia de los datos obtenidos del sensor y enviados a ThingSpeak.
 
-![ThingSpeak - Actividad 04](images/actividad-04/thingspeak.jpg)
+<img width="312" height="222" alt="image" src="https://github.com/user-attachments/assets/64bb778f-0ca4-47a1-ac15-2e3d341db341" />
 
 <img width="311" height="577" alt="image" src="https://github.com/user-attachments/assets/cc504ee1-7c71-4e74-87ed-720462d2bdd8" />
 
@@ -666,16 +666,26 @@ void loop() {
   client.loop();
 }
 ```
+## Evidencia de Proceso
+
+<img width="323" height="361" alt="image" src="https://github.com/user-attachments/assets/cefaab14-81d3-465f-b9c0-dc5f4b8e3d88" />
+
+
+<img width="317" height="571" alt="image" src="https://github.com/user-attachments/assets/4ecf32fd-9d85-49e6-8f15-8726a7716a63" />
+
+
+<img width="318" height="577" alt="image" src="https://github.com/user-attachments/assets/de0a4872-2e8d-4d8d-b819-ceb5ef9712e1" />
+
 
 ## Evidencia de la Interfaz Web
 
 A continuación se muestra la interfaz visualizada desde el navegador al ingresar a la dirección IP asignada al ESP32:
 
-![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-1.jpg)
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/612b2070-3c7b-4e4f-ac42-1d3c55cc24c0" />
 
-![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-2.jpg)
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/4de57d54-611a-4c84-b843-121672250878" />
 
-![Interfaz de Control Web - Actividad 05](../images/actividad-05/web-interface-3.jpg)
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/420a5947-7d12-4a51-83a4-df961f8f0672" />
 
 ---
 
