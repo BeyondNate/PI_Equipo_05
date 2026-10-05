@@ -87,10 +87,10 @@ Nuestro proyecto parte de una idea:
 | Foto | Integrante | Rol | Intereses |
 | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | -------------------------- | ---------------------------------------------- |
 | <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/MarceloAlarcon.jpg" width="85"/> | **Marcelo Alarcón Camones** | 👑 Líder del equipo | Innovación social, sostenibilidad, modelado 3D |
-| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/BradCardenas.png" width="85"/> | **Brad Cárdenas Parián** | 🔎 Investigación | Diseño de aplicaciones, análisis de datos |
-| <img src="https://github.com/user-attachments/assets/561695b6-8b0f-465a-8a11-ca90d39cd40b" width="85"/> | **Leonel Urbano Castillo** | 🎨 Diseño | Diseño de prototipos, modelado 3D |
+| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/BradCardenas.png" width="85"/> | **Brad Cárdenas Parián** | 🔎 Diseño y modelado | Diseño de prototipos, modelado 3D |
+| <img src="https://github.com/user-attachments/assets/561695b6-8b0f-465a-8a11-ca90d39cd40b" width="85"/> | **Leonel Urbano Castillo** | 🎨 Investigación | Redacción de informes técnicos, divulgación científica |
 | <img src="https://github.com/user-attachments/assets/90510dc9-49d0-41fb-b6e2-53ddaf844217" width="85"/> | **Idania Parhuay Meza** | 📝 Documentación | Comunicación científica, redacción técnica |
-| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/GaelMilla.png" width="85"/> | **Gael Milla Fasabi** | 💻 Programación / Modelado | Programación, documentación de hallazgos |
+| <img src="https://raw.githubusercontent.com/BeyondNate/PI_Equipo_05/main/Recursos/Im%C3%A1genes/GaelMilla.png" width="85"/> | **Gael Milla Fasabi** | 💻 Programación / Modelado | Programación, análisis de datos |
 
 ---
 
