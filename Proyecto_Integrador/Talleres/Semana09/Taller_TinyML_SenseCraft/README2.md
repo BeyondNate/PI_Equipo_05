@@ -10,13 +10,13 @@ Clasificar imágenes en tiempo real usando la XIAO ESP32S3 Sense y SenseCraft AI
 - Clases: lentes y celulares.
 
 ## Datos
-- Origen: [importados / tomados en tiempo real]
+- Origen: [tomados en tiempo real]
 - Cantidad de imágenes: [N] de lentes y [N] de celulares
 - Archivo: `datos.zip`
 
 ## Entrenamiento
-- Parámetros usados: [épocas, tamaño de imagen, etc.]
-- Resultado (precisión): [%]
+- Parámetros usados: [Para lentes, 138 fotos de diferentes lentes en diferentes angulos. Para celulares, 138 fotos de diferentes celulares, en diferentes angulos]
+- Confianza: [50%]
 - Captura: ![](img/entrenamiento.png)
 
 ## Vista previa y despliegue
@@ -24,14 +24,13 @@ Clasificar imágenes en tiempo real usando la XIAO ESP32S3 Sense y SenseCraft AI
 - Despliegue en la placa: ![](img/deploy.png)
 
 ## Salida GPIO
-- Pin usado: [D_]
-- Clase que activa el LED: [lentes / celulares]
+- Clase que activa el LED: [lentes]
 - Captura del ajuste: ![](img/gpio_ajuste.png)
 
 | Integrante | Captura | Resultado |
 |---|---|---|
-| [Nombre 1] | ![](img/gpio1.png) | LED encendido al mostrar [objeto] |
-| [Nombre 2] | ![](img/gpio2.png) | LED encendido al mostrar [objeto] |
+| [Leonel Urbano] | ![](img/gpio1.png) | LED encendido al mostrar [objeto] |
+| [Gael Milla] | ![](img/gpio2.png) | LED encendido al mostrar [objeto] |
 
 ## Archivos del repositorio
 - `datos.zip`
