@@ -53,47 +53,30 @@ Este proyecto documenta la implementación de un modelo de visión por computado
 
 📸 **Captura de la implementación:**
 
-![Implementación del modelo](images/01_implementacion_modelo.png)
-
+![Implementación del modelo](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/3.png)
+![Implementación del modelo11](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/2.png)
 ---
 
 ## 2️⃣ Pruebas del modelo
 
 Se realizaron pruebas de reconocimiento con distintos integrantes del equipo para verificar el funcionamiento del modelo.
 
-### 🧑 Integrante 1: [Nombre]
+### 🧑 Integrante 1: Brad
 
-![Prueba Integrante 1](images/02_prueba_integrante1.png)
+![Prueba Integrante 1](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/bradcino.jpeg)
 
-- **Clase detectada:** [Ej: persona]
-- **Confianza obtenida:** [Ej: 92 %]
-- **Observaciones:** [Ej: buena iluminación, detección inmediata]
 
-### 🧑 Integrante 2: [Nombre]
+### 🧑 Integrante 2: Idania
 
-![Prueba Integrante 2](images/03_prueba_integrante2.png)
+![Prueba Integrante 2](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/idaniaa.jpeg)
 
-- **Clase detectada:** [Ej: persona]
-- **Confianza obtenida:** [Ej: 88 %]
-- **Observaciones:** [Ej: ligera variación al cambiar de ángulo]
 
-### 🧑 Integrante 3: [Nombre]
+### 🧑 Integrante 3: Marcelo
 
-![Prueba Integrante 3](images/04_prueba_integrante3.png)
+![Prueba Integrante 3](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/mamacerlo.jpeg)
 
-- **Clase detectada:** [Ej: persona]
-- **Confianza obtenida:** [Ej: 85 %]
-- **Observaciones:** [Ej: menor confianza con poca luz]
 
-### 📊 Resumen de resultados
-
-| Integrante | Clase detectada | Confianza | Resultado |
-|------------|-----------------|-----------|-----------|
-| [Integrante 1] | [Clase] | [92 %] | ✅ Correcto |
-| [Integrante 2] | [Clase] | [88 %] | ✅ Correcto |
-| [Integrante 3] | [Clase] | [85 %] | ✅ Correcto |
-
----
+--- 
 
 ## 3️⃣ Prueba de salida GPIO
 
@@ -104,17 +87,7 @@ Se realizaron pruebas de reconocimiento con distintos integrantes del equipo par
 | LED (ánodo, + ) con resistencia | [GPIO X / Pin D#] |
 | LED (cátodo, − ) | GND |
 
-📸 **Captura del montaje:**
 
-![Montaje del circuito](images/05_montaje_circuito.png)
-
-### Configuración de la salida GPIO en SenseCraft AI
-
-1. En el espacio de trabajo del modelo, abrir la sección **Output / Settings**.
-2. Activar la salida **GPIO**.
-3. Seleccionar el pin **[GPIO X]**.
-4. Definir la condición: cuando se detecte la clase **[nombre de la clase]** con confianza ≥ **[valor %]**, el pin pasa a nivel **HIGH**.
-5. Guardar la configuración y aplicarla al dispositivo.
 
 📸 **Captura del ajuste GPIO:**
 
@@ -124,9 +97,20 @@ Se realizaron pruebas de reconocimiento con distintos integrantes del equipo par
 
 Cuando el modelo reconoce **[clase]**, la salida GPIO se activa y el LED se enciende.
 
-| LED apagado (sin detección) | LED encendido (con detección) |
-|:---------------------------:|:-----------------------------:|
-| ![LED apagado](images/07_led_apagado.png) | ![LED encendido](images/08_led_encendido.png) |
+
+### 🧑 Integrante 1: Brad
+
+![Prueba Integrante 1](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/bradluz.jpeg)
+
+
+### 🧑 Integrante 2: Idania
+
+![Prueba Integrante 2](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/idanialuz.jpeg)
+
+
+### 🧑 Integrante 3: Marcelo
+
+![Prueba Integrante 3](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/marceloluz.jpeg)
 
 ---
 
@@ -144,4 +128,4 @@ Cuando el modelo reconoce **[clase]**, la salida GPIO se activa y el LED se enci
 
 ---
 
-<p align="center">Hecho con ❤️ por [Nombre del equipo] · [Curso / Universidad] · [Año]</p>
+<p align="center">Hecho con amor </p>
