@@ -94,7 +94,7 @@ Se realizaron pruebas de reconocimiento con tres integrantes del equipo para ver
 
 ![Figura 4](assets/idaniaa.jpeg)
 
-**Figura 4.** Evidencia de Idania Parguay: [descripción]. En esta imagen, Idania se encargó de [actividad realizada].
+**Figura 4.** En esta imagen, Idania se encargó de [actividad realizada].
 
 ### 6.3. Prueba con Marcelo Alarcon
 
