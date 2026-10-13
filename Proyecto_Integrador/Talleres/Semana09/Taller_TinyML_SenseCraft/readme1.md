@@ -68,39 +68,27 @@ Este documento presenta la implementación de un modelo de visión por computado
 5. Esperar a que finalice la carga del modelo en el dispositivo.
 6. Verificar en la vista previa (*Preview*) que la cámara muestra las detecciones.
 
-### 5.3. Evidencia de la implementación
+### 5.3. Evidencia de la implementación del modelo de detección
 
 ![Figura 1](assets/3.png)
 
-**Figura 1.** Evidencia de Idania Parhuay: implementación del modelo en SenseCraft AI. En esta imagen, Idania se encargó de implementar el modelo preestablecido de SenseCraft AI en el dispositivo.
-
-![Figura 2](assets/2.png)
-
-**Figura 2.** Evidencia de Idania Parguay: [descripción de lo que muestra la imagen]. En esta imagen, Idania se encargó de implementar el modelo preestablecido de SenseCraft AI en el dispositivo.
-
----
+**Figura 1.** Evidencia de la implementación del modelo de detección de géneros en SenseCraft AI en Idania Parhuay y Glicerio Urbano. 
 
 ## 6. Pruebas del modelo
 
-Se realizaron pruebas de reconocimiento con tres integrantes del equipo para verificar el funcionamiento del modelo.
+Se realizaron pruebas iniciales de reconocimiento con otros dos integrantes del equipo ( Brad Cardenas y Marcelo Alarcon) para verificar el funcionamiento del reconomiento del modelo.
 
 ### 6.1. Prueba con Brad Cardenas
 
 ![Figura 3](assets/bradcino.jpeg)
 
-**Figura 3.** Evidencia de Brad Cardenas: [descripción]. En esta imagen, Brad se encargó de [actividad realizada].
+**Figura 2.** Evidencia de Brad Cardenas
 
-### 6.2. Prueba con Idania Parhuay
-
-![Figura 4](assets/idaniaa.jpeg)
-
-**Figura 4.** En esta imagen, Idania se encargó de [actividad realizada].
-
-### 6.3. Prueba con Marcelo Alarcon
+### 6.2. Prueba con Marcelo Alarcon
 
 ![Figura 5](assets/mamacerlo.jpeg)
 
-**Figura 5.** Evidencia de Marcelo Alarcon: [descripción]. En esta imagen, Marcelo se encargó de [actividad realizada].
+**Figura 4.** Evidencia de Marcelo Alarcon
 
 ---
 
@@ -116,25 +104,29 @@ La placa XIAO ESP32S3 Sense incluye un LED integrado, por lo que no fue necesari
 
 ### 7.2. Configuración de la salida GPIO
 
-![Figura 6](assets/06_configuracion_gpio.png)
+<img width="558" height="743" alt="image" src="https://github.com/user-attachments/assets/1526a5b4-4325-45fe-adc4-242467b78c6a" />
 
-**Figura 6.** Evidencia de [integrante]: configuración de la salida GPIO. En esta imagen, [integrante] se encargó de [actividad realizada].
+**Figura 5.** Evidencia de Idania Parhuay configuración de la salida GPIO.
 
-### 7.3. Resultado: LED encendido al reconocer la clase
+![Figura 2](assets/2.png)
+
+**Figura 6.** Evidencia de la implementación del GPIO en la clase male para el encendido del LED.
+
+### 7.3. Resultado: LED encendido al reconocer la clase male
 
 Cuando el modelo reconoce **[clase]**, la salida GPIO se activa y el LED se enciende.
 
 ![Figura 7](assets/bradluz.jpeg)
 
-**Figura 7.** Evidencia de Brad Cardenas: LED encendido ante el reconocimiento de [clase]. En esta imagen, Brad se encargó de [actividad realizada].
+**Figura 7.** Evidencia de Brad Cardenas: LED encendido ante el reconocimiento de male. 
 
 ![Figura 8](assets/idanialuz.jpeg)
 
-**Figura 8.** Evidencia de Idania Parguay: LED encendido ante el reconocimiento de [clase]. En esta imagen, Idania se encargó de [actividad realizada].
+**Figura 8.** Evidencia de Idania Parhuay: LED apagado ante el reconocimiento de female. 
 
 ![Figura 9](assets/marceloluz.jpeg)
 
-**Figura 9.** Evidencia de Marcelo Alarcon: LED encendido ante el reconocimiento de [clase]. En esta imagen, Marcelo se encargó de [actividad realizada].
+**Figura 9.** Evidencia de Marcelo Alarcon: LED encendido ante el reconocimiento de male.
 
 ---
 
