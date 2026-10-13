@@ -1,131 +1,152 @@
+# Taller TinyML con SenseCraft AI: implementación de un modelo y prueba de salida GPIO
 
-# 🤖 Implementación de Modelo en SenseCraft AI con Salida GPIO
-
-![Plataforma](https://play-lh.googleusercontent.com/Lg_-OXz_8Ha3MXh-iZDA4YfaZjQ12kaQDyOHhCfeJHLWLj-To65S4LOF4MpxN7_SRwIny4YW_tJC7KT6Tgotbw)
-![Hardware](https://files.seeedstudio.com/wiki/SeeedStudio-XIAO-ESP32S3/img/xiaoesp32s3sense.jpg)
-
-## 📋 Descripción
-
-Este proyecto documenta la implementación de un modelo de visión por computador en **SenseCraft AI**, las pruebas de reconocimiento realizadas por integrantes del equipo y la configuración de una **salida GPIO** que activa un LED cuando el modelo detecta la clase configurada.
-
-## 🎯 Objetivos
-
-- [x] Implementar otro modelo de SenseCraft AI.
-- [x] Realizar pruebas del modelo con capturas de 2 a 3 integrantes del equipo.
-- [x] Probar la salida GPIO con captura del ajuste y del LED encendido ante el reconocimiento.
-
-## 👥 Integrantes del equipo
-
-| Nombre | Rol |
-|--------|-----|
-| Brad Cardenas | Tester |
-| Idania Parguay] | Tester |
-| Marcelo Alarcon | Tester |
-
-## 🧰 Materiales y herramientas
-
-- Dispositivo: **[Ej: Grove Vision AI V2 / XIAO ESP32S3 Sense / reComputer]**
-- Plataforma: [SenseCraft AI](https://sensecraft.seeed.cc/ai/)
-- LED + resistencia de [220 Ω]
-- Cables jumper y protoboard
-- Cable USB-C
-- Computador con navegador compatible (Chrome / Edge)
+**Proyecto Integrador – Equipo 05 | Semana 09**
 
 ---
 
-## 1️⃣ Implementación del modelo
+## Tabla de contenido
 
-### Modelo seleccionado
+1. [Descripción](#1-descripción)
+2. [Objetivos](#2-objetivos)
+3. [Integrantes del equipo](#3-integrantes-del-equipo)
+4. [Materiales y herramientas](#4-materiales-y-herramientas)
+5. [Implementación del modelo](#5-implementación-del-modelo)
+6. [Pruebas del modelo](#6-pruebas-del-modelo)
+7. [Prueba de salida GPIO](#7-prueba-de-salida-gpio)
+8. [Resultados y conclusiones](#8-resultados-y-conclusiones)
+9. [Referencias](#9-referencias)
 
-- **Nombre del modelo:** [Ej: Detección de personas / Reconocimiento de gestos / Detección de objetos]
-- **Tipo:** [Clasificación / Detección de objetos / Pose]
-- **Clases que reconoce:** [Ej: persona, mano, taza]
-- **Motivo de elección:** [Breve justificación]
+---
 
-### Pasos realizados
+## 1. Descripción
+
+Este documento presenta la implementación de un modelo de visión por computador en la plataforma **SenseCraft AI**, las pruebas de reconocimiento realizadas por los integrantes del equipo y la configuración de una **salida GPIO** que enciende el LED integrado del dispositivo cuando el modelo detecta la clase configurada.
+
+## 2. Objetivos
+
+- Implementar otro modelo de SenseCraft AI.
+- Realizar pruebas del modelo con capturas de pantalla de 2 a 3 integrantes del equipo.
+- Probar la salida GPIO, evidenciando el ajuste y el LED encendido ante el reconocimiento correspondiente.
+
+## 3. Integrantes del equipo
+
+| Nombre | Rol | Participación |
+|--------|-----|---------------|
+| Brad Cardenas | Tester | [Describir] |
+| Idania Parhuay | Tester | Implementación del modelo preestablecido de SenseCraft AI |
+| Marcelo Alarcon | Tester | [Describir] |
+
+## 4. Materiales y herramientas
+
+| Elemento | Detalle |
+|----------|---------|
+| Dispositivo | Seeed Studio XIAO ESP32S3 Sense |
+| Cámara | Módulo de cámara incluido en la placa de expansión Sense (conexión tipo módulo) |
+| Indicador de salida | LED integrado en la placa XIAO ESP32S3 |
+| Plataforma | [SenseCraft AI](https://sensecraft.seeed.cc/ai/) |
+| Alimentación y datos | Cable USB-C |
+
+---
+
+## 5. Implementación del modelo
+
+### 5.1. Modelo seleccionado
+
+| Característica | Detalle |
+|----------------|---------|
+| Nombre del modelo | Swift-YOLO |
+| Categoría del modelo | Humano y Comportamiento |
+| Tipo | Detección de género |
+| Clases que reconoce | male / female |
+
+### 5.2. Procedimiento
 
 1. Ingresar a [SenseCraft AI](https://sensecraft.seeed.cc/ai/) e iniciar sesión.
 2. Conectar el dispositivo al computador mediante USB.
-3. Ir a la sección **Pretrained Models** y seleccionar el modelo **[nombre del modelo]**.
+3. Ir a la sección **Pretrained Models** y seleccionar el modelo **Detección de género**.
 4. Hacer clic en **Deploy Model** y elegir el dispositivo conectado.
 5. Esperar a que finalice la carga del modelo en el dispositivo.
 6. Verificar en la vista previa (*Preview*) que la cámara muestra las detecciones.
 
-📸 **Captura de la implementación:**
+### 5.3. Evidencia de la implementación
 
-![Implementación del modelo](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/3.png)
-![Implementación del modelo11](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/2.png)
+![Figura 1](assets/3.png)
+
+**Figura 1.** Evidencia de Idania Parhuay: implementación del modelo en SenseCraft AI. En esta imagen, Idania se encargó de implementar el modelo preestablecido de SenseCraft AI en el dispositivo.
+
+![Figura 2](assets/2.png)
+
+**Figura 2.** Evidencia de Idania Parguay: [descripción de lo que muestra la imagen]. En esta imagen, Idania se encargó de implementar el modelo preestablecido de SenseCraft AI en el dispositivo.
+
 ---
 
-## 2️⃣ Pruebas del modelo
+## 6. Pruebas del modelo
 
-Se realizaron pruebas de reconocimiento con distintos integrantes del equipo para verificar el funcionamiento del modelo.
+Se realizaron pruebas de reconocimiento con tres integrantes del equipo para verificar el funcionamiento del modelo.
 
-### 🧑 Integrante 1: Brad
+### 6.1. Prueba con Brad Cardenas
 
-![Prueba Integrante 1](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/bradcino.jpeg)
+![Figura 3](assets/bradcino.jpeg)
 
+**Figura 3.** Evidencia de Brad Cardenas: [descripción]. En esta imagen, Brad se encargó de [actividad realizada].
 
-### 🧑 Integrante 2: Idania
+### 6.2. Prueba con Idania Parhuay
 
-![Prueba Integrante 2](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/idaniaa.jpeg)
+![Figura 4](assets/idaniaa.jpeg)
 
+**Figura 4.** Evidencia de Idania Parguay: [descripción]. En esta imagen, Idania se encargó de [actividad realizada].
 
-### 🧑 Integrante 3: Marcelo
+### 6.3. Prueba con Marcelo Alarcon
 
-![Prueba Integrante 3](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/mamacerlo.jpeg)
+![Figura 5](assets/mamacerlo.jpeg)
 
+**Figura 5.** Evidencia de Marcelo Alarcon: [descripción]. En esta imagen, Marcelo se encargó de [actividad realizada].
 
---- 
+---
 
-## 3️⃣ Prueba de salida GPIO
+## 7. Prueba de salida GPIO
 
-### Conexión del hardware
+### 7.1. Hardware utilizado
+
+La placa XIAO ESP32S3 Sense incluye un LED integrado, por lo que no fue necesario realizar conexiones externas (LED, resistencia, protoboard ni cables jumper). La salida GPIO configurada en SenseCraft AI controla directamente este LED.
 
 | Componente | Pin del dispositivo |
 |------------|---------------------|
-| LED (ánodo, + ) con resistencia | [GPIO X / Pin D#] |
-| LED (cátodo, − ) | GND |
+| LED integrado de la placa | [GPIO / Pin utilizado] |
 
+### 7.2. Configuración de la salida GPIO
 
+![Figura 6](assets/06_configuracion_gpio.png)
 
-📸 **Captura del ajuste GPIO:**
+**Figura 6.** Evidencia de [integrante]: configuración de la salida GPIO. En esta imagen, [integrante] se encargó de [actividad realizada].
 
-![Configuración GPIO](images/06_configuracion_gpio.png)
-
-### Resultado: LED encendido al reconocer la clase
+### 7.3. Resultado: LED encendido al reconocer la clase
 
 Cuando el modelo reconoce **[clase]**, la salida GPIO se activa y el LED se enciende.
 
+![Figura 7](assets/bradluz.jpeg)
 
-### 🧑 Integrante 1: Brad
+**Figura 7.** Evidencia de Brad Cardenas: LED encendido ante el reconocimiento de [clase]. En esta imagen, Brad se encargó de [actividad realizada].
 
-![Prueba Integrante 1](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/bradluz.jpeg)
+![Figura 8](assets/idanialuz.jpeg)
 
+**Figura 8.** Evidencia de Idania Parguay: LED encendido ante el reconocimiento de [clase]. En esta imagen, Idania se encargó de [actividad realizada].
 
-### 🧑 Integrante 2: Idania
+![Figura 9](assets/marceloluz.jpeg)
 
-![Prueba Integrante 2](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/idanialuz.jpeg)
-
-
-### 🧑 Integrante 3: Marcelo
-
-![Prueba Integrante 3](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/assets/marceloluz.jpeg)
+**Figura 9.** Evidencia de Marcelo Alarcon: LED encendido ante el reconocimiento de [clase]. En esta imagen, Marcelo se encargó de [actividad realizada].
 
 ---
 
-## ✅ Resultados y conclusiones
+## 8. Resultados y conclusiones
 
-- El modelo **[nombre del modelo]** fue implementado correctamente en el dispositivo.
-- Se verificó su funcionamiento con **[3]** integrantes del equipo, con confianza entre **[85 % y 92 %]**.
-- La salida GPIO se configuró exitosamente y el LED se enciende únicamente cuando se reconoce la clase **[clase]**.
-- **Dificultades encontradas:** [Ej: ajustes de iluminación, umbral de confianza, conexión del dispositivo].
-- **Posibles mejoras:** [Ej: entrenar un modelo propio, controlar otros actuadores, ajustar el umbral]
-## 📚 Referencias
+- El modelo de detección de género fue implementado correctamente en el dispositivo.
+- Se verificó su funcionamiento con **[3]** integrantes del equipo, con niveles de confianza entre **[85 %]** y **[92 %]**.
+- La salida GPIO se configuró correctamente y el LED se enciende únicamente cuando se reconoce la clase male.
+- **Dificultades encontradas:** [Ej.: condiciones de iluminación, umbral de confianza, conexión del dispositivo].
+- **Posibles mejoras:** [Ej.: entrenar un modelo propio, controlar otros actuadores, ajustar el umbral de confianza].
 
-- [SenseCraft AI – Seeed Studio](https://sensecraft.seeed.cc/ai/)
-- [Documentación de Seeed Studio Wiki](https://wiki.seeedstudio.com/)
+## 9. Referencias
 
----
-
-<p align="center">Hecho con amor </p>
+- Seeed Studio. *SenseCraft AI*. https://sensecraft.seeed.cc/ai/
+- Seeed Studio. *Seeed Studio Wiki*. https://wiki.seeedstudio.com/
