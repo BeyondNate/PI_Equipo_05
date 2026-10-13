@@ -11,7 +11,7 @@ Clasificar imágenes en tiempo real usando la XIAO ESP32S3 Sense y SenseCraft AI
 
 ## Datos
 - Origen: [tomados en tiempo real]
-- Cantidad de imágenes: [N] de lentes y [N] de celulares
+- Cantidad de imágenes: 138 de lentes y 138 de celulares
 - Archivo: `datos.zip`
 
 ## Entrenamiento
