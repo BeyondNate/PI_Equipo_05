@@ -30,7 +30,7 @@ Clasificar imágenes en tiempo real usando la XIAO ESP32S3 Sense y SenseCraft AI
 | Integrante | Captura | Resultado |
 |---|---|---|
 | [Leonel Urbano] | ![](img/gpio1.jpeg) | LED encendido al mostrar celular |
-| [Gael Milla] | ![](img/gpio2.jpeg) | LED encendido al mostrar celular |
+| [Gael Milla] | ![](img/gpio2.jpg) | LED encendido al mostrar celular |
 
 ## Archivos del repositorio
 - `datos.zip`
