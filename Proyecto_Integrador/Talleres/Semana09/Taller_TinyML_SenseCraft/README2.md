@@ -10,27 +10,27 @@ Clasificar imágenes en tiempo real usando la XIAO ESP32S3 Sense y SenseCraft AI
 - Clases: lentes y celulares.
 
 ## Datos
-- Origen: [tomados en tiempo real]
+- Fueron tomados en tiempo real.
 - Cantidad de imágenes: 138 de lentes y 138 de celulares
 - Archivo: `datos.zip`
 
 ## Entrenamiento
-- Parámetros usados: [Para lentes, 138 fotos de diferentes lentes en diferentes angulos. Para celulares, 138 fotos de diferentes celulares, en diferentes angulos]
-- Confianza: [50%]
-- Captura: ![](img/entrenamiento.png)
+- Parámetros usados: Para lentes, 138 fotos de diferentes lentes en diferentes angulos. Para celulares, 138 fotos de diferentes celulares, en diferentes angulos
+- El nivel de confianza es del 50%.
+- Captura: ![](img/Entrenamiento.jpeg)
+- **Figura5.** Evidencia de Leonel Urbano . En esta imagen, Leonel se encargó de recopilar imagenes de los lentes.
+- Data: ![](img/data.jpeg)
 
 ## Vista previa y despliegue
-- Vista previa del modelo: ![](img/preview.png)
-- Despliegue en la placa: ![](img/deploy.png)
-
+- Vista previa y despliegue del modelo: ![](img/preview.jpg)
+**Figura 5.** Evidencia de Gael milla. En esta imagen, Gael se encargó de Comprobar el correcto funcionamiento del modelo.
 ## Salida GPIO
-- Clase que activa el LED: [lentes]
-- Captura del ajuste: ![](img/gpio_ajuste.png)
+- La clase que activa el LED es "lentes"
 
 | Integrante | Captura | Resultado |
 |---|---|---|
-| [Leonel Urbano] | ![](img/gpio1.png) | LED encendido al mostrar [objeto] |
-| [Gael Milla] | ![](img/gpio2.png) | LED encendido al mostrar [objeto] |
+| [Leonel Urbano] | ![](img/gpio1.jpeg) | LED encendido al mostrar celular |
+| [Gael Milla] | ![](img/gpio2.jpg) | LED encendido al mostrar celular |
 
 ## Archivos del repositorio
 - `datos.zip`
