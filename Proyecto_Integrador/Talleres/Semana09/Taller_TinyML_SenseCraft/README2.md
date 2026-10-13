@@ -34,4 +34,3 @@ Clasificar imágenes en tiempo real usando la XIAO ESP32S3 Sense y SenseCraft AI
 
 ## Archivos del repositorio
 - `datos.zip`
-- Modelo exportado: `[nombre del archivo]`
