@@ -11,10 +11,11 @@ Una vez entrenado, el modelo se desplegó en la placa XIAO ESP32S3 Sense. La cá
 
 ## Objetivo del modelo
 
-**Objetivo general:
+**Objetivo general:**
+
 Desarrollar e implementar un modelo propio de TinyML capaz de clasificar imágenes en tiempo real para distinguir entre lentes y celulares, utilizando la placa XIAO ESP32S3 Sense y la plataforma SenseCraft AI.
 
-**Objetivos específicos
+**Objetivos específicos:**
 - Crear un conjunto de datos mediante la captura de fotografías de diferentes lentes y celulares.
 - Variar las posiciones y los ángulos de los objetos fotografiados para proporcionar ejemplos visuales diversos al modelo.
 - Organizar y etiquetar las imágenes en dos clases: lentes y celulares.
