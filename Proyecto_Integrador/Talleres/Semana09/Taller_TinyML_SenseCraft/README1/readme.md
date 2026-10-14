@@ -122,7 +122,7 @@ La placa XIAO ESP32S3 Sense incluye un LED integrado, por lo que no fue necesari
 En esta imagen, Idania se encargó de configurar la salida GPIO en SenseCraft AI para que el LED integrado del dispositivo se active cuando el modelo reconoce la clase <i>male</i>.
  
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3859547d-7f89-4655-a7c5-824307c5d84d" alt="Figura 5" width="600">
+  <img src="https://github.com/user-attachments/assets/3859547d-7f89-4655-a7c5-824307c5d84d" alt="Figura 5" width="700">
 </p>
 <p align="center"><b>Figura 5.</b> :Implementación del GPIO en la clase male para el encendido del LED.</p>
 
@@ -162,7 +162,7 @@ En esta imagen, Marcelo se encargó de verificar el encendido del LED integrado 
  
 ---
 
-## 8. Resultados y conclusiones
+## 8. Resultados
 
 - El modelo de detección de género (Swift-YOLO) fue implementado y ejecutado correctamente en el dispositivo XIAO ESP32S3 Sense, y mostró las detecciones en tiempo real en la vista previa de SenseCraft AI.
 - Con el umbral de confianza configurado en 46 %, el modelo reconoció a los tres integrantes en la clase esperada. En la prueba de la Figura 1, también reconoció a un compañero (Leonel Urbano) en la clase <i>male</i> con una confianza del 76 %, en la misma imagen en la que reconoció a Idania con 83 %.
