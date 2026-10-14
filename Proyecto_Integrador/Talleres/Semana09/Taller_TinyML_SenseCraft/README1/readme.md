@@ -122,11 +122,12 @@ La placa XIAO ESP32S3 Sense incluye un LED integrado, por lo que no fue necesari
 En esta imagen, Idania se encargó de configurar la salida GPIO en SenseCraft AI para que el LED integrado del dispositivo se active cuando el modelo reconoce la clase <i>male</i>.
  
 <p align="center">
-  <img src="assets/2.png" alt="Figura 5" width="400">
+  <img src="https://github.com/user-attachments/assets/3859547d-7f89-4655-a7c5-824307c5d84d" />
+" alt="Figura 5" width="400">
 </p>
 <p align="center"><b>Figura 5.</b> :Implementación del GPIO en la clase male para el encendido del LED.</p>
 
- 
+
 ### 7.3. Resultado: LED encendido al reconocer la clase male
  
 Cuando el modelo reconoce la clase *<i>male</i>*, la salida GPIO se activa y el LED se enciende. Cuando reconoce la clase *<i>female</i>*, el LED permanece apagado.
