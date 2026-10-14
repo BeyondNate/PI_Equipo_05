@@ -37,6 +37,23 @@ Desarrollar e implementar un modelo propio de TinyML capaz de clasificar imágen
 | Plataforma | [SenseCraft AI](https://sensecraft.seeed.cc/ai/) |
 | Alimentación y datos | Cable USB-C |
 
+## Procedimiento
+1. Preparación del dispositivo: Conectar la placa XIAO ESP32S3 Sense al equipo mediante el cable USB-C y verificar que sea reconocida para trabajar con SenseCraft AI.
+
+2. Captura de imágenes: Fotografiar diferentes lentes y celulares. Para cada categoría, tomar imágenes desde distintas posiciones y ángulos, procurando incluir variedad de modelos y apariencias.
+
+3. Organización de los datos: Separar las fotografías en dos clases, lentes y celulares, y cargarlas en el proyecto de SenseCraft AI con sus etiquetas correspondientes.
+
+4. Entrenamiento: Utilizar las imágenes para entrenar el modelo de clasificación. En este proyecto se recopilaron 138 fotografías de lentes y 138 de celulares, para un total de 276 imágenes.
+
+5. Configuración de confianza: Establecer el nivel de confianza indicado para el proyecto en 53%. Este valor funciona como umbral para aceptar una predicción; no representa por sí mismo el porcentaje de exactitud del modelo.
+
+6. Vista previa y comprobación: Utilizar la vista previa de SenseCraft AI para comprobar las predicciones del modelo con imágenes de las dos categorías.
+
+7. Despliegue: Transferir o desplegar el modelo entrenado en la XIAO ESP32S3 Sense, siguiendo el flujo de implementación de SenseCraft AI.
+
+8. Prueba física: Presentar lentes y celulares frente a la cámara y observar la clase reconocida y la respuesta del LED integrado.
+   
 ## Entrenamiento
 - Parámetros usados: Para lentes, 138 fotos de diferentes lentes en diferentes angulos. Para celulares, 138 fotos de diferentes celulares, en diferentes angulos
 - El nivel de confianza es del 50%.
@@ -44,22 +61,6 @@ Desarrollar e implementar un modelo propio de TinyML capaz de clasificar imágen
 - **Figura5.** Evidencia de Leonel Urbano . En esta imagen, Leonel se encargó de recopilar imagenes de los lentes.
 - Data: ![](img/data.jpeg)
 
-## Procedimiento
-1. Preparación del dispositivo: conectar la placa XIAO ESP32S3 Sense al equipo mediante el cable USB-C y verificar que sea reconocida para trabajar con SenseCraft AI.
-
-2. Captura de imágenes: fotografiar diferentes lentes y celulares. Para cada categoría, tomar imágenes desde distintas posiciones y ángulos, procurando incluir variedad de modelos y apariencias.
-
-3. Organización de los datos: separar las fotografías en dos clases, lentes y celulares, y cargarlas en el proyecto de SenseCraft AI con sus etiquetas correspondientes.
-
-4. Entrenamiento: utilizar las imágenes para entrenar el modelo de clasificación. En este proyecto se recopilaron 138 fotografías de lentes y 138 de celulares, para un total de 276 imágenes.
-
-5. Configuración de confianza: establecer el nivel de confianza indicado para el proyecto en 53%. Este valor funciona como umbral para aceptar una predicción; no representa por sí mismo el porcentaje de exactitud del modelo.
-
-6. Vista previa y comprobación: utilizar la vista previa de SenseCraft AI para comprobar las predicciones del modelo con imágenes de las dos categorías.
-
-7. Despliegue: transferir o desplegar el modelo entrenado en la XIAO ESP32S3 Sense, siguiendo el flujo de implementación de SenseCraft AI.
-
-8. Prueba física: presentar lentes y celulares frente a la cámara y observar la clase reconocida y la respuesta del LED integrado.
 
 ## Vista previa y despliegue
 - Vista previa y despliegue del modelo: ![](img/preview.jpg)
