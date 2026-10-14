@@ -164,9 +164,15 @@ En esta imagen, Marcelo se encargó de verificar el encendido del LED integrado 
 
 ## 8. Resultados y conclusiones
 
-- El modelo de detección de género fue implementado correctamente en el dispositivo.
-- Se verificó su funcionamiento con **[3]** integrantes del equipo, con niveles de confianza entre **[85 %]** y **[92 %]**.
-- La salida GPIO se configuró correctamente y el LED se enciende únicamente cuando se reconoce la clase male.
-- **Dificultades encontradas:** [Ej.: condiciones de iluminación, umbral de confianza, conexión del dispositivo].
-- **Posibles mejoras:** [Ej.: entrenar un modelo propio, controlar otros actuadores, ajustar el umbral de confianza].
+- El modelo de detección de género (Swift-YOLO) fue implementado y ejecutado correctamente en el dispositivo XIAO ESP32S3 Sense, y mostró las detecciones en tiempo real en la vista previa de SenseCraft AI.
+- Con el umbral de confianza configurado en 46 %, el modelo reconoció a los tres integrantes en la clase esperada. En la prueba de la Figura 1, también reconoció a un compañero (Leonel Urbano) en la clase <i>male</i> con una confianza del 76 %, en la misma imagen en la que reconoció a Idania con 83 %.
+- El registro del dispositivo mostró un tiempo de inferencia cercano a 950 ms por cuadro (aproximadamente 1 cuadro por segundo), con un preprocesamiento de unos 80 ms y un posprocesamiento de apenas 1 a 2 ms.
+- La salida GPIO se configuró para que el LED integrado se encienda únicamente cuando se detecta la clase <i>male</i>. En las pruebas, el LED se encendió con Brad y Marcelo, y permaneció apagado con Idania, reconocida como <i>female</i>.
 
+## 9. Conclusiones
+
+- Se cumplió el objetivo del taller: se implementó un modelo preentrenado de SenseCraft AI, se probó con tres integrantes del equipo y se comprobó la salida GPIO mediante el LED integrado.
+- La confianza del modelo (76 % y 83 % en la Figura 1) quedó por encima del umbral de 46 %, lo que permitió que las detecciones fueran estables y que el LED respondiera a la clase configurada.
+- Un modelo preentrenado permite pasar rápidamente de la detección en pantalla a una acción física en el dispositivo, sin escribir código ni conectar componentes externos, porque el XIAO ESP32S3 Sense ya integra la cámara y el LED.
+- **Dificultades encontradas:** el registro del dispositivo mostró cuadros intermitentes sin detección (`boxes:[]`), lo que indica que el reconocimiento depende de la posición del rostro, de la iluminación y del tiempo de inferencia cercano a 1 s por cuadro.
+- **Posibles mejoras:** ajustar el umbral de confianza según el entorno, mejorar las condiciones de iluminación, entrenar un modelo propio con las clases que necesite el proyecto y controlar otros actuadores a partir de la misma salida GPIO.
