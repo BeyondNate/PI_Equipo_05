@@ -1,4 +1,4 @@
-# README 2 – Modelo propio del grupo
+# Taller TinyML con Sensecraft AI - Implementación de modelo propio.
 
 ## Integrantes
 - Leonel Urbano
