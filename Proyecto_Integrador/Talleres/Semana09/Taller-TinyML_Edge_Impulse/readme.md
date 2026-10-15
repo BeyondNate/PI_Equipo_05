@@ -42,16 +42,24 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 
 <br>
 
-## 3. Rendimiento del Modelo y Gráfico de Dispersión
+## 3. Rendimiento del Modelo y Gráficos de Dispersión
 
 <div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
-    <strong>Descripción:</strong> Se evaluó el rendimiento del modelo entrenado utilizando la versión cuantizada (int8). Los resultados muestran una precisión del 100% y una pérdida de 0.04. Además, se presentan dos gráficos de dispersión: el primero corresponde a una muestra aleatoria de la clasificación, y el segundo muestra la distribución general de todos los datos procesados, evidenciando una clara separación entre las clases "Billetera" y "Laptop".
+    <strong>Descripción:</strong> Se evaluó el rendimiento del modelo entrenado utilizando la versión cuantizada (int8). Los resultados muestran una precisión del 100% y una pérdida de 0.04. A continuación, se presentan dos gráficos de dispersión: el primero corresponde a la clasificación de una única muestra aleatoria, mientras que el segundo muestra la distribución general de todos los datos procesados, evidenciando una clara separación entre las clases "Billetera" y "Laptop".
 </div>
 
 <div align="center">
-    <img src="./images/figura3.png" alt="Métricas y Gráfico de Dispersión General" width="100%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="./images/figura3a.png" alt="Métricas y Gráfico de Dispersión General" width="100%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <br>
-    <em>Figura 3: Matriz de confusión, métricas de rendimiento y gráfico de dispersión general de los datos.</em>
+    <em>Figura 3a: Matriz de confusión, métricas de rendimiento y gráfico de dispersión general de los datos.</em>
+</div>
+
+<br>
+
+<div align="center">
+    <img src="./images/figura3b.png" alt="Gráfico de Dispersión de Muestra Aleatoria" width="70%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <br>
+    <em>Figura 3b: Gráfico de dispersión correspondiente a una muestra aleatoria clasificada correctamente.</em>
 </div>
 
 <br>
