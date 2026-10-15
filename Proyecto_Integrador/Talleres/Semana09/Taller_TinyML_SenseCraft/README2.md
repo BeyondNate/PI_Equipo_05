@@ -135,7 +135,7 @@ La configuración documentada establece que la clase **`lentes`** es la que acti
 
 | Integrante | Evidencia | Resultado registrado |
 |---|---|---|
-| Leonel Urbano | ![Prueba GPIO de Leonel](img/gpio1.jpeg) | LED encendido al mostrar un celular. |
+| Leonel Urbano | ![Prueba GPIO de Leonel](img/gpio1.jpg) | LED encendido al mostrar un celular. |
 | Gael Milla | ![Prueba GPIO de Gael](img/gpio2.jpg) | LED encendido al mostrar un celular. |
 
 Para completar la validación, se recomienda comprobar el comportamiento del LED con ambas categorías y verificar que la clase predicha coincida con la condición configurada para activar la salida.
