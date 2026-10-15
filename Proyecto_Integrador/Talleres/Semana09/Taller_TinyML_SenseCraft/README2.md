@@ -66,7 +66,7 @@ Desarrollar e implementar un modelo propio de TinyML capaz de clasificar imágen
 | Cable USB-C | Permite conectar la placa al equipo para su configuración y alimentación. |
 | SenseCraft AI | Plataforma utilizada para organizar los datos, entrenar el modelo y realizar su despliegue. |
 | Conjunto de datos | 276 fotografías distribuidas en dos categorías: lentes y celulares. |
-| `datos.zip` | Archivo del repositorio asociado al conjunto de datos. |
+| [classification_dataset_Readme_2.zip](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/classification_dataset_Readme_2.zip) | Archivo del repositorio asociado al conjunto de datos. |
 
 ## 5. Implementación del modelo
 
@@ -153,4 +153,4 @@ Para completar la validación, se recomienda comprobar el comportamiento del LED
 
 | Archivo | Descripción |
 |---|---|
-| `datos.zip` | Archivo asociado al conjunto de datos recopilado para el proyecto. |
+| [classification_dataset_Readme_2.zip](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/classification_dataset_Readme_2.zip) | Archivo asociado al conjunto de datos recopilado para el proyecto. |
