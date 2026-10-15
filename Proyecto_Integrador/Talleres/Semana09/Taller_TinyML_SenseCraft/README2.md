@@ -25,7 +25,7 @@
 
 ---
 
-## 1. Descripción
+## 📌 1. Descripción
 
 El presente proyecto consiste en desarrollar e implementar un sistema de clasificación de imágenes mediante técnicas de *Tiny Machine Learning* (TinyML), utilizando la placa **Seeed Studio XIAO ESP32S3 Sense** y la plataforma [SenseCraft AI](https://sensecraft.seeed.cc/ai/).
 
@@ -33,7 +33,7 @@ El modelo tiene como finalidad distinguir dos categorías de objetos: **lentes y
 
 Una vez entrenado, el modelo se desplegó en la placa para realizar predicciones a partir de las imágenes capturadas por la cámara. Asimismo, se realizaron pruebas con el LED integrado como indicador físico de salida, con el propósito de comprobar la respuesta del sistema ante los objetos presentados.
 
-## 2. Objetivos
+## 🎯 2. Objetivos
 
 ### Objetivo general
 
@@ -49,14 +49,28 @@ Desarrollar e implementar un modelo propio de TinyML capaz de clasificar imágen
 - Desplegar el modelo entrenado en la placa XIAO ESP32S3 Sense.
 - Comprobar las predicciones mediante la cámara y evaluar la respuesta del LED integrado.
 
-## 3. Integrantes del equipo
+## 👥 3. Integrantes del equipo
 
-| Integrante | Responsabilidad |
-|---|---|
-| Leonel Urbano | Recopilación de imágenes de muestra para el conjunto de datos y registro de evidencias del entrenamiento. |
-| Gael Milla | Comprobación del funcionamiento del modelo mediante la vista previa y registro de evidencias de las pruebas. |
+<table>
+  <thead>
+    <tr>
+      <th align="center">Integrante</th>
+      <th align="center">Responsabilidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">Leonel Urbano</td>
+      <td>Recopilación de imágenes y evidencias del entrenamiento.</td>
+    </tr>
+    <tr>
+      <td align="center">Gael Milla</td>
+      <td>Comprobación del modelo y evidencias de las pruebas.</td>
+    </tr>
+  </tbody>
+</table>
 
-## 4. Materiales y herramientas
+## 🧰 4. Materiales y herramientas
 
 | Material o herramienta | Descripción |
 |---|---|
@@ -68,7 +82,7 @@ Desarrollar e implementar un modelo propio de TinyML capaz de clasificar imágen
 | Conjunto de datos | 276 fotografías distribuidas en dos categorías: lentes y celulares. |
 | [classification_dataset_Readme_2.zip](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto_Integrador/Talleres/Semana09/Taller_TinyML_SenseCraft/classification_dataset_Readme_2.zip) | Archivo del repositorio asociado al conjunto de datos. |
 
-## 5. Implementación del modelo
+## ⚙️ 5. Implementación del modelo
 
 ### 5.1. Preparación del conjunto de datos
 
@@ -86,15 +100,20 @@ Las imágenes se cargaron en SenseCraft AI y se etiquetaron de acuerdo con la cl
 
 **Evidencia de recopilación de imágenes**
 
-![Recopilación de imágenes de lentes](img/Entrenamiento.jpeg)
-
-*Figura 1. Evidencia de la recopilación de imágenes realizada por Leonel Urbano.*
-
-**Organización de los datos**
-
-![Conjunto de datos](img/data.jpeg)
-
-*Figura 2. Evidencia del conjunto de datos utilizado para entrenar el modelo.*
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="img/Entrenamiento.jpeg" width="300" alt="Recopilación de imágenes">
+      <br>
+      <strong>Figura 1.</strong> Evidencia de la recopilación de imágenes realizada por Leonel Urbano.
+    </td>
+    <td align="center" width="50%">
+      <img src="img/data.jpeg" width="300" alt="Organización de datos">
+      <br>
+      <strong>Figura 2.</strong> Evidencia del conjunto de datos utilizado para entrenar el modelo.
+    </td>
+  </tr>
+</table>
 
 ### 5.2. Entrenamiento y configuración
 
@@ -108,46 +127,48 @@ Es importante señalar que el umbral de confianza no representa la exactitud del
 
 Después del entrenamiento, el modelo se desplegó en la placa XIAO ESP32S3 Sense siguiendo el procedimiento disponible en SenseCraft AI. La cámara se utilizó para capturar imágenes de los objetos y obtener las predicciones correspondientes.
 
-![Vista previa y despliegue del modelo](img/preview.jpg)
+<img src="img/preview.jpg" width="450" alt="Vista previa y despliegue del modelo">
 
 *Figura 3. Evidencia de Gael Milla durante la comprobación del funcionamiento del modelo.*
 
-## 6. Pruebas del modelo
+## 🧪 6. Pruebas del modelo
 
-Las pruebas tuvieron como finalidad comprobar que el modelo pudiera reconocer las dos categorías definidas a partir de las imágenes capturadas por la cámara.
+Las pruebas tuvieron como finalidad comprobar el funcionamiento del modelo de clasificación de imágenes, verificando su capacidad para reconocer las dos categorías definidas: lentes y celulares. Asimismo, se evaluó la respuesta del LED integrado como indicador físico asociado a la detección de celulares.
 
 El procedimiento contempló las siguientes actividades:
 
 1. Conectar la placa XIAO ESP32S3 Sense al equipo mediante el cable USB-C.
-2. Ejecutar el modelo previamente desplegado.
+2. Ejecutar el modelo previamente desplegado en la placa.
 3. Presentar diferentes lentes frente a la cámara y observar la predicción obtenida.
-4. Repetir el procedimiento con diferentes celulares.
-5. Registrar las predicciones y comprobar si corresponden con los objetos presentados.
-6. Verificar la respuesta del LED integrado durante las pruebas de salida.
+4. Repetir el procedimiento con diferentes celulares, registrando las predicciones y sus niveles de confianza.
+5. Comprobar la activación del LED integrado al presentar celulares frente a la cámara.
+6. Verificar que el LED se encienda cuando la confianza de la clase `celular` sea superior al 50 %.
 
-Estas pruebas permiten observar el comportamiento del sistema; sin embargo, no constituyen por sí solas una medición de su exactitud. Para evaluar el rendimiento con mayor precisión, sería necesario utilizar imágenes independientes de las empleadas durante el entrenamiento y registrar las predicciones correctas e incorrectas.
+Las pruebas permitieron observar el comportamiento del sistema y comprobar la relación entre las predicciones del modelo y la salida GPIO. No obstante, estas verificaciones funcionales no determinan por sí solas la exactitud general del clasificador. Para evaluar su rendimiento con mayor precisión, sería necesario realizar pruebas con imágenes independientes de las utilizadas durante el entrenamiento y registrar las predicciones correctas e incorrectas.
 
-## 7. Prueba de salida GPIO
+## 💡 7. Prueba de salida GPIO
 
-Como parte de la implementación, se utilizó el LED integrado en la placa como indicador físico asociado a una de las clases reconocidas por el modelo.
+Como parte de la implementación, se utilizó el LED integrado en la placa XIAO ESP32S3 Sense como indicador físico de salida, asociado a la clasificación de celulares.
 
-La configuración documentada establece que la clase **`lentes`** es la que activa el LED. No obstante, las evidencias registradas indican que el LED se encendió al mostrar un celular. Esta discrepancia debe verificarse para determinar si se debe a una clasificación incorrecta, a la configuración de la salida o a la lógica de control del LED.
+La lógica de control establece que el LED se enciende cuando el modelo identifica la clase **`celular` con un nivel de confianza superior al 50 %**. Si se cumple esta condición, se activa la salida GPIO correspondiente.
 
 | Integrante | Evidencia | Resultado registrado |
 |---|---|---|
-| Leonel Urbano | ![Prueba GPIO de Leonel](img/gpio1.jpg) | LED encendido al mostrar un celular. |
-| Gael Milla | ![Prueba GPIO de Gael](img/gpio2.jpg) | LED encendido al mostrar un celular. |
+| Leonel Urbano | <img src="img/gpio1.jpg" width="320" alt="Prueba GPIO de Leonel"> | LED encendido al mostrar un celular, al superar el umbral de confianza del 50 %. |
+| Gael Milla | <img src="img/gpio2.jpg" width="320" alt="Prueba GPIO de Gael"> | LED encendido al mostrar un celular, al superar el umbral de confianza del 50 %. |
 
-Para completar la validación, se recomienda comprobar el comportamiento del LED con ambas categorías y verificar que la clase predicha coincida con la condición configurada para activar la salida.
+Durante las pruebas, se comprobó la respuesta del LED al presentar celulares frente a la cámara. El resultado esperado es que la salida se active cuando la confianza de la clase `celular` sea superior al 50 %.
 
-## 8. Resultados y conclusiones
+Este comportamiento permite relacionar la predicción del modelo con una respuesta física del dispositivo, integrando la clasificación de imágenes con el control de una salida GPIO.
 
-- Se desarrolló un proyecto de TinyML orientado a la clasificación de imágenes en dos categorías: lentes y celulares, utilizando la placa XIAO ESP32S3 Sense y la plataforma SenseCraft AI.
-- Se recopiló un conjunto de datos equilibrado de 276 fotografías, con 138 imágenes por categoría. La variación de posiciones y ángulos buscó proporcionar diversidad visual durante el entrenamiento.
-- Se realizó el entrenamiento y despliegue de un modelo de clasificación de imágenes para generar predicciones a partir de las capturas de la cámara.
-- Se realizaron pruebas de funcionamiento mediante la vista previa del modelo y el uso del LED integrado como indicador físico de salida.
-- Se identificó una discrepancia entre la clase configurada para activar el LED y el resultado descrito en las evidencias. Es necesario revisar la predicción obtenida y la lógica de control de la salida GPIO antes de confirmar su funcionamiento correcto.
-- Como mejora futura, se recomienda evaluar el modelo con imágenes no utilizadas durante el entrenamiento y calcular métricas de rendimiento, como la exactitud y la matriz de confusión.
+## 📊 8. Resultados y conclusiones
+
+- Se desarrolló un sistema de TinyML para clasificar imágenes en dos categorías: lentes y celulares, utilizando la placa XIAO ESP32S3 Sense y la plataforma SenseCraft AI.
+- Se recopiló un conjunto de datos equilibrado de 276 fotografías, compuesto por 138 imágenes de lentes y 138 de celulares. La variación de posiciones y ángulos permitió incorporar diversidad visual durante el entrenamiento.
+- Se entrenó y desplegó un modelo de clasificación de imágenes capaz de generar predicciones a partir de las capturas obtenidas mediante la cámara de la placa.
+- Se integró el LED de la placa como indicador físico de salida, configurándolo para encenderse cuando la confianza de la clase `celular` supera el 50 %. De esta manera, se vinculó la clasificación realizada por el modelo con una respuesta física del dispositivo.
+- Las pruebas permitieron comprobar el funcionamiento del sistema y la activación del LED bajo la condición establecida. Sin embargo, todavía es necesario evaluar cuantitativamente el rendimiento del clasificador para determinar su nivel de exactitud.
+- Como mejora futura, se recomienda utilizar imágenes que no hayan participado en el entrenamiento y registrar las predicciones correctas e incorrectas. Con estos resultados, se podrán calcular métricas como la exactitud y elaborar una matriz de confusión para identificar posibles errores de clasificación.
 
 ### Archivos del repositorio
 
