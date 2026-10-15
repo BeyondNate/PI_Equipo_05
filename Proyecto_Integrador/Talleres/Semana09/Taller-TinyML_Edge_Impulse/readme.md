@@ -14,16 +14,16 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 
 ---
 
-## 1. Creación y Carga de Datos en Edge Impulse
+## 1. Creación del Proyecto y Carga de Datos
 
 <div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
-    <strong>Descripción:</strong> Se creó un nuevo proyecto en Edge Impulse y se subieron las imágenes capturadas previamente por la cámara del XIAO ESP32S3. Las imágenes se organizaron en dos clases distintas: "Billetera" y "Laptop", utilizando la opción de subida por lotes para asignar automáticamente las etiquetas correspondientes a cada archivo.
+    <strong>Descripción:</strong> Se creó una cuenta y un nuevo proyecto en Edge Impulse. Posteriormente, se subieron las imágenes capturadas previamente por la cámara del XIAO ESP32S3. Las imágenes se organizaron en dos clases distintas: "Billetera" y "Laptop", utilizando la opción de subida por lotes para asignar automáticamente las etiquetas correspondientes a cada archivo.
 </div>
 
 <div align="center">
-    <img src="./images/figura1.png" alt="Creación de proyecto en Edge Impulse" width="80%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="./images/figura1.png" alt="Creación de proyecto y carga de datos" width="90%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <br>
-    <em>Figura 1: Interfaz de inicio y creación del proyecto en Edge Impulse.</em>
+    <em>Figura 1: Interfaz de creación del proyecto y flujo para añadir datos existentes.</em>
 </div>
 
 <br>
@@ -35,7 +35,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 </div>
 
 <div align="center">
-    <img src="./images/figura2.png" alt="Verificación del Dataset" width="80%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="./images/figura2.png" alt="Verificación del Dataset" width="90%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <br>
     <em>Figura 2: Confirmación de subida y visualización del dataset dividido.</em>
 </div>
@@ -56,14 +56,6 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 
 <br>
 
-<div align="center">
-    <img src="./images/figura4.png" alt="Gráfico de Dispersión de Muestra Aleatoria" width="60%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <br>
-    <em>Figura 4: Gráfico de dispersión de una muestra aleatoria clasificada correctamente.</em>
-</div>
-
-<br>
-
 ## 4. Inferencia en Tiempo Real (Monitor Serie)
 
 <div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
@@ -71,9 +63,9 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 </div>
 
 <div align="center">
-    <img src="./images/figura5.png" alt="Predicciones en Monitor Serie" width="90%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="./images/figura4.png" alt="Predicciones en Monitor Serie" width="90%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <br>
-    <em>Figura 5: Salida del Monitor Serie mostrando las predicciones para "Billetera" y "Laptop".</em>
+    <em>Figura 4: Salida del Monitor Serie mostrando las predicciones para "Billetera" y "Laptop".</em>
 </div>
 
 <br>
@@ -85,9 +77,9 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 </div>
 
 <div align="center">
-    <img src="./images/figura6.png" alt="Visualización en SenseCraft" width="90%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <img src="./images/figura5.png" alt="Visualización en SenseCraft" width="90%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
     <br>
-    <em>Figura 6: Interfaz de SenseCraft mostrando la clasificación en tiempo real de ambos objetos.</em>
+    <em>Figura 5: Interfaz de SenseCraft mostrando la clasificación en tiempo real de ambos objetos.</em>
 </div>
 
 <br>
