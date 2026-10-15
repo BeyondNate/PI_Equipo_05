@@ -1,5 +1,17 @@
 # Taller TinyML con SenseCraft AI: Implementación de un modelo propio
 
+<p align="center">
+  <strong>Clasificación de lentes y celulares mediante TinyML</strong>
+  <br>
+  Implementación con Seeed Studio XIAO ESP32S3 Sense.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Tecnología-TinyML-blue" alt="TinyML">
+  <img src="https://img.shields.io/badge/Placa-ESP32S3-green" alt="ESP32S3">
+  <img src="https://img.shields.io/badge/Plataforma-SenseCraft_AI-orange" alt="SenseCraft AI">
+</p>
+
 ## Índice
 
 1. [Descripción](#1-descripción)
