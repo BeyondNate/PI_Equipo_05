@@ -1,89 +1,144 @@
-# Taller TinyML con Sensecraft AI - Implementación de modelo propio.
+# Taller TinyML con SenseCraft AI: Implementación de un modelo propio
 
-## Integrantes
-- Leonel Urbano
-- Gael Milla
-## Descripción del proceso
-El proyecto consiste en desarrollar e implementar un sistema de clasificación de imágenes mediante técnicas de TinyML, utilizando la placa Seeed Studio XIAO ESP32S3 Sense y la plataforma SenseCraft AI. El propósito es distinguir dos categorías de objetos: lentes y celulares.
-Para construir el conjunto de datos, se tomaron fotografías de distintos modelos de lentes y celulares, procurando variar sus posiciones y ángulos de orientación. De esta manera, el modelo recibe ejemplos visuales variados y puede aprender las características que permiten diferenciar ambas clases. Las imágenes recopiladas se cargaron en SenseCraft AI, donde se organizaron por categorías y se utilizaron para entrenar el modelo de clasificación.
-Una vez entrenado, el modelo se desplegó en la placa XIAO ESP32S3 Sense. La cámara captura imágenes del objeto que se coloca frente al dispositivo y el modelo realiza la predicción en tiempo real. Como salida física, se utiliza el LED integrado en la placa para indicar la detección de una de las clases.
+## Índice
 
+1. [Descripción](#1-descripción)
+2. [Objetivos](#2-objetivos)
+3. [Integrantes del equipo](#3-integrantes-del-equipo)
+4. [Materiales y herramientas](#4-materiales-y-herramientas)
+5. [Implementación del modelo](#5-implementación-del-modelo)
+6. [Pruebas del modelo](#6-pruebas-del-modelo)
+7. [Prueba de salida GPIO](#7-prueba-de-salida-gpio)
+8. [Resultados y conclusiones](#8-resultados-y-conclusiones)
 
-## Objetivo del modelo
+---
 
-**Objetivo general:**
+## 1. Descripción
+
+El presente proyecto consiste en desarrollar e implementar un sistema de clasificación de imágenes mediante técnicas de *Tiny Machine Learning* (TinyML), utilizando la placa **Seeed Studio XIAO ESP32S3 Sense** y la plataforma [SenseCraft AI](https://sensecraft.seeed.cc/ai/).
+
+El modelo tiene como finalidad distinguir dos categorías de objetos: **lentes y celulares**. Para ello, se recopiló un conjunto de imágenes de ambas clases, considerando diferentes modelos, posiciones y ángulos de orientación. Posteriormente, las fotografías se organizaron y etiquetaron para utilizarlas durante el entrenamiento del modelo.
+
+Una vez entrenado, el modelo se desplegó en la placa para realizar predicciones a partir de las imágenes capturadas por la cámara. Asimismo, se realizaron pruebas con el LED integrado como indicador físico de salida, con el propósito de comprobar la respuesta del sistema ante los objetos presentados.
+
+## 2. Objetivos
+
+### Objetivo general
 
 Desarrollar e implementar un modelo propio de TinyML capaz de clasificar imágenes en tiempo real para distinguir entre lentes y celulares, utilizando la placa XIAO ESP32S3 Sense y la plataforma SenseCraft AI.
 
-**Objetivos específicos:**
-- Crear un conjunto de datos mediante la captura de fotografías de diferentes lentes y celulares.
-- Variar las posiciones y los ángulos de los objetos fotografiados para proporcionar ejemplos visuales diversos al modelo.
-- Organizar y etiquetar las imágenes en dos clases: lentes y celulares.
-- Entrenar un modelo de clasificación de imágenes en SenseCraft AI y establecer un nivel de confianza del 53%.
+### Objetivos específicos
+
+- Recopilar imágenes de diferentes modelos de lentes y celulares.
+- Variar las posiciones y los ángulos de los objetos para obtener diversidad visual en el conjunto de datos.
+- Organizar y etiquetar las fotografías en las categorías correspondientes.
+- Entrenar un modelo de clasificación de imágenes mediante SenseCraft AI.
+- Configurar el umbral de confianza utilizado para aceptar las predicciones.
 - Desplegar el modelo entrenado en la placa XIAO ESP32S3 Sense.
-- Comprobar el funcionamiento del sistema mediante la cámara y la señal del LED integrado.
+- Comprobar las predicciones mediante la cámara y evaluar la respuesta del LED integrado.
 
-## Datos
-- Fueron tomados en tiempo real.
-- Cantidad de imágenes: 138 de lentes y 138 de celulares
-- Archivo: `datos.zip`
-## 3. Elementos utilizados
+## 3. Integrantes del equipo
 
-| Elemento | Descripción |
+| Integrante | Responsabilidad |
 |---|---|
-| Dispositivo | Seeed Studio XIAO ESP32S3 Sense |
-| Cámara | Módulo de cámara incluido en la placa de expansión Sense (conexión tipo módulo) |
-| Indicador de salida | LED integrado en la placa XIAO ESP32S3 |
-| Plataforma | [SenseCraft AI](https://sensecraft.seeed.cc/ai/) |
-| Alimentación y datos | Cable USB-C |
+| Leonel Urbano | Recopilación de imágenes de muestra para el conjunto de datos y registro de evidencias del entrenamiento. |
+| Gael Milla | Comprobación del funcionamiento del modelo mediante la vista previa y registro de evidencias de las pruebas. |
 
-## Procedimiento
-1. Preparación del dispositivo: Conectar la placa XIAO ESP32S3 Sense al equipo mediante el cable USB-C y verificar que sea reconocida para trabajar con SenseCraft AI.
+## 4. Materiales y herramientas
 
-2. Captura de imágenes: Fotografiar diferentes lentes y celulares. Para cada categoría, tomar imágenes desde distintas posiciones y ángulos, procurando incluir variedad de modelos y apariencias.
+| Material o herramienta | Descripción |
+|---|---|
+| Seeed Studio XIAO ESP32S3 Sense | Placa utilizada para ejecutar el modelo de clasificación. |
+| Cámara integrada | Captura las imágenes de los objetos presentados al dispositivo. |
+| LED integrado | Indicador físico empleado para comprobar la respuesta del sistema. |
+| Cable USB-C | Permite conectar la placa al equipo para su configuración y alimentación. |
+| SenseCraft AI | Plataforma utilizada para organizar los datos, entrenar el modelo y realizar su despliegue. |
+| Conjunto de datos | 276 fotografías distribuidas en dos categorías: lentes y celulares. |
+| `datos.zip` | Archivo del repositorio asociado al conjunto de datos. |
 
-3. Organización de los datos: Separar las fotografías en dos clases, lentes y celulares, y cargarlas en el proyecto de SenseCraft AI con sus etiquetas correspondientes.
+## 5. Implementación del modelo
 
-4. Entrenamiento: Utilizar las imágenes para entrenar el modelo de clasificación. En este proyecto se recopilaron 138 fotografías de lentes y 138 de celulares, para un total de 276 imágenes.
+### 5.1. Preparación del conjunto de datos
 
-5. Configuración de confianza: Establecer el nivel de confianza indicado para el proyecto en 53%. Este valor funciona como umbral para aceptar una predicción; no representa por sí mismo el porcentaje de exactitud del modelo.
+Las fotografías fueron recopiladas mediante la captura de diferentes lentes y celulares. Se procuró variar sus posiciones y ángulos de orientación para proporcionar al modelo ejemplos visuales diversos.
 
-6. Vista previa y comprobación: Utilizar la vista previa de SenseCraft AI para comprobar las predicciones del modelo con imágenes de las dos categorías.
+El conjunto de datos se organizó en dos categorías, con la siguiente distribución:
 
-7. Despliegue: Transferir o desplegar el modelo entrenado en la XIAO ESP32S3 Sense, siguiendo el flujo de implementación de SenseCraft AI.
+| Categoría | Cantidad de imágenes |
+|---|---:|
+| Lentes 🕶️| 138 |
+| Celulares 📱| 138 |
+| **Total** | **276** |
 
-8. Prueba física: Presentar lentes y celulares frente a la cámara y observar la clase reconocida y la respuesta del LED integrado.
-   
-## Entrenamiento
-- Parámetros usados: Para lentes, 138 fotos de diferentes lentes en diferentes angulos. Para celulares, 138 fotos de diferentes celulares, en diferentes angulos
-- El nivel de confianza es del 50%.
-- Captura: ![](img/Entrenamiento.jpeg)
-- **Figura5.** Evidencia de Leonel Urbano . En esta imagen, Leonel se encargó de recopilar imagenes de los lentes.
-- Data: ![](img/data.jpeg)
+Las imágenes se cargaron en SenseCraft AI y se etiquetaron de acuerdo con la clase correspondiente.
 
+**Evidencia de recopilación de imágenes**
 
-## Vista previa y despliegue
-- Vista previa y despliegue del modelo: ![](img/preview.jpg)
-**Figura 5.** Evidencia de Gael milla. En esta imagen, Gael se encargó de Comprobar el correcto funcionamiento del modelo.
-## Salida GPIO
-- La clase que activa el LED es "lentes"
+![Recopilación de imágenes de lentes](img/Entrenamiento.jpeg)
 
-| Integrante | Captura | Resultado |
+*Figura 1. Evidencia de la recopilación de imágenes realizada por Leonel Urbano.*
+
+**Organización de los datos**
+
+![Conjunto de datos](img/data.jpeg)
+
+*Figura 2. Evidencia del conjunto de datos utilizado para entrenar el modelo.*
+
+### 5.2. Entrenamiento y configuración
+
+El modelo se entrenó utilizando las fotografías recopiladas y organizadas en SenseCraft AI. Se seleccionó el tipo de tarea de clasificación de imágenes (*Image Classification*), con el propósito de reconocer las dos categorías establecidas.
+
+Durante la configuración se consideró un umbral de confianza para determinar cuándo aceptar una predicción. El valor registrado en la descripción inicial del procedimiento fue del **53 %**; sin embargo, otra anotación del entrenamiento menciona el 50 %. Por ello, se debe verificar en la configuración final de SenseCraft AI cuál fue el valor realmente utilizado.
+
+Es importante señalar que el umbral de confianza no representa la exactitud del modelo, sino el nivel mínimo de confianza requerido para aceptar una predicción, según la configuración aplicada.
+
+### 5.3. Despliegue del modelo
+
+Después del entrenamiento, el modelo se desplegó en la placa XIAO ESP32S3 Sense siguiendo el procedimiento disponible en SenseCraft AI. La cámara se utilizó para capturar imágenes de los objetos y obtener las predicciones correspondientes.
+
+![Vista previa y despliegue del modelo](img/preview.jpg)
+
+*Figura 3. Evidencia de Gael Milla durante la comprobación del funcionamiento del modelo.*
+
+## 6. Pruebas del modelo
+
+Las pruebas tuvieron como finalidad comprobar que el modelo pudiera reconocer las dos categorías definidas a partir de las imágenes capturadas por la cámara.
+
+El procedimiento contempló las siguientes actividades:
+
+1. Conectar la placa XIAO ESP32S3 Sense al equipo mediante el cable USB-C.
+2. Ejecutar el modelo previamente desplegado.
+3. Presentar diferentes lentes frente a la cámara y observar la predicción obtenida.
+4. Repetir el procedimiento con diferentes celulares.
+5. Registrar las predicciones y comprobar si corresponden con los objetos presentados.
+6. Verificar la respuesta del LED integrado durante las pruebas de salida.
+
+Estas pruebas permiten observar el comportamiento del sistema; sin embargo, no constituyen por sí solas una medición de su exactitud. Para evaluar el rendimiento con mayor precisión, sería necesario utilizar imágenes independientes de las empleadas durante el entrenamiento y registrar las predicciones correctas e incorrectas.
+
+## 7. Prueba de salida GPIO
+
+Como parte de la implementación, se utilizó el LED integrado en la placa como indicador físico asociado a una de las clases reconocidas por el modelo.
+
+La configuración documentada establece que la clase **`lentes`** es la que activa el LED. No obstante, las evidencias registradas indican que el LED se encendió al mostrar un celular. Esta discrepancia debe verificarse para determinar si se debe a una clasificación incorrecta, a la configuración de la salida o a la lógica de control del LED.
+
+| Integrante | Evidencia | Resultado registrado |
 |---|---|---|
- [Leonel Urbano] | ![](img/gpio1.jpeg) | LED encendido al mostrar celular |
-| [Gael Milla] | ![](img/gpio2.jpg) | LED encendido al mostrar celular |
+| Leonel Urbano | ![Prueba GPIO de Leonel](img/gpio1.jpeg) | LED encendido al mostrar un celular. |
+| Gael Milla | ![Prueba GPIO de Gael](img/gpio2.jpg) | LED encendido al mostrar un celular. |
 
-## Conclusiones:
+Para completar la validación, se recomienda comprobar el comportamiento del LED con ambas categorías y verificar que la clase predicha coincida con la condición configurada para activar la salida.
+
+## 8. Resultados y conclusiones
 
 - Se desarrolló un proyecto de TinyML orientado a la clasificación de imágenes en dos categorías: lentes y celulares, utilizando la placa XIAO ESP32S3 Sense y la plataforma SenseCraft AI.
-  
-- La recopilación de 138 imágenes por clase permitió formar un conjunto de datos equilibrado de 276 fotografías. La variación de posiciones y ángulos buscó proporcionar diversidad visual durante el entrenamiento.
-  
-- Se realizó el entrenamiento y despliegue de un modelo de tipo clasificación de imágenes (Image Classification) para efectuar predicciones a partir de las imágenes capturadas por la cámara.
-  
-- La integración del LED permite contar con una señal física de salida asociada a la clase configurada. Sin embargo, es necesario verificar la discrepancia registrada entre la clase lentes y las pruebas que indican que el LED se encendió al mostrar un celular.
-  
-- Para evaluar con mayor precisión el desempeño del sistema, en futuras pruebas sería conveniente registrar predicciones correctas e incorrectas con imágenes que no se hayan utilizado durante el entrenamiento y calcular métricas como la exactitud.
+- Se recopiló un conjunto de datos equilibrado de 276 fotografías, con 138 imágenes por categoría. La variación de posiciones y ángulos buscó proporcionar diversidad visual durante el entrenamiento.
+- Se realizó el entrenamiento y despliegue de un modelo de clasificación de imágenes para generar predicciones a partir de las capturas de la cámara.
+- Se realizaron pruebas de funcionamiento mediante la vista previa del modelo y el uso del LED integrado como indicador físico de salida.
+- Se identificó una discrepancia entre la clase configurada para activar el LED y el resultado descrito en las evidencias. Es necesario revisar la predicción obtenida y la lógica de control de la salida GPIO antes de confirmar su funcionamiento correcto.
+- Como mejora futura, se recomienda evaluar el modelo con imágenes no utilizadas durante el entrenamiento y calcular métricas de rendimiento, como la exactitud y la matriz de confusión.
 
-## Archivos del repositorio
-- `datos.zip`
+### Archivos del repositorio
+
+| Archivo | Descripción |
+|---|---|
+| `datos.zip` | Archivo asociado al conjunto de datos recopilado para el proyecto. |
