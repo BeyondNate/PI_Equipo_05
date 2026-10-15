@@ -103,7 +103,7 @@ Las imágenes se cargaron en SenseCraft AI y se etiquetaron de acuerdo con la cl
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="img/Entrenamiento.jpeg" width="300" alt="Recopilación de imágenes">
+      <img src="img/Entrenamiento.jpg" width="300" alt="Recopilación de imágenes">
       <br>
       <strong>Figura 1.</strong> Evidencia de la recopilación de imágenes realizada por Leonel Urbano.
     </td>
@@ -127,7 +127,7 @@ Es importante señalar que el umbral de confianza no representa la exactitud del
 
 Después del entrenamiento, el modelo se desplegó en la placa XIAO ESP32S3 Sense siguiendo el procedimiento disponible en SenseCraft AI. La cámara se utilizó para capturar imágenes de los objetos y obtener las predicciones correspondientes.
 
-<img src="img/preview.jpg" width="450" alt="Vista previa y despliegue del modelo">
+<img src="img/Gael_lentes.jpg" width="450" alt="Vista previa y despliegue del modelo">
 
 *Figura 3. Evidencia de Gael Milla durante la comprobación del funcionamiento del modelo.*
 
