@@ -85,7 +85,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 ## 4. Inferencia en Tiempo Real (Monitor Serie)
 
 <div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
-    Finalmente, usando el Monitor Serie de Arduino IDE a 115200 baudios, observamos cómo se comporta el modelo en tiempo real. Al colocar una billetera frente a la cámara, el sistema arrojó una confianza superior al 89%. Cuando cambiamos por una laptop, la predicción se actualizó correctamente a "Laptop" con una confianza del 83%, lo que demuestra que el modelo funciona bien una vez desplegado.
+    Usando el Monitor Serie de Arduino IDE a 115200 baudios, observamos cómo se comporta el modelo en tiempo real. Al colocar una billetera frente a la cámara, el sistema arrojó una confianza superior al 89%. Cuando cambiamos por una laptop, la predicción se actualizó correctamente a "Laptop" con una confianza del 83%, lo que demuestra que el modelo funciona bien una vez desplegado.
 </div>
 
 <div align="center">
@@ -100,8 +100,26 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 
 <br>
 
+## 5. Visualización con SenseCraft
+
+<div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
+    Como alternativa de visualización, también probamos la plataforma SenseCraft. Ahí cargamos el modelo ya entrenado y pudimos ver la cámara en vivo con las predicciones en pantalla. La interfaz muestra la vista previa y barras de confianza para cada clase, lo que facilita comprobar rápidamente si el modelo está identificando bien los objetos en distintas posiciones.
+</div>
+
+<div align="center">
+    <img src="./images/figura5.png" alt="Visualización en SenseCraft" width="90%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <br>
+    <em>Figura 5: Interfaz de SenseCraft mostrando la clasificación en tiempo real de ambos objetos.</em>
+</div>
+
+<div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-top: 10px; margin-bottom: 20px;">
+    En esta vista se confirma que el modelo responde correctamente cuando se le presenta una billetera o una laptop. Las barras de confianza cambian de manera coherente según el objeto que aparece frente a la cámara, lo que respalda los resultados obtenidos previamente en el monitor serie y en las métricas de Edge Impulse. SenseCraft resultó una forma muy práctica de validar el funcionamiento del modelo sin necesidad de escribir código adicional.
+</div>
+
+<br>
+
 ---
 
 <div align="center" style="background-color: #f1f1f1; padding: 15px; border-radius: 8px; color: #333;">
-    <strong>Conclusión:</strong> El taller se completó exitosamente y logramos implementar un sistema de TinyML funcional en el XIAO ESP32S3 Sense. Las evidencias demuestran que el modelo es capaz de clasificar imágenes con alta precisión y baja latencia, lo que valida el uso de Edge Impulse y Arduino IDE para proyectos de visión artificial en el borde.
+    <strong>Conclusión:</strong> El taller se completó exitosamente y logramos implementar un sistema de TinyML funcional en el XIAO ESP32S3 Sense. Las evidencias demuestran que el modelo es capaz de clasificar imágenes con alta precisión y baja latencia, lo que valida el uso de Edge Impulse, Arduino IDE y SenseCraft para proyectos de visión artificial en el borde.
 </div>
