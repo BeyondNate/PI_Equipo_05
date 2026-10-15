@@ -15,7 +15,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 ## 1. Creación del Proyecto y Carga de Datos
 
 <div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
-    <strong>Descripción:</strong> Se creó una cuenta y un nuevo proyecto en Edge Impulse. Posteriormente, se subieron las imágenes capturadas previamente por la cámara del XIAO ESP32S3. Las imágenes se organizaron en dos clases distintas: "Billetera" y "Laptop", utilizando la opción de subida por lotes para asignar automáticamente las etiquetas correspondientes a cada archivo.
+    Para empezar, se creó una cuenta y un nuevo proyecto en Edge Impulse. Luego se subieron las imágenes que previamente capturamos con la cámara del XIAO ESP32S3. Organizamos todo en dos clases distintas, "Billetera" y "Laptop", y usamos la opción de subida por lotes para que la plataforma asignara automáticamente las etiquetas a cada archivo.
 </div>
 
 <div align="center">
@@ -29,7 +29,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 ## 2. Verificación del Dataset
 
 <div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
-    <strong>Descripción:</strong> Tras la carga exitosa de las 200 imágenes (100 por clase), se verificó la correcta recepción de los datos en la plataforma. Edge Impulse dividió automáticamente el conjunto de datos en un 80% para entrenamiento y un 20% para pruebas, asegurando una validación adecuada del modelo.
+    Después de cargar las 200 imágenes (100 por cada clase), verificamos que la plataforma las hubiera recibido correctamente. Edge Impulse dividió el conjunto de datos en un 80% para entrenamiento y un 20% para pruebas, lo que nos da una base sólida para validar el modelo más adelante.
 </div>
 
 <div align="center">
@@ -39,7 +39,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 </div>
 
 <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-top: 10px; margin-bottom: 20px;">
-    <strong>Interpretación:</strong> La plataforma confirma la recepción de 200 imágenes en total (100 de "Billetera" y 100 de "Laptop"). La división 80/20 es ideal para este tipo de proyectos, ya que garantiza que el modelo tenga suficientes datos para aprender (160 imágenes) y un conjunto independiente para validar su rendimiento (40 imágenes). La lista de muestras con etiquetas "Billetera" y "Laptop" confirma que el etiquetado se realizó correctamente.
+    En la captura se confirma que llegaron las 200 imágenes en total, 100 de "Billetera" y 100 de "Laptop". La división 80/20 es bastante útil en este tipo de proyectos porque deja 160 imágenes para que el modelo aprenda y 40 para comprobar qué tan bien generaliza. Además, la lista de muestras etiquetadas nos asegura que el proceso de subida se hizo sin errores.
 </div>
 
 <br>
@@ -47,7 +47,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 ## 3. Rendimiento del Modelo y Gráficos de Dispersión
 
 <div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
-    <strong>Descripción:</strong> Se evaluó el rendimiento del modelo entrenado. Los resultados muestran una precisión del 100% y una pérdida de 0.04. A continuación, se presentan dos gráficos de dispersión: el primero corresponde a la distribución general de todos los datos procesados (evidenciando una clara separación entre las clases "Billetera" y "Laptop"), y el segundo muestra la clasificación de una muestra aleatoria específica.
+    Luego evaluamos el rendimiento del modelo entrenado y los resultados fueron bastante buenos, con una precisión del 100% y una pérdida de 0.04. A continuación mostramos dos gráficos de dispersión. El primero refleja la distribución general de todos los datos procesados, donde se ve una separación clara entre "Billetera" y "Laptop". El segundo corresponde a la clasificación de una muestra aleatoria en particular.
 </div>
 
 <div align="center">
@@ -57,7 +57,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 </div>
 
 <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-top: 10px; margin-bottom: 20px;">
-    <strong>Interpretación:</strong> La matriz de confusión muestra un rendimiento perfecto: el 100% de las billeteras fueron clasificadas correctamente como "Billetera" y el 100% de las laptops como "Laptop", sin falsos positivos ni falsos negativos. El F1-Score de 1.00 en ambas clases confirma un equilibrio perfecto entre precisión y recall. El gráfico de dispersión general muestra una separación clara entre los clusters de ambas clases, lo que indica que el modelo aprendió características distintivas y discriminativas.
+    La matriz de confusión muestra un rendimiento perfecto, ya que el 100% de las billeteras se clasificaron como "Billetera" y el 100% de las laptops como "Laptop", sin falsos positivos ni falsos negativos. El F1-Score de 1.00 en ambas clases confirma que hay un equilibrio ideal entre precisión y recall. En el gráfico de dispersión general se observa una separación clara entre los grupos de cada clase, lo que indica que el modelo logró aprender características distintivas y útiles para diferenciarlas.
 </div>
 
 <div align="center">
@@ -67,7 +67,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 </div>
 
 <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-top: 10px; margin-bottom: 20px;">
-    <strong>Interpretación:</strong> Este gráfico de dispersión representa la distribución de todas las muestras del conjunto de datos en el espacio de características aprendido por el modelo. Los puntos amarillos corresponden a "Billetera - correct" y los verdes a "Laptop - correct". La clara separación entre ambos grupos demuestra que el modelo logró encontrar un límite de decisión efectivo, lo que se traduce en la alta precisión obtenida.
+    Este gráfico representa cómo se distribuyen todas las muestras del dataset dentro del espacio de características que aprendió el modelo. Los puntos amarillos son los aciertos de "Billetera" y los verdes los de "Laptop". La separación entre ambos grupos es evidente, lo que explica por qué el modelo alcanzó una precisión tan alta.
 </div>
 
 <div align="center">
@@ -77,7 +77,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 </div>
 
 <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-top: 10px; margin-bottom: 20px;">
-    <strong>Interpretación:</strong> Al cargar una muestra aleatoria del conjunto de pruebas (Billetera_092), el modelo la clasificó correctamente como "Billetera" con una confianza del 100%. El gráfico de la derecha (Detailed result) muestra los valores de probabilidad para cada clase: 1.00 para Billetera y 0.00 para Laptop, lo que confirma que el modelo no tiene ambigüedad en esta predicción. La imagen de la billetera sobre la alfombra verde permite verificar visualmente que la clasificación es coherente con el objeto real.
+    Cuando cargamos una muestra aleatoria del conjunto de pruebas, en este caso la Billetera_092, el modelo la clasificó correctamente como "Billetera" con un 100% de confianza. En el panel de resultados se ven las probabilidades para cada clase, 1.00 para Billetera y 0.00 para Laptop, lo que confirma que no hubo ambigüedad en la predicción. La imagen de la billetera sobre la alfombra verde permite comprobar visualmente que la clasificación tiene sentido con el objeto real.
 </div>
 
 <br>
@@ -85,7 +85,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 ## 4. Inferencia en Tiempo Real (Monitor Serie)
 
 <div style="background-color: #f8f9fa; border-left: 4px solid #4361ee; padding: 15px; margin-bottom: 20px;">
-    <strong>Descripción:</strong> Utilizando el Monitor Serie de Arduino IDE a 115200 baudios, se observó la inferencia del modelo en tiempo real. Al colocar una billetera frente a la cámara, el sistema arrojó una confianza superior al 89%. De manera similar, al presentar una laptop, la predicción cambió correctamente a "Laptop" con una confianza del 83%, demostrando la eficacia del modelo desplegado.
+    Finalmente, usando el Monitor Serie de Arduino IDE a 115200 baudios, observamos cómo se comporta el modelo en tiempo real. Al colocar una billetera frente a la cámara, el sistema arrojó una confianza superior al 89%. Cuando cambiamos por una laptop, la predicción se actualizó correctamente a "Laptop" con una confianza del 83%, lo que demuestra que el modelo funciona bien una vez desplegado.
 </div>
 
 <div align="center">
@@ -95,7 +95,7 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 </div>
 
 <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-top: 10px; margin-bottom: 20px;">
-    <strong>Interpretación:</strong> El Monitor Serie muestra el tiempo de inferencia (DSP: 14 ms), lo que indica que el modelo es lo suficientemente rápido para aplicaciones en tiempo real. Los valores de predicción oscilan entre 0.89 y 0.76 para "Billetera" cuando este objeto está frente a la cámara, y cambian drásticamente a 0.83 para "Laptop" cuando se presenta el otro objeto. La consistencia en las predicciones a lo largo del tiempo demuestra que el modelo es robusto y estable en condiciones reales de uso.
+    En el monitor se aprecia que el tiempo de inferencia es de apenas 14 ms, lo que indica que el modelo es lo suficientemente rápido para aplicaciones en tiempo real. Los valores de predicción se mantienen entre 0.89 y 0.76 para "Billetera" cuando ese objeto está frente a la cámara, y cambian a 0.83 para "Laptop" cuando se presenta el otro objeto. La consistencia en las predicciones a lo largo del tiempo refleja que el modelo es estable y confiable en condiciones reales de uso.
 </div>
 
 <br>
@@ -103,5 +103,5 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 ---
 
 <div align="center" style="background-color: #f1f1f1; padding: 15px; border-radius: 8px; color: #333;">
-    <strong>Conclusión:</strong> El taller se completó exitosamente, logrando implementar un sistema de TinyML funcional en el XIAO ESP32S3 Sense. Las evidencias demuestran que el modelo es capaz de clasificar imágenes con alta precisión y baja latencia, validando el uso de Edge Impulse y Arduino IDE para proyectos de visión artificial en el borde.
+    <strong>Conclusión:</strong> El taller se completó exitosamente y logramos implementar un sistema de TinyML funcional en el XIAO ESP32S3 Sense. Las evidencias demuestran que el modelo es capaz de clasificar imágenes con alta precisión y baja latencia, lo que valida el uso de Edge Impulse y Arduino IDE para proyectos de visión artificial en el borde.
 </div>
