@@ -151,7 +151,7 @@ En **Impulse design > Transfer learning** revisamos la arquitectura de la red y 
   <em>Figura 12: Configuración y ejecución del entrenamiento en Transfer learning.</em><br>
 </p>
 
-Se observa la arquitectura utilizada: una capa de entrada de 27,648 características (imágenes de 96x96 en color), la red *MobileNetV2 96x96 0.35* (capa final de 16 neuronas y *dropout* de 0.1) y una capa de salida de 2 clases. A la derecha se muestra el resultado del entrenamiento: una precisión (*accuracy*) de 65.6% sobre el conjunto de validación.
+Se observa la arquitectura utilizada: una capa de entrada de 27,648 características (imágenes de 96x96 en color), la red *MobileNetV2 96x96 0.35* (capa final de 16 neuronas y *dropout* de 0.1) y una capa de salida de 2 clases. A la derecha se reportan una precisión de 65.6% y una pérdida (*loss*) de 0.85 sobre el conjunto de validación. En la matriz de confusión, las billeteras se clasifican correctamente en el 100% de los casos, mientras que las laptops se aciertan en 21.4% y se confunden con billeteras en 78.6%; las métricas ponderadas son AUC 0.61, precisión 0.79, recall 0.66 y F1 0.59. Son métricas de validación durante el entrenamiento; la evaluación con el conjunto de prueba se presenta a continuación.
  
 <p align="center">
   <img src="./images/fig15.jpg" alt="Resultados del entrenamiento: explorador de datos y desempeño estimado en el dispositivo." width="85%"><br>
@@ -160,27 +160,20 @@ Se observa la arquitectura utilizada: una capa de entrada de 27,648 característ
 
 Se muestra el *Data explorer* con las muestras clasificadas correcta e incorrectamente (las muestras de Laptop incorrectas aparecen en rojo) y el desempeño estimado en el dispositivo: inferencia de 1129 ms, 228.0 KB de RAM y 545.9 KB de Flash. Estas cifras corresponden al objetivo *Cortex-M4F 80 MHz* configurado por defecto en el proyecto, por lo que difieren de los tiempos reales medidos luego en el XIAO ESP32S3 (sección 5).
  
-<p align="center">
-  <img src="./images/fig16.jpg" alt="Resumen del modelo cuantizado (int8) tras el entrenamiento." width="60%"><br>
-  <em>Figura 14: Resumen del modelo cuantizado (int8) tras el entrenamiento.</em><br>
-</p>
-
-Para la versión *Quantized (int8)* se reportan una precisión de 65.6% y una pérdida (*loss*) de 0.85 sobre el conjunto de validación. En la matriz de confusión, las billeteras se clasifican correctamente en el 100% de los casos, mientras que las laptops se aciertan en 21.4% y se confunden con billeteras en 78.6%; las métricas ponderadas son AUC 0.61, precisión 0.79, recall 0.66 y F1 0.59. Son métricas de validación durante el entrenamiento; la evaluación con el conjunto de prueba se presenta a continuación.
- 
 ### 3.6 Rendimiento del Modelo y Gráficos de Dispersión
  
 Luego evaluamos el modelo entrenado con el conjunto de prueba (*Model testing*) y los resultados fueron muy buenos: se obtuvo una precisión del 100%. A diferencia de la clasificación individual de la sección 3.7, aquí se evalúan las 40 muestras de prueba (20 por clase) con la versión *Unoptimized (float32)*.
  
 <p align="center">
   <img src="./images/fig17.jpg" alt="Resultados de Model testing: matriz de confusión y métricas de rendimiento." width="85%"><br>
-  <em>Figura 15: Resultados de Model testing: matriz de confusión y métricas de rendimiento.</em><br>
+  <em>Figura 14: Resultados de Model testing: matriz de confusión y métricas de rendimiento.</em><br>
 </p>
 
 La matriz de confusión muestra un rendimiento perfecto: el 100% de las billeteras se clasificó como "Billetera" y el 100% de las laptops como "Laptop", sin falsos positivos ni falsos negativos. Las métricas (AUC, precisión, recall y F1-Score ponderados) valen 1.00, lo que confirma un equilibrio ideal entre precisión y recall.
  
 <p align="center">
   <img src="./images/fig18.jpg" alt="Gráfico de dispersión (Feature explorer) de las muestras de prueba." width="70%"><br>
-  <em>Figura 16: Gráfico de dispersión (Feature explorer) de las muestras de prueba.</em><br>
+  <em>Figura 15: Gráfico de dispersión (Feature explorer) de las muestras de prueba.</em><br>
 </p>
 
 Este gráfico representa cómo se distribuyen las muestras de prueba dentro del espacio de características que aprendió el modelo. Los puntos amarillos corresponden a las billeteras clasificadas correctamente y los verdes a las laptops clasificadas correctamente; no aparece ninguna muestra incorrecta, lo que es coherente con la precisión de 100% obtenida.
@@ -195,11 +188,11 @@ En **Live classification** cargamos muestras individuales del conjunto de prueba
   <tr>
     <td align="center" valign="top" width="50%">
       <img src="./images/fig19.jpg" alt="Clasificación de una muestra aleatoria (Billetera_092) con un 100% de confianza." width="100%"><br>
-      <em>Figura 17: Clasificación de una muestra aleatoria (Billetera_092) con un 100% de confianza.</em><br>
+      <em>Figura 16: Clasificación de una muestra aleatoria (Billetera_092) con un 100% de confianza.</em><br>
     </td>
     <td align="center" valign="top" width="50%">
       <img src="./images/fig20.jpg" alt="Clasificación de la muestra Laptop_071 con un 100% de confianza." width="100%"><br>
-      <em>Figura 18: Clasificación de la muestra Laptop_071 con un 100% de confianza.</em><br>
+      <em>Figura 17: Clasificación de la muestra Laptop_071 con un 100% de confianza.</em><br>
     </td>
   </tr>
 </table>
@@ -212,14 +205,14 @@ En **Deployment** elegimos la librería para Arduino con el motor *TensorFlow Li
  
 <p align="center">
   <img src="./images/fig21.jpg" alt="Configuración del despliegue: librería de Arduino con optimización Quantized (int8)." width="85%"><br>
-  <em>Figura 19: Configuración del despliegue: librería de Arduino con optimización Quantized (int8).</em><br>
+  <em>Figura 18: Configuración del despliegue: librería de Arduino con optimización Quantized (int8).</em><br>
 </p>
 
 Se observa la configuración elegida y el proceso de construcción en curso (*Calculating model accuracy*), con la comparación de latencia, RAM y Flash entre la versión cuantizada y la no optimizada.
  
 <p align="center">
   <img src="./images/fig22.jpg" alt="Librería de Arduino construida correctamente." width="85%"><br>
-  <em>Figura 20: Librería de Arduino construida correctamente.</em><br>
+  <em>Figura 19: Librería de Arduino construida correctamente.</em><br>
 </p>
 
 Aparece el mensaje *Built Arduino library*, que indica cómo añadir la librería (`Sketch > Include library > Add .ZIP Library`) y dónde encontrar luego los ejemplos (`File > Examples > levito123-project-1_inferencing`). A la derecha se ve la compilación más reciente lista para descargar.
@@ -230,7 +223,7 @@ En Arduino IDE vamos a **Programa > Incluir librería > Añadir biblioteca .ZIP�
  
 <p align="center">
   <img src="./images/fig23.jpg" alt="Instalación de la librería del modelo mediante Añadir biblioteca .ZIP." width="85%"><br>
-  <em>Figura 21: Instalación de la librería del modelo mediante Añadir biblioteca .ZIP.</em><br>
+  <em>Figura 20: Instalación de la librería del modelo mediante Añadir biblioteca .ZIP.</em><br>
 </p>
 El cuadro de diálogo muestra el archivo seleccionado y, al pie del IDE, aparece el mensaje de que la librería fue añadida. Una vez instalada, queda disponible en el menú de ejemplos para continuar con el proyecto.
  
@@ -238,7 +231,7 @@ Abrimos el ejemplo `esp32_camera` de la librería del modelo, reemplazamos las d
  
 <p align="center">
   <img src="./images/fig24.jpg" alt="Error de compilación al verificar el ejemplo esp32_camera." width="85%"><br>
-  <em>Figura 22: Error de compilación al verificar el ejemplo esp32_camera.</em><br>
+  <em>Figura 21: Error de compilación al verificar el ejemplo esp32_camera.</em><br>
 </p>
 
 Al compilar, Arduino IDE mostró el mensaje *Error compilando para la tarjeta XIAO_ESP32S3*. En el código ya aparecen las definiciones de pines del XIAO (por ejemplo, `PWDN_GPIO_NUM -1`, `RESET_GPIO_NUM -1`, `XCLK_GPIO_NUM 10`, `SIOD_GPIO_NUM 40`), por lo que el problema no está en los pines sino en el archivo del modelo, como se detalla a continuación.
@@ -279,11 +272,11 @@ Por limitaciones de tiempo **no se logró completar esta actividad**: al persist
   <tr>
     <td align="center" valign="top" width="50%">
       <img src="./images/fig25.jpg" alt="Simulación del proceso: placa conectada a la laptop y objeto frente a la cámara." width="100%"><br>
-      <em>Figura 23: Simulación del proceso: placa conectada a la laptop y objeto frente a la cámara.</em><br>
+      <em>Figura 22: Simulación del proceso: placa conectada a la laptop y objeto frente a la cámara.</em><br>
     </td>
     <td align="center" valign="top" width="50%">
       <img src="./images/fig26.jpg" alt="Simulación del proceso: manipulación de la placa frente al equipo." width="100%"><br>
-      <em>Figura 24: Simulación del proceso: manipulación de la placa frente al equipo.</em><br>
+      <em>Figura 23: Simulación del proceso: manipulación de la placa frente al equipo.</em><br>
     </td>
   </tr>
 </table>
@@ -298,11 +291,11 @@ Como alternativa de visualización, probamos la plataforma SenseCraft. Desde el 
   <tr>
     <td align="center" valign="top" width="50%">
       <img src="./images/fig27.jpg" alt="SenseCraft clasificando la billetera con un 99% de confianza." width="100%"><br>
-      <em>Figura 25: SenseCraft clasificando la billetera con un 99% de confianza.</em><br>
+      <em>Figura 24: SenseCraft clasificando la billetera con un 99% de confianza.</em><br>
     </td>
     <td align="center" valign="top" width="50%">
       <img src="./images/fig28.jpg" alt="SenseCraft clasificando la laptop con un 97% de confianza." width="100%"><br>
-      <em>Figura 26: SenseCraft clasificando la laptop con un 97% de confianza.</em><br>
+      <em>Figura 25: SenseCraft clasificando la laptop con un 97% de confianza.</em><br>
     </td>
   </tr>
 </table>
