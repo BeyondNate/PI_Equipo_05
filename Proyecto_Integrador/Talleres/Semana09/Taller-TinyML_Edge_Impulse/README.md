@@ -1,5 +1,5 @@
 <div align="center" style="background-color: #0d1b2a; padding: 25px; border-radius: 10px; color: white; margin-bottom: 20px;">
-    <h1 style="color: #4cc9f0; margin-bottom: 5px;">Taller de TinyML</h1>
+    <h1 style="color: #4cc9f0; margin-bottom: 5px;">Taller de TinyML - Edge Impulse</h1>
     <h3 style="color: #e0e1dd; margin-top: 0;">Clasificación de Imágenes con XIAO ESP32S3 Sense y Edge Impulse</h3>
     <p style="color: #a0a0a0; font-size: 14px; margin-bottom: 0;">Universidad Peruana Cayetano Heredia</p>
 </div>
@@ -24,10 +24,10 @@ A lo largo de este taller, se abordan desde la configuración inicial del entorn
 ### Contenido
  
 1. [Configuración del entorno y preparación de la cámara](#1-configuración-del-entorno-y-preparación-de-la-cámara)
-3. [Captura del dataset](#2-captura-del-dataset)
-4. [Entrenamiento del modelo en Edge Impulse](#3-entrenamiento-del-modelo-en-edge-impulse)
-5. [Despliegue en Arduino IDE y error de compilación](#4-despliegue-en-arduino-ide-y-error-de-compilación)
-6. [Visualización con SenseCraft](#5-visualización-con-sensecraft)
+2. [Captura del dataset](#2-captura-del-dataset)
+3. [Entrenamiento del modelo en Edge Impulse](#3-entrenamiento-del-modelo-en-edge-impulse)
+4. [Despliegue en Arduino IDE y error de compilación](#4-despliegue-en-arduino-ide-y-error-de-compilación)
+5. [Visualización con SenseCraft](#5-visualización-con-sensecraft)
 
 ---
 
@@ -236,73 +236,97 @@ Abrimos el ejemplo `esp32_camera` de la librería del modelo, reemplazamos las d
 
 Al compilar, Arduino IDE mostró el mensaje *Error compilando para la tarjeta XIAO_ESP32S3*. En el código ya aparecen las definiciones de pines del XIAO (por ejemplo, `PWDN_GPIO_NUM -1`, `RESET_GPIO_NUM -1`, `XCLK_GPIO_NUM 10`, `SIOD_GPIO_NUM 40`), por lo que el problema no está en los pines sino en el archivo del modelo, como se detalla a continuación.
  
-### 4.1 Análisis del error  (CORREGIR DE SER NECESARIO)
- 
+### 4.1 Análisis y corrección del error de compilación
+
+Durante la verificación del código en Arduino IDE, se identificó un error relacionado con la declaración de una variable utilizada para reservar la memoria necesaria para ejecutar el modelo (*arena size*).
+
 El compilador mostró el siguiente mensaje:
- 
+
 ```text
 model_variables.h:85:19: error: 'tflite_learn_1141040_4_arena_size' was not declared in this scope;
 did you mean 'tflite_learn_1135717_4_arena_size'?
- 
+
    85 |     .arena_size = tflite_learn_1141040_4_arena_size
 exit status 1
 Error compilando para la tarjeta XIAO_ESP32S3.
 ```
- 
-**Dónde ocurre.** El error se produce en el archivo `model_variables.h` (línea 85), dentro de la carpeta `src/model-parameters` de la librería del modelo. Este archivo es incluido desde `ei_run_classifier.h` y `levito123-project-1_inferencing.h`, que a su vez son llamados por `esp32_camera.ino` (línea 27).
- 
-**Qué significa.** `model_variables.h` necesita la variable `tflite_learn_1141040_4_arena_size`, que indica la memoria reservada para ejecutar el modelo (*arena size*). Sin embargo, esa variable no está declarada en el archivo del modelo (`src/tflite-model/tflite_learn_*.h`). El compilador sugiere en su lugar `tflite_learn_1135717_4_arena_size`, un nombre con un identificador (1135717) que no corresponde a nuestro modelo (1141040).
- 
-**Causa más probable.** El identificador 1135717 es el que aparece en el ejemplo de la guía al explicar cómo ajustar *arena_size* cuando falta espacio. Es probable que al aplicar ese ajuste se hayan usado las líneas del ejemplo (con el identificador y el valor de la guía) en el archivo de nuestro modelo, generando una discrepancia entre el nombre que pide `model_variables.h` y el que realmente existe. Esta causa se identificó a partir del mensaje de error, pero no llegó a comprobarse por falta de tiempo.
- 
-**Solución propuesta (no aplicada por tiempo).** En el archivo `tflite_learn_*.h` los nombres deben conservar el identificador del propio modelo (1141040) y solo cambiar el valor numérico si fuera necesario:
- 
+
+**Identificación del problema.** Al analizar el error, se encontró una inconsistencia entre el identificador del modelo y el nombre de la variable declarada en el archivo `src/tflite-model/tflite_learn_1141040_4.h`. El modelo actual utiliza el identificador `1141040_4`, pero la variable que almacena el tamaño de memoria conserva el identificador anterior `1135717_4`.
+
+El bloque original presentaba la siguiente discrepancia:
+
 ```cpp
-#define EI_CLASSIFIER_TFLITE_LEARN_1141040_4_ARENA_SIZE 384605
-const size_t tflite_learn_1141040_4_arena_size = 384605;
+#define EI_CLASSIFIER_TFLITE_LEARN_1141040_4_ARENA_SIZE 769209
+const size_t tflite_learn_1135717_4_arena_size = 769209;
 ```
- 
-Como alternativa, se puede volver a añadir la librería descargada de Edge Impulse (para restaurar el archivo original) y modificar únicamente el valor numérico de `arena_size`.
- 
-### 4.2 Inferencia en Tiempo Real (Monitor Serie): actividad no concluida
- 
-Por limitaciones de tiempo **no se logró completar esta actividad**: al persistir el error de compilación descrito en la sección 4.1, el programa de inferencia no pudo cargarse en el XIAO ESP32S3 y, por lo tanto, no se obtuvieron lecturas de predicciones en el Monitor Serie. Aun así, el problema pudo identificarse. Como representación del proceso, el equipo simuló cómo se habría realizado: conectar la placa por cable a la laptop y presentar los objetos frente a la cámara mientras se observa el Monitor Serie a 115200 baudios.
- 
+
+Mientras que `model_variables.h` intenta acceder a la variable `tflite_learn_1141040_4_arena_size`, la declaración existente utiliza un nombre diferente. Por ello, el compilador no encuentra el identificador solicitado y detiene la compilación.
+
+**Causa identificada.** El error se debe a una inconsistencia en el nombre de la variable de memoria, posiblemente originada al reutilizar una declaración de una versión anterior del modelo. El problema no requiere modificar la configuración de los pines de la cámara ni volver a entrenar el modelo.
+
+**Solución propuesta.** La corrección consiste en modificar únicamente el nombre de la variable en el archivo indicado, conservando el valor de memoria de `769209`. El bloque corregido debe quedar de la siguiente manera:
+
+```cpp
+#define EI_CLASSIFIER_TFLITE_LEARN_1141040_4_ARENA_SIZE 769209
+const size_t tflite_learn_1141040_4_arena_size = 769209;
+```
+
+De esta manera, el nombre de la variable coincide con el identificador esperado por `model_variables.h`. Después de guardar el cambio, corresponde volver a verificar la compilación en Arduino IDE para comprobar si el error ha sido resuelto.
+
+### 4.2 Inferencia en tiempo real mediante el Monitor Serie
+
+Durante el desarrollo del taller no se logró completar la inferencia en tiempo real desde Arduino IDE. El error de compilación impidió cargar el programa de prueba en la placa XIAO ESP32S3 Sense, por lo que no se obtuvieron predicciones mediante el Monitor Serie.
+
+Para documentar el procedimiento previsto, se realizaron fotografías de la placa conectada al equipo y de la presentación de los objetos frente a la cámara.
+
 <table width="100%">
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="./images/fig25.jpg" alt="Simulación del proceso: placa conectada a la laptop y objeto frente a la cámara." width="100%"><br>
-      <em>Figura 22: Simulación del proceso: placa conectada a la laptop y objeto frente a la cámara.</em><br>
+      <img src="./images/fig25.jpg" alt="Representación del procedimiento con la placa conectada a la laptop." width="100%"><br>
+      <em>Figura 22: Representación del procedimiento de prueba.</em>
     </td>
     <td align="center" valign="top" width="50%">
-      <img src="./images/fig26.jpg" alt="Simulación del proceso: manipulación de la placa frente al equipo." width="100%"><br>
-      <em>Figura 23: Simulación del proceso: manipulación de la placa frente al equipo.</em><br>
+      <img src="./images/fig26.jpg" alt="Representación de la manipulación de la placa durante la prueba." width="100%"><br>
+      <em>Figura 23: Manipulación de la placa durante la representación del procedimiento.</em>
     </td>
   </tr>
 </table>
 
-Estas fotografías son una **representación del procedimiento** y no corresponden a una inferencia real: ilustran cómo sería la prueba con el Monitor Serie, pero no constituyen un resultado. La validación en tiempo real del modelo se realizó con SenseCraft (sección 5).
+Estas fotografías representan el procedimiento que se habría seguido para evaluar las predicciones mediante el Monitor Serie configurado a 115200 baudios. No constituyen evidencia de una inferencia ejecutada correctamente en Arduino IDE.
+
+La validación práctica del modelo se documenta en la siguiente sección, mediante las pruebas realizadas con SenseCraft.
  
-## 5. Visualización con SenseCraft
- 
-Como alternativa de visualización, probamos la plataforma SenseCraft. Desde el *Dashboard* de Edge Impulse descargamos el modelo *Transfer learning model - TensorFlow Lite (int8 quantized)* y lo cargamos en SenseCraft mediante **Espacio de trabajo > Subir modelo**. Ahí pudimos ver la cámara en vivo con las predicciones en pantalla; la interfaz muestra la vista previa y barras de confianza para cada clase, lo que facilita comprobar rápidamente si el modelo está identificando bien los objetos.
- 
+## 5. Visualización y validación del modelo con SenseCraft
+
+Debido a que no se logró completar la ejecución del modelo desde Arduino IDE, se utilizó SenseCraft como alternativa para visualizar las predicciones en tiempo real. Para ello, desde el *Dashboard* de Edge Impulse se descargó el modelo *Transfer learning model - TensorFlow Lite (int8 quantized)* y se cargó en SenseCraft mediante la opción **Espacio de trabajo > Subir modelo**.
+
+Una vez cargado el modelo, se utilizó la cámara para presentar los dos objetos de interés: una billetera y una laptop. La interfaz permitió observar la imagen capturada y las barras de confianza correspondientes a las clases definidas durante el entrenamiento.
+
 <table width="100%">
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="./images/fig27.jpg" alt="SenseCraft clasificando la billetera con un 99% de confianza." width="100%"><br>
-      <em>Figura 24: SenseCraft clasificando la billetera con un 99% de confianza.</em><br>
+      <img src="./images/fig27.jpg" alt="Clasificación de la billetera en SenseCraft con 99 % de confianza." width="100%"><br>
+      <em>Figura 24: Clasificación de la billetera con 99 % de confianza.</em>
     </td>
     <td align="center" valign="top" width="50%">
-      <img src="./images/fig28.jpg" alt="SenseCraft clasificando la laptop con un 97% de confianza." width="100%"><br>
-      <em>Figura 25: SenseCraft clasificando la laptop con un 97% de confianza.</em><br>
+      <img src="./images/fig28.jpg" alt="Clasificación de la laptop en SenseCraft con 97 % de confianza." width="100%"><br>
+      <em>Figura 25: Clasificación de la laptop con 97 % de confianza.</em>
     </td>
   </tr>
 </table>
 
-Con la billetera frente a la cámara, la barra de "Billetera" marca 99% y la de "Laptop" queda prácticamente vacía; al cambiar el objeto, la predicción se actualiza a "Laptop" con 97%. El registro del dispositivo reporta tiempos de preprocesamiento cercanos a 100 ms e inferencia de aproximadamente 185–190 ms por cuadro. Las barras de confianza cambian de manera coherente con el objeto frente a la cámara, lo que respalda los resultados obtenidos en Edge Impulse. SenseCraft resultó una forma muy práctica de validar el funcionamiento del modelo sin escribir código adicional.
+En la primera prueba, al presentar la billetera frente a la cámara, SenseCraft mostró una confianza del 99 % para la clase «Billetera». Posteriormente, al cambiar el objeto por una laptop, la predicción se actualizó a la clase «Laptop», con una confianza del 97 %. Estos resultados muestran que, durante las pruebas realizadas, el modelo distinguió correctamente ambos objetos.
+
+Asimismo, el registro del dispositivo reportó tiempos de preprocesamiento cercanos a 100 ms y tiempos de inferencia de aproximadamente 185 a 190 ms por cuadro. Estos valores corresponden a las mediciones observadas durante las pruebas con SenseCraft.
+
+En conjunto, la experiencia permitió comprobar el funcionamiento práctico del modelo con los objetos seleccionados, pese a que la ejecución mediante Arduino IDE quedó pendiente. Sin embargo, los resultados corresponden a las pruebas realizadas en las condiciones observadas y no garantizan el mismo rendimiento ante objetos, fondos o condiciones de iluminación diferentes.
 
 ---
  
-## Conclusión: (MEJORAR) 
-Se capturó un dataset de 200 imágenes con el XIAO ESP32S3 Sense, se entrenó en Edge Impulse un modelo de clasificación entre "Billetera" y "Laptop" (100% en el conjunto de prueba y 65.6% de precisión de validación durante el entrenamiento) y se validó su funcionamiento en tiempo real con SenseCraft, con confianzas de 99% y 97%. El despliegue mediante Arduino IDE no pudo concluirse por tiempo debido a un error de compilación relacionado con *arena_size*, cuya causa probable fue identificada y cuya solución quedó planteada.
+## Conclusión
+
+Durante el taller se desarrolló un flujo de trabajo de TinyML utilizando la placa XIAO ESP32S3 Sense y Edge Impulse, desde la captura de 200 imágenes hasta el entrenamiento de un modelo basado en *Transfer Learning* para clasificar billeteras y laptops. Se obtuvo una precisión del 65,6 % durante la validación del entrenamiento y del 100 % en el conjunto de prueba, resultados que deben interpretarse con cautela debido a la diferencia entre ambas evaluaciones.
+
+En la etapa de despliegue, se identificó un error de compilación en Arduino IDE debido a una inconsistencia en el nombre de la variable de memoria. Aunque se determinó la corrección necesaria, no se completó la inferencia mediante el Monitor Serie. Como alternativa, se validó el funcionamiento del modelo en SenseCraft, donde se alcanzaron niveles de confianza del 99 % para la billetera y del 97 % para la laptop.
+
+Finalmente, el taller permitió comprender las etapas fundamentales de un proyecto TinyML. Como trabajo pendiente, se plantea verificar la corrección del error en Arduino IDE y ampliar las pruebas bajo diferentes condiciones de iluminación, fondos y posiciones para evaluar la capacidad de generalización del modelo.
