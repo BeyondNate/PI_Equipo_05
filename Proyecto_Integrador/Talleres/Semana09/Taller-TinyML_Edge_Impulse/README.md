@@ -10,6 +10,26 @@ Este proyecto documenta la implementación de un sistema de visión artificial (
 
 A lo largo de este taller, se abordan desde la configuración inicial del entorno en Arduino IDE y la captura de datos mediante la cámara, hasta el entrenamiento del modelo en la nube y su despliegue final. Las evidencias presentadas a continuación demuestran el correcto funcionamiento del flujo de trabajo, destacando el rendimiento del modelo y su capacidad de inferencia en el dispositivo.
 
+### Materiales y herramientas
+ 
+| Componente | Uso en el taller |
+|---|---|
+| XIAO ESP32S3 Sense (con cámara) | Captura de imágenes e inferencia del modelo |
+| Cable USB-C | Alimentación, programación y monitor serie |
+| Arduino IDE | Programación y carga del código en la placa |
+| Edge Impulse | Gestión del dataset, entrenamiento y exportación del modelo |
+| SenseCraft | Visualización del modelo en tiempo real |
+| Red WiFi | Transmisión de video para capturar el dataset |
+
+### Contenido
+ 
+1. [Configuración del entorno en Arduino IDE](#1-configuración-del-entorno-en-arduino-ide)
+2. [Preparación de la cámara y captura del dataset](#2-preparación-de-la-cámara-y-captura-del-dataset)
+3. [Entrenamiento del modelo en Edge Impulse](#3-entrenamiento-del-modelo-en-edge-impulse)
+4. [Despliegue del modelo en Arduino IDE](#4-despliegue-del-modelo-en-arduino-ide)
+5. [Visualización con SenseCraft](#5-visualización-con-sensecraft)
+---
+
 ---
 
 ## 1. Creación del Proyecto y Carga de Datos
