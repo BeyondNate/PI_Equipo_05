@@ -25,7 +25,7 @@ Proyecto Integrador 2026-II | Universidad Peruana Cayetano Heredia | Equipo 05
 - Idania Parhuay Meza
 - Gael Milla Fasabi
 
-**Ingenieros:** [Completar]
+**Ingenieros:** Umbert Lewis De La Cruz, Maria Rejas, Harry Rivera y Renzo Chan
 
 ---
 
