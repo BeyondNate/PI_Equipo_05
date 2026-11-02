@@ -16,7 +16,7 @@ El diseño de la PCB principal está organizado en módulos independientes para 
 
 ### 🛠️ Componentes externos a la PCB principal
 
-Por motivos de espacio y optimización del diseño, algunos componentes se implementarán en una galleta (protoboard) independiente:
+Por motivos de espacio y optimización del diseño, algunos componentes se implementarán en una "galleta" (protoboard) independiente:
 
 - **Bomba dosificadora peristáltica G328:** Encargada de suministrar el quitosano durante el proceso de tratamiento.
 - **Módulo sensor de nivel de agua:** Permite detectar el nivel del líquido en el recipiente de medición y dosificación.
@@ -28,3 +28,8 @@ Estos elementos formarán parte del sistema general, pero no estarán integrados
 El objetivo es centralizar el control electrónico del sistema mediante el ESP32, integrando la alimentación, las mediciones y el accionamiento de los actuadores en una PCB organizada, mientras que los componentes externos se conectan de manera independiente.
 
 > 💧 **ChitoSan – Tecnología, automatización y sostenibilidad al servicio del tratamiento del agua.**
+
+### 📄 Documento en PDF
+
+[Esquema_Electronico_Chitosan.pdf](https://github.com/BeyondNate/PI_Equipo_05/blob/main/Proyecto/M%C3%B3duloElectr%C3%B3nico/Esquema_Electronico_Chitosan.pdf)
+
