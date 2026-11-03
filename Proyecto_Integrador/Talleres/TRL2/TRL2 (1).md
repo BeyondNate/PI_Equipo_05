@@ -90,6 +90,30 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 
 **Aporte al proyecto.** Es la evidencia de que la arquitectura de control del concepto es realizable con componentes comerciales: cubre las señales de entrada exigidas (pH y turbidez antes y después del tratamiento), el cálculo y la secuencia en el ESP32, el accionamiento de las dos bombas (agua y quitosano), el posicionamiento del agitador con el NEMA 17 y la interfaz con LCD y buzzer. Los divisores de tensión protegen las entradas del ESP32, y la asignación de pines permite comenzar la programación y las calibraciones del TRL 3. Su revisión también muestra dos vacíos del diseño: no aparece el sensor de nivel XKC-Y25 ni el motor de corriente continua del agitador (ver las observaciones de coherencia).
 
+Diseño de la placa de circuito impreso (PCB)
+
+<img width="680" height="571" alt="image" src="https://github.com/user-attachments/assets/21bfd9a2-cba9-4b5a-a408-d15812f1826b" />
+
+Figura 2. Diseño de la PCB del sistema ChitoSan, de 96,4 mm de ancho, con cuatro agujeros de montaje en las esquinas.
+
+Descripción. La placa traduce el esquemático v1.2 a un diseño físico de una sola cara de componentes. Se distinguen:
+
+ESP32 DevKit V1: en la parte inferior central, con la antena hacia el borde para no quedar tapada por cobre.
+Alimentación: el módulo LM2596 y la bornera de entrada de 12 V, abajo a la derecha.
+Bombas: dos canales con sus MOSFET, diodos de protección, resistencias y borneras de salida, en el costado derecho.
+TMC2209: en la esquina superior derecha, con el conector del motor NEMA 17.
+Sensores: el módulo de turbidez arriba a la izquierda, con sus divisores de tensión, y un conector de varios pines en la parte superior para el módulo de pH.
+Interfaz: el conector del LCD I2C a la izquierda y el buzzer abajo a la izquierda.
+
+La serigrafía incluye el logo ChitoSan Equipo 5 y el escudo de la UPCH.
+
+Aporte al proyecto. Pasa el control de un esquema a una placa ordenada y repetible. Esto reduce los errores de cableado de una protoboard, agrupa la electrónica en el espacio de la caja de control y facilita el mantenimiento, porque los módulos (ESP32, TMC2209, LM2596) se pueden reemplazar. También cumple las exigencias de seguridad (conexiones fijas, sin cables sueltos) y de componentes reemplazables, y deja lista la base para las calibraciones y la programación del TRL 3.
+
+Dos advertencias antes de incluirlo:
+
+Estado de la placa: en TRL 2 conviene presentarla como un diseño propuesto. Si ya la fabricaron y probaron, dilo; si no, la frase «aún sin fabricar ni validar» es más honesta y no te perjudica en este nivel.
+Coherencia con el esquemático: en la imagen no veo el conector del sensor de nivel XKC-Y25, lo que coincide con la v1.2 (que ya no lo incluye). Si el sensor sigue en el concepto, hay que añadirlo a ambos. Además, revisa que la placa corresponda a la v1.2 y que haya pasado la verificación de reglas de diseño (DRC) de EasyEDA.
+
 ### Modelo 3D en Onshape
 
 Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo exportado (asemblyfinal_1.stl, unos 149 000 triángulos) tiene un volumen envolvente de 62,0 × 40,0 × 47,9 unidades, con una base de 62 × 40; conviene confirmar la unidad (probablemente centímetros) frente a la base de 500 × 300 mm de los planos acotados de la presentación.
@@ -111,7 +135,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 <img width="890" height="657" alt="Captura de pantalla 2026-11-02 215833" src="https://github.com/user-attachments/assets/592b98c6-37e8-4c13-983d-71e8c1a48289" />
 
-*Figura 2. Vista isométrica del ensamblaje final en Onshape.*
+*Figura 3. Vista isométrica del ensamblaje final en Onshape.*
 
 **Descripción.** Muestra la disposición general: el reactor transparente en el centro, rodeado por el pórtico en U; a cada lado, un recipiente cilíndrico; la caja de control al fondo a la izquierda; y los soportes de bomba y el recipiente bajo sobre la base. Se ven la paleta del agitador dentro del reactor, la tapa con sensores y el motor NEMA 17 flotando arriba del pórtico, probablemente en una posición de montaje explosionado.
 
@@ -123,7 +147,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 <img width="971" height="640" alt="Captura de pantalla 2026-11-02 220223" src="https://github.com/user-attachments/assets/04f9f039-92e0-40ae-ad78-0b053e3f0efa" />
 
-*Figura 3. Vista en planta (superior).*
+*Figura 4. Vista en planta (superior).*
 
 **Descripción.** Se ve la base con el escudo de la UPCH y el logo del equipo; la caja de control rectangular con la ventana de la pantalla en la esquina superior izquierda; un recipiente circular a cada lado; el reactor circular al centro, cruzado por el travesaño del pórtico con el motor NEMA 17 sobre él; un soporte de bomba detrás del reactor y dos en la zona frontal; y un recipiente cilíndrico bajo en el centro del frente.
 
@@ -136,7 +160,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 <img width="860" height="652" alt="Captura de pantalla 2026-11-02 220307" src="https://github.com/user-attachments/assets/3d806312-b283-4910-85bc-5727612e0450" />
 
 
-*Figura 4. Vista frontal.*
+*Figura 5. Vista frontal.*
 
 **Descripción.** Se aprecian las alturas relativas y el interior del reactor: el eje del agitador baja desde el motor del travesaño hasta una paleta cerca del fondo; en la tapa cuelgan una sonda larga con punta naranja y un módulo de sensor; bajo el reactor están el anillo con patas y un bloque con componentes; a los lados quedan los recipientes con sus tapas y los soportes de bomba. El NEMA 17 está arriba, separado del pórtico.
 
@@ -149,7 +173,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 <img width="546" height="645" alt="Captura de pantalla 2026-11-02 220439" src="https://github.com/user-attachments/assets/1c869e70-43a1-4c6c-9072-65110db20513" />
 
 
-*Figura 5. Vista lateral.*
+*Figura 6. Vista lateral.*
 
 **Descripción.** Muestra el perfil del equipo: la caja de control a la derecha, con su frente inclinado; el reactor transparente en el centro con una sonda de punta naranja en su interior; el pórtico visto de canto con su eje central; y, a la izquierda, un soporte de bomba y un pequeño módulo. El NEMA 17 aparece otra vez en la parte superior.
 
