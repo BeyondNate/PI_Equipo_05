@@ -169,7 +169,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 ---
 
-## 1 Artículos científicos que respaldan la propuesta
+##  Artículos científicos que respaldan la propuesta
 
 A diferencia del TRL 1, que reunió principios, aquí se buscan trabajos con relación directa con la aplicación: quitosano en ácido acético sobre agua de río, dosificación automática de coagulantes con sensores y microcontrolador.
 
@@ -199,7 +199,7 @@ Sobre la mecánica de dosificación, Klespitz y Kovács mantienen vigente la adv
 
 ---
 
-## 2 Análisis de patentabilidad y protección
+##  Análisis de patentabilidad y protección
 
 Este es un análisis preliminar de estudiantes. No reemplaza una búsqueda profesional de anterioridades ni la opinión de un abogado o agente de propiedad industrial.
 
@@ -252,11 +252,11 @@ Las patentes de los años ochenta y noventa probablemente ya expiraron, pero su 
 
 ---
 
-## 3 Perfil o propuesta de proyecto
+##  Perfil o propuesta de proyecto
 
 ### Título
 
-Sistema automatizado para la clarificación de agua del río Lurín (Pachacámac) mediante dosificación de quitosano.
+Sistema automatizado para la clarificación de agua del río Lurín (Pachacámac) mediante dosificación con quitosano.
 
 ### Problema y justificación
 
