@@ -73,7 +73,6 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 
 ### Esquemático electrónico v1.2
 
-![Esquemático electrónico ChitoSan v1.2 (EasyEDA, actualizado el 29/10/2026)]
 <img width="1048" height="737" alt="Captura de pantalla 2026-11-01 212603" src="https://github.com/user-attachments/assets/df759d7d-650f-4cd7-900c-3bb4e7905132" />
 
 *Figura 1. Esquemático «Esquemático_ChitoSan», versión 1.2, hoja A4 única. Creado el 20/10/2026 y actualizado el 29/10/2026; dibujado por el Equipo 5 y revisado por Umbert Lewis.*
@@ -131,7 +130,6 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 #### Vista isométrica
 
-![Vista isométrica del ensamblaje en Onshape]
 
 <img width="890" height="657" alt="Captura de pantalla 2026-11-02 215833" src="https://github.com/user-attachments/assets/592b98c6-37e8-4c13-983d-71e8c1a48289" />
 
@@ -143,7 +141,6 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 #### Vista en planta
 
-![Vista en planta del ensamblaje en Onshape]
 
 <img width="971" height="640" alt="Captura de pantalla 2026-11-02 220223" src="https://github.com/user-attachments/assets/04f9f039-92e0-40ae-ad78-0b053e3f0efa" />
 
@@ -155,7 +152,6 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 #### Vista frontal
 
-![Vista frontal del ensamblaje en Onshape]
 
 <img width="860" height="652" alt="Captura de pantalla 2026-11-02 220307" src="https://github.com/user-attachments/assets/3d806312-b283-4910-85bc-5727612e0450" />
 
@@ -168,7 +164,6 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 #### Vista lateral
 
-![Vista lateral del ensamblaje en Onshape]
 
 <img width="546" height="645" alt="Captura de pantalla 2026-11-02 220439" src="https://github.com/user-attachments/assets/1c869e70-43a1-4c6c-9072-65110db20513" />
 
