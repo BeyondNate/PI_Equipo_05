@@ -42,7 +42,7 @@ El alcance se mantiene acotado: se estudia una etapa de clarificación, no la pr
 
 ---
 
-## 0 Formulación del concepto tecnológico
+## Formulación del concepto tecnológico
 
 ### Concepto
 
@@ -74,7 +74,6 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 ### Esquemático electrónico v1.2
 
 ![Esquemático electrónico ChitoSan v1.2 (EasyEDA, actualizado el 29/10/2026)]
-
 <img width="1048" height="737" alt="Captura de pantalla 2026-11-01 212603" src="https://github.com/user-attachments/assets/df759d7d-650f-4cd7-900c-3bb4e7905132" />
 
 *Figura 1. Esquemático «Esquemático_ChitoSan», versión 1.2, hoja A4 única. Creado el 20/10/2026 y actualizado el 29/10/2026; dibujado por el Equipo 5 y revisado por Umbert Lewis.*
