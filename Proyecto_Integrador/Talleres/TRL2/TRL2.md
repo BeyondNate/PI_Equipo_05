@@ -133,7 +133,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 <img width="890" height="657" alt="Captura de pantalla 2026-11-02 215833" src="https://github.com/user-attachments/assets/592b98c6-37e8-4c13-983d-71e8c1a48289" />
 
-*Figura 3. Vista isométrica del ensamblaje final en Onshape.*
+*Figura 3. Vista isométrica del ensamblaje final ChitoSan (Solución Azul) en Onshape, modelado por el Equipo 5 (diseño y modelado: B. Cárdenas) y exportado como asemblyfinal_1.stl. Dimensiones envolventes aproximadas: 62,0 × 40,0 × 47,9 unidades, con una base de 62 × 40. Elementos visibles: base modular con el escudo de la UPCH y el logo del equipo; reactor transparente de 1 L con tapa; pórtico en U; motor del agitador con eje y paleta; sensores sobre la tapa; dos recipientes cilíndricos laterales; caja de control con ventana de pantalla; soportes de bomba; y el motor NEMA 17 en posición separada. Material previsto: PLA, con componentes comerciales.*
 
 **Descripción.** Muestra la disposición general: el reactor transparente en el centro, rodeado por el pórtico en U; a cada lado, un recipiente cilíndrico; la caja de control al fondo a la izquierda; y los soportes de bomba y el recipiente bajo sobre la base. Se ven la paleta del agitador dentro del reactor, la tapa con sensores y el motor NEMA 17 flotando arriba del pórtico, probablemente en una posición de montaje explosionado.
 
@@ -144,7 +144,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 <img width="971" height="640" alt="Captura de pantalla 2026-11-02 220223" src="https://github.com/user-attachments/assets/04f9f039-92e0-40ae-ad78-0b053e3f0efa" />
 
-*Figura 4. Vista en planta (superior).*
+*Figura 4. Vista en planta (superior) del ensamblaje final en Onshape. La base mide 62 × 40 unidades (medidas tomadas del archivo STL). Distribución: caja de control en la esquina posterior izquierda (aprox. 17 × 11 unidades); recipientes laterales de unas 15 unidades de diámetro; reactor central de unas 12 unidades de diámetro, cruzado por el travesaño del pórtico, con el NEMA 17 encima; soporte de bomba detrás del reactor, dos soportes en el frente y un recipiente cilíndrico bajo al centro del frente. Los elementos de marca (escudo UPCH y logo ChitoSan Team) están grabados en la base.*
 
 **Descripción.** Se ve la base con el escudo de la UPCH y el logo del equipo; la caja de control rectangular con la ventana de la pantalla en la esquina superior izquierda; un recipiente circular a cada lado; el reactor circular al centro, cruzado por el travesaño del pórtico con el motor NEMA 17 sobre él; un soporte de bomba detrás del reactor y dos en la zona frontal; y un recipiente cilíndrico bajo en el centro del frente.
 
@@ -156,7 +156,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 <img width="860" height="652" alt="Captura de pantalla 2026-11-02 220307" src="https://github.com/user-attachments/assets/3d806312-b283-4910-85bc-5727612e0450" />
 
 
-*Figura 5. Vista frontal.*
+*Figura 5. Vista frontal del ensamblaje final en Onshape. Dimensiones aproximadas: ancho 62,0 y altura total 47,9 unidades. Alturas relativas desde la base: recipientes laterales, unas 11 unidades; tapa del reactor, unas 21; pórtico, unas 29; NEMA 17, entre 40 y 48, separado del conjunto. Elementos visibles: eje y paleta del agitador dentro del reactor, sonda larga y módulo de sensor colgando de la tapa, anillo con patas bajo el reactor y soportes de bomba junto a los recipientes.*
 
 **Descripción.** Se aprecian las alturas relativas y el interior del reactor: el eje del agitador baja desde el motor del travesaño hasta una paleta cerca del fondo; en la tapa cuelgan una sonda larga con punta naranja y un módulo de sensor; bajo el reactor están el anillo con patas y un bloque con componentes; a los lados quedan los recipientes con sus tapas y los soportes de bomba. El NEMA 17 está arriba, separado del pórtico.
 
@@ -168,7 +168,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 <img width="546" height="645" alt="Captura de pantalla 2026-11-02 220439" src="https://github.com/user-attachments/assets/1c869e70-43a1-4c6c-9072-65110db20513" />
 
 
-*Figura 6. Vista lateral.*
+*Figura 6. Vista lateral del ensamblaje final en Onshape. Dimensiones aproximadas: profundidad 40,0 y altura total 47,9 unidades. Elementos visibles: caja de control con frente inclinado (a la derecha de la imagen), reactor transparente con la sonda de punta naranja en su interior, pórtico visto de canto con el eje central del agitador, un soporte de bomba y un pequeño módulo a la izquierda, y el NEMA 17 separado en la parte superior.*
 
 **Descripción.** Muestra el perfil del equipo: la caja de control a la derecha, con su frente inclinado; el reactor transparente en el centro con una sonda de punta naranja en su interior; el pórtico visto de canto con su eje central; y, a la izquierda, un soporte de bomba y un pequeño módulo. El NEMA 17 aparece otra vez en la parte superior.
 
