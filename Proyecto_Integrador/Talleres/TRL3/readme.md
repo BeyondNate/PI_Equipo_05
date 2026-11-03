@@ -192,6 +192,10 @@ A 25 °C, la ecuación de Nernst da una pendiente teórica de 59,16 mV por unida
 
 <p align="center"><b>Figura 10.</b> Esfuerzo de von Mises en la caja de control (PLA). <i>(Fuente: SimScale, elaboración propia.)</i></p>
 
+<p align="center"><img src="images/agitador.jpeg" width="600" alt="Esfuerzo de von Mises en la caja de control"></p>
+
+<p align="center"><b>Figura 11.</b> Esfuerzo de von Mises en el agitador (PLA). <i>(Fuente: SimScale, elaboración propia.)</i></p>
+
 **Análisis.** En la base, los esfuerzos más altos se ubican en la parte derecha de la placa. En el soporte del reactor, la mayor parte de la pieza tiene esfuerzos bajos y los más altos aparecen en las patas y en su unión con el anillo inferior. En la placa, los esfuerzos más altos se concentran alrededor de los orificios. En la caja de control, casi toda la superficie tiene esfuerzos bajos y el máximo se localiza en una línea del borde inferior y alrededor de la abertura. El esfuerzo máximo de la escala es de 0,9099 MPa en la caja, que es la pieza más exigida, y de 0,002144 MPa en la placa, que es la menos exigida. La simulación evalúa solo la resistencia mecánica; no considera el efecto químico del ácido acético sobre el PLA, riesgo identificado en el TRL 2 [2] que debe verificarse por separado. Para concluir si las piezas resisten, estos valores deben compararse con la resistencia del filamento PLA utilizado: **[COMPLETAR: resistencia del filamento según su ficha técnica]**.
 
 ---
