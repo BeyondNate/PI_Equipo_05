@@ -179,20 +179,46 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 Como complemento del esquemático electrónico, la PCB y el modelo tridimensional, el equipo desarrolló en Figma una propuesta de dashboard para visualizar el estado del sistema ChitoSan y presentar de forma integrada las variables del tratamiento. Esta interfaz constituye una representación conceptual de la interacción entre el usuario y el prototipo: organiza los datos que el ESP32 deberá adquirir, los cálculos que deberá realizar y las etapas que deberá ejecutar. En esta etapa TRL 2, el diseño de la interfaz no demuestra que exista una conexión funcional con los sensores, las bombas o el microcontrolador.
 
 **Vista general del dashboard**
+<img width="607" height="793" alt="image" src="https://github.com/user-attachments/assets/bc7acd97-1546-4040-b843-2d382f6e7895" />
 
-<img width="1047" height="718" alt="Captura de pantalla 2026-11-03 015032" src="https://github.com/user-attachments/assets/14b18f08-6e0f-48a8-82a0-668700a53384" />
+<img width="590" height="790" alt="image" src="https://github.com/user-attachments/assets/18bd358b-eb0b-4c85-881d-52b0d5da2918" />
 
-*Figura 7. Dashboard conceptual «ChitoSan · Clarificación de agua con quitosano», diseñado por el Equipo 05 en Figma para el Proyecto Integrador 2026-II de la Universidad Peruana Cayetano Heredia. La captura corresponde a la pantalla general de la propuesta de interfaz, identificada como TRL 2 – Formulación conceptual, y presenta un reactor de referencia de 1 L.*
+<img width="572" height="785" alt="image" src="https://github.com/user-attachments/assets/7a38439b-ed9c-4368-9e14-6c7f62b8ce3f" />
 
-**Descripción**. El dashboard reúne en una sola pantalla la información que el operador necesitaría para seguir el tratamiento. Los cuatro indicadores superiores sintetizan el escenario de referencia: una remoción de turbidez del 83 %, un rango de dosis por explorar de 0,5 a 190 mg/L, un reactor de 1 L y el estado conceptual del sistema. Los dos gráficos permiten visualizar, respectivamente, la comparación entre turbidez inicial y final de cinco muestras y la tendencia de remoción en función de distintas dosis de quitosano. En el panel inferior izquierdo se simula la información que podría presentar la LCD durante una corrida: pH de 7,1, turbidez inicial de 95 NTU, dosis calculada de 2,0 mg/L, volumen de solución de 0,2 mL y turbidez final estimada de 14 NTU, con el estado «AGITANDO». El panel de secuencia muestra las siete etapas previstas para el funcionamiento automático. Finalmente, el listado de componentes distingue los elementos considerados diseñados de aquellos que aún aparecen pendientes en la versión 1.2, mientras que el panel de indicadores resume los productos documentales asociados al TRL 2.
+<img width="591" height="782" alt="image" src="https://github.com/user-attachments/assets/516d37a8-3800-49b8-99d6-07e1dc243db3" />
 
-**Aporte al proyecto**. El dashboard traduce la arquitectura técnica descrita en este documento a una interfaz comprensible para el usuario y para los evaluadores. Su principal aporte es definir qué información deberá mostrarse y cómo se relaciona con cada etapa del proceso: las mediciones iniciales de pH y turbidez alimentarán la selección de dosis; la dosificación y la agitación se reflejarán como estados de operación; y la medición final permitirá calcular y comunicar la remoción de turbidez. Además, los gráficos proponen una forma de comparar ensayos y explorar la relación dosis–remoción, mientras que el panel de componentes ayuda a identificar pendientes de integración. Por ello, el diseño sirve como referencia para programar posteriormente la LCD y una interfaz de monitoreo, establecer las variables que deberá transmitir el ESP32 y organizar el registro de datos durante el TRL 3.
+<img width="585" height="795" alt="image" src="https://github.com/user-attachments/assets/6a7b52e2-fc2c-428e-a46f-2621cca400ed" />
 
-Advertencia sobre los datos representados. Los porcentajes de remoción, las turbideces de las muestras, la curva dosis–remoción, el óptimo ilustrativo y los valores del ejemplo LCD son datos demostrativos colocados para explicar la futura presentación de resultados. No proceden de mediciones realizadas por el equipo ni deben citarse como rendimiento alcanzado. En particular, el valor de 83 % no debe interpretarse como una eficiencia validada del prototipo. Durante el TRL 3, estos campos deberán sustituirse por mediciones reales obtenidas con los sensores calibrados y contrastadas con los métodos de referencia. La dosis óptima también deberá determinarse experimentalmente para las muestras del río Lurín (Pachacámac), sin asumir que el máximo de la curva ilustrativa será el resultado real.
+<img width="598" height="787" alt="image" src="https://github.com/user-attachments/assets/f06b8ea8-6e63-4185-a2e5-ea78986b7f63" />
+
+*Figura 7. Interfaz de registro «Chitosan: Clarificación de agua con quitosano», diseñada por el Equipo 05 en Figma para el Proyecto Integrador 2026-II de la Universidad Peruana Cayetano Heredia. La captura corresponde al flujo de seis pantallas (ingreso, inicio, mediciones iniciales, cálculo de la dosis, estado del proceso y resultados), identificado como TRL 2 (Formulación Conceptual), y presenta un reactor de referencia de 1 L con el Índice de Efectividad como indicador principal.*
+
+## Descripción del diseño en Figma
+
+El archivo contiene el prototipo de la interfaz de registro del Sistema Automatizado de Clarificación de Agua con Quitosano. Es un flujo de seis pantallas, con el logotipo del equipo en el encabezado y flechas que indican el recorrido:
+
+1. **Ingreso:** panel de marca con ilustración y formulario de usuario, código del equipo y contraseña.
+2. **Inicio:** panel de control sin scroll, con el estado del proceso, el resumen del último ensayo y el Índice de Efectividad. Desde aquí se inicia un nuevo ensayo.
+3. **Mediciones Iniciales:** registro del pH y la turbidez antes de dosificar.
+4. **Cantidad a Dosificar:** dosis objetivo, concentración de la solución madre, volumen a bombear, tiempo de bombeo y ácido acético agregado, con la fórmula visible.
+5. **Estado del Proceso:** seguimiento de las etapas Dosificando, Agitando y Sedimentando, con su estado.
+6. **Resultados:** mediciones finales y el Índice de Efectividad, con dos anillos: mejora del pH y remoción de turbidez.
+
+Los campos muestran «—» porque todavía no hay datos. Los colores azul y marino provienen del logotipo, y todas las capas son editables.
+
+## Aporte al Proyecto
+
+- **Interfaz para el operador:** convierte el procedimiento del TRL 2 en pasos guiados, desde la medición inicial hasta el resultado final. Así se reduce el riesgo de omitir una etapa.
+- **Registro de datos por ensayo:** cada corrida guarda pH, turbidez, dosis y resultados en un mismo formato. Esto respalda las hipótesis H1 y H2 del TRL 2, porque cada resultado puede alimentar la tabla de dosificación.
+- **Indicadores de éxito:** la pantalla de resultados calcula la remoción de turbidez, que es el indicador principal del TRL 2 para comparar con la prueba de jarras. Además, incluye la mejora del pH, que responde al objetivo de llevar el agua a un valor cercano a la neutralidad.
+- **Base para el TRL 3:** el flujo coincide con la secuencia de operación del prototipo (llenado, dosificación, agitación, sedimentación y evaluación), así que sirve como especificación para programar la interfaz.
+- **Trazabilidad:** el ensayo queda identificado por usuario y equipo, lo que facilita la revisión posterior de los datos.
+
+Conviene aclarar que es un diseño visual. La funcionalidad real depende del firmware y de la calibración de sensores y bomba, que todavía no están hechos.
 
 Acceso a los archivos de diseño.
-- Archivo editable en Figma: https://www.figma.com/design/8twbD014gQxG9UsL86BPYw/DASHBOARD?node-id=0-1&t=PuaKjYhMqsZO8Qgx-1 
-- Prototipo navegable en Figma: https://www.figma.com/proto/8twbD014gQxG9UsL86BPYw/DASHBOARD?node-id=3-2&p=f&t=B6xSs3VszQMy4DBK-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1
+- Archivo editable en Figma: https://www.figma.com/design/gBkksjELsAf9rPYOBMQ7ot/Chitosan---Registro-de-dosificaci%C3%B3n-y-clarificaci%C3%B3n?node-id=0-1&t=Vt8dFOgyxpEyDcj8-1 
+- Prototipo navegable en Figma: https://www.figma.com/proto/gBkksjELsAf9rPYOBMQ7ot/Chitosan---Registro-de-dosificaci%C3%B3n-y-clarificaci%C3%B3n?node-id=3-2&t=7k83NdpV6whos929-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1
 ### Hipótesis de trabajo (por comprobar en TRL 3)
 
 - **H1.** Con pH y turbidez inicial medidos se puede asignar una dosis a partir de una tabla experimental propia, con una remoción de turbidez comparable a la de una prueba de jarras manual.
