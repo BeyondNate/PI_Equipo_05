@@ -176,19 +176,19 @@ A 25 °C, la ecuación de Nernst da una pendiente teórica de 59,16 mV por unida
 | Placa con cuatro orificios | **[COMPLETAR]** | **[COMPLETAR]** |
 | Caja de control | **[COMPLETAR]** | **[COMPLETAR]** |
 
-<p align="center"><img src="images/fig7_simscale_base.jpg" width="600" alt="Esfuerzo de von Mises en la base"></p>
+<p align="center"><img src="images/base.jpeg" width="600" alt="Esfuerzo de von Mises en la base"></p>
 
-<p align="center"><b>Figura 7.</b> Esfuerzo de von Mises en la base (PLA). <i>(Fuente: SimScale, elaboración propia.)</i></p>
+<p align="center"><b>Figura 7.</b> Esfuerzo de von Mises en la base (Acrilico). <i>(Fuente: SimScale, elaboración propia.)</i></p>
 
-<p align="center"><img src="images/fig8_simscale_soporte.jpg" width="600" alt="Esfuerzo de von Mises en el soporte del reactor"></p>
+<p align="center"><img src="images/piramide.jpeg" width="600" alt="Esfuerzo de von Mises en el soporte del reactor"></p>
 
 <p align="center"><b>Figura 8.</b> Esfuerzo de von Mises en el soporte del reactor (PLA). <i>(Fuente: SimScale, elaboración propia.)</i></p>
 
-<p align="center"><img src="images/fig9_simscale_placa.jpg" width="600" alt="Esfuerzo de von Mises en la placa con cuatro orificios"></p>
+<p align="center"><img src="images/tapaestuche.jpeg" width="600" alt="Esfuerzo de von Mises en la placa con cuatro orificios"></p>
 
 <p align="center"><b>Figura 9.</b> Esfuerzo de von Mises en la placa con cuatro orificios (PLA). <i>(Fuente: SimScale, elaboración propia.)</i></p>
 
-<p align="center"><img src="images/fig10_simscale_caja.jpg" width="600" alt="Esfuerzo de von Mises en la caja de control"></p>
+<p align="center"><img src="images/cajitaesp.jpeg" width="600" alt="Esfuerzo de von Mises en la caja de control"></p>
 
 <p align="center"><b>Figura 10.</b> Esfuerzo de von Mises en la caja de control (PLA). <i>(Fuente: SimScale, elaboración propia.)</i></p>
 
