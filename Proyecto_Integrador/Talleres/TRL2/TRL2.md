@@ -16,7 +16,7 @@ Proyecto Integrador 2026-II | Universidad Peruana Cayetano Heredia | Equipo 05
 | **Institución** | Universidad Peruana Cayetano Heredia |
 | **Tema** | TRL 2 · Sistema automatizado de clarificación de agua mediante dosificación de solución de quitosano en ácido acético al 1 % |
 | **Agua de referencia** | Río Lurín (Pachacámac) |
-| **Fecha** | 27/10/2026 |
+| **Fecha** | 03/11/2026 |
 
 **Integrantes:**
 
