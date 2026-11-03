@@ -179,6 +179,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 Como complemento del esquemático electrónico, la PCB y el modelo tridimensional, el equipo desarrolló en Figma una propuesta de dashboard para visualizar el estado del sistema ChitoSan y presentar de forma integrada las variables del tratamiento. Esta interfaz constituye una representación conceptual de la interacción entre el usuario y el prototipo: organiza los datos que el ESP32 deberá adquirir, los cálculos que deberá realizar y las etapas que deberá ejecutar. En esta etapa TRL 2, el diseño de la interfaz no demuestra que exista una conexión funcional con los sensores, las bombas o el microcontrolador.
 
 **Vista general del dashboard**
+
 <img width="607" height="793" alt="image" src="https://github.com/user-attachments/assets/bc7acd97-1546-4040-b843-2d382f6e7895" />
 
 <img width="590" height="790" alt="image" src="https://github.com/user-attachments/assets/18bd358b-eb0b-4c85-881d-52b0d5da2918" />
