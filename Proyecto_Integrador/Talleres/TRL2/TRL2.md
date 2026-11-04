@@ -48,29 +48,95 @@ El alcance se mantiene acotado: se estudia una etapa de clarificación, no la pr
 
 La caja negra delimita el sistema sin comprometerse aún con su implementación: describe qué entra, qué sale y qué perturbaciones actúan sobre él [1]. La Figura 1 resume este límite para el sistema de clarificación.
 
-**Entradas:** agua cruda del río Lurín (Pachacámac) con turbidez y pH variables; solución de quitosano al 1 % (p/v) en ácido acético al 1 %; energía de 12 V; comandos del operador; parámetros de dosificación (tabla experimental pH–turbidez–dosis).
+```mermaid
+graph LR
+    %% Entradas
+    A1([Agua turbia]) --> S
+    A2([Solución de quitosano]) --> S
+    A3([Agua destilada]) --> S
+    A4([Energía eléctrica 12V]) --> S
+    A5([Señal de encendido/apagado]) -.-> S
 
-**Salidas:** agua clarificada (menor turbidez); lodo/flóculos sedimentados; registro de datos (pH, turbidez inicial y final, dosis, remoción); señales de estado por LCD, buzzer y Wi-Fi.
+    %% Sistema
+    S((SISTEMA AUTOMATIZADO<br/>PARA LA CLARIFICACIÓN<br/>DE AGUA MEDIANTE<br/>DOSIFICACIÓN<br/>DE QUITOSANO))
 
-**Perturbaciones y restricciones:** temperatura y luz ambiental; variabilidad del agua entre muestras y épocas; desgaste del tubo de la bomba peristáltica; suciedad en las superficies ópticas; compatibilidad del ácido acético con sondas, tubos y PLA.
+    %% Salidas
+    S --> B1([Agua clarificada])
+    S --> B2([Lodos sedimentados])
+    S -.-> B3([Estado y valores LCD])
+    S -.-> B4([Señal sonora Buzzer])
+    S -.-> B5([Datos / Wi-Fi])
+
+    classDef materia fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef energia fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef senal fill:#fff3e0,stroke:#f57c00,stroke-width:2px,stroke-dasharray: 5 5;
+    
+    class A1,A2,A3,B1,B2 materia;
+    class A4 energia;
+    class A5,B3,B4,B5 senal;
+```
 
 *Figura 1. Caja negra del sistema de clarificación con quitosano: entradas, salidas y perturbaciones.*
 
 ### Esquema de funciones
 
-La función global —"clarificar una muestra de agua dosificando quitosano según su pH y turbidez"— se descompone en subfunciones [1], [2]. La Tabla 1 las relaciona con el bloque de hardware que las realiza, lo que garantiza que ninguna subfunción quede sin responsable físico.
+El esquema de funciones descompone el sistema en las principales funciones que permiten realizar el proceso de forma automatizada. Incluye la adquisición de las señales de pH y turbidez, el procesamiento de los datos, el cálculo del volumen de quitosano, el control de la bomba peristáltica y el agitador, además de la visualización y transmisión de los resultados [1], [2]. La Tabla 1 las relaciona con el bloque de hardware que las realiza.
+
+```mermaid
+flowchart TD
+    %% Entradas
+    IN_AGUA([Agua Turbia]) --> F1
+    IN_QUIT([Solución Quitosano]) --> F7
+    IN_ELEC([Energía Eléctrica 12V]) --> F3
+
+    subgraph ELECTRICA [Subsistema Eléctrico]
+        F3[Acondicionar energía] --> F4[Distribuir energía 5V/3.3V]
+    end
+
+    subgraph ADQUISICION [Adquisición de Señales]
+        F1[Sensar pH] --> F2[Procesar señal]
+        F1_t[Sensar turbidez] --> F2
+        F1_n[Sensar nivel XKC-Y25] --> F2
+    end
+
+    subgraph CONTROL [Procesamiento y Control - ESP32]
+        F2 --> F5[Calcular dosis y volumen]
+        F5 --> F6[Controlar actuadores]
+    end
+
+    subgraph MECANICA [Mecánica]
+        F6 --> F7[Transportar agua]
+        F6 --> F8[Bombear quitosano]
+        F6 --> F9[Agitar - Motor DC]
+        F6 --> F10[Posicionar agitador - NEMA 17]
+        F7 --> OUT_AGUA
+        F8 --> OUT_LODO
+    end
+
+    subgraph COMUNICACION [Comunicación]
+        F6 --> F11[Mostrar LCD]
+        F6 --> F12[Alerta Buzzer]
+        F6 --> F13[Transmitir Wi-Fi]
+    end
+
+    %% Salidas
+    OUT_AGUA([Agua Clarificada])
+    OUT_LODO([Lodos Sedimentados])
+```
+
+*Figura 2. Esquema de funciones del sistema, mostrando los flujos de materia, energía y señales.*
 
 **Tabla 1. Subfunciones del sistema y bloque de hardware asociado.**
 
 | N.º | Subfunción | Bloque de hardware |
 |:---|:---|:---|
 | F1 | Transportar agua cruda al reactor | Bomba de alimentación (MOSFET IRLZ44N, GPIO18) |
-| F2 | Detectar el nivel de llenado | Sensor XKC-Y25 |
+| F2 | Detectar el nivel de llenado | Sensor XKC-Y25 (GPIO32) |
 | F3 | Medir pH | Módulo PH4502C (GPIO34, divisor 15/20 kΩ) |
 | F4 | Medir turbidez inicial y final | Módulo de turbidez (GPIO35, divisor 15/20 kΩ) |
 | F5 | Calcular la dosis | ESP32 (tabla experimental pH–turbidez–dosis) |
 | F6 | Dosificar la solución de quitosano | Bomba peristáltica (MOSFET, GPIO19) |
-| F7 | Agitar/mezclar | Motor DC con paleta (PWM) |
+| F7 | Agitar/mezclar | Motor DC con paleta (PWM, GPIO33) |
 | F8 | Posicionar verticalmente el agitador | NEMA 17 + husillo T8 + TMC2209 (GPIO25/26/27) |
 | F9 | Permitir la sedimentación | Reactor de 1 L (función pasiva, por tiempo) |
 | F10 | Registrar y mostrar datos | LCD 16×2 I2C (GPIO21/22), buzzer (GPIO23), Wi-Fi |
@@ -78,25 +144,33 @@ La función global —"clarificar una muestra de agua dosificando quitosano seg�
 
 ### Matriz morfológica
 
-La matriz morfológica cruza cada subfunción con principios de solución alternativos y permite identificar combinaciones viables [3]. La Tabla 2 muestra las alternativas consideradas; la columna marcada en negrita es la combinación adoptada (Solución Azul).
+La matriz morfológica cruza cada subfunción con principios de solución alternativos y permite identificar combinaciones viables [3]. La Tabla 2 muestra las 19 funciones del sistema y sus alternativas; la columna de la **Solución 1** corresponde a la combinación adoptada para nuestra **Solución Azul**.
 
-**Tabla 2. Matriz morfológica (en negrita, la combinación elegida).**
+**Tabla 2. Matriz morfológica (Solución 1 = adoptada).**
 
-| Subfunción | Alternativa A | Alternativa B | Alternativa C |
-|:---|:---|:---|:---|
-| F1 Transportar agua | **Bomba de diafragma 12 V** | Bomba centrífuga | Gravedad |
-| F2 Nivel | Flotador | Ultrasónico | **XKC-Y25 capacitivo** |
-| F3 pH | **PH4502C** | Electrodo de laboratorio | Indicador colorimétrico |
-| F4 Turbidez | Nefelómetro comercial | Turbidímetro por imágenes | **TS-300B óptico** |
-| F5 Cálculo de dosis | Fórmula universal | **Tabla experimental pH–turbidez–dosis** | Aprendizaje automático |
-| F6 Dosificación | Bomba de diafragma | **Bomba peristáltica** | Dosificación gravimétrica |
-| F7 Agitación | Agitador magnético | **Motor DC con paleta** | Vibración |
-| F8 Posicionamiento | Manual | **NEMA 17 + husillo T8** | Servomotor |
-| F9 Sedimentación | **Reactor 1 L por tiempo** | Cono Imhoff | Centrífuga |
-| F10 Registro | **LCD + buzzer + Wi-Fi** | Solo LCD | Solo nube |
-| F11 Control | Arduino UNO | PLC | **ESP32** |
+| N.º | Subsistema / Función | Solución 1 (Adoptada) | Solución 2 (Alternativa) | Solución 3 (Alternativa) |
+|:---|:---|:---|:---|:---|
+| 1 | Fuente de energía del dispositivo | **Batería de litio 3.7V/5V 5000mAh** | Conexión directa | - |
+| 2 | Encendido del equipo (Panel de control) | **Interruptor deslizante** | Interruptor basculante (rocker) | - |
+| 3 | Acondicionar energía eléctrica de entrada | **Fuente conmutada (switching)** | Convertidor DC-DC tipo buck | - |
+| 4 | Acondicionar energía para sensores | **Regulador LDO 5V** | Módulo step-down regulado | - |
+| 5 | Acondicionar energía para módulo de comunicación | **Regulador 5V dedicado** | Convertidor DC-DC aislado | - |
+| 6 | Controlar el sistema | **Microcontrolador ESP32 (Wi-Fi + BT)** | - | - |
+| 7 | Sensar turbidez del agua | **Sensor de Turbidez 0-1000 NTU (TS-300B)** | Sensor nefelométrico de turbidez | - |
+| 8 | Sensar pH del agua | **Sensor de pH con electrodo de vidrio (PH4502C)** | Sensor de pH de estado sólido (ISFET) | Sensor de pH con sonda |
+| 9 | Sensar nivel de agua | **Sensor capacitivo sin contacto XKC-Y25** | Control eléctrico de nivel (Boya) | Sensor de Nivel Vertical |
+| 10 | Transportar agua turbia al reactor | **Bomba alimentación agua sucia 12V** | - | - |
+| 11 | Dosificar solución de quitosano | **Bomba peristáltica** | Bomba dosificadora electromagnética | Bomba de jeringa automatizada |
+| 12 | Posicionar agitador | **1 Motor NEMA 17 + Husillo T8** | Actuador lineal 12V DC | Servomotor lineal |
+| 13 | Controlar velocidad y tiempo del agitador | **Motor DC (CC) + PWM** | Relé + temporizador | Driver de motor con encoder |
+| 14 | Sujetar el dispositivo | **Soporte estructural (Base y Pórtico)** | Brazo articulado | Brazo telescópico |
+| 15 | Emitir señal sonora | **Buzzer** | Zumbador | Altavoz pequeño |
+| 16 | Mostrar datos al usuario | **Pantalla LCD 16x2** | Pantalla OLED | Pantalla TFT a color |
+| 17 | Transmitir datos por red inalámbrica | **Wi-Fi integrado en ESP32** | Módulo Bluetooth | Subsistema Wi-Fi/BT externo |
+| 18 | Carcasa del dispositivo portátil | **PLA (Impresión 3D)** | ABS | PETG |
+| 19 | Envase de la mezcla calibrada | **Plástico HDPE o PP** | - | Envases con sello hermético |
 
-Esta matriz resuelve las incoherencias detectadas en versiones previas: el **agitador es un motor DC** (F7), el **NEMA 17 con husillo T8** cumple solo el posicionamiento vertical (F8) y el **XKC-Y25** se reincorpora para el nivel (F2).
+Esta matriz resuelve las incoherencias detectadas en versiones previas: el **agitador es un motor DC** (F13), el **NEMA 17 con husillo T8** cumple solo el posicionamiento vertical (F12) y el **XKC-Y25** se reincorpora para el nivel (F9).
 
 ### Bocetos de las alternativas
 
@@ -108,7 +182,7 @@ Se elaboraron tres bocetos conceptuales; cada uno combina principios de la matri
 
 **Boceto 3 — Alternativa de laboratorio.** Reactor con electrodo de pH de laboratorio y nefelómetro comercial, dosificación manual con jeringa. *Ventajas:* alta exactitud de medida. *Desventajas:* no automatiza, mayor costo, no cumple el objetivo de sistema automatizado.
 
-*Figura 2. Bocetos de las tres alternativas conceptuales (Solución Azul, compacta y de laboratorio).*
+*Figura 3. Bocetos de las tres alternativas conceptuales (Solución Azul, compacta y de laboratorio).*
 
 ### Selección del concepto (matriz de decisión)
 
@@ -156,7 +230,7 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 
 ### Esquemático electrónico v1.3
 
-*Figura 3. Esquemático «Esquemático_ChitoSan», versión 1.3, hoja A4 única. Creado el 20/10/2026 y actualizado el 03/11/2026; dibujado por el Equipo 5 y revisado por Umbert Lewis.*
+*Figura 4. Esquemático «Esquemático_ChitoSan», versión 1.3, hoja A4 única. Creado el 20/10/2026 y actualizado el 03/11/2026; dibujado por el Equipo 5 y revisado por Umbert Lewis.*
 
 **Descripción.** El esquemático está dividido en ocho bloques:
 
@@ -175,7 +249,7 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 
 ### Diseño de la placa de circuito impreso (PCB)
 
-*Figura 4. Diseño de la PCB del sistema ChitoSan, de 96,4 mm de ancho, con cuatro agujeros de montaje en las esquinas (versión correspondiente al esquemático v1.3).*
+*Figura 5. Diseño de la PCB del sistema ChitoSan, de 96,4 mm de ancho, con cuatro agujeros de montaje en las esquinas (versión correspondiente al esquemático v1.3).*
 
 **Descripción.** La placa traduce el esquemático v1.3 a un diseño físico de una sola cara de componentes. Se distinguen:
 
@@ -210,7 +284,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 #### Vista isométrica
 
-*Figura 5. Vista isométrica del ensamblaje final ChitoSan (Solución Azul) en Onshape, modelado por el Equipo 5 (diseño y modelado: B. Cárdenas) y exportado como asemblyfinal_1.stl. Dimensiones envolventes: 620 × 400 × 479 mm, con una base de 620 × 400 mm. Elementos visibles: base modular con el escudo de la UPCH y el logo del equipo; reactor transparente de 1 L con tapa; pórtico en U; motor DC del agitador con eje y paleta; NEMA 17 + husillo T8 para el posicionamiento vertical; sensores sobre la tapa; dos recipientes cilíndricos laterales; caja de control con ventana de pantalla; soportes de bomba. Material previsto: PLA, con componentes comerciales.*
+*Figura 6. Vista isométrica del ensamblaje final ChitoSan (Solución Azul) en Onshape, modelado por el Equipo 5 (diseño y modelado: B. Cárdenas) y exportado como asemblyfinal_1.stl. Dimensiones envolventes: 620 × 400 × 479 mm, con una base de 620 × 400 mm. Elementos visibles: base modular con el escudo de la UPCH y el logo del equipo; reactor transparente de 1 L con tapa; pórtico en U; motor DC del agitador con eje y paleta; NEMA 17 + husillo T8 para el posicionamiento vertical; sensores sobre la tapa; dos recipientes cilíndricos laterales; caja de control con ventana de pantalla; soportes de bomba. Material previsto: PLA, con componentes comerciales.*
 
 **Descripción.** Muestra la disposición general: el reactor transparente en el centro, rodeado por el pórtico en U; a cada lado, un recipiente cilíndrico; la caja de control al fondo a la izquierda; y los soportes de bomba y el recipiente bajo sobre la base. Se ven la paleta del agitador dentro del reactor, la tapa con sensores y el NEMA 17 acoplado al husillo T8 sobre el pórtico.
 
@@ -218,7 +292,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 #### Vista en planta
 
-*Figura 6. Vista en planta (superior) del ensamblaje final en Onshape. La base mide 620 × 400 mm. Distribución: caja de control en la esquina posterior izquierda (aprox. 170 × 110 mm); recipientes laterales de unas 150 mm de diámetro; reactor central de unas 120 mm de diámetro, cruzado por el travesaño del pórtico, con el NEMA 17 encima; soporte de bomba detrás del reactor, dos soportes en el frente y un recipiente cilíndrico bajo al centro del frente. Los elementos de marca (escudo UPCH y logo ChitoSan Team) están grabados en la base.*
+*Figura 7. Vista en planta (superior) del ensamblaje final en Onshape. La base mide 620 × 400 mm. Distribución: caja de control en la esquina posterior izquierda (aprox. 170 × 110 mm); recipientes laterales de unas 150 mm de diámetro; reactor central de unas 120 mm de diámetro, cruzado por el travesaño del pórtico, con el NEMA 17 encima; soporte de bomba detrás del reactor, dos soportes en el frente y un recipiente cilíndrico bajo al centro del frente. Los elementos de marca (escudo UPCH y logo ChitoSan Team) están grabados en la base.*
 
 **Descripción.** Se ve la base con el escudo de la UPCH y el logo del equipo; la caja de control rectangular con la ventana de la pantalla en la esquina superior izquierda; un recipiente circular a cada lado; el reactor circular al centro, cruzado por el travesaño del pórtico con el motor NEMA 17 sobre él; un soporte de bomba detrás del reactor y dos en la zona frontal; y un recipiente cilíndrico bajo en el centro del frente.
 
@@ -226,7 +300,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 #### Vista frontal
 
-*Figura 7. Vista frontal del ensamblaje final en Onshape. Dimensiones aproximadas: ancho 620,0 y altura total 479,0 mm. Alturas relativas desde la base: recipientes laterales, unas 110 mm; tapa del reactor, unas 210; pórtico, unas 290; NEMA 17, entre 400 y 480, acoplado al husillo T8. Elementos visibles: eje y paleta del agitador dentro del reactor, sonda de pH y módulo de turbidez colgando de la tapa, anillo con patas bajo el reactor y soportes de bomba junto a los recipientes.*
+*Figura 8. Vista frontal del ensamblaje final en Onshape. Dimensiones aproximadas: ancho 620,0 y altura total 479,0 mm. Alturas relativas desde la base: recipientes laterales, unas 110 mm; tapa del reactor, unas 210; pórtico, unas 290; NEMA 17, entre 400 y 480, acoplado al husillo T8. Elementos visibles: eje y paleta del agitador dentro del reactor, sonda de pH y módulo de turbidez colgando de la tapa, anillo con patas bajo el reactor y soportes de bomba junto a los recipientes.*
 
 **Descripción.** Se aprecian las alturas relativas y el interior del reactor: el eje del agitador baja desde el motor DC del travesaño hasta una paleta cerca del fondo; en la tapa cuelgan una sonda de pH con punta naranja y un módulo de turbidez; bajo el reactor están el anillo con patas y un bloque con componentes; a los lados quedan los recipientes con sus tapas y los soportes de bomba. El NEMA 17 está arriba, acoplado al husillo T8.
 
@@ -234,7 +308,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 #### Vista lateral
 
-*Figura 8. Vista lateral del ensamblaje final en Onshape. Dimensiones aproximadas: profundidad 400,0 y altura total 479,0 mm. Elementos visibles: caja de control con frente inclinado (a la derecha de la imagen), reactor transparente con la sonda de punta naranja en su interior, pórtico visto de canto con el eje central del agitador, un soporte de bomba y un pequeño módulo a la izquierda, y el NEMA 17 acoplado al husillo en la parte superior.*
+*Figura 9. Vista lateral del ensamblaje final en Onshape. Dimensiones aproximadas: profundidad 400,0 y altura total 479,0 mm. Elementos visibles: caja de control con frente inclinado (a la derecha de la imagen), reactor transparente con la sonda de punta naranja en su interior, pórtico visto de canto con el eje central del agitador, un soporte de bomba y un pequeño módulo a la izquierda, y el NEMA 17 acoplado al husillo en la parte superior.*
 
 **Descripción.** Muestra el perfil del equipo: la caja de control a la derecha, con su frente inclinado; el reactor transparente en el centro con una sonda de punta naranja en su interior; el pórtico visto de canto con su eje central; y, a la izquierda, un soporte de bomba y un pequeño módulo. El NEMA 17 aparece en la parte superior, acoplado al husillo.
 
@@ -242,7 +316,7 @@ Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo 
 
 ### Planos de fabricación (piezas a imprimir)
 
-Las piezas imprimibles se diseñaron a partir del modelo 3D y se acotaron en milímetros, con la base fijada en 620 × 400 mm. La Tabla 4 resume las piezas, su función y las observaciones de impresión; los planos acotados se presentan en la Figura 9. Las tolerancias generales siguen la norma ISO 2768-1 (clase m) [5] y la representación se ajusta a ISO 128-1 [4]. El material previsto es PLA [6].
+Las piezas imprimibles se diseñaron a partir del modelo 3D y se acotaron en milímetros, con la base fijada en 620 × 400 mm. La Tabla 4 resume las piezas, su función y las observaciones de impresión; los planos acotados se presentan en la Figura 10. Las tolerancias generales siguen la norma ISO 2768-1 (clase m) [5] y la representación se ajusta a ISO 128-1 [4]. El material previsto es PLA [6].
 
 **Tabla 4. Piezas impresas en PLA.**
 
@@ -256,7 +330,7 @@ Las piezas imprimibles se diseñaron a partir del modelo 3D y se acotaron en mil
 | Caja de control | ~170 × 110 × 80 | Aloja ESP32, PCB, LCD y buzzer; frente inclinado | Ventana para LCD; tapa desmontable |
 | Soporte del NEMA 17 | ~60 × 60 × 40 | Fija el motor y alinea el husillo T8 | Agujeros según norma NEMA 17 (31 mm) |
 
-*Figura 9. Planos acotados de las piezas impresas (base, pórtico, tapa, anillo, soportes, caja de control y soporte del NEMA 17), en mm, escala 1:5.*
+*Figura 10. Planos acotados de las piezas impresas (base, pórtico, tapa, anillo, soportes, caja de control y soporte del NEMA 17), en mm, escala 1:5.*
 
 **Nota de coherencia.** La base se fija en 620 × 400 mm (el STL estaba en centímetros); se corrigió el texto del modelo 3D para eliminar la duda de unidad y se alineó con los planos de la presentación. Las piezas imprimibles son el pórtico, la tapa, el anillo con patas, los soportes de bomba, la caja de control y el soporte del NEMA 17; los componentes comerciales (ESP32, TMC2209, LM2596, bombas, sensores, LCD, buzzer, motor DC y NEMA 17) no llevan plano de impresión, solo su ubicación.
 
@@ -266,7 +340,7 @@ Como complemento del esquemático electrónico, la PCB y el modelo tridimensiona
 
 **Vista general del dashboard**
 
-*Figura 10. Interfaz de registro «Chitosan: Clarificación de agua con quitosano», diseñada por el Equipo 05 en Figma para el Proyecto Integrador 2026-II de la Universidad Peruana Cayetano Heredia. La captura corresponde al flujo de seis pantallas (ingreso, inicio, mediciones iniciales, cálculo de la dosis, estado del proceso y resultados), identificado como TRL 2 (Formulación Conceptual), y presenta un reactor de referencia de 1 L con el Índice de Efectividad como indicador principal.*
+*Figura 11. Interfaz de registro «Chitosan: Clarificación de agua con quitosano», diseñada por el Equipo 05 en Figma para el Proyecto Integrador 2026-II de la Universidad Peruana Cayetano Heredia. La captura corresponde al flujo de seis pantallas (ingreso, inicio, mediciones iniciales, cálculo de la dosis, estado del proceso y resultados), identificado como TRL 2 (Formulación Conceptual), y presenta un reactor de referencia de 1 L con el Índice de Efectividad como indicador principal.*
 
 **Descripción del diseño en Figma**
 
