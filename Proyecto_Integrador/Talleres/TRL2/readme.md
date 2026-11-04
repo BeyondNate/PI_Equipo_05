@@ -432,7 +432,11 @@ Los umbrales numéricos de aceptación deben fijarse con el equipo y los ingenie
 
 ### Equipo y responsabilidades
 
-Líder y control de calidad: M. Alarcón. Diseño, electrónica y fabricación: B. Cárdenas. Investigación y geometría: L. Urbano. Documentación, comunicaciones y gestión: I. Parhuay. Programación y software: G. Milla [8].
+- Líder: I. Parhuay. 
+- Diseño, electrónica y fabricación: B. Cárdenas.
+- Investigación y geometría: M. Alarcón
+- Documentación, comunicaciones y gestión: L. Urbano. , I. Parhuay.
+- Programación y software: G. Milla
 
 ---
 
