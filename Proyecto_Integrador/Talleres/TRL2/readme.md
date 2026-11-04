@@ -34,7 +34,7 @@ Proyecto Integrador 2026-II | Universidad Peruana Cayetano Heredia | Equipo 05
 
 En el TRL 1 reunimos los principios científicos que sustentan el sistema: la coagulación-floculación con quitosano, la medición de pH, turbidez y nivel, y la dosificación peristáltica. En este TRL 2 damos el paso siguiente: formulamos el concepto tecnológico, es decir, cómo se combinarían esos principios en una aplicación práctica concreta.
 
-Según la metodología de CONCYTEC, el TRL 2 corresponde a la formulación conceptual de la propuesta tecnológica. Es un nivel de investigación aplicada en el que se exploran aplicaciones prácticas que aún son especulativas, sustentadas en un estado del arte acotado al concepto de aplicación tecnológica; la propiedad intelectual empieza a ganar importancia y el trabajo se desarrolla en laboratorio [7]. Sus indicadores de resultados son (1) artículos científicos que respalden o tengan relación directa con la propuesta, (2) un análisis de patentabilidad y protección, y (3) un perfil o propuesta de proyecto. Este documento se organiza siguiendo esos tres indicadores, precedidos por la formulación del concepto.
+Según la metodología de CONCYTEC, el TRL 2 corresponde a la formulación conceptual de la propuesta tecnológica. Es un nivel de investigación aplicada en el que se exploran aplicaciones prácticas que aún son especulativas, sustentadas en un estado del arte acotado al concepto de aplicación tecnológica; la propiedad intelectual empieza a ganar importancia y el trabajo se desarrolla en laboratorio [7]. Sus indicadores de resultados son (1) artículos científicos que respalden o tengan relación directa con la propuesta, (2) un análisis de patentabilidad y protección, y (3) un perfil o propuesta de proyecto. Este documento se organiza siguiendo esos tres indicadores, precedidos por la formulación del concepto tecnológico, que reúne la caja negra, el esquema de funciones, la matriz morfológica, los bocetos y los planos del modelo en Onshape.
 
 El alcance se mantiene acotado: se estudia una etapa de clarificación, no la producción de agua potable. El equipo aún no presenta mediciones ni resultados propios del prototipo; las cifras de la literatura se usan como antecedentes y no como desempeño esperado.
 
@@ -44,165 +44,100 @@ El alcance se mantiene acotado: se estudia una etapa de clarificación, no la pr
 
 ## Formulación del concepto tecnológico
 
+En esta sección se formula el concepto del sistema siguiendo la secuencia de diseño del curso: primero se delimita el sistema con la caja negra, luego se descompone en funciones, se generan alternativas con la matriz morfológica, se representan con bocetos, se selecciona la mejor y, finalmente, se documenta con planos [1], [2]. Cada figura se presenta con su título y se comenta a continuación.
+
 ### Caja negra del sistema
 
-La caja negra delimita el sistema sin comprometerse aún con su implementación: describe qué entra, qué sale y qué perturbaciones actúan sobre él [1]. La Figura 1 resume este límite para el sistema de clarificación.
+La caja negra delimita el sistema sin comprometerse aún con su implementación: indica qué entra, qué sale y de qué tipo es cada flujo (materia, energía o señal) [1]. Para este proyecto, la caja negra del sistema automatizado de clarificación con quitosano se muestra en la Figura 1.
 
-```mermaid
-graph LR
-    %% Entradas
-    A1([Agua turbia]) --> S
-    A2([Solución de quitosano]) --> S
-    A3([Agua destilada]) --> S
-    A4([Energía eléctrica 12V]) --> S
-    A5([Señal de encendido/apagado]) -.-> S
+![Caja negra del sistema](../../Entregables/02-Caja_negra_Esquema_funciones/Fotos/CAJA%20NEGRA%20v3.png)
 
-    %% Sistema
-    S((SISTEMA AUTOMATIZADO<br/>PARA LA CLARIFICACIÓN<br/>DE AGUA MEDIANTE<br/>DOSIFICACIÓN<br/>DE QUITOSANO))
+*Figura 1. Caja negra del sistema automatizado para la clarificación de agua mediante dosificación de quitosano. Flechas huecas: materia; línea continua: energía; línea discontinua: señal o información.*
 
-    %% Salidas
-    S --> B1([Agua clarificada])
-    S --> B2([Lodos sedimentados])
-    S -.-> B3([Estado y valores LCD])
-    S -.-> B4([Señal sonora Buzzer])
-    S -.-> B5([Datos / Wi-Fi])
-
-    classDef materia fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    classDef energia fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
-    classDef senal fill:#fff3e0,stroke:#f57c00,stroke-width:2px,stroke-dasharray: 5 5;
-    
-    class A1,A2,A3,B1,B2 materia;
-    class A4 energia;
-    class A5,B3,B4,B5 senal;
-```
-
-*Figura 1. Caja negra del sistema de clarificación con quitosano: entradas, salidas y perturbaciones.*
+Las entradas de materia son el agua turbia, la solución de quitosano y el agua destilada, esta última destinada al enjuague del reactor. La energía eléctrica ingresa como flujo de energía, y la señal de encendido y apagado, como flujo de información. Como salidas de materia aparecen el agua clarificada y los lodos sedimentados; como salidas de señal, el estado y los valores del proceso en la pantalla, la señal sonora y los datos o notificaciones por Wi-Fi. Esta delimitación fija el alcance del TRL 2: el sistema recibe una muestra, la trata y entrega resultados, sin incluir etapas de filtración ni desinfección.
 
 ### Esquema de funciones
 
-El esquema de funciones descompone el sistema en las principales funciones que permiten realizar el proceso de forma automatizada. Incluye la adquisición de las señales de pH y turbidez, el procesamiento de los datos, el cálculo del volumen de quitosano, el control de la bomba peristáltica y el agitador, además de la visualización y transmisión de los resultados [1], [2]. La Tabla 1 las relaciona con el bloque de hardware que las realiza.
+El esquema de funciones descompone la función global en subfunciones y muestra cómo se conectan los flujos de materia, energía y señal [1], [2]. La versión 3 del esquema, organizada en seis módulos, se presenta en la Figura 2.
 
-```mermaid
-flowchart TD
-    %% Entradas
-    IN_AGUA([Agua Turbia]) --> F1
-    IN_QUIT([Solución Quitosano]) --> F7
-    IN_ELEC([Energía Eléctrica 12V]) --> F3
+![Esquema de funciones del sistema](../../Entregables/02-Caja_negra_Esquema_funciones/Fotos/ESQUEMA%20DE%20FUNCIONES%20v3.png)
 
-    subgraph ELECTRICA [Subsistema Eléctrico]
-        F3[Acondicionar energía] --> F4[Distribuir energía 5V/3.3V]
-    end
+*Figura 2. Esquema de funciones del sistema de dosificación automática de quitosano (versión 3), con los módulos de materia, mecánica, eléctrica, adquisición de señales, procesamiento y control, y comunicación.*
 
-    subgraph ADQUISICION [Adquisición de Señales]
-        F1[Sensar pH] --> F2[Procesar señal]
-        F1_t[Sensar turbidez] --> F2
-        F1_n[Sensar nivel XKC-Y25] --> F2
-    end
-
-    subgraph CONTROL [Procesamiento y Control - ESP32]
-        F2 --> F5[Calcular dosis y volumen]
-        F5 --> F6[Controlar actuadores]
-    end
-
-    subgraph MECANICA [Mecánica]
-        F6 --> F7[Transportar agua]
-        F6 --> F8[Bombear quitosano]
-        F6 --> F9[Agitar - Motor DC]
-        F6 --> F10[Posicionar agitador - NEMA 17]
-        F7 --> OUT_AGUA
-        F8 --> OUT_LODO
-    end
-
-    subgraph COMUNICACION [Comunicación]
-        F6 --> F11[Mostrar LCD]
-        F6 --> F12[Alerta Buzzer]
-        F6 --> F13[Transmitir Wi-Fi]
-    end
-
-    %% Salidas
-    OUT_AGUA([Agua Clarificada])
-    OUT_LODO([Lodos Sedimentados])
-```
-
-*Figura 2. Esquema de funciones del sistema, mostrando los flujos de materia, energía y señales.*
-
-**Tabla 1. Subfunciones del sistema y bloque de hardware asociado.**
-
-| N.º | Subfunción | Bloque de hardware |
-|:---|:---|:---|
-| F1 | Transportar agua cruda al reactor | Bomba de alimentación (MOSFET IRLZ44N, GPIO18) |
-| F2 | Detectar el nivel de llenado | Sensor XKC-Y25 (GPIO32) |
-| F3 | Medir pH | Módulo PH4502C (GPIO34, divisor 15/20 kΩ) |
-| F4 | Medir turbidez inicial y final | Módulo de turbidez (GPIO35, divisor 15/20 kΩ) |
-| F5 | Calcular la dosis | ESP32 (tabla experimental pH–turbidez–dosis) |
-| F6 | Dosificar la solución de quitosano | Bomba peristáltica (MOSFET, GPIO19) |
-| F7 | Agitar/mezclar | Motor DC con paleta (PWM, GPIO33) |
-| F8 | Posicionar verticalmente el agitador | NEMA 17 + husillo T8 + TMC2209 (GPIO25/26/27) |
-| F9 | Permitir la sedimentación | Reactor de 1 L (función pasiva, por tiempo) |
-| F10 | Registrar y mostrar datos | LCD 16×2 I2C (GPIO21/22), buzzer (GPIO23), Wi-Fi |
-| F11 | Alimentar y acondicionar señales | LM2596 (12→5 V), divisores 15/20 kΩ, 3,3 V |
+El módulo de **materia** recorre el proceso completo: recibir el agua turbia, recolectar 1 L en el envase de prueba, inyectar la solución de quitosano, mezclar, favorecer la coagulación y floculación, dejar sedimentar y separar el agua clarificada de los lodos. El módulo de **mecánica** agrupa las funciones que ejecutan esas etapas: transportar el agua turbia, dosificar, posicionar el agitador (subir y bajar), agitar, accionar la válvula de separación de fases y limpiar el reactor con agua destilada. El módulo **eléctrico** acondiciona la energía para los sensores, para la bomba y el agitador, y para el controlador y la pantalla. En **adquisición de señales** se sensan el pH, la turbidez y el nivel, y las señales se acondicionan y digitalizan. El módulo de **procesamiento y control** verifica el nivel de 1 L, evalúa pH y turbidez, consulta la relación experimental pH–turbidez–dosis, calcula la dosis, genera las órdenes para los actuadores y, al final, compara los valores iniciales y finales. Por último, el módulo de **comunicación** emite la señal visual y sonora y transmite los datos por Wi-Fi. Los conectores S1, M1, M2 y M3 enlazan las funciones que se relacionan entre módulos.
 
 ### Matriz morfológica
 
-La matriz morfológica cruza cada subfunción con principios de solución alternativos y permite identificar combinaciones viables [3]. La Tabla 2 muestra las 19 funciones del sistema y sus alternativas; la columna de la **Solución 1** corresponde a la combinación adoptada para nuestra **Solución Azul**.
+La matriz morfológica cruza cada subfunción con principios de solución alternativos, de modo que las combinaciones posibles se puedan comparar de forma ordenada [3]. El equipo definió 19 funciones y, para cada una, hasta tres portadores de función; el resultado completo se muestra en la Figura 3.
 
-**Tabla 2. Matriz morfológica (Solución 1 = adoptada).**
+![Matriz morfológica, funciones 1 a 5 (energía)](../../Entregables/03-Matriz_Morfologica/FOTOS/PI_MATRIZ_MORFOLOGICA_01_V4.png)
 
-| N.º | Subsistema / Función | Solución 1 (Adoptada) | Solución 2 (Alternativa) | Solución 3 (Alternativa) |
-|:---|:---|:---|:---|:---|
-| 1 | Fuente de energía del dispositivo | **Batería de litio 3.7V/5V 5000mAh** | Conexión directa | - |
-| 2 | Encendido del equipo (Panel de control) | **Interruptor deslizante** | Interruptor basculante (rocker) | - |
-| 3 | Acondicionar energía eléctrica de entrada | **Fuente conmutada (switching)** | Convertidor DC-DC tipo buck | - |
-| 4 | Acondicionar energía para sensores | **Regulador LDO 5V** | Módulo step-down regulado | - |
-| 5 | Acondicionar energía para módulo de comunicación | **Regulador 5V dedicado** | Convertidor DC-DC aislado | - |
-| 6 | Controlar el sistema | **Microcontrolador ESP32 (Wi-Fi + BT)** | - | - |
-| 7 | Sensar turbidez del agua | **Sensor de Turbidez 0-1000 NTU (TS-300B)** | Sensor nefelométrico de turbidez | - |
-| 8 | Sensar pH del agua | **Sensor de pH con electrodo de vidrio (PH4502C)** | Sensor de pH de estado sólido (ISFET) | Sensor de pH con sonda |
-| 9 | Sensar nivel de agua | **Sensor capacitivo sin contacto XKC-Y25** | Control eléctrico de nivel (Boya) | Sensor de Nivel Vertical |
-| 10 | Transportar agua turbia al reactor | **Bomba alimentación agua sucia 12V** | - | - |
-| 11 | Dosificar solución de quitosano | **Bomba peristáltica** | Bomba dosificadora electromagnética | Bomba de jeringa automatizada |
-| 12 | Posicionar agitador | **1 Motor NEMA 17 + Husillo T8** | Actuador lineal 12V DC | Servomotor lineal |
-| 13 | Controlar velocidad y tiempo del agitador | **Motor DC (CC) + PWM** | Relé + temporizador | Driver de motor con encoder |
-| 14 | Sujetar el dispositivo | **Soporte estructural (Base y Pórtico)** | Brazo articulado | Brazo telescópico |
-| 15 | Emitir señal sonora | **Buzzer** | Zumbador | Altavoz pequeño |
-| 16 | Mostrar datos al usuario | **Pantalla LCD 16x2** | Pantalla OLED | Pantalla TFT a color |
-| 17 | Transmitir datos por red inalámbrica | **Wi-Fi integrado en ESP32** | Módulo Bluetooth | Subsistema Wi-Fi/BT externo |
-| 18 | Carcasa del dispositivo portátil | **PLA (Impresión 3D)** | ABS | PETG |
-| 19 | Envase de la mezcla calibrada | **Plástico HDPE o PP** | - | Envases con sello hermético |
+![Matriz morfológica, funciones 6 a 14 (procesamiento y control, y mecánica)](../../Entregables/03-Matriz_Morfologica/FOTOS/PI_MATRIZ_MORFOLOGICA_02_V4.png)
 
-Esta matriz resuelve las incoherencias detectadas en versiones previas: el **agitador es un motor DC** (F13), el **NEMA 17 con husillo T8** cumple solo el posicionamiento vertical (F12) y el **XKC-Y25** se reincorpora para el nivel (F9).
+![Matriz morfológica, funciones 15 a 19 (comunicación, carcasa y envase)](../../Entregables/03-Matriz_Morfologica/FOTOS/PI_MATRIZ_MORFOLOGICA_03_V4.png)
+
+*Figura 3. Matriz morfológica del sistema de clarificación con quitosano: 19 funciones agrupadas por subsistema y sus portadores de función, con un recorrido de color por cada solución preliminar.*
+
+La matriz ordena las funciones por subsistema: energía, procesamiento y control de señales, mecánica y, al final, comunicación y carcasa. Cada función muestra hasta tres portadores con su imagen y su código (por ejemplo, T 11.1 para la bomba peristáltica), y cada solución preliminar se traza como una línea de color que atraviesa los portadores elegidos. Así se aprecia qué decisiones comparten las alternativas, como el ESP32 de controlador y la bomba de alimentación del agua turbia, y en qué funciones se separan: dosificación, posicionamiento y control del agitador, sensores, pantalla y comunicación.
+
+De estos recorridos salieron tres conceptos, que se resumen en la Tabla 1 y se evalúan más adelante.
+
+**Tabla 1. Conceptos obtenidos de la matriz morfológica (funciones que los diferencian).**
+
+| Función | Concepto A (base) | Concepto B | Concepto C |
+|:---|:---|:---|:---|
+| Dosificar el quitosano | Bomba de jeringa automatizada | Bomba peristáltica | Bomba dosificadora electromagnética |
+| Controlar el agitador | Driver con encoder | Motor DC + PWM | Relé + temporizador |
+| Sensor de turbidez | Salida analógica (0–1000 NTU) | Salida analógica (0–1000 NTU) | Nefelométrico |
+| Sensor de pH | Electrodo de vidrio | Con sonda | Estado sólido (ISFET) |
+| Encendido | Interruptor deslizante | ON/OFF | ON/OFF |
+| Envase de la mezcla | Botella de plástico HDPE o PP | Botella de plástico HDPE o PP | Envase con sello hermético |
 
 ### Bocetos de las alternativas
 
-Se elaboraron tres bocetos conceptuales; cada uno combina principios de la matriz morfológica.
+A partir de la matriz se elaboraron tres bocetos, identificados con los colores rojo, verde y azul. Cada uno ubica los componentes sobre una base común e incluye una lista de componentes con sus dimensiones aproximadas [1].
 
-**Boceto 1 — Solución Azul (elegida).** Reactor de 1 L con tapa que porta sensores y agitador; motor DC con paleta; conjunto del agitador que sube y baja con NEMA 17 + husillo T8; dos bombas (alimentación y dosificación peristáltica); caja de control con LCD; base modular impresa en PLA de 620 × 400 mm. *Ventajas:* modular, repetible, sensores y agitador integrados en la tapa, dosificación fina. *Desventajas:* más piezas impresas y más actuadores.
+![Boceto de la Solución Roja](../../Entregables/04_Skecthes_y_Diagrama/Boceto1.jpg)
 
-**Boceto 2 — Alternativa compacta.** Reactor con agitación magnética y dosificación por gravedad; sin posicionamiento vertical. *Ventajas:* simple y barata. *Desventajas:* no permite retirar el agitador ni controlar la inmersión; dosificación menos precisa.
+*Figura 4. Boceto de la Solución Azul: alternativa seleccionada.*
 
-**Boceto 3 — Alternativa de laboratorio.** Reactor con electrodo de pH de laboratorio y nefelómetro comercial, dosificación manual con jeringa. *Ventajas:* alta exactitud de medida. *Desventajas:* no automatiza, mayor costo, no cumple el objetivo de sistema automatizado.
+La Solución Azul fue la seleccionada y la que se desarrolló en el modelo de Onshape. Las listas de componentes de cada alternativa están en la carpeta `04_Skecthes_y_Diagrama` del repositorio.
 
-*Figura 3. Bocetos de las tres alternativas conceptuales (Solución Azul, compacta y de laboratorio).*
+![Boceto de la Solución Verde](../../Entregables/04_Skecthes_y_Diagrama/Boceto2.jpg)
 
-### Selección del concepto (matriz de decisión)
+*Figura 5. Boceto de la Solución Verde: segunda alternativa conceptual.*
 
-Los tres bocetos se evaluaron con criterios ponderados (Tabla 3). La Solución Azul obtuvo 4,35/5 y fue la seleccionada.
+La segunda alternativa (Figura 5) distribuye los componentes de otra manera y permite comparar otra forma de integrar los mismos subsistemas.
 
-**Tabla 3. Matriz de decisión (escala 1–5; ponderación entre paréntesis).**
+![Boceto de la Solución Azul](../../Entregables/04_Skecthes_y_Diagrama/Boceto3.jpg)
 
-| Criterio | Boceto 1 (Azul) | Boceto 2 | Boceto 3 |
-|:---|:---:|:---:|:---:|
-| Precisión de dosificación (25 %) | 5 | 3 | 4 |
-| Automatización (20 %) | 5 | 3 | 1 |
-| Facilidad de fabricación (15 %) | 4 | 5 | 2 |
-| Modularidad/mantenimiento (15 %) | 4 | 2 | 3 |
-| Costo (15 %) | 3 | 5 | 2 |
-| Seguridad y limpieza (10 %) | 4 | 3 | 3 |
-| **Puntaje ponderado** | **4,35** | **3,45** | **2,55** |
+*Figura 6. Boceto de la Solución Roja: configuración general, dimensiones aproximadas, vista interna del módulo de control y flujo del proceso.*
+
+La tercera akternativa tomada en cuanta, en la cual se aprecia el uso de un agitador magnético.
+
+### Evaluación y selección del concepto
+
+Los tres conceptos se evaluaron con ponderación de criterios según el método de la guía VDI 2206 [6], y el concepto base (A) se usó como referencia para el análisis de Pugh. En la Tabla 2 se muestran los pesos, los puntajes (escala de 1 a 5, donde 5 es el mejor) y los totales ponderados.
+
+**Tabla 2. Evaluación ponderada de los conceptos.**
+
+| Criterio | Peso | Concepto A | Concepto B | Concepto C |
+|:---|:---:|:---:|:---:|:---:|
+| Precisión de dosificación | 0,20 | 4 | 5 | 4 |
+| Costo | 0,15 | 4 | 4 | 3 |
+| Complejidad técnica | 0,15 | 4 | 4 | 3 |
+| Control del proceso | 0,15 | 4 | 4 | 4 |
+| Consumo energético | 0,10 | 4 | 4 | 3 |
+| Mantenimiento e higiene | 0,10 | 4 | 4 | 3 |
+| Confiabilidad | 0,10 | 4 | 5 | 3 |
+| Portabilidad | 0,05 | 4 | 5 | 3 |
+| **Total ponderado** | **1,00** | **4,00** | **4,35** | **3,35** |
+
+En el análisis de Pugh, tomando A como base, el concepto B suma +3 (mejor en precisión de dosificación, confiabilidad y portabilidad) y el concepto C suma −6. Por eso el concepto B, desarrollado como **Solución Azul**, fue el seleccionado. Esta decisión es preliminar y deberá validarse con ensayos de dosificación, de respuesta de los sensores y de consumo energético en el TRL 3.
 
 ### Concepto
 
-El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee pH, turbidez y nivel; consulta una relación experimental pH–turbidez–dosis; activa una bomba peristáltica que entrega la solución de quitosano; agita; deja sedimentar; mide de nuevo la turbidez y registra el resultado en pantalla LCD, con aviso sonoro y datos por Wi-Fi. La solución de trabajo es quitosano disuelto en ácido acético al 1 %, una preparación habitual en la literatura de coagulación [9], [10], [11]. El concepto corresponde a la **Solución Azul (Concepto B)**, que obtuvo el mayor puntaje ponderado (4,35 de 5) en la matriz de decisión del equipo [8]. La Solución Azul surge de la matriz morfológica (Tabla 2) y de la matriz de decisión (Tabla 3).
+El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee pH, turbidez y nivel; consulta una relación experimental pH–turbidez–dosis; activa una bomba peristáltica que entrega la solución de quitosano; agita; deja sedimentar; mide de nuevo la turbidez y registra el resultado en pantalla LCD, con aviso sonoro y datos por Wi-Fi. La solución de trabajo es quitosano disuelto en ácido acético al 1 %, una preparación habitual en la literatura de coagulación [9], [10], [11]. El concepto corresponde a la **Solución Azul (Concepto B)**, que obtuvo el mayor puntaje ponderado (4,35 de 5) en la evaluación del equipo [6]. La Solución Azul surge de la matriz morfológica (Figura 3) y de la evaluación ponderada (Tabla 2).
 
 ### Secuencia de operación
 
@@ -213,7 +148,37 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 5. **Sedimentación y medición final:** se mide la turbidez final y se calcula la remoción, (Tᵢ − T_f) / Tᵢ × 100.
 6. **Reporte:** LCD, buzzer y Wi-Fi.
 
-### Arquitectura de hardware (según el esquemático v1.3, actualizado el 03/11/2026)
+### Modelo en Onshape y planos
+
+El modelo del sistema se elaboró en Onshape y de él se extrajeron los planos de fabricación, acotados en milímetros salvo que se indique otra unidad. Las piezas impresas se prevén en PLA. La representación sigue la norma ISO 128-1 [4] y las tolerancias generales, la ISO 2768-1 [5].
+
+![Plano de ensamble](images/fig07_plano_ensamble.png)
+
+*Figura 7. Plano de ensamble del sistema en Onshape (escala 1:5): vista en planta, vistas laterales e isométrica, con la base de 500 × 300 mm.*
+
+El plano de ensamble (Figura 7) reúne las vistas del sistema. En la vista en planta se ubican, sobre una base de 500 × 300 mm, los dos depósitos laterales, el reactor con su soporte, la caja de control y las bombas; las vistas frontal y lateral dan las alturas relativas, y la isométrica permite ver la disposición completa. Sirve para verificar el espacio de cada módulo, el recorrido de mangueras y cables, y la altura necesaria para el conjunto del agitador.
+
+<img width="1177" height="762" alt="image" src="https://github.com/user-attachments/assets/2c4da34e-9fe4-4c5c-a8dc-82e1410d6412" />
+
+*Figura 8. Plano de la caja de control (escala 1:3): vistas, secciones A-A y B-B, y detalles C y D.*
+
+La caja de control (Figura 8) aloja el ESP32, la placa y la pantalla. Es una pieza de unos 155 mm de largo con espesor de pared de 5 mm, esquinas redondeadas de radio 5 mm y dos orificios de Ø10 mm. Los cortes y los detalles C y D (escala 2:3) aclaran el frente inclinado donde va la ventana de la pantalla.
+
+<img width="1068" height="822" alt="image" src="https://github.com/user-attachments/assets/191059b9-68ec-458d-833d-0bd3f94997eb" />
+
+*Figura 9. Plano de la tapa del estuche de la caja de control en PLA (escala 1:2).*
+
+La tapa del estuche (Figura 9) está cotada en pulgadas: sus lados mayores miden 4,331 in (110 mm) y 3,150 in (80 mm), el espesor es de 0,197 in (5 mm) y lleva cuatro orificios de Ø0,157 in (4 mm). El plano indica PLA como material y una masa aproximada de 47,6 g.
+
+<img width="1265" height="822" alt="image" src="https://github.com/user-attachments/assets/6f4d0bd6-c389-4e24-8c5a-e5963e48a300" />
+
+*Figura 10. Plano de la esquina para tornillo (escala 6:1); las cuatro esquinas son iguales.*
+
+Por último, la esquina para tornillo (Figura 10) es un taco de 10 × 10 × 3 mm con un orificio de Ø4 mm, en PLA y de unos 0,33 g. Se repite cuatro veces para fijar la tapa a la caja.
+
+Los componentes comerciales (ESP32, TMC2209, LM2596, bombas, sensores, pantalla, buzzer, motor DC y NEMA 17) no llevan plano de impresión; solo se indica su ubicación en el ensamble.
+
+### Arquitectura de hardware (esquemático v1.3, actualizado el 03/11/2026)
 
 | Bloque | Componentes en el esquemático | Función en el concepto |
 |:---|:---|:---|
@@ -230,9 +195,11 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 
 ### Esquemático electrónico v1.3
 
-*Figura 4. Esquemático «Esquemático_ChitoSan», versión 1.3, hoja A4 única. Creado el 20/10/2026 y actualizado el 03/11/2026; dibujado por el Equipo 5 y revisado por Umbert Lewis.*
+![Esquemático electrónico v1.3](images/fig11_esquematico_v1_3.png)
 
-**Descripción.** El esquemático está dividido en ocho bloques:
+*Figura 11. Esquemático «Esquemático_ChitoSan», versión 1.3, hoja A4 única. Creado el 20/10/2026 y actualizado el 03/11/2026; dibujado por el Equipo 5 y revisado por Umbert Lewis.*
+
+**Descripción.** El esquemático (Figura 11) está dividido en ocho bloques:
 
 - **Módulo de alimentación:** una bornera de 2 pines recibe +12 V, y un convertidor LM2596 lo reduce a +5 V.
 - **Control principal:** un ESP32 DevKit V1 concentra los pines GPIO usados por los demás bloques y alimenta la lógica con 5 V y 3,3 V.
@@ -249,9 +216,11 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 
 ### Diseño de la placa de circuito impreso (PCB)
 
-*Figura 5. Diseño de la PCB del sistema ChitoSan, de 96,4 mm de ancho, con cuatro agujeros de montaje en las esquinas (versión correspondiente al esquemático v1.3).*
+![Diseño de la PCB](images/fig12_pcb.png)
 
-**Descripción.** La placa traduce el esquemático v1.3 a un diseño físico de una sola cara de componentes. Se distinguen:
+*Figura 12. Diseño de la PCB del sistema ChitoSan, de 96,4 mm de ancho, con cuatro agujeros de montaje en las esquinas (versión correspondiente al esquemático v1.3).*
+
+**Descripción.** La placa (Figura 12) traduce el esquemático v1.3 a un diseño físico de una sola cara de componentes. Se distinguen:
 
 - ESP32 DevKit V1: en la parte inferior central, con la antena hacia el borde para no quedar tapada por cobre.
 - Alimentación: el módulo LM2596 y la bornera de entrada de 12 V, abajo a la derecha.
@@ -267,84 +236,19 @@ La serigrafía incluye el logo ChitoSan Equipo 5 y el escudo de la UPCH.
 
 **Estado de la placa.** En TRL 2 se presenta como un diseño propuesto, aún sin fabricar ni validar. Corresponde al esquemático v1.3 y debe pasar la verificación de reglas de diseño (DRC) de EasyEDA antes de fabricarse.
 
-### Modelo 3D en Onshape
-
-Las figuras siguientes son capturas del ensamblaje final en Onshape. El archivo exportado (asemblyfinal_1.stl, unos 149 000 triángulos) tiene un volumen envolvente de 620 × 400 × 479 mm, con una base de 620 × 400 mm. La unidad del STL se confirma en milímetros; el valor anterior (62 × 40 "unidades") correspondía a centímetros y ya fue corregido.
-
-**Elementos que se distinguen en el modelo:**
-
-- Una base plana modular de 620 × 400 mm con el escudo de la UPCH y el logo «ChitoSan Team» grabados.
-- Un reactor cilíndrico transparente en el centro, con tapa de borde naranja, apoyado sobre un anillo con tres patas.
-- Un pórtico en U con un travesaño que aloja el motor DC del agitador, cuyo eje baja por el reactor y termina en una paleta de agitación; el conjunto sube y baja con el NEMA 17 + husillo T8.
-- Sobre la tapa, los sensores (sonda de pH, módulo de turbidez y XKC-Y25) y los orificios de paso.
-- Dos recipientes cilíndricos transparentes con tapa, a ambos lados del reactor.
-- Una caja de control rectangular con ventana para la pantalla, en la esquina posterior izquierda.
-- Tres soportes pequeños con bomba o motor sobre la base y un recipiente cilíndrico bajo en el frente.
-- Un motor NEMA 17 montado sobre el pórtico, acoplado al husillo T8 que posiciona verticalmente el conjunto del agitador.
-
-#### Vista isométrica
-
-*Figura 6. Vista isométrica del ensamblaje final ChitoSan (Solución Azul) en Onshape, modelado por el Equipo 5 (diseño y modelado: B. Cárdenas) y exportado como asemblyfinal_1.stl. Dimensiones envolventes: 620 × 400 × 479 mm, con una base de 620 × 400 mm. Elementos visibles: base modular con el escudo de la UPCH y el logo del equipo; reactor transparente de 1 L con tapa; pórtico en U; motor DC del agitador con eje y paleta; NEMA 17 + husillo T8 para el posicionamiento vertical; sensores sobre la tapa; dos recipientes cilíndricos laterales; caja de control con ventana de pantalla; soportes de bomba. Material previsto: PLA, con componentes comerciales.*
-
-**Descripción.** Muestra la disposición general: el reactor transparente en el centro, rodeado por el pórtico en U; a cada lado, un recipiente cilíndrico; la caja de control al fondo a la izquierda; y los soportes de bomba y el recipiente bajo sobre la base. Se ven la paleta del agitador dentro del reactor, la tapa con sensores y el NEMA 17 acoplado al husillo T8 sobre el pórtico.
-
-**Aporte al proyecto.** Es la referencia visual de la Solución Azul. Confirma que la estructura es compacta y modular, que el agitador y los sensores se instalan en la tapa del reactor y que el conjunto puede fabricarse con impresión 3D (PLA) y componentes comerciales. También sirve para explicar a un evaluador cómo se relacionan tratamiento, dosificación, agitación y electrónica.
-
-#### Vista en planta
-
-*Figura 7. Vista en planta (superior) del ensamblaje final en Onshape. La base mide 620 × 400 mm. Distribución: caja de control en la esquina posterior izquierda (aprox. 170 × 110 mm); recipientes laterales de unas 150 mm de diámetro; reactor central de unas 120 mm de diámetro, cruzado por el travesaño del pórtico, con el NEMA 17 encima; soporte de bomba detrás del reactor, dos soportes en el frente y un recipiente cilíndrico bajo al centro del frente. Los elementos de marca (escudo UPCH y logo ChitoSan Team) están grabados en la base.*
-
-**Descripción.** Se ve la base con el escudo de la UPCH y el logo del equipo; la caja de control rectangular con la ventana de la pantalla en la esquina superior izquierda; un recipiente circular a cada lado; el reactor circular al centro, cruzado por el travesaño del pórtico con el motor NEMA 17 sobre él; un soporte de bomba detrás del reactor y dos en la zona frontal; y un recipiente cilíndrico bajo en el centro del frente.
-
-**Aporte al proyecto.** Permite verificar la ubicación y el espacio de cada módulo, el alcance del agitador sobre el reactor y la cercanía de las bombas a sus recipientes. Es la base para definir el recorrido de mangueras y cables, y respalda el requisito de una geometría compacta, modular y fácil de operar desde el frente.
-
-#### Vista frontal
-
-*Figura 8. Vista frontal del ensamblaje final en Onshape. Dimensiones aproximadas: ancho 620,0 y altura total 479,0 mm. Alturas relativas desde la base: recipientes laterales, unas 110 mm; tapa del reactor, unas 210; pórtico, unas 290; NEMA 17, entre 400 y 480, acoplado al husillo T8. Elementos visibles: eje y paleta del agitador dentro del reactor, sonda de pH y módulo de turbidez colgando de la tapa, anillo con patas bajo el reactor y soportes de bomba junto a los recipientes.*
-
-**Descripción.** Se aprecian las alturas relativas y el interior del reactor: el eje del agitador baja desde el motor DC del travesaño hasta una paleta cerca del fondo; en la tapa cuelgan una sonda de pH con punta naranja y un módulo de turbidez; bajo el reactor están el anillo con patas y un bloque con componentes; a los lados quedan los recipientes con sus tapas y los soportes de bomba. El NEMA 17 está arriba, acoplado al husillo T8.
-
-**Aporte al proyecto.** Entrega las cotas verticales críticas: la profundidad de inmersión de la sonda y de la paleta, el espacio libre para retirar la tapa con los sensores y la relación de alturas entre recipientes y reactor, relevante para el llenado, la dosificación y el vaciado. Ayuda a decidir la carrera necesaria del conjunto NEMA 17 con husillo T8.
-
-#### Vista lateral
-
-*Figura 9. Vista lateral del ensamblaje final en Onshape. Dimensiones aproximadas: profundidad 400,0 y altura total 479,0 mm. Elementos visibles: caja de control con frente inclinado (a la derecha de la imagen), reactor transparente con la sonda de punta naranja en su interior, pórtico visto de canto con el eje central del agitador, un soporte de bomba y un pequeño módulo a la izquierda, y el NEMA 17 acoplado al husillo en la parte superior.*
-
-**Descripción.** Muestra el perfil del equipo: la caja de control a la derecha, con su frente inclinado; el reactor transparente en el centro con una sonda de punta naranja en su interior; el pórtico visto de canto con su eje central; y, a la izquierda, un soporte de bomba y un pequeño módulo. El NEMA 17 aparece en la parte superior, acoplado al husillo.
-
-**Aporte al proyecto.** Confirma la profundidad total del conjunto y permite revisar interferencias entre el pórtico, el reactor y los módulos de bombeo. También ayuda a comprobar que la pantalla de la caja de control quede visible y accesible para el operador.
-
-### Planos de fabricación (piezas a imprimir)
-
-Las piezas imprimibles se diseñaron a partir del modelo 3D y se acotaron en milímetros, con la base fijada en 620 × 400 mm. La Tabla 4 resume las piezas, su función y las observaciones de impresión; los planos acotados se presentan en la Figura 10. Las tolerancias generales siguen la norma ISO 2768-1 (clase m) [5] y la representación se ajusta a ISO 128-1 [4]. El material previsto es PLA [6].
-
-**Tabla 4. Piezas impresas en PLA.**
-
-| Pieza | Dimensiones nominales (mm) | Función | Observaciones de impresión |
-|:---|:---|:---|:---|
-| Base modular | 620 × 400 × 8 | Soporte de todos los módulos; escudo UPCH y logo grabados | Relleno 20 %, 3 perífrasis; agujeros M3 |
-| Pórtico en U | ~400 × 120 × 290 (alto) | Soporta el NEMA 17 y guía el husillo T8 | Relleno 30 %; refuerzos en uniones |
-| Tapa del reactor | Ø ~120, espesor 6 | Aloja sensores (pH, turbidez) y eje del agitador | Agujeros pasantes para sondas; sellado con junta |
-| Anillo con patas | Ø ~130, 3 patas de 60 | Apoya y centra el reactor de 1 L | Relleno 25 % |
-| Soportes de bomba (×3) | ~60 × 40 × 50 | Fijan bombas de alimentación y peristáltica | Agujeros para mangueras |
-| Caja de control | ~170 × 110 × 80 | Aloja ESP32, PCB, LCD y buzzer; frente inclinado | Ventana para LCD; tapa desmontable |
-| Soporte del NEMA 17 | ~60 × 60 × 40 | Fija el motor y alinea el husillo T8 | Agujeros según norma NEMA 17 (31 mm) |
-
-*Figura 10. Planos acotados de las piezas impresas (base, pórtico, tapa, anillo, soportes, caja de control y soporte del NEMA 17), en mm, escala 1:5.*
-
-**Nota de coherencia.** La base se fija en 620 × 400 mm (el STL estaba en centímetros); se corrigió el texto del modelo 3D para eliminar la duda de unidad y se alineó con los planos de la presentación. Las piezas imprimibles son el pórtico, la tapa, el anillo con patas, los soportes de bomba, la caja de control y el soporte del NEMA 17; los componentes comerciales (ESP32, TMC2209, LM2596, bombas, sensores, LCD, buzzer, motor DC y NEMA 17) no llevan plano de impresión, solo su ubicación.
-
-#### Dashboard de monitoreo y visualización del proceso (hipotético)
+### Dashboard de monitoreo y visualización del proceso (hipotético)
 
 Como complemento del esquemático electrónico, la PCB y el modelo tridimensional, el equipo desarrolló en Figma una propuesta de dashboard para visualizar el estado del sistema ChitoSan y presentar de forma integrada las variables del tratamiento. Esta interfaz constituye una representación conceptual de la interacción entre el usuario y el prototipo: organiza los datos que el ESP32 deberá adquirir, los cálculos que deberá realizar y las etapas que deberá ejecutar. En esta etapa TRL 2, el diseño de la interfaz no demuestra que exista una conexión funcional con los sensores, las bombas o el microcontrolador.
 
 **Vista general del dashboard**
 
-*Figura 11. Interfaz de registro «Chitosan: Clarificación de agua con quitosano», diseñada por el Equipo 05 en Figma para el Proyecto Integrador 2026-II de la Universidad Peruana Cayetano Heredia. La captura corresponde al flujo de seis pantallas (ingreso, inicio, mediciones iniciales, cálculo de la dosis, estado del proceso y resultados), identificado como TRL 2 (Formulación Conceptual), y presenta un reactor de referencia de 1 L con el Índice de Efectividad como indicador principal.*
+![Dashboard en Figma](images/fig13_dashboard_figma.png)
+
+*Figura 13. Interfaz de registro «Chitosan: Clarificación de agua con quitosano», diseñada por el Equipo 05 en Figma para el Proyecto Integrador 2026-II de la Universidad Peruana Cayetano Heredia. La captura corresponde al flujo de seis pantallas (ingreso, inicio, mediciones iniciales, cálculo de la dosis, estado del proceso y resultados), identificado como TRL 2 (Formulación Conceptual), y presenta un reactor de referencia de 1 L con el Índice de Efectividad como indicador principal.*
 
 **Descripción del diseño en Figma**
 
-El archivo contiene el prototipo de la interfaz de registro del Sistema Automatizado de Clarificación de Agua con Quitosano. Es un flujo de seis pantallas, con el logotipo del equipo en el encabezado y flechas que indican el recorrido:
+El archivo de Figma (Figura 13) contiene el prototipo de la interfaz de registro del Sistema Automatizado de Clarificación de Agua con Quitosano. Es un flujo de seis pantallas, con el logotipo del equipo en el encabezado y flechas que indican el recorrido:
 
 1. **Ingreso:** panel de marca con ilustración y formulario de usuario, código del equipo y contraseña.
 2. **Inicio:** panel de control sin scroll, con el estado del proceso, el resumen del último ensayo y el Índice de Efectividad. Desde aquí se inicia un nuevo ensayo.
@@ -526,15 +430,6 @@ Los umbrales numéricos de aceptación deben fijarse con el equipo y los ingenie
 | Variabilidad de las muestras del río | Tabla poco representativa | Muestrear en varios puntos y épocas |
 | Plazos del curso | Retrasos | Priorizar jarras y calibración antes de la integración |
 
-### Observaciones de coherencia detectadas en la documentación
-
-- El esquemático v1.3 muestra dos canales de bomba, el driver del NEMA 17 y el canal PWM del motor DC del agitador; la versión anterior no incluía este último. Queda resuelto.
-- El XKC-Y25 se reincorporó en el esquemático v1.3 (GPIO32) y en el modelo 3D; queda alineado con la presentación y el TRL 1.
-- En el modelo 3D el NEMA 17 está acoplado al husillo T8 sobre el pórtico, y el motor DC del travesaño es el que lleva el eje hacia el reactor. Ambos papeles quedan diferenciados.
-- La base del modelo se fijó en 620 × 400 mm y se corrigió la unidad del STL; los planos de impresión usan la misma escala.
-- Usar un solo nombre para la fuente de agua: «río Lurín (Pachacámac)», pues Pachacámac es el distrito. El TRL 1 la nombra como río Pachacamac.
-- Completar el presupuesto con los precios reales de los componentes: el documento no los estima para no inventarlos.
-
 ### Equipo y responsabilidades
 
 Líder y control de calidad: M. Alarcón. Diseño, electrónica y fabricación: B. Cárdenas. Investigación y geometría: L. Urbano. Documentación, comunicaciones y gestión: I. Parhuay. Programación y software: G. Milla [8].
@@ -559,7 +454,7 @@ El TRL 2 del proyecto queda formulado como un concepto de laboratorio: un reacto
 
 [5] ISO, *ISO 2768-1:1989 — General tolerances*, Ginebra, Suiza: ISO, 1989.
 
-[6] Fabricante de filamento PLA, “Ficha técnica del filamento PLA,” hoja de datos. Accedido: 03-nov-2026. [En línea]. Disponible: URL del fabricante.
+[6] Verein Deutscher Ingenieure (VDI), *VDI 2206: Design Methodology for Mechatronic Systems*. Düsseldorf, Alemania: VDI-Verlag, 2004.
 
 [7] Consejo Nacional de Ciencia, Tecnología e Innovación Tecnológica (CONCYTEC), “Directiva N.° 001-2022-CONCYTEC-P: Uso de la metodología Nivel de Madurez Tecnológica (TRL),” Resolución de Presidencia N.° 020-2022-CONCYTEC-P, Lima, Perú, 2022. [En línea]. Disponible: https://vinculate.concytec.gob.pe/download/RP-020-2022-CONCYTEC-P.pdf
 
@@ -577,7 +472,7 @@ El TRL 2 del proyecto queda formulado como un concepto de laboratorio: un reacto
 
 [14] Universidad Nacional de Costa Rica, “Coagulación-floculación con quitosanos de distinto peso molecular y agua del río Pirro,” repositorio institucional. [En línea]. Disponible: https://repositorio.una.ac.cr/items/00976ed7-ba0f-4554-953d-1c159f436107
 
-[15] “Effectiveness of acidic chitosan solutions for total organic carbon removal in drinking water treatment,” PubMed Central, PMC12251864. [En línea]. Disponible: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12251864/
+[15] J. Molina-Pinna y F. R. Román-Velázquez, “Effectiveness of acidic chitosan solutions for total organic carbon removal in drinking water treatment,” *Polymers*, vol. 17, no. 13, Art. no. 1832, jun. 2025, doi: 10.3390/polym17131832.
 
 [16] D. C. Viana, R. A. Braga, B. H. G. Barbosa, A. R. C. R. Campos y D. D. Ferreira, “Turbidímetro baseado em processamento de imagens: elaboração e avaliação de desempenho por meio de uma planta piloto,” Congresso Brasileiro de Automação, Sociedade Brasileira de Automação. [En línea]. Disponible: https://sba.org.br/open_journal_systems/index.php/cba/article/view/3394
 
