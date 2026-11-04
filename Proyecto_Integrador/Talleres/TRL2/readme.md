@@ -152,7 +152,9 @@ El sistema recibe una muestra de agua turbia en un reactor de 1 L. Un ESP32 lee 
 
 El modelo del sistema se elaboró en Onshape y de él se extrajeron los planos de fabricación, acotados en milímetros salvo que se indique otra unidad. Las piezas impresas se prevén en PLA. La representación sigue la norma ISO 128-1 [4] y las tolerancias generales, la ISO 2768-1 [5].
 
-![Plano de ensamble](images/fig07_plano_ensamble.png)
+<img width="890" height="657" alt="Captura de pantalla 2026-11-02 215833" src="https://github.com/user-attachments/assets/fcfcc757-b51f-4270-8fff-460d77c62b88" />
+
+<img width="971" height="640" alt="Captura de pantalla 2026-11-02 220223" src="https://github.com/user-attachments/assets/47c84704-6535-401c-b2aa-64d392b8be6f" />
 
 *Figura 7. Plano de ensamble del sistema en Onshape (escala 1:5): vista en planta, vistas laterales e isométrica, con la base de 500 × 300 mm.*
 
@@ -195,7 +197,7 @@ Los componentes comerciales (ESP32, TMC2209, LM2596, bombas, sensores, pantalla,
 
 ### Esquemático electrónico v1.3
 
-![Esquemático electrónico v1.3](images/fig11_esquematico_v1_3.png)
+<img width="1048" height="737" alt="Captura de pantalla 2026-11-01 212603" src="https://github.com/user-attachments/assets/9847ccd1-fa7b-4122-8fcf-06589e3f8efe" />
 
 *Figura 11. Esquemático «Esquemático_ChitoSan», versión 1.3, hoja A4 única. Creado el 20/10/2026 y actualizado el 03/11/2026; dibujado por el Equipo 5 y revisado por Umbert Lewis.*
 
@@ -216,7 +218,7 @@ Los componentes comerciales (ESP32, TMC2209, LM2596, bombas, sensores, pantalla,
 
 ### Diseño de la placa de circuito impreso (PCB)
 
-![Diseño de la PCB](images/fig12_pcb.png)
+<img width="680" height="571" alt="Captura de pantalla 2026-11-03 003336" src="https://github.com/user-attachments/assets/01896ecc-1442-4ba9-815d-7bbfc55aa7a1" />
 
 *Figura 12. Diseño de la PCB del sistema ChitoSan, de 96,4 mm de ancho, con cuatro agujeros de montaje en las esquinas (versión correspondiente al esquemático v1.3).*
 
@@ -242,7 +244,17 @@ Como complemento del esquemático electrónico, la PCB y el modelo tridimensiona
 
 **Vista general del dashboard**
 
-![Dashboard en Figma](images/fig13_dashboard_figma.png)
+<img width="607" height="793" alt="Captura de pantalla 2026-11-03 065747" src="https://github.com/user-attachments/assets/fa1a1412-d02d-4a04-8a48-d1765c6ff962" />
+
+<img width="590" height="790" alt="Captura de pantalla 2026-11-03 065803" src="https://github.com/user-attachments/assets/001eb8db-b39b-4c15-8d27-ce1f5818ccee" />
+
+<img width="572" height="785" alt="Captura de pantalla 2026-11-03 065818" src="https://github.com/user-attachments/assets/c7243d16-0c79-4725-838a-ff564d2b54dd" />
+
+<img width="591" height="782" alt="Captura de pantalla 2026-11-03 065856" src="https://github.com/user-attachments/assets/b4fb13ed-d4e5-487a-90c7-afd05bf37dae" />
+
+<img width="585" height="795" alt="Captura de pantalla 2026-11-03 065907" src="https://github.com/user-attachments/assets/9b1fc893-2cc7-4a14-9476-ab222320b3c2" />
+
+<img width="598" height="787" alt="Captura de pantalla 2026-11-03 065921" src="https://github.com/user-attachments/assets/396f56a7-85d9-4c1a-b604-83750399aace" />
 
 *Figura 13. Interfaz de registro «Chitosan: Clarificación de agua con quitosano», diseñada por el Equipo 05 en Figma para el Proyecto Integrador 2026-II de la Universidad Peruana Cayetano Heredia. La captura corresponde al flujo de seis pantallas (ingreso, inicio, mediciones iniciales, cálculo de la dosis, estado del proceso y resultados), identificado como TRL 2 (Formulación Conceptual), y presenta un reactor de referencia de 1 L con el Índice de Efectividad como indicador principal.*
 
@@ -432,11 +444,7 @@ Los umbrales numéricos de aceptación deben fijarse con el equipo y los ingenie
 
 ### Equipo y responsabilidades
 
-- Líder: I. Parhuay. 
-- Diseño, electrónica y fabricación: B. Cárdenas.
-- Investigación y geometría: M. Alarcón
-- Documentación, comunicaciones y gestión: L. Urbano. , I. Parhuay.
-- Programación y software: G. Milla
+Líder y control de calidad: M. Alarcón. Diseño, electrónica y fabricación: B. Cárdenas. Investigación y geometría: L. Urbano. Documentación, comunicaciones y gestión: I. Parhuay. Programación y software: G. Milla [8].
 
 ---
 
