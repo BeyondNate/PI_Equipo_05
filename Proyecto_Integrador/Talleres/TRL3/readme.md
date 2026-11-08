@@ -155,252 +155,272 @@ La Tabla 3 resume el esfuerzo máximo de la escala de cada figura.
 
 ## 3.1 Qué mide cada elemento del sistema
 
-El quitosano actúa por coagulación-floculación, y su desempeño depende del pH y de la turbidez inicial del agua; por ejemplo, la remoción de turbidez con quitosano se ha estudiado entre pH 5 y 9 [[8]](#ref8). Por eso el sistema mide ambas variables antes de dosificar y las vuelve a medir al final. La Tabla 4 resume qué variable aporta cada elemento y cómo se prueba.
+El sistema utiliza sensores para caracterizar el agua y actuadores para controlar algunas operaciones del proceso. En esta etapa se verificó el funcionamiento individual de los componentes y, en el caso de los sensores de pH y turbidez, también su adquisición simultánea mediante el ESP32. La Tabla 4 resume la función y el tipo de prueba realizada.
 
 <p align="center"><em>Tabla 4. Elementos probados en el TRL 3.</em></p>
 <div align="center">
 
 | Elemento | Variable o función | Principio | Prueba realizada |
 |:---:|:---:|:---:|:---:|
-| Sensor de turbidez TS-300B | Turbidez | Óptico (dispersión y atenuación) | Agua clara frente a agua turbia |
-| Módulo de pH PH-4502C | pH | Potenciométrico (Nernst) | Lectura y calibración con soluciones de pH conocido |
-| Sensor de nivel XKC-Y25 | Presencia de líquido en un punto | Capacitivo sin contacto | Detección del nivel de 1 L |
-| Bomba peristáltica | Volumen de quitosano dosificado | Desplazamiento positivo | Calibración por pesada |
-| Interruptor de encendido y apagado | Encendido del sistema | Contacto eléctrico | Accionamiento y respuesta del sistema |
+| Sensor de turbidez TS-300B | Respuesta relacionada con la turbidez | Óptico (dispersión y atenuación) | Comparación entre agua destilada y agua con tierra de jardín |
+| Módulo de pH PH-4502C | pH | Potenciométrico (Nernst) | Lectura y calibración con soluciones de pH 4, 7 y 10 |
+| Sensor de nivel XKC-Y25-V | Presencia de líquido en un punto | Capacitivo sin contacto | Detección del agua a diferentes alturas en un recipiente |
+| Bomba peristáltica NKP-DC-S10B | Transporte de líquido | Desplazamiento positivo | Bombeo de agua y de un líquido viscoso durante 10 segundos |
+| Interruptor KCD1 | Encendido y apagado de la alimentación | Contacto eléctrico | Interrupción y restablecimiento de la alimentación del sistema |
 
 </div>
 
 ## 3.2 Conversión de las señales en datos
 
-El ESP32 DOIT DevKit V1 recibe las señales de los sensores analógicos con su convertidor analógico-digital (ADC) configurado a 12 bits, es decir, valores enteros entre 0 y 4095, y con atenuación de 11 dB. El programa obtiene la tensión en el pin con la función `analogReadMilliVolts()`. A partir de ella:
+El ESP32 DOIT DevKit V1 recibe las señales analógicas de los sensores mediante su convertidor analógico-digital (ADC), configurado a 12 bits, con valores entre 0 y 4095 y atenuación de 11 dB. La tensión se obtiene mediante `analogReadMilliVolts()`.
 
-- **Turbidez.** Se registra la tensión en el pin. La señal de este sensor no equivale a NTU sin una curva propia con patrones de turbidez conocida [[3]](#ref3), [[4]](#ref4).
-- **pH.** La salida del módulo pasa por un divisor resistivo de factor 1,5 antes de llegar al ESP32, y el programa recupera la tensión original del módulo, $V$, multiplicando la tensión medida por 1,5. La conversión a unidades de pH se obtiene con una calibración de dos puntos con soluciones de pH 7,00 y 4,00:
-
-$$
-m = \frac{V_7 - V_4}{7 - 4} \qquad\qquad pH = 7 + \frac{V - V_7}{m}
-$$
-
-- **Nivel.** El XKC-Y25 detecta presencia o ausencia de líquido en un punto, no el volumen de forma continua [[10]](#ref10); su señal se interpreta como dos estados.
-- **Dosificación.** El volumen entregado por la bomba peristáltica se calcula a partir de su caudal, $Q$, que se obtiene pesando el líquido bombeado durante un tiempo $t$ y suponiendo una densidad cercana a 1 g/mL, que debe verificarse:
+- **Turbidez.** Se registra la tensión analógica entregada por el TS-300B. El programa también calcula una estimación de turbidez en NTU. Esta conversión debe considerarse aproximada mientras no se documente y valide una curva propia con patrones de turbidez conocida y un instrumento de referencia [[3]](#ref3), [[4]](#ref4).
+- **pH.** La salida del módulo PH-4502C pasa por un divisor resistivo de factor 1,6 antes de llegar al ESP32. Para recuperar la tensión original del módulo, se multiplica la tensión medida por 1,6. Con las lecturas de las soluciones de pH 7,00 y 4,00 se calcula la pendiente:
 
 $$
-Q = \frac{V_{\text{bombeado}}}{t} \qquad\qquad t_{\text{dosis}} = \frac{V_{\text{dosis}}}{Q}
+m = \frac{V_7 - V_4}{7 - 4}
 $$
 
-**Sensibilidad esperada del electrodo de pH.** A 25 °C, la ecuación de Nernst da una pendiente teórica de 59,16 mV por unidad de pH [[7]](#ref7). Entre pH 5 y pH 9 la diferencia de potencial teórica en el electrodo es de 4 × 59,16 mV ≈ 237 mV, antes de la amplificación del módulo. Este valor se contrastará con la pendiente $m$ obtenida en la calibración.
+La conversión utilizada es:
+
+$$
+pH = 7 + \frac{V - V_7}{m}
+$$
+
+Donde $V$ es la tensión original del módulo, $V_7$ es la tensión registrada en la solución de pH 7,00 y $m$ es la pendiente obtenida en la calibración.
+- **Nivel.** El XKC-Y25-V detecta la presencia de líquido a la altura donde está instalado. Su salida representa un estado de detección, no una medición continua del volumen [[10]](#ref10).
+- **Dosificación.** La bomba peristáltica debe caracterizarse midiendo el volumen entregado durante un tiempo conocido. El caudal se calcula mediante:
+
+$$
+Q = \frac{V_{\text{bombeado}}}{t}
+\qquad\qquad
+t_{\text{dosis}} = \frac{V_{\text{dosis}}}{Q}
+$$
+
+En las pruebas realizadas todavía no se midió el volumen bombeado, por lo que no se dispone de un caudal experimental ni de un tiempo de dosificación calculado.
+
+**Sensibilidad esperada del electrodo de pH.** A 25 °C, la ecuación de Nernst establece una pendiente teórica de aproximadamente 59,16 mV por unidad de pH [[7]](#ref7). La pendiente obtenida con las tensiones del módulo incluye también el acondicionamiento electrónico de la placa PH-4502C; por ello, no debe compararse directamente con la pendiente teórica del electrodo sin considerar dicho acondicionamiento.
 
 ## 3.3 Procedimiento de las pruebas
 
-Las pruebas de turbidez y de pH se realizaron el 02/11/2026 con el banco de adquisición de la sección 4. Cada elemento siguió un procedimiento propio:
+Las pruebas se realizaron con un banco de adquisición armado sobre protoboard y alimentado mediante un convertidor DC-DC que entrega 5 V. Las lecturas se visualizaron en el monitor serial del Arduino IDE.
 
-1. **Turbidez:** se cargó un programa que lee el pin 33 y se sumergió el sensor, sostenido a mano, en agua clara y en agua turbia con sedimento, registrando el valor de cada muestra.
-2. **pH:** se cargó un programa que lee el pin 34, calcula la tensión después del divisor y recupera la tensión original del módulo.
-3. **Nivel:** **[COMPLETAR]** (describir cómo se probó: recipiente, punto de detección y repeticiones).
-4. **Bomba peristáltica:** **[COMPLETAR]** (describir tiempos de bombeo, recipiente y balanza o probeta utilizados).
-5. **Interruptor:** **[COMPLETAR]** (describir cuántas veces se accionó y qué se verificó).
+1. **Turbidez:** se conectó el TS-300B al GPIO35 mediante un divisor resistivo. Se colocó el sensor verticalmente dentro de recipientes con agua destilada y agua mezclada con tierra de jardín. Se realizaron al menos tres lecturas por condición, sosteniendo manualmente el sensor para mantener su posición.
+2. **pH:** se conectó la salida del módulo PH-4502C al GPIO34 mediante el divisor resistivo. Se utilizaron soluciones amortiguadoras de pH 4, 7 y 10 a temperatura ambiente. Se esperó a que la lectura se estabilizara, se registraron dos o más lecturas por solución y se enjuagó el electrodo entre soluciones.
+3. **Nivel:** se instaló el XKC-Y25-V en la pared exterior de un recipiente plástico, a una altura elegida para comprobar su detección. Se llenó el recipiente hasta alcanzar el sensor y se repitió la prueba más de cinco veces, variando la altura del agua. Se observó el indicador LED rojo del módulo. No se pudieron registrar las señales en el monitor serial debido a fallas que presentó el ESP32 durante esa prueba.
+4. **Bomba peristáltica:** se probó la bomba NKP-DC-S10B, de 12 V, conectándola directamente a la alimentación de 12 V y 2 A mediante la bornera. Se realizaron tres pruebas de 10 segundos: primero con agua de caño y luego con jugo de plátano como líquido viscoso de prueba. Se observó el transporte del líquido, pero no se midió el volumen bombeado.
+5. **Interruptor:** se probó el interruptor KCD1 de tres terminales sobre una protoboard, utilizando cables adecuados y el convertidor DC-DC. Se empleó para interrumpir la alimentación de 12 V que entrega el adaptador. Se realizaron tres ciclos de encendido y apagado y se verificó con el multímetro la presencia o ausencia de tensión en la salida.
 
 ## 3.4 Valores de referencia y criterio de aceptación
 
-Cada prueba se compara con un valor de referencia, que sirve para aceptar o rechazar el resultado (Tabla 5).
+Cada prueba se compara con el comportamiento esperado del componente. Los criterios de esta etapa son principalmente funcionales; cuando no se cuenta con instrumentos o mediciones cuantitativas, el resultado se limita a la evidencia observada.
 
 <p align="center"><em>Tabla 5. Valores de referencia y criterios de aceptación de cada prueba.</em></p>
 <div align="center">
 
 | Elemento | Prueba | Valor de referencia | Criterio de aceptación |
 |:---:|:---:|:---:|:---:|
-| Turbidez | Agua clara frente a agua turbia | Más partículas, menos luz en el detector, menor tensión [[3]](#ref3) | La señal debe disminuir de forma clara en el agua turbia |
-| pH | Soluciones de pH 7,00 y 4,00; verificación | pH nominal de la solución | Error de verificación menor que **[COMPLETAR]** unidades de pH |
-| Nivel | Llenado hasta el punto de 1 L | Nivel marcado en el recipiente | El sensor cambia de estado al llegar el agua, en **[COMPLETAR]** repeticiones |
-| Bomba peristáltica | Volumen bombeado por pesada | Masa medida en la balanza | Error del volumen menor que **[COMPLETAR]** % [[11]](#ref11) |
-| Interruptor | Encendido y apagado | Estado esperado del sistema | Responde en todos los accionamientos (**[COMPLETAR]**) |
+| Turbidez | Agua destilada frente a agua con tierra | La muestra con más partículas debe producir una señal diferente y, según la respuesta observada del montaje, una tensión menor [[3]](#ref3) | Diferencia clara y repetible entre las condiciones |
+| pH | Soluciones amortiguadoras de pH 4, 7 y 10 | pH nominal de cada solución | La lectura calculada debe seguir el orden y los valores de las soluciones de referencia |
+| Nivel | Agua por debajo y a la altura del sensor | Cambio de estado al llegar el líquido al punto de detección | Detección correcta en las repeticiones realizadas |
+| Bomba peristáltica | Bombeo durante 10 segundos | Transporte continuo del líquido | La bomba debe transportar el líquido sin interrupciones visibles; el caudal queda pendiente de medición |
+| Interruptor | Tres ciclos de encendido y apagado | Presencia de tensión en encendido y ausencia en apagado | Respuesta correcta en los tres ciclos, verificada con multímetro |
 
 </div>
 
 ## 3.5 Resultados de las pruebas
 
-La Tabla 6 resume el estado de cada prueba. Las dos primeras ya tienen lecturas; las otras tres se completarán con sus fotografías y datos.
+La Tabla 6 resume los resultados obtenidos. Los sensores de turbidez y pH cuentan con lecturas eléctricas registradas. El sensor de nivel y el interruptor fueron verificados funcionalmente. La bomba transportó los líquidos de prueba, pero todavía no se midió su caudal.
 
 <p align="center"><em>Tabla 6. Resumen de las pruebas de sensores y actuadores.</em></p>
 <div align="center">
 
-| Elemento | Resultado | Lectura | Estado |
+| Elemento | Resultado | Lectura o evidencia | Estado |
 |:---:|:---:|:---:|:---:|
-| Turbidez | Agua clara: 1,748 V; agua turbia: 0,154 V | La señal cambia entre las dos muestras | Realizada; falta curva en NTU |
-| pH | ADC saturado en 4095 | No es una medición de pH; el sensor no está calibrado | Pendiente: calibración |
-| Nivel de agua | **[COMPLETAR]** | **[COMPLETAR]** | Pendiente |
-| Bomba peristáltica | **[COMPLETAR]** | **[COMPLETAR]** | Pendiente |
-| Interruptor | **[COMPLETAR]** | **[COMPLETAR]** | Pendiente |
+| Turbidez | Diferencia de señal entre muestras y estimación aproximada de NTU | Agua destilada: 1,748 V; agua turbia: 0,154 V. Prueba posterior con agua de caño: ADC 3475 y 2,838 V | Prueba funcional realizada; calibración en NTU por validar |
+| pH | Lecturas con soluciones de pH 4, 7 y 10 y conversión directa a pH | Pendiente calculada: −0,18 V/pH | Calibración de dos puntos realizada; verificación con pH 10 coherente |
+| Nivel de agua | El LED rojo del módulo se encendió al detectar el agua | Más de cinco pruebas a diferentes alturas; sin registro serial | Prueba funcional realizada |
+| Bomba peristáltica | Bombeo de agua de caño y jugo de plátano | Tres pruebas de 10 segundos; sin medición de volumen | Prueba funcional realizada; caudal pendiente |
+| Interruptor | Interrupción y restablecimiento de la alimentación | Tres ciclos verificados con multímetro | Prueba funcional realizada; instalación en caja pendiente |
 
 </div>
 
 ### 3.5.1 Sensor de turbidez
 
-**Por qué se espera ese comportamiento.** El TS-300B es un sensor óptico con un emisor y un receptor de luz: cuando el agua es clara llega más luz al detector, y cuando aumentan las partículas la señal disminuye. La Figura 6 muestra el montaje y la Figura 7 el programa de lectura.
+**Por qué se espera ese comportamiento.** El TS-300B utiliza un principio óptico: la cantidad de luz que alcanza el receptor cambia según las partículas presentes en el agua. En las condiciones de esta prueba, se esperaba una tensión menor al aumentar la cantidad de partículas suspendidas.
 
 <p align="center">
 <img src="images/fig3_turbidez_montaje.jpg" height="360" alt="Montaje del sensor de turbidez" />
 </p>
-<p align="center"><em>Figura 6. Montaje del sensor de turbidez: ESP32 conectado a la protoboard y sensor con su cable hacia la placa.</em></p>
+<p align="center"><em>Figura 6. Montaje del sensor de turbidez conectado al ESP32 mediante protoboard.</em></p>
 
 <p align="center">
 <img src="images/fig4_turbidez_codigo.jpg" height="360" alt="Programa de lectura del sensor de turbidez" />
 </p>
-<p align="center"><em>Figura 7. Programa de lectura del sensor de turbidez (pin 33, ADC de 12 bits, atenuación de 11 dB) cargado en el ESP32.</em></p>
+<p align="center"><em>Figura 7. Programa de lectura del sensor de turbidez mediante el ESP32.</em></p>
 
 <p align="center">
 <img src="images/fig5_turbidez_agua_clara.jpg" height="360" alt="Ensayo con agua clara" />
 </p>
-<p align="center"><em>Figura 8. Ensayo con agua clara: sensor sumergido en la taza (izquierda) y lectura en el monitor serie (derecha).</em></p>
+<p align="center"><em>Figura 8. Ensayo con agua destilada.</em></p>
 
 <p align="center">
 <img src="images/fig6_turbidez_agua_turbia.jpg" height="360" alt="Ensayo con agua turbia" />
 </p>
-<p align="center"><em>Figura 9. Ensayo con agua turbia y sedimento: sensor sumergido en el recipiente (izquierda) y lectura en el monitor serie (derecha).</em></p>
+<p align="center"><em>Figura 9. Ensayo con agua mezclada con tierra de jardín.</em></p>
 
-<p align="center"><em>Tabla 7. Lecturas del sensor de turbidez.</em></p>
+<p align="center"><em>Tabla 7. Lecturas registradas del sensor de turbidez.</em></p>
 <div align="center">
 
 | Muestra | ADC (0–4095) | Tensión en el pin (V) |
 |:---:|:---:|:---:|
-| Agua clara | 1951 | 1,748 |
-| Agua turbia con sedimento | 6 | 0,154 |
+| Agua destilada (prueba inicial) | 1951 | 1,748 |
+| Agua con tierra de jardín (prueba inicial) | 6 | 0,154 |
+| Agua de caño (prueba posterior, 05/11/2026) | 3475 | 2,838 |
 
 </div>
 
-**Comparación con el valor esperado.** La señal bajó de 1,748 V a 0,154 V al pasar del agua clara al agua turbia, una caída de alrededor de 91 %. El sentido del cambio coincide con el principio óptico, por lo que la prueba se acepta de forma cualitativa. Se obtuvo una sola lectura por muestra, no se midió la turbidez de las muestras con un instrumento de referencia y el sensor se sostuvo a mano; además, la luz ambiental y la suciedad son fuentes de error conocidas en los sensores de bajo costo [[3]](#ref3). Por eso el resultado muestra que el sensor distingue estas dos condiciones, pero no permite todavía expresar la turbidez en NTU ni evaluar niveles intermedios.
+Las pruebas se realizaron varias veces, con un mínimo de tres lecturas por condición. Sin embargo, la tabla presenta únicamente los valores puntuales que quedaron registrados; no se dispone aquí de los datos individuales necesarios para calcular promedios y desviaciones estándar.
+
+**Comparación con el valor esperado.** En la prueba inicial, la tensión pasó de 1,748 V en agua destilada a 0,154 V en agua con tierra de jardín. La reducción observada fue de aproximadamente 91,2 %, por lo que el sensor distinguió ambas condiciones en el sentido esperado para el montaje. En una prueba posterior realizada el 05/11/2026, el agua de caño produjo una lectura de 2,838 V (ADC 3475). Se cuenta además con una estimación de NTU generada por el programa; no obstante, esta debe considerarse aproximada hasta validarla con patrones de turbidez conocida y un turbidímetro de referencia [[3]](#ref3), [[4]](#ref4).
+
+El sensor se sostuvo manualmente en posición vertical durante las pruebas. Por ello, la posición, la iluminación ambiental y la repetibilidad del montaje pueden influir en las lecturas. Para una calibración cuantitativa posterior será necesario mantener fija la posición del sensor y registrar varias mediciones por muestra.
 
 ### 3.5.2 Sensor de pH
 
-**Por qué se espera ese comportamiento.** El electrodo de vidrio genera una diferencia de potencial que depende del pH y que el módulo PH-4502C acondiciona antes de enviarla al ESP32 [[6]](#ref6), [[7]](#ref7). Esta lectura solo se convierte en unidades de pH después de calibrar el electrodo, que requiere calibración frecuente [[6]](#ref6).
+**Por qué se espera ese comportamiento.** El electrodo de vidrio genera una diferencia de potencial relacionada con el pH de la solución. El módulo PH-4502C acondiciona esa señal para que pueda ser adquirida por el ESP32 [[6]](#ref6), [[7]](#ref7).
 
 <p align="center">
 <img src="images/fig1_ph_montaje.jpg" height="360" alt="Montaje del sensor de pH" />
 </p>
-<p align="center"><em>Figura 10. Montaje del sensor de pH: ESP32 y divisor resistivo en la protoboard, módulo PH-4502C con conector BNC y electrodo de vidrio.</em></p>
+<p align="center"><em>Figura 10. Montaje del sensor de pH con el módulo PH-4502C, el electrodo y el divisor resistivo.</em></p>
 
 <p align="center">
 <img src="images/fig2_ph_codigo_serial.jpg" height="360" alt="Programa de lectura del sensor de pH" />
 </p>
-<p align="center"><em>Figura 11. Programa de lectura del sensor de pH (pin 34, divisor con factor 1,5) y lecturas consecutivas en el monitor serie.</em></p>
+<p align="center"><em>Figura 11. Programa de lectura del sensor de pH y visualización de datos en el monitor serial.</em></p>
 
-<p align="center"><em>Tabla 8. Lecturas del sensor de pH sin calibrar.</em></p>
+Las pruebas se realizaron con soluciones amortiguadoras de pH 4, 7 y 10, a temperatura ambiente. En cada solución se esperó a que la lectura se estabilizara, se tomaron dos o más lecturas y se enjuagó el electrodo antes de pasar a la siguiente solución. El divisor resistivo utilizado tiene un factor de corrección de 1,6 para recuperar la tensión original del módulo.
+
+<p align="center"><em>Tabla 8. Lecturas registradas durante la calibración del sensor de pH.</em></p>
 <div align="center">
 
-| Programa | ADC (0–4095) | Tensión en el pin (V) | Tensión original del módulo (V) |
-|:---:|:---:|:---:|:---:|
-| Programa de pH (Figura 11), varias lecturas consecutivas | 4095 | 3,134 | 4,701 |
-| Programa integrado | 4095 | — | 5,014 |
-
-</div>
-
-**Comparación con el valor esperado.** En todas las lecturas el ADC marcó 4095, que es su valor máximo. Una lectura fija en el tope de la escala indica saturación, de modo que estos valores no corresponden a una medición de pH. Los dos programas calculan valores distintos de la tensión original (4,701 V y 5,014 V), lo que indica que convierten la lectura de forma diferente y que debe unificarse la conversión. La prueba muestra que el prototipo adquiere y muestra la señal del módulo, pero el sensor aún no está calibrado; la causa de la saturación se determinará durante la calibración.
-
-**Protocolo de calibración (en preparación).** El equipo calibrará el sensor con soluciones amortiguadoras de pH conocido, como hacen otros sistemas de bajo costo, que calibran con soluciones de pH 4,00 y 7,00 [[5]](#ref5). El procedimiento previsto es:
-
-1. Ajustar el *offset* del módulo según las indicaciones de su hoja de datos.
-2. Sumergir el electrodo en la solución de pH 7,00, esperar a que la lectura se estabilice y registrar varias lecturas de la tensión original del módulo, $V_7$.
-3. Enjuagar el electrodo y repetir el paso 2 con la solución de pH 4,00 para obtener $V_4$.
-4. Calcular la pendiente $m$ y la ecuación de conversión de la sección 3.2.
-5. Verificar con una solución adicional o con una muestra medida con un pHmetro de referencia, y calcular el error.
-6. Registrar la temperatura de cada medición, porque la pendiente del electrodo depende de ella [[7]](#ref7).
-
-<p align="center"><em>Tabla 9. Registro de la calibración del sensor de pH (por completar).</em></p>
-<div align="center">
-
-| Solución | pH nominal | N.° de lecturas | Tensión media (V) | Desviación estándar (V) |
+| Solución | pH nominal | ADC | Tensión en el pin ESP32 (V) | Tensión original del módulo (V) |
 |:---:|:---:|:---:|:---:|:---:|
-| Amortiguadora 1 | 7,00 | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| Amortiguadora 2 | 4,00 | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| Verificación | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
+| Amortiguadora 1 | 4,00 | 2178 | 1,899 | 3,040 |
+| Amortiguadora 2 | 7,00 | 1758 | 1,564 | 2,500 |
+| Verificación | 10,00 | 1347 | 1,228 | 1,960 |
 
 </div>
 
-Pendiente obtenida $m$ = **[COMPLETAR]** V/pH · Error en la verificación = **[COMPLETAR]** unidades de pH.
+A partir de las soluciones de pH 4 y 7 se obtuvo:
 
-### 3.5.3 Sensor de nivel de agua (XKC-Y25)
+$$
+m = \frac{2,500 - 3,040}{7 - 4}
+= -0,180\ \text{V/pH}
+$$
 
-**Por qué se espera ese comportamiento.** El XKC-Y25 presenta una capacitancia estática cuando no hay líquido cerca; al acercarse el líquido, la capacitancia total aumenta y un circuito integrado indica que el líquido llegó al punto de detección. Se coloca sobre recipientes no metálicos, sin tocar el agua [[10]](#ref10).
+Por tanto, la ecuación de conversión es:
 
-<p align="center"><b>[COMPLETAR · INSERTAR IMAGEN AQUÍ]</b><br><sub>Foto del sensor pegado a la pared exterior del reactor o del vaso de 1 L, conectado al ESP32.</sub></p>
-<!-- Cuando tengas la foto, súbela a images/ y reemplaza este bloque por:
+$$
+pH = 7 + \frac{V - 2,500}{-0,180}
+$$
+
+Al sustituir la tensión de 1,960 V registrada con la solución de pH 10:
+
+$$
+pH = 7 + \frac{1,960 - 2,500}{-0,180}
+= 10,00
+$$
+
+**Comparación con el valor esperado.** La lectura calculada para la solución de verificación coincide con su valor nominal de pH 10,00 usando los valores registrados. Esto muestra coherencia entre los tres puntos ensayados. Sin embargo, como no se cuenta con los registros individuales completos, la desviación estándar ni una comparación con un pHmetro de referencia, no se puede establecer todavía el error metrológico del sensor.
+
+### 3.5.3 Sensor de nivel de agua (XKC-Y25-V)
+
+**Por qué se espera ese comportamiento.** El XKC-Y25-V es un sensor capacitivo sin contacto que se instala en la parte exterior de un recipiente no metálico. Cuando el líquido alcanza la zona de detección, el módulo cambia su estado de salida e indica la presencia de agua [[10]](#ref10).
+
 <p align="center">
-<img src="images/fig12_nivel_montaje.jpg" height="360" alt="Montaje del sensor de nivel de agua XKC-Y25 sobre el reactor de 1 L." />
-</p> -->
-<p align="center"><em>Figura 12. Montaje del sensor de nivel de agua XKC-Y25 sobre el reactor de 1 L.</em></p>
+<b>[INSERTAR IMAGEN DEL SENSOR INSTALADO]</b><br>
+<sub>Fotografía del XKC-Y25-V colocado en la pared exterior del recipiente.</sub>
+</p>
+<p align="center"><em>Figura 12. Instalación del sensor de nivel XKC-Y25-V en el recipiente de prueba.</em></p>
 
-<p align="center"><b>[COMPLETAR · INSERTAR IMAGEN AQUÍ]</b><br><sub>Foto o captura del monitor serie con el sensor sin líquido y con el agua en el punto de detección.</sub></p>
-<!-- Cuando tengas la foto, súbela a images/ y reemplaza este bloque por:
+El sensor se conectó al GPIO14 del ESP32. Se colocó a una altura arbitraria para comprobar su funcionamiento, sin utilizar todavía la marca de 1 L como referencia. Se llenó el recipiente hasta alcanzar el punto de detección y se repitió la prueba más de cinco veces a diferentes alturas.
+
 <p align="center">
-<img src="images/fig13_nivel_prueba.jpg" height="360" alt="Prueba del sensor de nivel de agua: lectura sin líquido (izquierda) y con el agua en el punto de detección (derecha)." />
-</p> -->
-<p align="center"><em>Figura 13. Prueba del sensor de nivel de agua: lectura sin líquido (izquierda) y con el agua en el punto de detección (derecha).</em></p>
+<b>[INSERTAR IMAGEN DE LA PRUEBA DE DETECCIÓN]</b><br>
+<sub>Fotografía del indicador LED rojo encendido al detectar el agua.</sub>
+</p>
+<p align="center"><em>Figura 13. Respuesta visual del sensor de nivel durante la detección del agua.</em></p>
 
-<p align="center"><em>Tabla 10. Resultados de la prueba del sensor de nivel (por completar).</em></p>
+<p align="center"><em>Tabla 9. Resultados de la prueba funcional del sensor de nivel.</em></p>
 <div align="center">
 
-| Repetición | Condición | Lectura del sensor | ¿Detectó correctamente? |
-|:---:|:---:|:---:|:---:|
-| 1 | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| 2 | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| 3 | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-
-</div>
-
-**Comparación con el valor esperado.** **[COMPLETAR]** (indicar si el sensor cambió de estado al llegar el agua al punto de 1 L y cuántas veces acertó).
-
-### 3.5.4 Bomba peristáltica
-
-**Por qué se espera ese comportamiento.** La bomba peristáltica es de desplazamiento positivo: unos rodillos comprimen un tubo flexible y empujan el líquido atrapado, de modo que el fluido solo toca el tubo. Su exactitud depende del tubo, requiere calibración y el desgaste obliga a recalibrar [[11]](#ref11); por eso el volumen se verifica por pesada.
-
-<p align="center"><b>[COMPLETAR · INSERTAR IMAGEN AQUÍ]</b><br><sub>Foto del montaje: bomba, tubo de silicona, envase de quitosano y recipiente de recolección sobre la balanza.</sub></p>
-<!-- Cuando tengas la foto, súbela a images/ y reemplaza este bloque por:
-<p align="center">
-<img src="images/fig14_bomba_montaje.jpg" height="360" alt="Montaje de la prueba de la bomba peristáltica con tubo de silicona y recipiente sobre la balanza." />
-</p> -->
-<p align="center"><em>Figura 14. Montaje de la prueba de la bomba peristáltica con tubo de silicona y recipiente sobre la balanza.</em></p>
-
-<p align="center"><b>[COMPLETAR · INSERTAR IMAGEN AQUÍ]</b><br><sub>Foto de la bomba en funcionamiento o de la balanza mostrando la masa bombeada.</sub></p>
-<!-- Cuando tengas la foto, súbela a images/ y reemplaza este bloque por:
-<p align="center">
-<img src="images/fig15_bomba_prueba.jpg" height="360" alt="Prueba de la bomba peristáltica: masa bombeada durante un tiempo conocido." />
-</p> -->
-<p align="center"><em>Figura 15. Prueba de la bomba peristáltica: masa bombeada durante un tiempo conocido.</em></p>
-
-<p align="center"><em>Tabla 11. Calibración de la bomba peristáltica por pesada (por completar).</em></p>
-<div align="center">
-
-| Repetición | Tiempo de bombeo (s) | Masa bombeada (g) | Volumen (mL) | Caudal (mL/s) |
-|:---:|:---:|:---:|:---:|:---:|
-| 1 | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| 2 | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-| 3 | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** | **[COMPLETAR]** |
-
-</div>
-
-**Comparación con el valor esperado.** **[COMPLETAR]** (caudal medio, variación entre repeticiones y error respecto del volumen programado).
-
-### 3.5.5 Interruptor de encendido y apagado
-
-**Por qué se espera ese comportamiento.** El interruptor abre o cierra el circuito de alimentación del sistema, por lo que al accionarlo el ESP32 debe encenderse y apagarse sin reiniciarse de forma intermitente.
-
-<p align="center"><b>[COMPLETAR · INSERTAR IMAGEN AQUÍ]</b><br><sub>Foto del interruptor en la caja de control, en posición apagado y encendido, con el sistema respondiendo.</sub></p>
-<!-- Cuando tengas la foto, súbela a images/ y reemplaza este bloque por:
-<p align="center">
-<img src="images/fig16_interruptor.jpg" height="360" alt="Prueba del interruptor de encendido y apagado: posición apagado (izquierda) y encendido (derecha)." />
-</p> -->
-<p align="center"><em>Figura 16. Prueba del interruptor de encendido y apagado: posición apagado (izquierda) y encendido (derecha).</em></p>
-
-<p align="center"><em>Tabla 12. Resultados de la prueba del interruptor (por completar).</em></p>
-<div align="center">
-
-| Acción | Respuesta del sistema | Resultado |
+| Condición de prueba | Resultado observado | Evidencia |
 |:---:|:---:|:---:|
-| Apagado → encendido | **[COMPLETAR]** | **[COMPLETAR]** |
-| Encendido → apagado | **[COMPLETAR]** | **[COMPLETAR]** |
+| Agua por debajo del punto de detección | Se evaluó variando la altura del agua | Prueba física |
+| Agua al alcanzar el sensor | Se encendió el LED rojo del módulo | Indicador visual |
+| Repeticiones | Más de cinco pruebas a diferentes alturas | Detección observada en todas |
 
 </div>
 
+**Comparación con el valor esperado.** El sensor respondió visualmente al detectar el agua y el comportamiento se repitió en más de cinco pruebas realizadas a diferentes alturas. Sin embargo, no fue posible obtener las lecturas en el monitor serial porque el ESP32 presentó fallas durante esa prueba. Por ello, se demuestra la respuesta funcional del módulo mediante su indicador LED, pero queda pendiente registrar y verificar eléctricamente el cambio de estado en el GPIO14. Tampoco se ha validado todavía la detección exacta al alcanzar 1 L.
+
+### 3.5.4 Bomba peristáltica NKP-DC-S10B
+
+**Por qué se espera ese comportamiento.** La bomba peristáltica desplaza el líquido mediante la compresión sucesiva de un tubo flexible por medio de rodillos. El fluido entra en contacto principalmente con el interior del tubo. Para utilizarla en una dosificación controlada es necesario determinar experimentalmente su caudal [[11]](#ref11).
+
+<p align="center">
+<b>[INSERTAR IMAGEN DEL MONTAJE DE LA BOMBA]</b><br>
+<sub>Fotografía de la bomba NKP-DC-S10B y sus conexiones de alimentación.</sub>
+</p>
+<p align="center"><em>Figura 14. Montaje de prueba de la bomba peristáltica NKP-DC-S10B.</em></p>
+
+La bomba utilizada fue una NKP-DC-S10B de 12 V. Para la prueba se alimentó directamente desde la bornera conectada al adaptador de 12 V y 2 A, sin integrarla todavía al circuito de control definitivo. Se realizaron tres pruebas de 10 segundos. Primero se utilizó agua de caño y posteriormente jugo de plátano como líquido viscoso para observar el transporte de un fluido con mayor resistencia al movimiento.
+
+<p align="center">
+<b>[INSERTAR IMAGEN O CAPTURA DE LA BOMBA EN FUNCIONAMIENTO]</b><br>
+<sub>Fotografía o captura de video de la bomba transportando el líquido.</sub>
+</p>
+<p align="center"><em>Figura 15. Prueba de funcionamiento de la bomba peristáltica con los líquidos seleccionados.</em></p>
+
+<p align="center"><em>Tabla 10. Registro de las pruebas funcionales de la bomba peristáltica.</em></p>
+<div align="center">
+
+| Repetición | Tiempo de funcionamiento (s) | Líquido utilizado | Resultado observado |
+|:---:|:---:|:---:|:---:|
+| 1 | 10 | Agua de caño | Transporte de líquido |
+| 2 | 10 | Agua de caño | Transporte de líquido |
+| 3 | 10 | Jugo de plátano | Transporte de líquido viscoso |
+
+</div>
+
+**Comparación con el valor esperado.** En las tres pruebas se observó que la bomba transportó el líquido. Durante la observación, el bombeo se percibió constante. Sin embargo, no se utilizó una probeta ni una balanza para medir el volumen entregado. En consecuencia, todavía no se puede calcular el caudal en mL/s, la variación entre repeticiones ni el error de dosificación. La prueba demuestra el funcionamiento mecánico básico de la bomba, pero su capacidad de dosificación cuantitativa queda pendiente de calibración.
+
+### 3.5.5 Interruptor de encendido y apagado KCD1
+
+**Por qué se espera ese comportamiento.** El interruptor KCD1 permite abrir o cerrar el circuito de alimentación del sistema. Al cerrar el circuito, la alimentación debe llegar al convertidor DC-DC y al resto del banco; al abrirlo, debe interrumpirse la alimentación.
+
+<p align="center">
+<b>[INSERTAR FOTOGRAFÍA DEL INTERRUPTOR EN LA PROTOBOARD]</b><br>
+<sub>Fotografía del KCD1 conectado durante la prueba de encendido y apagado.</sub>
+</p>
+<p align="center"><em>Figura 16. Prueba del interruptor KCD1 sobre protoboard.</em></p>
+
+El interruptor de tres terminales se probó sobre una protoboard, utilizando cables adecuados y el convertidor DC-DC. Se destinó a interrumpir la alimentación de 12 V y 2 A entregada por el adaptador. Se realizaron tres ciclos de encendido y apagado y se utilizó un multímetro para verificar la presencia o ausencia de tensión en la salida. El interruptor todavía no se instaló en la caja de control del prototipo.
+
+<p align="center"><em>Tabla 11. Resultados de la prueba del interruptor KCD1.</em></p>
+<div align="center">
+
+| Acción | Respuesta observada | Resultado |
+|:---:|:---:|:---:|
+| Apagado → encendido | Se restableció la alimentación y el ESP32 pudo iniciar | Correcto |
+| Encendido → apagado | Se interrumpió la alimentación; el multímetro verificó la ausencia de tensión en la salida | Correcto |
+| Repeticiones | Tres ciclos de encendido y apagado | Correcto en las pruebas realizadas |
+
+</div>
+
+**Comparación con el valor esperado.** El interruptor respondió correctamente en los tres ciclos realizados: permitió alimentar el sistema y cortar la alimentación cuando se accionó. La prueba se verificó con el multímetro. No obstante, el componente aún no está instalado en la caja de control, por lo que queda pendiente comprobar su montaje físico en el prototipo definitivo.
 
 ---
 
