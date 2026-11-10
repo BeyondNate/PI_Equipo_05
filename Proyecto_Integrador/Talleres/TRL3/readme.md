@@ -381,7 +381,7 @@ La bomba utilizada fue una NKP-DC-S10B de 12 V. Para la prueba se alimentó dire
 <p align="center"><em>Figura 15. Prueba de funcionamiento de la bomba peristáltica con los líquidos viscoso (jugo de plátano).</em></p>
 
 <p align="center">
-<img src="images/fig16_peristaltica_liquido_comun.jpg" height="360" alt="Bomba peristáltica bombea agua limpia" />
+<img src="images/fig16_peristaltica_liquido_limpio.jpg" height="360" alt="Bomba peristáltica bombea agua limpia" />
 </p>
 <p align="center"><em>Figura 16. Prueba de funcionamiento de la bomba peristáltica con agua limpia.</em></p>
 
