@@ -441,9 +441,9 @@ El prototipo de esta etapa tiene dos partes: un banco de pruebas de adquisición
 | ESP32 DOIT DevKit V1 | Adquiere las señales y las envía al monitor serie | Cable USB al computador |
 | Sensor de turbidez TS-300B | Entrega una tensión analógica que varía con las partículas suspendidas | Señal al pin GPIO 33 |
 | Módulo de pH PH-4502C con electrodo y conector BNC | Acondiciona la señal potenciométrica del electrodo | Señal al pin GPIO 34, a través de un divisor resistivo de factor 1,5 |
-| Sensor de nivel XKC-Y25 | Confirma el nivel de 1 L | Pin **[COMPLETAR]** |
-| Bomba peristáltica | Dosifica la solución de quitosano | Conexión **[COMPLETAR]** |
-| Interruptor de encendido y apagado | Enciende y apaga el sistema | Pin **[COMPLETAR]** |
+| Sensor de nivel XKC-Y25 | Confirma el nivel de 1 L | Pin GPIO 14 |
+| Bomba peristáltica | Dosifica la solución de quitosano | Conexión desde la bornera, 12V 2A |
+| Interruptor de encendido y apagado | Enciende y apaga el sistema | Pin central: Entrada, de la bornera 12V 2A. Pin lateral: Continuación a transformador DC-DC y resto de componentes. Pin dorado: GND general |
 
 </div>
 
