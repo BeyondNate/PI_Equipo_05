@@ -130,6 +130,11 @@ Las Figuras 1 a 5 muestran la distribución del esfuerzo de von Mises en cada pi
 </p>
 <p align="center"><em>Figura 5. Esfuerzo de von Mises en el agitador de PLA (SimScale).</em></p>
 
+<p align="center">
+<img src="images/soporte.jpg" height="360" alt="Esfuerzo de von Mises en el agitador" />
+</p>
+<p align="center"><em>Figura 6. Esfuerzo de von Mises en el soporte de Acero (SimScale).</em></p>
+
 La Tabla 3 resume el esfuerzo máximo de la escala de cada figura.
 
 <p align="center"><em>Tabla 3. Esfuerzo máximo de von Mises y factor de seguridad por pieza.</em></p>
@@ -137,15 +142,16 @@ La Tabla 3 resume el esfuerzo máximo de la escala de cada figura.
 
 | Pieza | Esfuerzo máximo | Equivalencia | Esfuerzo de fluencia del material | FS |
 |:---:|:---:|:---:|:---:|:---:|
-| Base | 5 652 Pa | 0,005652 MPa | 70 MPa | 12034 |
+| Base | 5 652 Pa | 0,005652 MPa | 70 MPa | 12385 |
 | Soporte del reactor | 33 150 Pa | 0,03315 MPa | 50 MPa | 1508,3 |
 | Placa con cuatro orificios | 2 144 Pa | 0,002144 MPa | 50 MPa | 23320,9 |
 | Caja de control | 909 900 Pa | 0,9099 MPa | 50 MPa | 54,9 |
 | Agitador | 11 250 Pa | 0,01125 MPa | 50 MPa | 4444,4 |
+| Soporte metálico | 1 726 000 Pa | 1,726 MPa | 250 MPa | 144,8 |
 
 </div>
 
-**Interpretación.** En la base, los esfuerzos más altos se ubican en la parte derecha de la placa (Figura 1). En el soporte del reactor, la mayor parte de la pieza tiene esfuerzos bajos y los más altos aparecen en las patas y en su unión con el anillo inferior (Figura 2). En la placa, los esfuerzos se concentran alrededor de los orificios (Figura 3). En la caja de control, casi toda la superficie tiene esfuerzos bajos y el máximo se localiza en una línea del borde inferior y alrededor de la abertura (Figura 4). En el agitador, el eje soporta esfuerzos intermedios y la paleta, valores cercanos a cero (Figura 5). La caja de control es la pieza más exigida, con 0,9099 MPa, y la placa la menos exigida, con 0,002144 MPa.
+**Interpretación.** En la base, los esfuerzos más altos se ubican en la parte derecha de la placa (Figura 1). En el soporte del reactor, la mayor parte de la pieza tiene esfuerzos bajos y los más altos aparecen en las patas y en su unión con el anillo inferior (Figura 2). En la placa, los esfuerzos se concentran alrededor de los orificios (Figura 3). En la caja de control, casi toda la superficie tiene esfuerzos bajos y el máximo se localiza en una línea del borde inferior y alrededor de la abertura (Figura 4). En el agitador, el eje soporta esfuerzos intermedios y la paleta, valores cercanos a cero (Figura 5). La caja de control es la pieza más exigida, con 0,9099 MPa, y la placa la menos exigida, con 0,002144 MPa. En el soporte metálico, el esfuerzo más alto se ubica en la unión entre la varilla y la base y en la tapa donde se aplica la carga; la varilla trabaja con esfuerzos intermedios y la base casi no se exige (Figura 6).
 
 **Alcance del resultado.** La simulación evalúa solo la resistencia mecánica y dura 0,01 s, por lo que no representa una carga mantenida. Tampoco considera el efecto químico del ácido acético sobre el PLA, un riesgo identificado en el TRL 2 [[2]](#ref2) que debe verificarse por separado. Para concluir si las piezas resisten, el esfuerzo máximo debe compararse con la resistencia del filamento (Tabla 3).
 
@@ -252,22 +258,22 @@ La Tabla 6 resume los resultados obtenidos. Los sensores de turbidez y pH cuenta
 <p align="center">
 <img src="images/fig3_turbidez_montaje.jpg" height="360" alt="Montaje del sensor de turbidez" />
 </p>
-<p align="center"><em>Figura 6. Montaje del sensor de turbidez conectado al ESP32 mediante protoboard.</em></p>
+<p align="center"><em>Figura 7. Montaje del sensor de turbidez conectado al ESP32 mediante protoboard.</em></p>
 
 <p align="center">
 <img src="images/fig4_turbidez_codigo.jpg" height="360" alt="Programa de lectura del sensor de turbidez" />
 </p>
-<p align="center"><em>Figura 7. Programa de lectura del sensor de turbidez mediante el ESP32.</em></p>
+<p align="center"><em>Figura 8. Programa de lectura del sensor de turbidez mediante el ESP32.</em></p>
 
 <p align="center">
 <img src="images/fig5_turbidez_agua_clara.jpg" height="360" alt="Ensayo con agua clara" />
 </p>
-<p align="center"><em>Figura 8. Ensayo con agua destilada.</em></p>
+<p align="center"><em>Figura 9. Ensayo con agua destilada.</em></p>
 
 <p align="center">
 <img src="images/fig6_turbidez_agua_turbia.jpg" height="360" alt="Ensayo con agua turbia" />
 </p>
-<p align="center"><em>Figura 9. Ensayo con agua mezclada con tierra de jardín.</em></p>
+<p align="center"><em>Figura 10. Ensayo con agua mezclada con tierra de jardín.</em></p>
 
 <p align="center"><em>Tabla 7. Lecturas registradas del sensor de turbidez.</em></p>
 <div align="center">
@@ -293,12 +299,12 @@ El sensor se sostuvo manualmente en posición vertical durante las pruebas. Por 
 <p align="center">
 <img src="images/fig1_ph_montaje.jpg" height="360" alt="Montaje del sensor de pH" />
 </p>
-<p align="center"><em>Figura 10. Montaje del sensor de pH con el módulo PH-4502C, el electrodo y el divisor resistivo.</em></p>
+<p align="center"><em>Figura 11. Montaje del sensor de pH con el módulo PH-4502C, el electrodo y el divisor resistivo.</em></p>
 
 <p align="center">
 <img src="images/fig2_ph_codigo_serial.jpg" height="360" alt="Programa de lectura del sensor de pH" />
 </p>
-<p align="center"><em>Figura 11. Programa de lectura del sensor de pH y visualización de datos en el monitor serial.</em></p>
+<p align="center"><em>Figura 12. Programa de lectura del sensor de pH y visualización de datos en el monitor serial.</em></p>
 
 Las pruebas se realizaron con soluciones amortiguadoras de pH 4, 7 y 10, a temperatura ambiente. En cada solución se esperó a que la lectura se estabilizara, se tomaron dos o más lecturas y se enjuagó el electrodo antes de pasar a la siguiente solución. El divisor resistivo utilizado tiene un factor de corrección de 1,6 para recuperar la tensión original del módulo.
 
@@ -342,14 +348,14 @@ $$
 <p align="center">
 <img src="images/fig12_nivel_colocado.jpg" height="360" alt="Sensor XKC-Y25-V en el recipiente de prueba" />
 </p>
-<p align="center"><em>Figura 12. Instalación del sensor de nivel XKC-Y25-V en el recipiente de prueba.</em></p>
+<p align="center"><em>Figura 13. Instalación del sensor de nivel XKC-Y25-V en el recipiente de prueba.</em></p>
 
 El sensor se conectó al GPIO14 del ESP32. Se colocó a una altura arbitraria para comprobar su funcionamiento, sin utilizar todavía la marca de 1 L como referencia. Se llenó el recipiente hasta alcanzar el punto de detección y se repitió la prueba más de cinco veces a diferentes alturas.
 
 <p align="center">
 <img src="images/fig13_nivel_activo.jpg" height="360" alt="Sensor XKC-Y25-V funcionamiento comprobado" />
 </p>
-<p align="center"><em>Figura 13. Respuesta visual del sensor de nivel durante la detección del agua.</em></p>
+<p align="center"><em>Figura 14. Respuesta visual del sensor de nivel durante la detección del agua.</em></p>
 
 <p align="center"><em>Tabla 9. Resultados de la prueba funcional del sensor de nivel.</em></p>
 <div align="center">
@@ -371,19 +377,19 @@ El sensor se conectó al GPIO14 del ESP32. Se colocó a una altura arbitraria pa
 <p align="center">
 <img src="images/fig14_peristaltica_conexiones.jpg" height="360" alt="Bomba conectada a 12V 2A" />
 </p>
-<p align="center"><em>Figura 14. Montaje de prueba de la bomba peristáltica NKP-DC-S10B.</em></p>
+<p align="center"><em>Figura 15. Montaje de prueba de la bomba peristáltica NKP-DC-S10B.</em></p>
 
 La bomba utilizada fue una NKP-DC-S10B de 12 V. Para la prueba se alimentó directamente desde la bornera conectada al adaptador de 12 V y 2 A, sin integrarla todavía al circuito de control definitivo. Se realizaron tres pruebas de 10 segundos. Primero se utilizó agua de caño y posteriormente jugo de plátano como líquido viscoso para observar el transporte de un fluido con mayor resistencia al movimiento.
 
 <p align="center">
 <img src="images/fig15_peristaltica_viscoso.jpg" height="360" alt="Bomba peristáltica bombea solución acuosa viscosa" />
 </p>
-<p align="center"><em>Figura 15. Prueba de funcionamiento de la bomba peristáltica con los líquidos viscoso (jugo de plátano).</em></p>
+<p align="center"><em>Figura 16. Prueba de funcionamiento de la bomba peristáltica con los líquidos viscoso (jugo de plátano).</em></p>
 
 <p align="center">
 <img src="images/fig16_peristaltica_liquido_limpio.jpg" height="360" alt="Bomba peristáltica bombea agua limpia" />
 </p>
-<p align="center"><em>Figura 16. Prueba de funcionamiento de la bomba peristáltica con agua limpia.</em></p>
+<p align="center"><em>Figura 17. Prueba de funcionamiento de la bomba peristáltica con agua limpia.</em></p>
 
 <p align="center"><em>Tabla 10. Registro de las pruebas funcionales de la bomba peristáltica.</em></p>
 <div align="center">
@@ -405,12 +411,12 @@ La bomba utilizada fue una NKP-DC-S10B de 12 V. Para la prueba se alimentó dire
 <p align="center">
 <img src="images/fig17_interruptor_encendido.jpg" height="360" alt="Interruptor KCD1 permite el paso de energía" />
 </p>
-<p align="center"><em>Figura 17. Prueba del interruptor KCD1 encendido sobre protoboard.</em></p>
+<p align="center"><em>Figura 18. Prueba del interruptor KCD1 encendido sobre protoboard.</em></p>
 
 <p align="center">
 <img src="images/fig18_interruptor_apagado.jpg" height="360" alt="Interruptor KCD1 interrumpe el paso de energía" />
 </p>
-<p align="center"><em>Figura 18. Prueba del interruptor KCD1 apagado sobre protoboard.</em></p>
+<p align="center"><em>Figura 19. Prueba del interruptor KCD1 apagado sobre protoboard.</em></p>
 
 El interruptor de tres terminales se probó sobre una protoboard, utilizando cables adecuados y el convertidor DC-DC. Se destinó a interrumpir la alimentación de 12 V y 2 A entregada por el adaptador. Se realizaron tres ciclos de encendido y apagado y se utilizó un multímetro para verificar la presencia o ausencia de tensión en la salida. El interruptor todavía no se instaló en la caja de control del prototipo.
 
@@ -456,7 +462,7 @@ La Figura 19 muestra el prototipo con los elementos probados.
 <p align="center">
 <img src="images/fig17_demo_prototipo.jpg" height="360" alt="Demo del prototipo del sistema de clarificación con quitosano: reactor, sensores, bomba peristáltica y caja de control." />
 </p> -->
-<p align="center"><em>Figura 19. Demo del prototipo del sistema de clarificación con quitosano: reactor, sensores, bomba peristáltica y caja de control.</em></p>
+<p align="center"><em>Figura 20. Demo del prototipo del sistema de clarificación con quitosano: reactor, sensores, bomba peristáltica y caja de control.</em></p>
 
 En la figura se identifican los componentes: **[COMPLETAR]** (listar y numerar los elementos que se ven en la foto).
 
