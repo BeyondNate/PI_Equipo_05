@@ -126,7 +126,7 @@ Las Figuras 1 a 5 muestran la distribución del esfuerzo de von Mises en cada pi
 <p align="center"><em>Figura 4. Esfuerzo de von Mises en la caja de control de PLA (SimScale).</em></p>
 
 <p align="center">
-<img src="images/agitador.jpeg" height="360" alt="Esfuerzo de von Mises en el agitador" />
+<img src="images/agitador.jpg" height="360" alt="Esfuerzo de von Mises en el agitador" />
 </p>
 <p align="center"><em>Figura 5. Esfuerzo de von Mises en el agitador de PLA (SimScale).</em></p>
 
