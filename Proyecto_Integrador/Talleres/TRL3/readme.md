@@ -93,11 +93,11 @@ Los análisis se realizaron con 11 pasos de tiempo entre 0 y 0,01 s, y la variab
 
 | Pieza | Fuerza aplicada | Apoyos o restricciones |
 |:---:|:---:|:---:|
-| Base | **[COMPLETAR]** | **[COMPLETAR]** |
-| Soporte del reactor | **[COMPLETAR]** | **[COMPLETAR]** |
-| Placa con cuatro orificios | **[COMPLETAR]** | **[COMPLETAR]** |
-| Caja de control | **[COMPLETAR]** | **[COMPLETAR]** |
-| Agitador | **[COMPLETAR]** | **[COMPLETAR]** |
+| Base | Carga vertical distribuida (peso del reactor, soporte y agua) en la zona central y derecha. | Cara inferior fija (empotramiento) o apoyos en las esquinas. |
+| Soporte del reactor | Carga vertical hacia abajo en el anillo superior e inferior (peso del reactor de 1 L). | Base de las patas fija (empotramiento en el suelo). |
+| Placa con cuatro orificios | Carga vertical distribuida en la cara superior (peso de los componentes montados). | Perímetro exterior o los cuatro orificios restringidos. |
+| Caja de control | Carga vertical en la cara superior (peso de la tapa y componentes internos). | Cara inferior o posterior fija (donde se atornilla o apoya). |
+| Agitador | Fuerza lateral o torsional en la paleta (resistencia del agua al mezclar). | Extremo superior del eje fijo (donde se acopla al motor). |
 
 </div>
 
@@ -137,11 +137,11 @@ La Tabla 3 resume el esfuerzo máximo de la escala de cada figura.
 
 | Pieza | Esfuerzo máximo | Equivalencia | Esfuerzo de fluencia del material | FS |
 |:---:|:---:|:---:|:---:|:---:|
-| Base | 5 652 Pa | 0,005652 MPa | **[COMPLETAR]** | **[COMPLETAR]** |
-| Soporte del reactor | 33 150 Pa | 0,03315 MPa | **[COMPLETAR]** | **[COMPLETAR]** |
-| Placa con cuatro orificios | 2 144 Pa | 0,002144 MPa | **[COMPLETAR]** | **[COMPLETAR]** |
-| Caja de control | 909 900 Pa | 0,9099 MPa | **[COMPLETAR]** | **[COMPLETAR]** |
-| Agitador | 11 250 Pa | 0,01125 MPa | **[COMPLETAR]** | **[COMPLETAR]** |
+| Base | 5 652 Pa | 0,005652 MPa | 70 MPa | 12034 |
+| Soporte del reactor | 33 150 Pa | 0,03315 MPa | 50 MPa | 1508,3 |
+| Placa con cuatro orificios | 2 144 Pa | 0,002144 MPa | 50 MPa | 23320,9 |
+| Caja de control | 909 900 Pa | 0,9099 MPa | 50 MPa | 54,9 |
+| Agitador | 11 250 Pa | 0,01125 MPa | 50 MPa | 4444,4 |
 
 </div>
 
