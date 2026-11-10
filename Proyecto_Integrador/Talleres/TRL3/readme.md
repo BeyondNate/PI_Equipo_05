@@ -340,16 +340,14 @@ $$
 **Por qué se espera ese comportamiento.** El XKC-Y25-V es un sensor capacitivo sin contacto que se instala en la parte exterior de un recipiente no metálico. Cuando el líquido alcanza la zona de detección, el módulo cambia su estado de salida e indica la presencia de agua [[10]](#ref10).
 
 <p align="center">
-<b>[INSERTAR IMAGEN DEL SENSOR INSTALADO]</b><br>
-<sub>Fotografía del XKC-Y25-V colocado en la pared exterior del recipiente.</sub>
+<img src="images/fig12_nivel_colocado.jpg" height="360" alt="Sensor XKC-Y25-V en el recipiente de prueba" />
 </p>
 <p align="center"><em>Figura 12. Instalación del sensor de nivel XKC-Y25-V en el recipiente de prueba.</em></p>
 
 El sensor se conectó al GPIO14 del ESP32. Se colocó a una altura arbitraria para comprobar su funcionamiento, sin utilizar todavía la marca de 1 L como referencia. Se llenó el recipiente hasta alcanzar el punto de detección y se repitió la prueba más de cinco veces a diferentes alturas.
 
 <p align="center">
-<b>[INSERTAR IMAGEN DE LA PRUEBA DE DETECCIÓN]</b><br>
-<sub>Fotografía del indicador LED rojo encendido al detectar el agua.</sub>
+<img src="images/fig13_nivel_activo.jpg" height="360" alt="Sensor XKC-Y25-V funcionamiento comprobado" />
 </p>
 <p align="center"><em>Figura 13. Respuesta visual del sensor de nivel durante la detección del agua.</em></p>
 
@@ -371,18 +369,21 @@ El sensor se conectó al GPIO14 del ESP32. Se colocó a una altura arbitraria pa
 **Por qué se espera ese comportamiento.** La bomba peristáltica desplaza el líquido mediante la compresión sucesiva de un tubo flexible por medio de rodillos. El fluido entra en contacto principalmente con el interior del tubo. Para utilizarla en una dosificación controlada es necesario determinar experimentalmente su caudal [[11]](#ref11).
 
 <p align="center">
-<b>[INSERTAR IMAGEN DEL MONTAJE DE LA BOMBA]</b><br>
-<sub>Fotografía de la bomba NKP-DC-S10B y sus conexiones de alimentación.</sub>
+<img src="images/fig14_peristaltica_conexiones.jpg" height="360" alt="Bomba conectada a 12V 2A" />
 </p>
 <p align="center"><em>Figura 14. Montaje de prueba de la bomba peristáltica NKP-DC-S10B.</em></p>
 
 La bomba utilizada fue una NKP-DC-S10B de 12 V. Para la prueba se alimentó directamente desde la bornera conectada al adaptador de 12 V y 2 A, sin integrarla todavía al circuito de control definitivo. Se realizaron tres pruebas de 10 segundos. Primero se utilizó agua de caño y posteriormente jugo de plátano como líquido viscoso para observar el transporte de un fluido con mayor resistencia al movimiento.
 
 <p align="center">
-<b>[INSERTAR IMAGEN O CAPTURA DE LA BOMBA EN FUNCIONAMIENTO]</b><br>
-<sub>Fotografía o captura de video de la bomba transportando el líquido.</sub>
+<img src="images/fig15_peristaltica_viscoso.jpg" height="360" alt="Bomba peristáltica bombea solución acuosa viscosa" />
 </p>
-<p align="center"><em>Figura 15. Prueba de funcionamiento de la bomba peristáltica con los líquidos seleccionados.</em></p>
+<p align="center"><em>Figura 15. Prueba de funcionamiento de la bomba peristáltica con los líquidos viscoso (jugo de plátano).</em></p>
+
+<p align="center">
+<img src="images/fig16_peristaltica_liquido_comun.jpg" height="360" alt="Bomba peristáltica bombea agua limpia" />
+</p>
+<p align="center"><em>Figura 16. Prueba de funcionamiento de la bomba peristáltica con agua limpia.</em></p>
 
 <p align="center"><em>Tabla 10. Registro de las pruebas funcionales de la bomba peristáltica.</em></p>
 <div align="center">
@@ -402,10 +403,14 @@ La bomba utilizada fue una NKP-DC-S10B de 12 V. Para la prueba se alimentó dire
 **Por qué se espera ese comportamiento.** El interruptor KCD1 permite abrir o cerrar el circuito de alimentación del sistema. Al cerrar el circuito, la alimentación debe llegar al convertidor DC-DC y al resto del banco; al abrirlo, debe interrumpirse la alimentación.
 
 <p align="center">
-<b>[INSERTAR FOTOGRAFÍA DEL INTERRUPTOR EN LA PROTOBOARD]</b><br>
-<sub>Fotografía del KCD1 conectado durante la prueba de encendido y apagado.</sub>
+<img src="images/fig17_interruptor_encendido.jpg" height="360" alt="Interruptor KCD1 permite el paso de energía" />
 </p>
-<p align="center"><em>Figura 16. Prueba del interruptor KCD1 sobre protoboard.</em></p>
+<p align="center"><em>Figura 17. Prueba del interruptor KCD1 encendido sobre protoboard.</em></p>
+
+<p align="center">
+<img src="images/fig18_interruptor_apagado.jpg" height="360" alt="Interruptor KCD1 interrumpe el paso de energía" />
+</p>
+<p align="center"><em>Figura 18. Prueba del interruptor KCD1 apagado sobre protoboard.</em></p>
 
 El interruptor de tres terminales se probó sobre una protoboard, utilizando cables adecuados y el convertidor DC-DC. Se destinó a interrumpir la alimentación de 12 V y 2 A entregada por el adaptador. Se realizaron tres ciclos de encendido y apagado y se utilizó un multímetro para verificar la presencia o ausencia de tensión en la salida. El interruptor todavía no se instaló en la caja de control del prototipo.
 
@@ -444,14 +449,14 @@ El prototipo de esta etapa tiene dos partes: un banco de pruebas de adquisición
 
 **Diferencias entre el banco de pruebas y el esquemático del TRL 2.** El banco se armó para las primeras lecturas y no reproduce todavía el circuito del esquemático v1.2 [[2]](#ref2). En el esquemático, la señal de turbidez entra por el GPIO35 y las señales de pH y turbidez pasan por divisores de 15 kΩ y 20 kΩ, que reducen 5 V a unos 2,86 V (factor 1,75). En el banco, la turbidez se leyó por el GPIO33 y el pH por el GPIO34 con un divisor de factor 1,5. Al integrar el circuito definitivo, el programa debe actualizarse con los pines y los factores del esquemático.
 
-La Figura 17 muestra el prototipo con los elementos probados.
+La Figura 19 muestra el prototipo con los elementos probados.
 
 <p align="center"><b>[COMPLETAR · INSERTAR IMAGEN AQUÍ]</b><br><sub>Foto general del prototipo: reactor de 1 L, bombas, sensores de pH, turbidez y nivel, caja de control y pantalla OLED.</sub></p>
 <!-- Cuando tengas la foto, súbela a images/ y reemplaza este bloque por:
 <p align="center">
 <img src="images/fig17_demo_prototipo.jpg" height="360" alt="Demo del prototipo del sistema de clarificación con quitosano: reactor, sensores, bomba peristáltica y caja de control." />
 </p> -->
-<p align="center"><em>Figura 17. Demo del prototipo del sistema de clarificación con quitosano: reactor, sensores, bomba peristáltica y caja de control.</em></p>
+<p align="center"><em>Figura 19. Demo del prototipo del sistema de clarificación con quitosano: reactor, sensores, bomba peristáltica y caja de control.</em></p>
 
 En la figura se identifican los componentes: **[COMPLETAR]** (listar y numerar los elementos que se ven en la foto).
 
